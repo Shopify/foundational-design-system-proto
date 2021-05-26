@@ -1,5 +1,5 @@
 import React, {useContext, createContext, useRef} from 'react';
-import {Card} from '..';
+import {Card} from '@polaris/elements';
 
 interface ModalContextValue {
   open: boolean;

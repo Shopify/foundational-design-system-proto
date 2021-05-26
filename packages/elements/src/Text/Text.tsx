@@ -54,6 +54,9 @@ export const StyledText = styled(DEFAULT_TAG, {
       },
     },
     variant: {
+      base: {
+        
+      },
       subdued: {
         color: '$textSubdued',
       },
@@ -73,7 +76,7 @@ export const StyledText = styled(DEFAULT_TAG, {
   },
   defaultVariants: {
     size: '3',
-    variant: 'subdued'
+    variant: 'base'
   },
 });
 

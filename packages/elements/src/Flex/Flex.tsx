@@ -5,6 +5,23 @@ export const Flex = styled('div', {
   display: 'flex',
 
   variants: {
+    space: {
+      extraTight: {
+        padding: '$extraTight'
+      },
+      tight: {
+        padding: '$tight'
+      },
+      base: {
+        padding: '$base'
+      },
+      loose: {
+        padding: '$loose'
+      },
+      extraLoose: {
+        padding: '$extraLoose'
+      }
+    },
     direction: {
       row: {
         flexDirection: 'row',

@@ -1,0 +1,1 @@
+export { useActivator } from './useActivator'

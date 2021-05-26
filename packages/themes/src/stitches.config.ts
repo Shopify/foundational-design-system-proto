@@ -140,7 +140,7 @@ const stitches = createCss({
     fontWeights: {
       base: 400,
       medium: 500,
-      bold: 700,
+      bold: 600,
       badge: 400
     },
     fontSizes: {

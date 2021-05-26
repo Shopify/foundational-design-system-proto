@@ -15,6 +15,7 @@ export default defineConfig({
       
       "@polaris/composed": getPackage("composed"),
       "@polaris/elements": getPackage("elements"),
+      "@polaris/react-hooks": getPackage("react-hooks"),
       "@polaris/icons": getPackage("icons"),
       "@polaris/themes": getPackage("themes"),
       "@polaris/tokens": getPackage("tokens")
