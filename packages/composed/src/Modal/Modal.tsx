@@ -1,5 +1,6 @@
 import React, {useContext, createContext, useRef} from 'react';
-import {Card} from '..';
+import {Overlay} from '@polaris/elements';
+import {styled} from '../../../../stitches.config';
 
 interface ModalContextValue {
   open: boolean;
@@ -42,20 +43,34 @@ function ModalTrigger({children}: ModalTriggerProps) {
 }
 
 interface ModalDialogProps {
+  accessibilityLabel: string;
   children: React.ReactNode;
 }
 
+const StyledDialog = styled('div', {
+  height: '100%',
+});
+
+const StyledChildren = styled('div', {
+  position: 'relative',
+  zIndex: 10,
+  maxWidth: '360px',
+  margin: '0 auto',
+});
+
 // Overlay styles and motion
-function ModalDialog({children}: ModalDialogProps) {
+function ModalDialog({children, accessibilityLabel}: ModalDialogProps) {
   const {open} = useContext(ModalContext);
   return open ? (
-    <div
+    <StyledDialog
       aria-modal='true'
       role='dialog'
-      aria-label='TODO: change this polaris-modal'
+      aria-label={accessibilityLabel}
+      style={{height: '100%'}}
     >
-      {children}
-    </div>
+      <StyledChildren>{children}</StyledChildren>
+      <Overlay />
+    </StyledDialog>
   ) : null;
 }
 

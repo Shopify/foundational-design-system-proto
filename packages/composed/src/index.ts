@@ -1,5 +1,1 @@
-export * from './Button'
-export * from './Card'
-export * from './Flex'
-export * from './Modal'
-export * from './Text'
+export * from './Modal';

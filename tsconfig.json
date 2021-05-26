@@ -29,5 +29,5 @@
     }
   },
   "exclude": ["node_modules", "**/dist/**"],
-  "include": ["packages/**/*", "./site"]
+  "include": ["packages/**/*", "./site", "stitches.config.ts"]
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, CSS, StitchesVariants } from '../stitches.config';
+import {styled, CSS, StitchesVariants} from '../../../../stitches.config';
 
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
@@ -40,7 +40,7 @@ const StyledButton = styled(DEFAULT_TAG, {
   '&:disabled': {
     boxShadow: 'none',
     pointerEvents: 'none',
-    transition: 'none'
+    transition: 'none',
   },
 
   variants: {
@@ -57,7 +57,7 @@ const StyledButton = styled(DEFAULT_TAG, {
           background: '$actionPrimaryPressed',
         },
         '&:disabled': {
-          background: '$actionPrimaryDisabled'
+          background: '$actionPrimaryDisabled',
         },
       },
       secondary: {
@@ -73,7 +73,7 @@ const StyledButton = styled(DEFAULT_TAG, {
         },
         '&:disabled': {
           borderColor: '$borderDisabled',
-          background: '$actionSecondaryDisabled'
+          background: '$actionSecondaryDisabled',
         },
       },
       plain: {
@@ -84,13 +84,13 @@ const StyledButton = styled(DEFAULT_TAG, {
         textDecoration: 'underline',
         '&:hover': {
           background: '$interactiveHovered',
-          textDecoration: 'none'
+          textDecoration: 'none',
         },
         '&:active': {
           background: '$interactivePressed',
         },
         '&:disabled': {
-          background: '$interactiveDisabled'
+          background: '$interactiveDisabled',
         },
       },
       outline: {
@@ -115,15 +115,15 @@ const StyledButton = styled(DEFAULT_TAG, {
           background: '$actionCriticalPressed',
         },
         '&:disabled': {
-          background: '$actionCriticalDisabled'
+          background: '$actionCriticalDisabled',
         },
-      }
+      },
     },
     size: {
       slim: {
         height: '$5',
         px: '$3',
-      }, 
+      },
       medium: {
         height: '$6',
         px: '$3',
@@ -132,20 +132,23 @@ const StyledButton = styled(DEFAULT_TAG, {
         height: '$7',
         px: '$4',
         fontSize: '$4',
-      }
-    }
+      },
+    },
   },
   defaultVariants: {
     variant: 'secondary',
-    size: 'medium'
+    size: 'medium',
   },
 });
 
-type ButtonCSSProp = { css?: CSS };
+type ButtonCSSProp = {css?: CSS};
 type ButtonVariants = StitchesVariants<typeof StyledButton>;
-type ButtonOwnProps = ButtonCSSProp & ButtonVariants & { size?: any };
+type ButtonOwnProps = ButtonCSSProp & ButtonVariants & {size?: any};
 
-type ButtonComponent = Polymorphic.ForwardRefComponent<typeof DEFAULT_TAG, ButtonOwnProps>;
+type ButtonComponent = Polymorphic.ForwardRefComponent<
+  typeof DEFAULT_TAG,
+  ButtonOwnProps
+>;
 
 export const Button = React.forwardRef((props, forwardedRef) => {
   return <StyledButton {...props} ref={forwardedRef} />;
