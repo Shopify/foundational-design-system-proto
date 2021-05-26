@@ -1,21 +1,19 @@
 import React, {useState} from 'react';
-import {Button} from '@polaris/elements';
-import {Modal} from '@polaris/composed';
+import {Modal, Button} from '@polaris/composed';
 
 function App() {
   const [open, setOpen] = useState(false);
 
   return (
     <div>
-      <Button>Buy this now!</Button>
       <Modal open={open} onDismiss={() => {}}>
-        <button type='button' onClick={() => setOpen(true)}>
+        <Button type='button' onClick={() => setOpen(true)} variant="primary">
           Open modal
-        </button>
+        </Button>
         <Modal.Dialog>
-          <button type='button' onClick={() => setOpen(false)}>
+          <Button type='button' onClick={() => setOpen(false)}>
             Close modal
-          </button>
+          </Button>
         </Modal.Dialog>
       </Modal>
     </div>
