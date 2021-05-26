@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, CSS, StitchesVariants } from '../../../themes/src/stitches.config';
+import { styled, CSS, StitchesVariants } from '@polaris/themes';
 
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
