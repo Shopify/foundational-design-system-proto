@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Modal, Button} from '@polaris/composed';
+import {Button} from '@polaris/elements';
+import {Modal} from '@polaris/composed';
 
 function App() {
   const [open, setOpen] = useState(false);
