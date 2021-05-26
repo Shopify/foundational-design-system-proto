@@ -12,6 +12,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   resolve: {
     alias: {
+      
       "@polaris/composed": getPackage("composed"),
       "@polaris/elements": getPackage("elements"),
       "@polaris/icons": getPackage("icons"),

@@ -1,6 +1,5 @@
 import React from 'react';
-import {styled} from '../stitches.config'; 
-// Move to elements
+import {styled} from '@polaris/themes'; 
 
 const StyledCard = styled('div', {
   borderRadius: '$base',
