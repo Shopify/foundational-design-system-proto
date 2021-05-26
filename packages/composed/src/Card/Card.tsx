@@ -1,9 +1,9 @@
 import React from 'react';
-import {styled} from '@stitches/react'; 
+import {styled} from '../stitches.config'; 
 // Move to elements
 
 const StyledCard = styled('div', {
-  borderRadius: 8,
+  borderRadius: '$base',
 })
 
 export interface CardProps {
