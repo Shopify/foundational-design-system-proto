@@ -2,15 +2,16 @@ import {resolve} from 'path';
 
 import {defineConfig} from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
+import svgr from 'vite-plugin-svgr';
 
-function getPackage(packageName) {
-  return resolve(__dirname, 'packages', packageName, 'src');
+function getPackage(packageName, path = 'src') {
+  return resolve(__dirname, 'packages', packageName, path);
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
   root: './site',
-  plugins: [reactRefresh()],
+  plugins: [svgr(), reactRefresh()],
   resolve: {
     alias: {
       '@polaris/composed': getPackage('composed'),
