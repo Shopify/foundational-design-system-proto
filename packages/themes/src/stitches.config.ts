@@ -1,5 +1,6 @@
 /* eslint-disable id-length */
 import {createCss, StitchesCss} from '@stitches/react';
+import {rem} from 'polished';
 
 export type {StitchesVariants} from '@stitches/react';
 
@@ -147,15 +148,27 @@ const stitches = createCss({
       badge: 400,
     },
     fontSizes: {
-      1: '12px',
-      2: '13px',
-      3: '15px',
-      4: '17px',
-      5: '19px',
-      6: '21px',
-      7: '27px',
-      8: '35px',
-      9: '59px',
+      1: '0.8125rem',
+      2: '0.825rem',
+      3: '1rem',
+      4: '1.125rem',
+      5: '1.25rem',
+      6: '1.5rem',
+      7: '2rem',
+      8: '3rem',
+      9: '4rem',
+      caption: rem(13),
+      heading: rem(17),
+      subheading: rem(13),
+      input: rem(16),
+      body: rem(15),
+      buttonSlim: rem(16),
+      button: rem(15),
+      buttonLarge: rem(17),
+      displayXLarge: rem(27),
+      displayLarge: rem(24),
+      displayMedium: rem(21),
+      displaySmall: rem(16),
     },
     space: {
       1: '5px',

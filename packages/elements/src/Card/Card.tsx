@@ -1,20 +1,35 @@
-import React from 'react';
 import {styled} from '@polaris/themes';
 
-const StyledCard = styled('div', {
+const CardRoot = styled('div', {
+  // Reset
+  appearance: 'none',
+  border: 'none',
+  boxSizing: 'border-box',
+  font: 'inherit',
+  lineHeight: '1',
+  outline: 'none',
+  padding: 0,
+  textAlign: 'inherit',
+  verticalAlign: 'middle',
+  webkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
+
+  // Custom
+  display: 'block',
+  position: 'relative',
+  flexShrink: 0,
+  boxShadow: '$card',
   borderRadius: '$base',
+  backgroundColor: '$surface',
+  color: 'inherit',
 });
 
-export interface CardProps {
-  children: React.ReactNode;
-}
+const CardSection = styled('div', {
+  padding: '$3',
+  '&:not(:last-of-type)': {
+    borderBottom: '1px solid $borderSubdued',
+  },
+});
 
-export function Card({children}: CardProps) {
-  return <StyledCard>{children}</StyledCard>;
-}
-
-function Section({children}: CardProps) {
-  return <div>{children}</div>;
-}
-
-Card.Section = Section;
+export const Card = Object.assign(CardRoot, {
+  Section: CardSection,
+});
