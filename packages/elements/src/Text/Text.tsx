@@ -51,6 +51,18 @@ export const StyledText = styled(DEFAULT_TAG, {
         letterSpacing: '-.055em',
         textIndent: '-.025em',
       },
+      caption: {fontSize: '$caption'},
+      heading: {fontSize: '$heading'},
+      subheading: {fontSize: '$subheading'},
+      input: {fontSize: '$input'},
+      body: {fontSize: '$body'},
+      buttonSlim: {fontSize: '$buttonSlim'},
+      button: {fontSize: '$button'},
+      buttonLarge: {fontSize: '$buttonLarge'},
+      displayXLarge: {fontSize: '$displayXLarge'},
+      displayLarge: {fontSize: '$displayLarge'},
+      displayMedium: {fontSize: '$displayMedium'},
+      displaySmall: {fontSize: '$displaySmall'},
     },
     variant: {
       subdued: {
@@ -72,7 +84,6 @@ export const StyledText = styled(DEFAULT_TAG, {
   },
   defaultVariants: {
     size: '3',
-    variant: 'subdued',
   },
 });
 

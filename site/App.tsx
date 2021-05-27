@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {Button, Icon} from '@polaris/elements';
+import React, {useState, useCallback} from 'react';
+import {Button, Card, Flex, Text} from '@polaris/elements';
 import {Modal} from '@polaris/composed';
-import {ReactComponent as CancelSmallMinor} from '@polaris/icons/CancelSmallMinor.svg';
 
 function App() {
   const [open, setOpen] = useState(false);
+  const closeModal = useCallback(() => setOpen(false), [setOpen]);
 
   return (
     <>
@@ -13,9 +13,22 @@ function App() {
           Open modal
         </Button>
         <Modal.Dialog ariaLabel="TODO: change this prop API">
-          <Button type="button" onClick={() => setOpen(false)}>
-            <Icon source={CancelSmallMinor} aria-label="Close modal" />
-          </Button>
+          <Card>
+            <Card.Section>
+              <Text size="heading">Title</Text>
+            </Card.Section>
+            <Card.Section>
+              <Text size="body">body</Text>
+            </Card.Section>
+            <Card.Section>
+              <Flex align="end" gap="3">
+                <Button onClick={closeModal}>Cancel</Button>
+                <Button variant="primary" onClick={closeModal}>
+                  Save
+                </Button>
+              </Flex>
+            </Card.Section>
+          </Card>
         </Modal.Dialog>
       </Modal>
     </>
