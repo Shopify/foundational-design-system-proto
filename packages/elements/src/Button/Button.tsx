@@ -122,15 +122,17 @@ const StyledButton = styled(DEFAULT_TAG, {
       slim: {
         height: '$5',
         px: '$3',
+        fontSize: '$buttonSlim',
       },
       medium: {
         height: '$6',
         px: '$3',
+        fontSize: '$button',
       },
       large: {
         height: '$7',
         px: '$4',
-        fontSize: '$4',
+        fontSize: '$buttonLarge',
       },
     },
   },
