@@ -1,4 +1,4 @@
-import { styled } from '@polaris/themes';
+import {styled} from '@polaris/themes';
 
 export const Flex = styled('div', {
   boxSizing: 'border-box',
@@ -17,7 +17,7 @@ export const Flex = styled('div', {
       },
       columnReverse: {
         flexDirection: 'column-reverse',
-      }
+      },
     },
     align: {
       start: {
@@ -89,12 +89,12 @@ export const Flex = styled('div', {
       9: {
         gap: '$9',
       },
-    }
+    },
   },
   defaultVariants: {
     direction: 'row',
     align: 'stretch',
     justify: 'start',
     wrap: 'noWrap',
-  }
+  },
 });

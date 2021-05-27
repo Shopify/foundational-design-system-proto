@@ -44,6 +44,9 @@
       "react": {
         "version": "17.0.0"
       }
+    },
+    "rules": {
+      "react/display-name": 0
     }
   }
 }

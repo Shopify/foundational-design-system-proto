@@ -1,9 +1,9 @@
 import React from 'react';
-import {styled} from '@polaris/themes'; 
+import {styled} from '@polaris/themes';
 
 const StyledCard = styled('div', {
   borderRadius: '$base',
-})
+});
 
 export interface CardProps {
   children: React.ReactNode;

@@ -1,5 +1,7 @@
-import { createCss, StitchesCss } from '@stitches/react'
-export type { StitchesVariants } from '@stitches/react';
+/* eslint-disable id-length */
+import {createCss, StitchesCss} from '@stitches/react';
+
+export type {StitchesVariants} from '@stitches/react';
 
 const stitches = createCss({
   theme: {
@@ -134,14 +136,15 @@ const stitches = createCss({
       decorativeFiveText: 'rgba(79, 14, 31, 1)',
     },
     fonts: {
-      system: "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      system:
+        "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
       mono: "Monaco, Consolas, 'Lucida Console', monospace",
     },
     fontWeights: {
       base: 400,
       medium: 500,
       bold: 700,
-      badge: 400
+      badge: 400,
     },
     fontSizes: {
       1: '12px',
@@ -187,7 +190,7 @@ const stitches = createCss({
     },
     borderWidths: {
       thin: '0.1rem',
-      control: '0.2rem'
+      control: '0.2rem',
     },
     radii: {
       base: '0.4rem',
@@ -196,23 +199,30 @@ const stitches = createCss({
     },
     shadows: {
       card: '0px 0px 5px $colors$shadowFromAmbientLight, 0px 1px 2px $colors$shadowFromDirectLight',
-      popover: '-1px 0px 20px $colors$shadowFromAmbientLight, 0px 1px 5px $colors$shadowFromDirectLight',
-      modal: '0px 26px 80px $colors$shadowFromDimLight, 0px 0px 1px $colors$shadowFromDimLight',
+      popover:
+        '-1px 0px 20px $colors$shadowFromAmbientLight, 0px 1px 5px $colors$shadowFromDirectLight',
+      modal:
+        '0px 26px 80px $colors$shadowFromDimLight, 0px 0px 1px $colors$shadowFromDimLight',
       topBar: '0 2px 2px -1px $colors$shadowFromDirectLight',
       button: '0 1px 0 rgba(0, 0, 0, 0.05)',
       buttonInner: 'inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
       buttonPressedInner: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
-      bannerDefault: 'inset 0 0.1rem 0 0 $colors$borderNeutralSubdued, inset 0 0 0 0.1rem $colors$borderNeutralSubdued',
-      bannerSuccess: 'inset 0 0.1rem 0 0 $colors$borderSuccessSubdued, inset 0 0 0 0.1rem $colors$borderSuccessSubdued',
-      bannerHighlight: 'inset 0 0.1rem 0 0 $colors$borderHighlightSubdued, inset 0 0 0 0.1rem $colors$borderHighlightSubdued',
-      bannerWarning: 'inset 0 0.1rem 0 0 $colors$borderWarningSubdued, inset 0 0 0 0.1rem $colors$borderWarningSubdued',
-      bannerCritical: 'inset 0 0.1rem 0 0 $colors$borderCriticalSubdued, inset 0 0 0 0.1rem $colors$borderCriticalSubdued',
+      bannerDefault:
+        'inset 0 0.1rem 0 0 $colors$borderNeutralSubdued, inset 0 0 0 0.1rem $colors$borderNeutralSubdued',
+      bannerSuccess:
+        'inset 0 0.1rem 0 0 $colors$borderSuccessSubdued, inset 0 0 0 0.1rem $colors$borderSuccessSubdued',
+      bannerHighlight:
+        'inset 0 0.1rem 0 0 $colors$borderHighlightSubdued, inset 0 0 0 0.1rem $colors$borderHighlightSubdued',
+      bannerWarning:
+        'inset 0 0.1rem 0 0 $colors$borderWarningSubdued, inset 0 0 0 0.1rem $colors$borderWarningSubdued',
+      bannerCritical:
+        'inset 0 0.1rem 0 0 $colors$borderCriticalSubdued, inset 0 0 0 0.1rem $colors$borderCriticalSubdued',
     },
     transitions: {
       fastEase: '100ms cubic-bezier(0.4, 0.22, 0.28, 1)',
       slowEase: '100ms cubic-bezier(0.4, 0.22, 0.28, 1)',
       fastEaseIn: '150ms cubic-bezier(0.5, 0.1, 1, 1)',
-      slowEaseIn: '150ms cubic-bezier(0.5, 0.1, 1, 1)'
+      slowEaseIn: '150ms cubic-bezier(0.5, 0.1, 1, 1)',
     },
     zIndices: {
       1: '100',
@@ -287,18 +297,18 @@ const stitches = createCss({
       marginBottom: value,
     }),
 
-    ta: (config) => (value: any) => ({ textAlign: value }),
+    ta: (config) => (value: any) => ({textAlign: value}),
 
-    fd: (config) => (value: any) => ({ flexDirection: value }),
-    fw: (config) => (value: any) => ({ flexWrap: value }),
+    fd: (config) => (value: any) => ({flexDirection: value}),
+    fw: (config) => (value: any) => ({flexWrap: value}),
 
-    ai: (config) => (value: any) => ({ alignItems: value }),
-    ac: (config) => (value: any) => ({ alignContent: value }),
-    jc: (config) => (value: any) => ({ justifyContent: value }),
-    as: (config) => (value: any) => ({ alignSelf: value }),
-    fg: (config) => (value: any) => ({ flexGrow: value }),
-    fs: (config) => (value: any) => ({ flexShrink: value }),
-    fb: (config) => (value: any) => ({ flexBasis: value }),
+    ai: (config) => (value: any) => ({alignItems: value}),
+    ac: (config) => (value: any) => ({alignContent: value}),
+    jc: (config) => (value: any) => ({justifyContent: value}),
+    as: (config) => (value: any) => ({alignSelf: value}),
+    fg: (config) => (value: any) => ({flexGrow: value}),
+    fs: (config) => (value: any) => ({flexShrink: value}),
+    fb: (config) => (value: any) => ({flexBasis: value}),
 
     bc: (config) => (value: any) => ({
       backgroundColor: value,
@@ -320,15 +330,18 @@ const stitches = createCss({
       borderTopLeftRadius: value,
     }),
 
-    bs: (config) => (value: any) => ({ boxShadow: value }),
+    bs: (config) => (value: any) => ({boxShadow: value}),
 
-    lh: (config) => (value: any) => ({ lineHeight: value }),
+    lh: (config) => (value: any) => ({lineHeight: value}),
 
-    ox: (config) => (value: any) => ({ overflowX: value }),
-    oy: (config) => (value: any) => ({ overflowY: value }),
+    ox: (config) => (value: any) => ({overflowX: value}),
+    oy: (config) => (value: any) => ({overflowY: value}),
 
-    pe: (config) => (value: any) => ({ pointerEvents: value }),
-    us: (config) => (value: any) => ({ WebkitUserSelect: value, userSelect: value }),
+    pe: (config) => (value: any) => ({pointerEvents: value}),
+    us: (config) => (value: any) => ({
+      WebkitUserSelect: value,
+      userSelect: value,
+    }),
 
     size: (config) => (value: any) => ({
       width: value,
@@ -356,6 +369,7 @@ const stitches = createCss({
 
 export type CSS = StitchesCss<typeof stitches>;
 
-export const { styled, css, theme, getCssString, global, keyframes, config } = stitches;
+export const {styled, css, theme, getCssString, global, keyframes, config} =
+  stitches;
 
 export const utils = config.utils;

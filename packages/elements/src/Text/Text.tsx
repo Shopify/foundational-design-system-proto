@@ -1,6 +1,5 @@
 import React from 'react';
-import { styled, CSS, StitchesVariants } from '@polaris/themes';
-
+import {styled, CSS, StitchesVariants} from '@polaris/themes';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 const DEFAULT_TAG = 'span';
@@ -58,30 +57,35 @@ export const StyledText = styled(DEFAULT_TAG, {
         color: '$textSubdued',
       },
       strong: {
-        fontWeight: '$bold'
+        fontWeight: '$bold',
       },
       positive: {
-        color: '$textSuccess'
+        color: '$textSuccess',
       },
       negative: {
-        color: '$textCritical'
+        color: '$textCritical',
       },
       code: {
-        fontFamily: '$mono'
+        fontFamily: '$mono',
       },
-    }
+    },
   },
   defaultVariants: {
     size: '3',
-    variant: 'subdued'
+    variant: 'subdued',
   },
 });
 
-type TextCSSProp = { css?: CSS };
-type TextVariants = Omit<StitchesVariants<typeof StyledText>, "size">;
-type TextOwnProps = TextCSSProp & TextVariants & { size?: any };
+interface TextCSSProp {
+  css?: CSS;
+}
+type TextVariants = Omit<StitchesVariants<typeof StyledText>, 'size'>;
+type TextOwnProps = TextCSSProp & TextVariants & {size?: any};
 
-type TextComponent = Polymorphic.ForwardRefComponent<typeof DEFAULT_TAG, TextOwnProps>;
+type TextComponent = Polymorphic.ForwardRefComponent<
+  typeof DEFAULT_TAG,
+  TextOwnProps
+>;
 
 export const Text = React.forwardRef((props, forwardedRef) => {
   return <StyledText {...props} ref={forwardedRef} />;

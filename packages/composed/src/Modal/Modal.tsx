@@ -1,5 +1,4 @@
-import React, {useContext, createContext, useRef} from 'react';
-import {Card} from '..';
+import React, {useContext, createContext, useRef, useMemo} from 'react';
 
 interface ModalContextValue {
   open: boolean;
@@ -17,13 +16,19 @@ const ModalContext = createContext<ModalContextValue>({
   targetRef: null,
 });
 
-export function Modal({children, open, onDismiss}: ModalProps) {
+export function Modal({children, open}: ModalProps) {
   const targetRef = useRef<HTMLButtonElement>(null);
 
+  const value = useMemo(
+    () => ({
+      open,
+      targetRef,
+    }),
+    [open, targetRef],
+  );
+
   return (
-    <ModalContext.Provider value={{open, targetRef}}>
-      {children}
-    </ModalContext.Provider>
+    <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
   );
 }
 
@@ -35,7 +40,7 @@ function ModalTrigger({children}: ModalTriggerProps) {
   const {targetRef} = useContext(ModalContext);
 
   return (
-    <button ref={targetRef} type='button'>
+    <button ref={targetRef} type="button">
       {children}
     </button>
   );
@@ -43,17 +48,14 @@ function ModalTrigger({children}: ModalTriggerProps) {
 
 interface ModalDialogProps {
   children: React.ReactNode;
+  ariaLabel: string;
 }
 
 // Overlay styles and motion
-function ModalDialog({children}: ModalDialogProps) {
+function ModalDialog({children, ariaLabel}: ModalDialogProps) {
   const {open} = useContext(ModalContext);
   return open ? (
-    <div
-      aria-modal='true'
-      role='dialog'
-      aria-label='TODO: change this polaris-modal'
-    >
+    <div aria-modal="true" role="dialog" aria-label={ariaLabel}>
       {children}
     </div>
   ) : null;
