@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {Button} from '@polaris/elements';
+import {Button, Icon} from '@polaris/elements';
 import {Modal} from '@polaris/composed';
+import {ReactComponent as CancelSmallMinor} from '@polaris/icons/CancelSmallMinor.svg';
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ function App() {
         </Button>
         <Modal.Dialog ariaLabel="TODO: change this prop API">
           <Button type="button" onClick={() => setOpen(false)}>
-            Close modal
+            <Icon source={CancelSmallMinor} aria-label="Close modal" />
           </Button>
         </Modal.Dialog>
       </Modal>
