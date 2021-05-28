@@ -7,19 +7,50 @@ export const Grid = styled('div', {
   variants: {
     align: {
       start: {
-        alignItems: 'flex-start',
+        alignItems: 'start',
       },
       center: {
         alignItems: 'center',
       },
       end: {
-        alignItems: 'flex-end',
+        alignItems: 'end',
       },
       stretch: {
         alignItems: 'stretch',
       },
       baseline: {
         alignItems: 'baseline',
+      },
+    },
+    justify: {
+      start: {
+        justifyContent: 'start',
+      },
+      center: {
+        justifyContent: 'center',
+      },
+      end: {
+        justifyContent: 'end',
+      },
+      baseline: {
+        justifyContent: 'baseline',
+      },
+      stretch: {
+        justifyContent: 'stretch',
+      },
+      spaceBetween: {
+        justifyContent: 'space-between',
+      },
+      spaceAround: {
+        justifyContent: 'space-around',
+      },
+      spaceEvenly: {
+        justifyContent: 'space-evenly',
+      },
+    },
+    place: {
+      center: {
+        placeContent: 'center',
       },
     },
     columns: {
