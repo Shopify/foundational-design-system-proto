@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {Button, Card, Flex, Text} from '@polaris/elements';
+import {Button, Card, Flex, Portal, Text} from '@polaris/elements';
 import {Modal} from '@polaris/composed';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   const closeModal = useCallback(() => setOpen(false), [setOpen]);
 
   return (
-    <>
+    <Portal style={{width: '100%', height: '100%'}}>
       <Modal open={open} onDismiss={() => {}}>
         <Button type="button" onClick={() => setOpen(true)} variant="primary">
           Open modal
@@ -30,8 +30,12 @@ function App() {
             </Card.Section>
           </Card>
         </Modal.Dialog>
+        <Modal.Overlay
+          css={{backgroundColor: 'rgb(76 175 80 / 0.5)'}}
+          onClick={() => setOpen(false)}
+        />
       </Modal>
-    </>
+    </Portal>
   );
 }
 

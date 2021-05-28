@@ -1,4 +1,5 @@
 import React, {useContext, createContext, useRef, useMemo} from 'react';
+import {Overlay, OverlayProps} from '@polaris/elements';
 
 interface ModalContextValue {
   open: boolean;
@@ -16,7 +17,7 @@ const ModalContext = createContext<ModalContextValue>({
   targetRef: null,
 });
 
-export function Modal({children, open}: ModalProps) {
+export function ModalRoot({children, open}: ModalProps) {
   const targetRef = useRef<HTMLButtonElement>(null);
 
   const value = useMemo(
@@ -61,5 +62,13 @@ function ModalDialog({children, ariaLabel}: ModalDialogProps) {
   ) : null;
 }
 
-Modal.Dialog = ModalDialog;
-Modal.Trigger = ModalTrigger;
+function ModalOverlay(props: OverlayProps) {
+  const {open} = useContext(ModalContext);
+  return open ? <Overlay {...props} /> : null;
+}
+
+export const Modal = Object.assign(ModalRoot, {
+  Dialog: ModalDialog,
+  Trigger: ModalTrigger,
+  Overlay: ModalOverlay,
+});
