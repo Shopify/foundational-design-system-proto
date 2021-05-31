@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {Button, Card, Flex, Portal, Text} from '@polaris/elements';
+import {Button, Card, Flex, Text} from '@polaris/elements';
 import {Modal} from '@polaris/composed';
 
 function App() {
