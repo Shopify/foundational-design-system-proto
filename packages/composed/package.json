@@ -2,5 +2,9 @@
   "name": "@polaris/composed",
   "version": "0.0.0",
   "main": "dist/index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  }
 }
