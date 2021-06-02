@@ -1,4 +1,4 @@
-# Short description of the decision
+# One monorepo for Polaris foundations
 
 ## Date
 
