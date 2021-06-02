@@ -198,6 +198,7 @@ const stitches = createCss({
       9: '80px',
       choice: '2rem',
       icon: '1rem',
+      modalContent: 'auto',
     },
     borderWidths: {
       thin: '0.1rem',
