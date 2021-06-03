@@ -4,5 +4,4 @@ export const Box = styled('div', {
   // Reset
   all: 'unset',
   display: 'block',
-  boxSizing: 'border-box',
 });

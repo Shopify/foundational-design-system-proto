@@ -4,7 +4,6 @@ const CardRoot = styled('div', {
   // Reset
   appearance: 'none',
   border: 'none',
-  boxSizing: 'border-box',
   font: 'inherit',
   lineHeight: '1',
   outline: 'none',
