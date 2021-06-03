@@ -7,7 +7,7 @@ const ModalContext = createContext<boolean>(false);
 
 interface ModalProps {
   open: boolean;
-  onDismiss: (open: false) => void;
+  onDismiss(open: false): void;
 }
 
 const ModalRoot: React.FC<ModalProps> = ({children, open, onDismiss}) => {
@@ -20,7 +20,7 @@ const ModalRoot: React.FC<ModalProps> = ({children, open, onDismiss}) => {
 
 type ModalOverlayProps = Polymorphic.OwnProps<typeof Overlay>;
 type ModalOverlayComponent = Polymorphic.ForwardRefExoticComponent<
-  'div',
+  typeof Overlay,
   ModalOverlayProps
 >;
 const ModalOverlay = forwardRef((props, ref) => {
@@ -55,7 +55,7 @@ const StyledModalContent = styled('div', {
 
 type ModalContentProps = Polymorphic.OwnProps<typeof StyledModalContent>;
 type ModalContentComponent = Polymorphic.ForwardRefComponent<
-  'div',
+  typeof StyledModalContent,
   ModalContentProps
 >;
 const ModalContent = forwardRef((props, ref) => {

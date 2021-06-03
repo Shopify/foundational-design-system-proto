@@ -17,7 +17,7 @@ const MobileModal: React.FC<ModalProps> = ({className}) => {
       </Button>
 
       <Modal open={open} onDismiss={() => console.log('Modal dismissed 👋')}>
-        <Modal.Overlay className={className} onClick={() => setOpen(false)} />
+        <Modal.Overlay className={className} onClick={closeModal} />
         <Modal.Content className={className} aria-label="Modal">
           <Card css={{color: '$text', overflow: 'hidden'}}>
             <Box css={{padding: '$3'}}>
@@ -31,9 +31,11 @@ const MobileModal: React.FC<ModalProps> = ({className}) => {
             </Box>
             <Grid columns="2" css={{margin: '-1px', gridGap: '-1px'}}>
               <Button onClick={closeModal} css={{br: 0}}>
-                Label
+                Cancel
               </Button>
-              <Button css={{br: 0}}>Label</Button>
+              <Button css={{br: 0, color: '$textPrimary'}}>
+                Mark as delivered
+              </Button>
             </Grid>
           </Card>
         </Modal.Content>
