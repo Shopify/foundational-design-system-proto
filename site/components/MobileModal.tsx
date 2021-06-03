@@ -10,9 +10,6 @@ const MobileModal: React.FC<ModalProps> = ({className}) => {
   const [open, setOpen] = useState(false);
   const closeModal = useCallback(() => setOpen(false), [setOpen]);
 
-  const heading = 'Heading';
-  const body = 'Subheading';
-
   return (
     <>
       <Button type="button" onClick={() => setOpen(true)} variant="primary">
@@ -24,16 +21,19 @@ const MobileModal: React.FC<ModalProps> = ({className}) => {
         <Modal.Content className={className} aria-label="Modal">
           <Card css={{color: '$text', overflow: 'hidden'}}>
             <Box css={{padding: '$3'}}>
-              <Text size="heading" css={{mb: '$2'}}>
-                {heading}
+              <Text size="heading" variant="strong" css={{mb: '$2'}}>
+                Mark as delivered?
               </Text>
               <Text size="body" variant="subdued">
-                {body}
+                By marking this package delivered, you will no longer receive
+                tracking updates.
               </Text>
             </Box>
             <Grid columns="2" css={{margin: '-1px', gridGap: '-1px'}}>
-              <Button onClick={closeModal}>Label</Button>
-              <Button>Label</Button>
+              <Button onClick={closeModal} css={{br: 0}}>
+                Label
+              </Button>
+              <Button css={{br: 0}}>Label</Button>
             </Grid>
           </Card>
         </Modal.Content>

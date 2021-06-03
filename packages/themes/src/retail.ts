@@ -15,9 +15,10 @@ export const retailTheme = theme('retail', {
     text: '#E3E5E7',
     textPrimary: '#4170CB',
     textSubdued: '#929698',
+    textOnSecondary: '$colors$actionPrimary',
   },
   radii: {
-    base: '0',
+    button: '0',
     card: '0.4rem',
   },
   space: {

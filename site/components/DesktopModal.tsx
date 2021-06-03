@@ -3,6 +3,9 @@ import {Box, Button, Card, Flex, Icon, Text} from '@polaris/elements';
 import {ReactComponent as CancelSmallMinorIcon} from '@polaris/icons/CancelSmallMinor.svg';
 import {Modal} from '@polaris/composed';
 
+// Could be a reusable utility style
+const desktopOnlyStyles = {display: 'none', '@bp2': {display: 'block'}};
+
 const DesktopModal = () => {
   const [open, setOpen] = useState(false);
   const closeModal = useCallback(() => setOpen(false), [setOpen]);
@@ -17,7 +20,10 @@ const DesktopModal = () => {
         <Modal.Overlay onClick={closeModal} />
         <Modal.Content
           aria-label="Modal"
-          css={{minWidth: '100vw', '@bp1': {minWidth: '50vw'}}}
+          css={{
+            minWidth: '100vw',
+            '@bp2': {minWidth: '50vw'},
+          }}
         >
           <Card>
             <Box
@@ -27,16 +33,18 @@ const DesktopModal = () => {
             >
               <Icon source={CancelSmallMinorIcon} />
             </Box>
-            <Card.Section>
+            <Card.Section css={desktopOnlyStyles}>
               <Text size="heading" css={{marginRight: '$sizes$icon'}}>
                 Reach more shoppers with product tags
               </Text>
             </Card.Section>
             <Card.Section>
-              <Text size="body">Body text.</Text>
+              <Text size="body" css={{'@bp2': {py: '$6'}}}>
+                Body text.
+              </Text>
             </Card.Section>
             <Card.Section>
-              <Flex align="end" gap="3">
+              <Flex justify="end" gap="3">
                 <Button onClick={closeModal}>Cancel</Button>
                 <Button variant="primary" onClick={closeModal}>
                   Save

@@ -14,10 +14,9 @@ export const shopTheme = theme('shop', {
   fonts: {
     system:
       "GTWalsheim, -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-    mono: 'SFMono-Medium, SF Mono, Segoe UI Mono, Roboto Mono, Ubuntu Mono, Menlo,Consolas, Courier, monospace',
   },
   radii: {
-    base: '0.2rem',
+    button: '0.2rem',
     card: '0.6rem',
   },
   space: {
