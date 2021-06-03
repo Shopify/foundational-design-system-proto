@@ -62,6 +62,8 @@ const stitches = createCss({
       actionSecondaryHovered: 'rgba(246, 246, 247, 1)',
       actionSecondaryPressed: 'rgba(241, 242, 243, 1)',
       actionSecondaryDepressed: 'rgba(109, 113, 117, 1)',
+      iconOnSecondary: '$icon',
+      textOnSecondary: '$text',
       actionPrimary: 'rgba(0, 128, 96, 1)',
       actionPrimaryDisabled: 'rgba(241, 241, 241, 1)',
       actionPrimaryHovered: 'rgba(0, 110, 82, 1)',
@@ -198,6 +200,7 @@ const stitches = createCss({
       9: '80px',
       choice: '2rem',
       icon: '1rem',
+      modalContent: 'auto',
     },
     borderWidths: {
       thin: '0.1rem',
@@ -207,6 +210,8 @@ const stitches = createCss({
       base: '0.4rem',
       wide: '0.8rem',
       full: '50%',
+      button: '$base',
+      card: '$base',
     },
     shadows: {
       card: '0px 0px 5px $colors$shadowFromAmbientLight, 0px 1px 2px $colors$shadowFromDirectLight',

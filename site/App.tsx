@@ -1,40 +1,54 @@
-import React, {useState, useCallback} from 'react';
-import {Button, Card, Flex, Text} from '@polaris/elements';
-import {Modal} from '@polaris/composed';
+import React from 'react';
+import {retailTheme, shopTheme} from '@polaris/themes';
+import {Grid, Text} from '@polaris/elements';
+
+import DesktopModal from './components/DesktopModal';
+import MobileModal from './components/MobileModal';
 
 function App() {
-  const [open, setOpen] = useState(false);
-  const closeModal = useCallback(() => setOpen(false), [setOpen]);
+  const retailClassName = retailTheme.className;
+  const shopClassName = shopTheme.className;
 
   return (
-    <Modal open={open} onDismiss={() => {}}>
-      <Button type="button" onClick={() => setOpen(true)} variant="primary">
-        Open modal
-      </Button>
-      <Modal.Dialog ariaLabel="TODO: change this prop API">
-        <Card>
-          <Card.Section>
-            <Text size="heading">Title</Text>
-          </Card.Section>
-          <Card.Section>
-            <Text size="body">body</Text>
-          </Card.Section>
-          <Card.Section>
-            <Flex align="end" gap="3">
-              <Button onClick={closeModal}>Cancel</Button>
-              <Button variant="primary" onClick={closeModal}>
-                Save
-              </Button>
-            </Flex>
-          </Card.Section>
-        </Card>
-      </Modal.Dialog>
-      <Modal.Overlay
-        css={{backgroundColor: 'rgb(76 175 80 / 0.5)'}}
-        onClick={() => setOpen(false)}
-      />
-    </Modal>
+    <Wrapper>
+      <Section>
+        <Heading>Admin</Heading>
+        <DesktopModal />
+      </Section>
+
+      <Section className={retailClassName}>
+        <Heading>Retail</Heading>
+        <MobileModal className={retailClassName} />
+      </Section>
+
+      <Section className={shopClassName}>
+        <Heading>Shop</Heading>
+        <MobileModal className={shopClassName} />
+      </Section>
+    </Wrapper>
   );
 }
+
+const Wrapper = (props: any) => (
+  <Grid
+    align="center"
+    justify="spaceAround"
+    columns="3"
+    gap="9"
+    css={{
+      margin: 'auto',
+      marginTop: '5vh',
+      maxWidth: '50vw',
+      textAlign: 'center',
+    }}
+    {...props}
+  />
+);
+
+const Section = (props: any) => (
+  <Grid place="center" gap="6" css={{marginTop: '$6'}} {...props} />
+);
+
+const Heading = (props: any) => <Text as="h2" size="heading" {...props} />;
 
 export default App;

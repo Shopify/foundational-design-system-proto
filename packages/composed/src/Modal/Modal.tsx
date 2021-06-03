@@ -1,74 +1,80 @@
-import React, {useContext, createContext, useRef, useMemo} from 'react';
-import {Overlay, OverlayProps} from '@polaris/elements';
+import React, {createContext, forwardRef, useContext, useEffect} from 'react';
+import {styled} from '@polaris/themes';
+import {Box, Overlay, Portal} from '@polaris/elements';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-interface ModalContextValue {
+const ModalContext = createContext<boolean>(false);
+
+interface ModalProps {
   open: boolean;
-  targetRef: React.RefObject<HTMLButtonElement> | null;
+  onDismiss(open: false): void;
 }
 
-export interface ModalProps {
-  children: React.ReactNode;
-  open: boolean;
-  onDismiss(): void;
-}
+const ModalRoot: React.FC<ModalProps> = ({children, open, onDismiss}) => {
+  useEffect(() => {
+    if (!open) onDismiss?.(false);
+  }, [open, onDismiss]);
 
-const ModalContext = createContext<ModalContextValue>({
-  open: false,
-  targetRef: null,
+  return <ModalContext.Provider value={open}>{children}</ModalContext.Provider>;
+};
+
+type ModalOverlayProps = Polymorphic.OwnProps<typeof Overlay>;
+type ModalOverlayComponent = Polymorphic.ForwardRefExoticComponent<
+  typeof Overlay,
+  ModalOverlayProps
+>;
+const ModalOverlay = forwardRef((props, ref) => {
+  const open = useContext(ModalContext);
+
+  return open ? (
+    <Portal>
+      <Overlay {...props} ref={ref} />
+    </Portal>
+  ) : null;
+}) as ModalOverlayComponent;
+
+// Implement the following behavioral components in @polaris/elements
+const ScrollLock: React.FC = (props) => <Box {...props} />;
+const FocusTrap: React.FC = (props) => <Box {...props} />;
+
+const StyledModalContent = styled('div', {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: 200,
+  maxHeight: '85vh',
+  width: '$modalContent',
+  padding: '$4',
+  marginTop: '-5vh',
+  willChange: 'transform',
+  '&:focus': {
+    outline: 'none',
+  },
 });
 
-export function ModalRoot({children, open}: ModalProps) {
-  const targetRef = useRef<HTMLButtonElement>(null);
+type ModalContentProps = Polymorphic.OwnProps<typeof StyledModalContent>;
+type ModalContentComponent = Polymorphic.ForwardRefComponent<
+  typeof StyledModalContent,
+  ModalContentProps
+>;
+const ModalContent = forwardRef((props, ref) => {
+  const open = useContext(ModalContext);
 
-  const value = useMemo(
-    () => ({
-      open,
-      targetRef,
-    }),
-    [open, targetRef],
-  );
-
-  return (
-    <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
-  );
-}
-
-interface ModalTriggerProps {
-  children: React.ReactNode;
-}
-
-function ModalTrigger({children}: ModalTriggerProps) {
-  const {targetRef} = useContext(ModalContext);
-
-  return (
-    <button ref={targetRef} type="button">
-      {children}
-    </button>
-  );
-}
-
-interface ModalDialogProps {
-  children: React.ReactNode;
-  ariaLabel: string;
-}
-
-// Overlay styles and motion
-function ModalDialog({children, ariaLabel}: ModalDialogProps) {
-  const {open} = useContext(ModalContext);
   return open ? (
-    <div aria-modal="true" role="dialog" aria-label={ariaLabel}>
-      {children}
-    </div>
+    <Portal>
+      <ScrollLock>
+        <FocusTrap>
+          <StyledModalContent role="dialog" aria-modal {...props} ref={ref} />
+        </FocusTrap>
+      </ScrollLock>
+    </Portal>
   ) : null;
-}
-
-function ModalOverlay(props: OverlayProps) {
-  const {open} = useContext(ModalContext);
-  return open ? <Overlay {...props} /> : null;
-}
+}) as ModalContentComponent;
 
 export const Modal = Object.assign(ModalRoot, {
-  Dialog: ModalDialog,
-  Trigger: ModalTrigger,
   Overlay: ModalOverlay,
+  Content: ModalContent,
 });
+
+export type {ModalProps};

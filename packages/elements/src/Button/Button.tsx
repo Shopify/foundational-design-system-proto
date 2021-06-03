@@ -31,7 +31,7 @@ const StyledButton = styled(DEFAULT_TAG, {
   fontFamily: '$system',
   fontSize: '$2',
   fontWeight: '$medium',
-  borderRadius: '$base',
+  borderRadius: '$button',
   borderWidth: '1px',
   borderStyle: 'solid',
   background: 'transparent',
@@ -62,7 +62,7 @@ const StyledButton = styled(DEFAULT_TAG, {
       secondary: {
         borderColor: '$borderSubdued',
         background: '$actionSecondary',
-        color: '$text',
+        color: '$textOnSecondary',
         '&:hover': {
           background: '$actionSecondaryHovered',
         },

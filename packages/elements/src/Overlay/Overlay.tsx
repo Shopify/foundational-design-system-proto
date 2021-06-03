@@ -1,17 +1,11 @@
-import React from 'react';
-import {styled, theme, CSS} from '@polaris/themes';
+import {styled} from '@polaris/themes';
 
-export interface Props {
-  css?: CSS;
-  onClick?(): void;
-}
-
-export const StyledOverlay = styled('div', {
-  width: '100%',
-  height: '100%',
-  backgroundColor: theme.colors.backdrop,
+export const Overlay = styled('div', {
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  overflow: 'auto',
+  background: '$backdrop',
 });
-
-export function Overlay({onClick, css}: Props) {
-  return <StyledOverlay css={css} onClick={onClick} />;
-}
