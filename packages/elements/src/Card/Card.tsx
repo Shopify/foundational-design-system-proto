@@ -18,7 +18,7 @@ const CardRoot = styled('div', {
   position: 'relative',
   flexShrink: 0,
   boxShadow: '$card',
-  borderRadius: '$base',
+  borderRadius: '$card',
   backgroundColor: '$surface',
   color: 'inherit',
 });

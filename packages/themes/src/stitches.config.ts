@@ -208,6 +208,7 @@ const stitches = createCss({
       base: '0.4rem',
       wide: '0.8rem',
       full: '50%',
+      card: '0.4rem',
     },
     shadows: {
       card: '0px 0px 5px $colors$shadowFromAmbientLight, 0px 1px 2px $colors$shadowFromDirectLight',
