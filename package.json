@@ -1,12 +1,14 @@
 {
   "name": "polaris-prototype",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
+    "start": "vite preview",
     "lint": "eslint '**/*.{js,ts,tsx}'",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "test": "yarn lint && yarn type-check"
   },
   "dependencies": {
     "@radix-ui/react-polymorphic": "^0.0.11",
