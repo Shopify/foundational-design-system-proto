@@ -1,0 +1,17 @@
+name: polaris-prototype
+
+type: node
+
+up:
+  - node:
+      version: v14.17.0
+      yarn: v1.22.10
+
+open:
+  app: http://localhost:3000/
+
+commands:
+  server: yarn dev
+  start: yarn start
+  test: yarn test
+  build: yarn build
