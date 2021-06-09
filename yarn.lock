@@ -1094,6 +1094,11 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.0.tgz#10711c4481decd2f9a2f19cb85dcee60eff3f75c"
   integrity sha512-NS/Dqenj1Fd9fX1qWz4nFP6hefbTJIpQYLgKQsJBQonJ/E0QYiYtTJ1oeUh7vpoW0ojVuuRdA1URbKb7MCJ4JA==
 
+"@vanilla-extract/sprinkles@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-0.4.2.tgz#bd79165b37ccd82664d3ddec3cf6f46a362bea05"
+  integrity sha512-xGfKPSJiCf3rnRkV9+mwzJuvs11tnN7+scNEZ20G023gRWDB6IODf8gaB8SxBhH03zJG/Xp2R8HViEDp9BzpvA==
+
 "@vanilla-extract/vite-plugin@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/vite-plugin/-/vite-plugin-1.0.0.tgz#5a3ded04238e824cf864dcf6b9dad15bc70ac0ae"

@@ -1,6 +1,7 @@
 import React from 'react';
 import {retailTheme, shopTheme, themeClass} from '@polaris/themes';
 import {Grid, Text, Link} from '@polaris/elements';
+import {atoms} from '@polaris/themes/sprinkles.css';
 
 import DesktopModal from './components/DesktopModal';
 import MobileModal from './components/MobileModal';
@@ -10,24 +11,29 @@ function App() {
   const shopClassName = shopTheme.className;
 
   return (
-    <Wrapper className={themeClass}>
-      <Section>
-        <Heading>Admin</Heading>
-        <DesktopModal />
-      </Section>
+    <div className={themeClass}>
+      <div className={atoms({padding: 'large'})}>
+        <Wrapper>
+          <Section>
+            <Heading>Admin</Heading>
+            <DesktopModal />
+          </Section>
 
-      <Section className={retailClassName}>
-        <Heading>Retail</Heading>
-        <MobileModal className={retailClassName} />
-      </Section>
+          <Section className={retailClassName}>
+            <Heading>Retail</Heading>
+            <MobileModal className={retailClassName} />
+          </Section>
 
-      <Section className={shopClassName}>
-        <Heading>Shop</Heading>
-        <MobileModal className={shopClassName} />
-      </Section>
-
-      <Link>A link</Link>
-    </Wrapper>
+          <Section className={shopClassName}>
+            <Heading>Shop</Heading>
+            <MobileModal className={shopClassName} />
+          </Section>
+        </Wrapper>
+        <div className={atoms({paddingTop: 'large'})}>
+          <Link>A link</Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
