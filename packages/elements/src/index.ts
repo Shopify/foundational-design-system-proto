@@ -4,6 +4,7 @@ export * from './Card';
 export * from './Flex';
 export * from './Grid';
 export * from './Icon';
+export * from './Link';
 export * from './Overlay';
 export * from './Portal';
 export * from './Text';

@@ -1,6 +1,6 @@
 import React from 'react';
-import {retailTheme, shopTheme} from '@polaris/themes';
-import {Grid, Text} from '@polaris/elements';
+import {retailTheme, shopTheme, themeClass} from '@polaris/themes';
+import {Grid, Text, Link} from '@polaris/elements';
 
 import DesktopModal from './components/DesktopModal';
 import MobileModal from './components/MobileModal';
@@ -10,7 +10,7 @@ function App() {
   const shopClassName = shopTheme.className;
 
   return (
-    <Wrapper>
+    <Wrapper className={themeClass}>
       <Section>
         <Heading>Admin</Heading>
         <DesktopModal />
@@ -25,6 +25,8 @@ function App() {
         <Heading>Shop</Heading>
         <MobileModal className={shopClassName} />
       </Section>
+
+      <Link>A link</Link>
     </Wrapper>
   );
 }

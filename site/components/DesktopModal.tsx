@@ -6,7 +6,7 @@ import {Modal} from '@polaris/composed';
 // Could be a reusable utility style
 const desktopOnlyStyles = {display: 'none', '@bp2': {display: 'block'}};
 
-const DesktopModal = () => {
+const DesktopModal = (props) => {
   const [open, setOpen] = useState(false);
   const closeModal = useCallback(() => setOpen(false), [setOpen]);
 
@@ -25,6 +25,7 @@ const DesktopModal = () => {
             '@bp2': {minWidth: '50vw'},
           }}
         >
+          {props.children}
           <Card>
             <Box
               as="button"
