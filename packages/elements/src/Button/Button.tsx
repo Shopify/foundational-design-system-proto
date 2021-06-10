@@ -11,7 +11,6 @@ const StyledButton = styled(DEFAULT_TAG, {
 
   // Reset
   all: 'unset',
-  boxSizing: 'border-box',
   userSelect: 'none',
   position: 'relative',
   display: 'inline-flex',
@@ -20,12 +19,6 @@ const StyledButton = styled(DEFAULT_TAG, {
   justifyContent: 'center',
   lineHeight: '1',
   webkitTapHighlightColor: 'transparent',
-  '&::before': {
-    boxSizing: 'border-box',
-  },
-  '&::after': {
-    boxSizing: 'border-box',
-  },
 
   // Custom
   fontFamily: '$system',

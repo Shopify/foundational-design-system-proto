@@ -1,7 +1,6 @@
 import {styled} from '@polaris/themes';
 
 export const Flex = styled('div', {
-  boxSizing: 'border-box',
   display: 'flex',
 
   variants: {

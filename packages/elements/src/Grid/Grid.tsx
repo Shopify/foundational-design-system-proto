@@ -1,7 +1,6 @@
 import {styled} from '@polaris/themes';
 
 export const Grid = styled('div', {
-  boxSizing: 'border-box',
   display: 'grid',
 
   variants: {
