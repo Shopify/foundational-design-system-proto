@@ -16,7 +16,7 @@ function App() {
         className={atoms({
           padding: {
             mobile: 'small',
-            tablet: 'large',
+            tablet: 'xLarge',
           },
         })}
       >
@@ -38,6 +38,7 @@ function App() {
         </Wrapper>
         <div className={atoms({paddingTop: 'large'})}>
           <Link>Link</Link>
+          <br />
           <Link variant="underline">Underline link</Link>
         </div>
       </div>
