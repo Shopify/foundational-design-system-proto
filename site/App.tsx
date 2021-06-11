@@ -1,6 +1,6 @@
 import React from 'react';
-import {retailTheme, shopTheme} from '@polaris/themes';
-import {Grid, Text} from '@polaris/elements';
+import {defaultTheme, retailTheme, shopTheme} from '@polaris/themes';
+import {Grid, Link, Text, ThemeProvider} from '@polaris/elements';
 
 import DesktopModal from './components/DesktopModal';
 import MobileModal from './components/MobileModal';
@@ -25,6 +25,15 @@ function App() {
         <Heading>Shop</Heading>
         <MobileModal className={shopClassName} />
       </Section>
+
+      <ThemeProvider theme={{colors: {...defaultTheme.colors}}}>
+        <Text size="caption" variant="positive">
+          More context
+        </Text>
+        <Text>
+          And you can <Link href="#">Read more here</Link>
+        </Text>
+      </ThemeProvider>
     </Wrapper>
   );
 }

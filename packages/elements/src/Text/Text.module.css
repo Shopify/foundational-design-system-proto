@@ -1,0 +1,45 @@
+.root {
+  display: block;
+  margin: 0;
+  line-height: 1;
+  font-family: var(--fonts-system);
+  font-weight: var(--font-weights-base, 400);
+}
+
+/* Sizes */
+.caption {
+  font-size: var(--fontSizes-caption);
+}
+
+.heading {
+  font-size: var(--fontSizes-heading);
+}
+
+.subheading {
+  font-size: var(--fontSizes-subheading);
+}
+
+.input {
+  font-size: var(--fontSizes-input);
+}
+
+.body {
+  font-size: var(--fontSizes-body);
+}
+
+/* Variants */
+.subdued {
+  color: var(--colors-textSubdued);
+}
+.strong {
+  font-weight: 700;
+}
+.positive {
+  color: var(--colors-textSuccess);
+}
+.critical {
+  color: var(--colors-textCritical);
+}
+.code {
+  font-family: var(--fonts-mono);
+}

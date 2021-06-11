@@ -6,5 +6,8 @@
   "peerDependencies": {
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
+  },
+  "dependencies": {
+    "classcat": "^5.0.3"
   }
 }

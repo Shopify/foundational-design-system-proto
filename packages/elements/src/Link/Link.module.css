@@ -1,0 +1,4 @@
+.Link {
+  color: var(--colors-interactive);
+  text-decoration: underline;
+}
