@@ -12,7 +12,14 @@ function App() {
 
   return (
     <div className={themeClass}>
-      <div className={atoms({padding: 'large'})}>
+      <div
+        className={atoms({
+          padding: {
+            mobile: 'small',
+            tablet: 'large',
+          },
+        })}
+      >
         <Wrapper>
           <Section>
             <Heading>Admin</Heading>
@@ -30,7 +37,8 @@ function App() {
           </Section>
         </Wrapper>
         <div className={atoms({paddingTop: 'large'})}>
-          <Link>A link</Link>
+          <Link>Link</Link>
+          <Link variant="underline">Underline link</Link>
         </div>
       </div>
     </div>
