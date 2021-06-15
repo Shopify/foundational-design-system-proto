@@ -1,33 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "./",
-    "paths": {
-      "@polaris/composed": ["packages/composed/src"],
-      "@polaris/composed/*": ["packages/composed/src/*"],
-      "@polaris/elements": ["packages/elements/src"],
-      "@polaris/elements/*": ["packages/elements/src/*"],
-      "@polaris/icons": ["packages/icons/src"],
-      "@polaris/icons/*": ["packages/icons/src/*"],
-      "@polaris/themes": ["packages/themes/src"],
-      "@polaris/themes/*": ["packages/themes/src/*"],
-      "@polaris/tokens": ["packages/tokens/src"],
-      "@polaris/tokens/*": ["packages/tokens/src/*"]
-    }
   },
-  "exclude": ["node_modules", "**/dist/**"],
-  "include": ["packages/**/*", "./site"]
+  "include": ["packages/**/*", "site/**/*"],
+  "exclude": ["node_modules", "**/dist/**"]
 }
