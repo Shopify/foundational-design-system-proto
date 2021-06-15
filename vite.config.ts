@@ -10,7 +10,7 @@ function getPackage(packageName, path = 'src') {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: './site/src',
+  root: './site',
   plugins: [svgr(), reactRefresh()],
   resolve: {
     alias: {
