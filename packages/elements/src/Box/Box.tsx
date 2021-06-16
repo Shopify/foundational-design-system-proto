@@ -1,4 +1,4 @@
-import {styled} from '@polaris/themes';
+import {styled} from '../stitches.config';
 
 export const Box = styled('div', {
   // Reset

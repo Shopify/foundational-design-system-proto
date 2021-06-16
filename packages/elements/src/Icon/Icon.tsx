@@ -1,5 +1,6 @@
 import React from 'react';
-import {styled} from '@polaris/themes';
+
+import {styled} from '../stitches.config';
 
 const Wrapper = styled('span', {
   display: 'inline-block',

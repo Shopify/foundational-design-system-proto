@@ -1,7 +1,8 @@
 import React, {createContext, forwardRef, useContext, useEffect} from 'react';
-import {styled} from '@polaris/themes';
 import {Box, Overlay, Portal} from '@polaris/elements';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+import {styled} from '../stitches.config';
 
 const ModalContext = createContext<boolean>(false);
 

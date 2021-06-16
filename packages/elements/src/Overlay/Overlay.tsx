@@ -1,4 +1,4 @@
-import {styled} from '@polaris/themes';
+import {styled} from '../stitches.config';
 
 export const Overlay = styled('div', {
   position: 'fixed',

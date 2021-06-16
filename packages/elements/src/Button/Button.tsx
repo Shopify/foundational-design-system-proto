@@ -1,6 +1,7 @@
 import React from 'react';
-import {styled, CSS, StitchesVariants} from '@polaris/themes';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+import {styled} from '../stitches.config';
 
 const DEFAULT_TAG = 'button';
 

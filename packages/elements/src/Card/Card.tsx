@@ -1,4 +1,4 @@
-import {styled} from '@polaris/themes';
+import {styled} from '../stitches.config';
 
 const CardRoot = styled('div', {
   // Reset
