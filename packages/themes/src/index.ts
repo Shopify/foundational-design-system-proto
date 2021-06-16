@@ -1,12 +1,10 @@
-export {
-  styled,
-  css,
-  theme,
-  getCssString,
-  global,
-  keyframes,
-  config,
-} from './stitches.config';
-export type {CSS, StitchesVariants} from './stitches.config';
-export {retailTheme} from './retail';
-export {shopTheme} from './shop';
+import * as theme from './themes/base';
+
+// Utilities
+export {createTheme} from './utils/createTheme';
+
+// Themes
+export * as admin from './themes/admin';
+
+// Default theme
+export default theme;
