@@ -1,14 +1,13 @@
 {
   "name": "@polaris/themes",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "dist/polaris-themes.cjs.js",
+  "module": "dist/polaris-themes.esm.js",
   "license": "MIT",
-  "peerDependencies": {
-    "@stitches/react": "0.1.9",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
-  },
   "dependencies": {
     "polished": "^4.1.2"
+  },
+  "peerDependencies": {
+    "@stitches/react": "^0.2.1"
   }
 }

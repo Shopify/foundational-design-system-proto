@@ -1,10 +1,7 @@
 {
   "name": "@polaris/icons",
   "version": "0.0.0",
-  "main": "dist/index.js",
-  "license": "MIT",
-  "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
-  }
+  "main": "dist/polaris-icons.cjs.js",
+  "module": "dist/polaris-icons.esm.js",
+  "license": "MIT"
 }

@@ -1,0 +1,20 @@
+
+{
+  "extends": [
+    "plugin:@shopify/typescript",
+    "plugin:@shopify/react",
+    "plugin:@shopify/jest",
+    "plugin:@shopify/node",
+    "plugin:@shopify/prettier"
+  ],
+  "settings": {
+    "react": {
+      "version": "17.0.0"
+    }
+  },
+  "rules": {
+    "react/display-name": 0,
+    "react/react-in-jsx-scope": 0,
+    "import/no-extraneous-dependencies": 0
+  }
+}

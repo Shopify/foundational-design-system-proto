@@ -1,10 +1,14 @@
 {
   "name": "@polaris/composed",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "dist/polaris-composed.cjs.js",
+  "module": "dist/polaris-composed.esm.js",
   "license": "MIT",
+  "dependencies": {
+    "@polaris/elements": "*",
+    "@polaris/themes": "*"
+  },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "^16.8 || ^17.0"
   }
 }
