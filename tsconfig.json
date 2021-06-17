@@ -15,18 +15,18 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@polaris/composed": ["packages/composed/src"],
-      "@polaris/composed/*": ["packages/composed/src/*"],
-      "@polaris/elements": ["packages/elements/src"],
-      "@polaris/elements/*": ["packages/elements/src/*"],
-      "@polaris/icons": ["packages/icons/src"],
-      "@polaris/icons/*": ["packages/icons/src/*"],
-      "@polaris/themes": ["packages/themes/src"],
-      "@polaris/themes/*": ["packages/themes/src/*"],
-      "@polaris/tokens": ["packages/tokens/src"],
-      "@polaris/tokens/*": ["packages/tokens/src/*"]
+      "@polaris/composed": ["site/packages/composed/src"],
+      "@polaris/composed/*": ["site/packages/composed/src/*"],
+      "@polaris/elements": ["site/packages/elements/src"],
+      "@polaris/elements/*": ["site/packages/elements/src/*"],
+      "@polaris/icons": ["site/packages/icons/src"],
+      "@polaris/icons/*": ["site/packages/icons/src/*"],
+      "@polaris/themes": ["site/packages/themes/src"],
+      "@polaris/themes/*": ["site/packages/themes/src/*"],
+      "@polaris/tokens": ["site/packages/tokens/src"],
+      "@polaris/tokens/*": ["site/packages/tokens/src/*"]
     }
   },
-  "include": ["packages", "site"],
+  "include": ["site"],
   "exclude": ["node_modules", "dist"]
 }

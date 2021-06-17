@@ -8,7 +8,7 @@ const margins = {
   ...space,
 };
 
-const responsiveStyles = createAtomicStyles({
+const styles = createAtomicStyles({
   properties: {
     marginTop: margins,
     marginBottom: margins,
@@ -22,6 +22,6 @@ const responsiveStyles = createAtomicStyles({
   },
 });
 
-export const atoms = createAtomsFn(responsiveStyles);
+export const atoms = createAtomsFn(styles);
 
 export type Atoms = Parameters<typeof atoms>[0];

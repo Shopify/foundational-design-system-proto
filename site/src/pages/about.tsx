@@ -1,17 +1,14 @@
 import React from 'react';
-import {Link} from '@polaris/elements';
+import {Link} from 'react-router-dom';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 
-import {aboutStyles} from './about.css';
-
 const AboutPage = () => {
   return (
-    <Layout className={aboutStyles}>
-      <Heading>
-        <Link>About page</Link>
-      </Heading>
+    <Layout>
+      <Heading>About page</Heading>
+      <Link to="/">Back home</Link>
     </Layout>
   );
 };

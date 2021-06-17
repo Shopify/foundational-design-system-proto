@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -14,6 +15,7 @@ const IndexPage = () => {
         </span>{' '}
         Polaris wito
       </Heading>
+      <Link to="/about">About page</Link>
     </Layout>
   );
 };
