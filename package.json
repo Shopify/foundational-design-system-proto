@@ -1,15 +1,24 @@
 {
   "name": "polaris-prototype",
   "version": "0.0.0",
+  "private": true,
+  "author": "Shopify",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "start": "vite preview",
+    "dev": "manypkg run site dev",
+    "build": "preconstruct build",
+    "start": "yarn start:site",
+    "start:site": "manypkg run site start",
+    "build:site": "manypkg run site build",
+    "postinstall": "preconstruct dev",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "type-check": "tsc",
     "test": "yarn lint && yarn type-check"
   },
+  "workspaces": [
+    "packages/*",
+    "site"
+  ],
   "dependencies": {
     "@radix-ui/react-polymorphic": "^0.0.11",
     "@stitches/react": "^0.1.9",
@@ -28,9 +37,7 @@
     "eslint": "^7.27.0",
     "jest": "^27.0.1",
     "prettier": "^2.3.0",
-    "typescript": "^4.1.2",
-    "vite": "^2.3.4",
-    "vite-plugin-svgr": "^0.2.0"
+    "typescript": "^4.3.2"
   },
   "prettier": {
     "arrowParens": "always",
@@ -38,21 +45,12 @@
     "trailingComma": "all",
     "bracketSpacing": false
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:@shopify/typescript",
-      "plugin:@shopify/react",
-      "plugin:@shopify/jest",
-      "plugin:@shopify/node",
-      "plugin:@shopify/prettier"
+  "preconstruct": {
+    "packages": [
+      "packages/*"
     ],
-    "settings": {
-      "react": {
-        "version": "17.0.0"
-      }
-    },
-    "rules": {
-      "react/display-name": 0
+    "globals": {
+      "react": "React"
     }
   }
 }
