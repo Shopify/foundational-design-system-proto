@@ -15,6 +15,7 @@ export interface BoxProps
 export const Box = forwardRef<HTMLDivElement, BoxProps>(
   ({component = 'div', className, margin, ...restProps}, ref) => {
     const atomClasses = classnames(atoms({margin}), className);
+
     return createElement(component, {
       className: atomClasses,
       ...restProps,

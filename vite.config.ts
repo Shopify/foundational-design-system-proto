@@ -1,6 +1,7 @@
 import {resolve} from 'path';
 
 import {defineConfig} from 'vite';
+import {vanillaExtractPlugin} from '@vanilla-extract/vite-plugin';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import svgr from 'vite-plugin-svgr';
 
@@ -11,7 +12,7 @@ function getPackage(packageName, path = 'src') {
 // https://vitejs.dev/config/
 export default defineConfig({
   root: './site',
-  plugins: [svgr(), reactRefresh()],
+  plugins: [vanillaExtractPlugin(), svgr(), reactRefresh()],
   resolve: {
     alias: {
       '@polaris/composed': getPackage('composed'),

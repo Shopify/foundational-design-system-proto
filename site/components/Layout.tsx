@@ -1,8 +1,5 @@
-import React, {ComponentProps} from 'react';
-import {Grid} from '@polaris/elements';
+import React from 'react';
 
-const Layout = (props: ComponentProps<typeof Grid>) => <Wrapper {...props} />;
-
-const Wrapper = (props: any) => <Grid place="center" gap="5" {...props} />;
+const Layout = (props: any) => <div {...props} />;
 
 export default Layout;

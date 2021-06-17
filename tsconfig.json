@@ -12,7 +12,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@polaris/composed": ["packages/composed/src"],
+      "@polaris/composed/*": ["packages/composed/src/*"],
+      "@polaris/elements": ["packages/elements/src"],
+      "@polaris/elements/*": ["packages/elements/src/*"],
+      "@polaris/icons": ["packages/icons/src"],
+      "@polaris/icons/*": ["packages/icons/src/*"],
+      "@polaris/themes": ["packages/themes/src"],
+      "@polaris/themes/*": ["packages/themes/src/*"],
+      "@polaris/tokens": ["packages/tokens/src"],
+      "@polaris/tokens/*": ["packages/tokens/src/*"]
+    }
   },
   "include": ["packages", "site"],
   "exclude": ["node_modules", "dist"]

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text} from '@polaris/elements';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
