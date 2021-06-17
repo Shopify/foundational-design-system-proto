@@ -4,4 +4,5 @@ module.exports = {
     '@babel/preset-react',
     '@babel/preset-env',
   ],
+  plugins: ['@vanilla-extract/babel-plugin'],
 };

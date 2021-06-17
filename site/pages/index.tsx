@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import {Button} from '@polaris/elements';
+
+import {Flex} from '../components/Flex';
 
 export default function Home() {
   const sparklesLabel = 'sparkles';
@@ -14,12 +15,12 @@ export default function Home() {
       </Head>
 
       <main>
-        <Button variant="primary">
+        <Flex onClick={() => console.log('test')}>
           Polaris{' '}
           <span role="img" aria-label={sparklesLabel}>
             ✨
           </span>
-        </Button>
+        </Flex>
       </main>
     </>
   );

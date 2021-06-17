@@ -4,14 +4,7 @@
   "main": "dist/polaris-composed.cjs.js",
   "module": "dist/polaris-composed.esm.js",
   "license": "MIT",
-  "dependencies": {
-    "@radix-ui/react-polymorphic": "^0.0.12",
-    "polished": "^4.1.3"
-  },
   "peerDependencies": {
-    "@polaris/elements": "*",
-    "@polaris/themes": "*",
-    "@stitches/react": "^0.2.1",
     "react": "^16.8 || ^17.0"
   }
 }
