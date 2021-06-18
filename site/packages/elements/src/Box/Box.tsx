@@ -12,9 +12,34 @@ export interface BoxProps
   component?: ElementType;
 }
 
-export const Box = forwardRef<HTMLDivElement, BoxProps>(
-  ({component = 'div', className, margin, ...restProps}, ref) => {
-    const atomClasses = classnames(atoms({margin}), className);
+export const Box = forwardRef<HTMLElement, BoxProps>(
+  (
+    {
+      component = 'div',
+      className,
+      margin,
+      marginX,
+      marginY,
+      marginTop,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      ...restProps
+    }: BoxProps,
+    ref,
+  ) => {
+    const atomClasses = classnames(
+      atoms({
+        margin,
+        marginX,
+        marginY,
+        marginTop,
+        marginBottom,
+        marginLeft,
+        marginRight,
+      }),
+      className,
+    );
 
     return createElement(component, {
       className: atomClasses,
