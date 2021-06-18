@@ -1,0 +1,13 @@
+{
+  "name": "@polaris/elements",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist/polaris-elements.cjs.js",
+  "module": "dist/polaris-elements.esm.js",
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17.0"
+  }
+}
