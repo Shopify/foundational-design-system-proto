@@ -11,7 +11,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Box marginY="small">
+        <Box marginY="small" style={{backgroundColor: 'aquamarine'}}>
           <span role="img" aria-label={sparkles}>
             ✨
           </span>{' '}
