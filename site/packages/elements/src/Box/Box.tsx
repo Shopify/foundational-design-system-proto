@@ -13,13 +13,17 @@ export interface BoxProps
 }
 
 export const Box = forwardRef<HTMLDivElement, BoxProps>(
-  ({component = 'div', className, margin, ...restProps}, ref) => {
-    const atomClasses = classnames(atoms({margin}), className);
+  ({component = 'div', className, children, ...restProps}, ref) => {
+    const atomClasses = classnames(atoms(restProps), className);
 
-    return createElement(component, {
-      className: atomClasses,
-      ...restProps,
-      ref,
-    });
+    return createElement(
+      component,
+      {
+        className: atomClasses,
+        ...restProps,
+        ref,
+      },
+      children,
+    );
   },
 );
