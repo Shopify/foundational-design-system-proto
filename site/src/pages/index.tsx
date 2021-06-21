@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Box} from '@polaris/elements';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -10,10 +11,12 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <span role="img" aria-label={sparkles}>
-          ✨
-        </span>{' '}
-        Polaris wito
+        <Box marginY="small">
+          <span role="img" aria-label={sparkles}>
+            ✨
+          </span>{' '}
+          Polaris wito
+        </Box>
       </Heading>
       <Link to="/about">About page</Link>
     </Layout>
