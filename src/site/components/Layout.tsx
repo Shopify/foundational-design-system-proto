@@ -1,12 +1,14 @@
 import React, {ComponentProps} from 'react';
 import classnames from 'classnames';
-import {themeClass, Box} from '@polaris/elements';
+import {Box} from '@polaris/elements';
+
+import {layoutStyle} from './layout.css';
 
 const Layout = ({className, ...props}: ComponentProps<typeof Box>) => (
   <Box
     margin="medium"
     {...props}
-    className={classnames(themeClass, className)}
+    className={classnames(layoutStyle, className)}
   />
 );
 
