@@ -6,7 +6,7 @@ import {layoutStyle} from './layout.css';
 
 const Layout = ({className, ...props}: ComponentProps<typeof Box>) => (
   <Box
-    margin="medium"
+    margin="base"
     {...props}
     className={classnames(layoutStyle, className)}
   />
