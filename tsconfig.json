@@ -15,18 +15,13 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@polaris/composed": ["site/packages/composed/src"],
-      "@polaris/composed/*": ["site/packages/composed/src/*"],
-      "@polaris/elements": ["site/packages/elements/src"],
-      "@polaris/elements/*": ["site/packages/elements/src/*"],
-      "@polaris/icons": ["site/packages/icons/src"],
-      "@polaris/icons/*": ["site/packages/icons/src/*"],
-      "@polaris/themes": ["site/packages/themes/src"],
-      "@polaris/themes/*": ["site/packages/themes/src/*"],
-      "@polaris/tokens": ["site/packages/tokens/src"],
-      "@polaris/tokens/*": ["site/packages/tokens/src/*"]
+      "@polaris/composed": ["src/packages/composed/src"],
+      "@polaris/elements": ["src/packages/elements/src"],
+      "@polaris/icons": ["src/packages/icons/src"],
+      "@polaris/themes": ["src/packages/themes/src"],
+      "@polaris/tokens": ["src/packages/tokens/src"],
     }
   },
-  "include": ["site"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

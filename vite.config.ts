@@ -6,12 +6,11 @@ import svgr from 'vite-plugin-svgr';
 import {vanillaExtractPlugin} from '@vanilla-extract/vite-plugin';
 
 function getPackage(packageName, path = 'src') {
-  return resolve(__dirname, 'site', 'packages', packageName, path);
+  return resolve(__dirname, 'src', 'packages', packageName, path);
 }
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  root: './site/src',
+  root: './src/site',
   plugins: [svgr(), reactRefresh(), vanillaExtractPlugin()],
   resolve: {
     alias: {

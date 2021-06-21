@@ -1,7 +1,6 @@
 {
   "name": "@polaris/tokens",
   "version": "0.0.0",
-  "sideEffects": false,
   "main": "dist/polaris-tokens.cjs.js",
   "module": "dist/polaris-tokens.esm.js",
   "license": "MIT"
