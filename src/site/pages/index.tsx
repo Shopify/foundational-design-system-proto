@@ -1,3 +1,4 @@
+import {Box} from '@polaris/elements';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Box} from '@polaris/elements';
@@ -19,6 +20,7 @@ const IndexPage = () => {
         </Box>
       </Heading>
       <Link to="/about">About page</Link>
+      <Box margin="medium">Polaris is changing</Box>
     </Layout>
   );
 };
