@@ -1,4 +1,4 @@
-import * as tokens from '@polaris/tokens';
+import tokens from '@polaris/tokens';
 
 export const borderWidths = {
   thin: '0.1rem',
@@ -16,9 +16,8 @@ export const colors = {
 };
 
 export const fonts = {
-  system:
-    "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-  mono: "Monaco, Consolas, 'Lucida Console', monospace",
+  system: tokens.fonts['sans-serif'],
+  mono: tokens.fonts.monospace,
 };
 
 export const fontWeights = {
