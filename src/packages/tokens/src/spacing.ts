@@ -16,3 +16,5 @@ export const spacing = {
   loose: '20px',
   extraLoose: '32px',
 };
+
+export default spacing;

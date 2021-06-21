@@ -1,4 +1,3 @@
-import {Box} from '@polaris/elements';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Box} from '@polaris/elements';
