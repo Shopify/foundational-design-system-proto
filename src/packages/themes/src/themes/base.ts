@@ -1,4 +1,3 @@
-import {rem} from 'polished';
 import * as tokens from '@polaris/tokens';
 
 export const borderWidths = {
@@ -30,13 +29,13 @@ export const fontWeights = {
 };
 
 export const fontSizes = {
-  1: rem(13),
-  2: rem(15),
-  3: rem(16),
-  4: rem(17),
-  5: rem(21),
-  6: rem(24),
-  7: rem(27),
+  1: '13px',
+  2: '15px',
+  3: '16px',
+  4: '17px',
+  5: '21px',
+  6: '24px',
+  7: '27px',
   caption: '$1',
   heading: '$4',
   subheading: '$1',
