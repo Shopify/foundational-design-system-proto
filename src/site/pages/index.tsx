@@ -1,10 +1,9 @@
-import {Box} from '@polaris/elements';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Box} from '@polaris/elements';
 
-import Heading from '../components/Heading';
-import Layout from '../components/Layout';
+import {Heading} from '../components/Heading';
+import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
   const sparkles = 'sparkles';
@@ -12,7 +11,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Box marginY="small">
+        <Box marginY="tight">
           <span role="img" aria-label={sparkles}>
             ✨
           </span>{' '}
@@ -20,7 +19,7 @@ const IndexPage = () => {
         </Box>
       </Heading>
       <Link to="/about">About page</Link>
-      <Box margin="medium">Polaris is changing</Box>
+      <Box margin="base">Polaris is changing</Box>
     </Layout>
   );
 };

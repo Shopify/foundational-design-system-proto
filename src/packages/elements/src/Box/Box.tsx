@@ -1,7 +1,6 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
 import classnames from 'classnames';
-
-import {atoms, Atoms} from '../styles/sprinkles.css';
+import {atoms, Atoms} from '@polaris/themes';
 
 export interface BoxProps
   extends Omit<
