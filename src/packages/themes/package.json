@@ -1,7 +1,0 @@
-{
-  "name": "@polaris/themes",
-  "version": "0.0.0",
-  "main": "dist/polaris-themes.cjs.js",
-  "module": "dist/polaris-themes.esm.js",
-  "license": "MIT"
-}

@@ -1,6 +1,6 @@
 import tokens from '@polaris/tokens';
 
-import {vars} from '../vars';
+import {vars} from '../styles';
 
 export const fonts = {
   body: tokens.fonts.system,
