@@ -2,21 +2,27 @@ import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
 import {vars} from '../vars';
 
-const margins = {
-  ...vars.spacing,
-};
+const {spacing} = vars;
 
 const styles = createAtomicStyles({
   properties: {
-    marginTop: margins,
-    marginBottom: margins,
-    marginLeft: margins,
-    marginRight: margins,
+    marginTop: spacing,
+    marginBottom: spacing,
+    marginLeft: spacing,
+    marginRight: spacing,
+    paddingTop: spacing,
+    paddingBottom: spacing,
+    paddingLeft: spacing,
+    paddingRight: spacing,
+    textAlign: ['left', 'center', 'right'],
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
     marginX: ['marginLeft', 'marginRight'],
     marginY: ['marginTop', 'marginBottom'],
+    padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
+    paddingX: ['paddingLeft', 'paddingRight'],
+    paddingY: ['paddingTop', 'paddingBottom'],
   },
 });
 

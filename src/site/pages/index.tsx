@@ -11,15 +11,20 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Box marginY="tight">
+        <Box margin="base">
           <span role="img" aria-label={sparkles}>
             ✨
           </span>{' '}
           Polaris wito
         </Box>
       </Heading>
-      <Link to="/about">About page</Link>
-      <Box margin="base">Polaris is changing</Box>
+
+      <Box margin="base">
+        <Link to="/about">About page</Link>
+        <Box as="p" textAlign="center">
+          Polaris is changing
+        </Box>
+      </Box>
     </Layout>
   );
 };
