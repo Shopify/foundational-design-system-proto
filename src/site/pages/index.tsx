@@ -2,8 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Box} from '@polaris/elements';
 
-import Heading from '../components/Heading';
-import Layout from '../components/Layout';
+import {Heading} from '../components/Heading';
+import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
   const sparkles = 'sparkles';

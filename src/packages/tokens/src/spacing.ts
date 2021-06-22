@@ -1,20 +1,18 @@
+/* eslint-disable no-implicit-coercion */
+
+const base = 4;
+const px = (value: number) => `${value}px`;
+
 export const spacing = {
-  1: '5px',
-  2: '10px',
-  3: '15px',
-  4: '20px',
-  5: '25px',
-  6: '35px',
-  7: '45px',
-  8: '65px',
-  9: '80px',
-  none: '0px',
-  extraTight: '4px',
-  tight: '8px',
-  baseTight: '12px',
-  base: '16px',
-  loose: '20px',
-  extraLoose: '32px',
+  1: px(base * 1),
+  2: px(base * 2),
+  3: px(base * 3),
+  4: px(base * 4),
+  5: px(base * 5),
+  6: px(base * 6),
+  7: px(base * 7),
+  8: px(base * 8),
+  9: px(base * 9),
 };
 
 export default spacing;

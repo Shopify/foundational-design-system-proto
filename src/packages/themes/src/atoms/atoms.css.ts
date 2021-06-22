@@ -1,10 +1,9 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
-import theme from 'src/packages/themes/src/themes/base';
 
-const space = theme.space;
+import {vars} from '../vars';
 
 const margins = {
-  ...space,
+  ...vars.spacing,
 };
 
 const styles = createAtomicStyles({

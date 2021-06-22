@@ -15,6 +15,7 @@
   "rules": {
     "react/display-name": 0,
     "react/react-in-jsx-scope": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "@shopify/strict-component-boundaries": 0
   }
 }
