@@ -1,5 +1,5 @@
 import {style, composeStyles} from '@vanilla-extract/css';
-import {atoms, vars} from '@polaris/elements';
+import {atoms, vars} from '@polaris/themes';
 
 export const root = composeStyles(
   atoms({

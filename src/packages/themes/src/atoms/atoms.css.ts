@@ -1,6 +1,6 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
-import {vars} from './vars.css';
+import {vars} from '../vars';
 
 const {spacing} = vars;
 
