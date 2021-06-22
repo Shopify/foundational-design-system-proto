@@ -21,7 +21,9 @@ const IndexPage = () => {
 
       <Box margin="base">
         <Link to="/about">About page</Link>
-        <p>Polaris is changing</p>
+        <Box as="p" textAlign="center">
+          Polaris is changing
+        </Box>
       </Box>
     </Layout>
   );
