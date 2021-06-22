@@ -1,6 +1,7 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
 import classnames from 'classnames';
-import {atoms, Atoms} from '@polaris/themes';
+
+import {atoms, Atoms} from '../styles';
 
 export interface BoxProps
   extends Omit<
