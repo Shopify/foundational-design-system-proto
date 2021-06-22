@@ -1,8 +1,8 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
-import {vars} from './theme.css';
+import {vars} from '../vars';
 
-const {spacing, textAlign} = vars;
+const {spacing} = vars;
 
 const styles = createAtomicStyles({
   properties: {
@@ -14,7 +14,7 @@ const styles = createAtomicStyles({
     paddingBottom: spacing,
     paddingLeft: spacing,
     paddingRight: spacing,
-    textAlign,
+    textAlign: ['left', 'center', 'right'],
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],

@@ -11,7 +11,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Box margin="medium">
+        <Box margin="base">
           <span role="img" aria-label={sparkles}>
             ✨
           </span>{' '}
@@ -19,7 +19,7 @@ const IndexPage = () => {
         </Box>
       </Heading>
 
-      <Box margin="medium">
+      <Box margin="base">
         <Link to="/about">About page</Link>
         <p>Polaris is changing</p>
       </Box>
