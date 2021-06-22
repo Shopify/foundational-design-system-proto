@@ -1,9 +1,9 @@
 import tokens from '@polaris/tokens';
 
-import {createTheme} from '../utils';
+import {createTheme} from './utils';
 
 export const fonts = {
-  body: 'Helvetica',
+  body: tokens.fonts.system,
   code: tokens.fonts.monospace,
 };
 
@@ -11,4 +11,4 @@ const theme = {
   fonts,
 };
 
-export default createTheme('admin', theme);
+export default createTheme(theme);

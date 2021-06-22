@@ -18,7 +18,6 @@
       "@polaris/composed": ["src/packages/composed/src"],
       "@polaris/elements": ["src/packages/elements/src"],
       "@polaris/icons": ["src/packages/icons/src"],
-      "@polaris/themes": ["src/packages/themes/src"],
       "@polaris/tokens": ["src/packages/tokens/src"],
     }
   },

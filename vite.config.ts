@@ -17,7 +17,6 @@ export default defineConfig({
       '@polaris/composed': getPackage('composed'),
       '@polaris/elements': getPackage('elements'),
       '@polaris/icons': getPackage('icons'),
-      '@polaris/themes': getPackage('themes'),
       '@polaris/tokens': getPackage('tokens'),
     },
   },
