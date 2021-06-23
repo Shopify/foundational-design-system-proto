@@ -16,8 +16,11 @@ const IndexPage = () => {
             <span role="img" aria-label={sparkles}>
               ✨
             </span>
-            <Text weight="medium">Polaris working in the open</Text>
+            <Text weight="medium" fontSize="2xl">
+              Polaris
+            </Text>
           </Flex>
+          <Text>working in the open</Text>
         </Box>
       </Heading>
 

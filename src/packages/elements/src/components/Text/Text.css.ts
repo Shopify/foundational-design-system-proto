@@ -8,3 +8,8 @@ export const weight = styleVariants(
   vars.fontWeights,
   mapToProperty('fontWeight'),
 );
+
+export const fontSize = styleVariants(
+  vars.fontSizes,
+  mapToProperty('fontSize'),
+);
