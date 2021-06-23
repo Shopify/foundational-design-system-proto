@@ -1,6 +1,6 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
-import {vars} from './vars.css';
+import {vars} from '../themes/vars.css';
 
 const {spacing} = vars;
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'];

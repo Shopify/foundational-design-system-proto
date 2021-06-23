@@ -1,10 +1,14 @@
 import {colors} from './colors';
-import {fonts} from './fonts';
-import {spacing} from './spacing';
+import {fonts, fontSizes, fontWeights} from './typography';
+import {breakpoints, grid, spacing} from './spacing';
 
 export const tokens = {
+  breakpoints,
   colors,
   fonts,
+  fontSizes,
+  fontWeights,
+  grid,
   spacing,
 };
 

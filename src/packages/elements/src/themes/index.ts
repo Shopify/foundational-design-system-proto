@@ -1,8 +1,9 @@
-import base from './base';
-
 // Utilities
-export {createTheme} from './utils';
+export {mapToProperty} from './utils';
 
 // Themes
-export {default as admin} from './admin';
-export const theme = base;
+export * as adminTheme from './admin';
+export * as docsTheme from './docs';
+
+// Vars
+export {vars} from './vars.css';

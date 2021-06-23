@@ -1,7 +1,7 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
 import classnames from 'classnames';
 
-import {atoms, Atoms} from '../styles';
+import {atoms, Atoms} from '../../atoms/atoms.css';
 
 export interface FlexProps
   extends Omit<

@@ -1,9 +1,9 @@
-import base from './base';
+import {Properties} from 'csstype';
 
-type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>;
-};
+export const mapToProperty =
+  <T extends keyof Properties<string | number>>(property: T) =>
+  (value: string | number) => {
+    const styleRule = {[property]: value};
 
-export function createTheme(theme: DeepPartial<typeof base>) {
-  return {...base, ...theme};
-}
+    return styleRule;
+  };

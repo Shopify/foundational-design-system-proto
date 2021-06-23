@@ -1,10 +1,10 @@
 import React, {ComponentProps} from 'react';
 import classnames from 'classnames';
-import {Box} from '@polaris/elements';
-
-import {themeClass} from '../../styles/theme.css';
+import {docsTheme as theme, Box} from '@polaris/elements';
 
 import {root} from './Layout.css';
+
+const {themeClass} = theme;
 
 export const Layout = ({className, ...props}: ComponentProps<typeof Box>) => (
   <Box
