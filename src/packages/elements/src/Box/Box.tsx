@@ -1,7 +1,7 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
 import classnames from 'classnames';
 
-import {atoms, Atoms} from '../styles';
+import {box, Atoms} from './box.css';
 
 export interface BoxProps
   extends Omit<
@@ -37,7 +37,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     ref,
   ) => {
     const atomClasses = classnames(
-      atoms({
+      box({
         margin,
         marginX,
         marginY,

@@ -1,6 +1,6 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
-import {vars} from './vars.css';
+import {vars} from '../styles/vars.css';
 
 const {spacing} = vars;
 
@@ -26,6 +26,6 @@ const styles = createAtomicStyles({
   },
 });
 
-export const atoms = createAtomsFn(styles);
+export const box = createAtomsFn(styles);
 
-export type Atoms = Parameters<typeof atoms>[0];
+export type Atoms = Parameters<typeof box>[0];
