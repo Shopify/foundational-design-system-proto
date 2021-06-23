@@ -3,6 +3,8 @@ import classnames from 'classnames';
 
 import {atoms, Atoms} from '../../atoms/atoms.css';
 
+import * as styles from './Flex.css';
+
 export interface FlexProps
   extends Omit<
       AllHTMLAttributes<HTMLElement>,
@@ -41,6 +43,7 @@ export const Flex = forwardRef<HTMLElement, FlexProps>(
     ref,
   ) => {
     const className = classnames(
+      styles.flex,
       atoms({
         flexDirection,
         alignItems,
@@ -57,7 +60,6 @@ export const Flex = forwardRef<HTMLElement, FlexProps>(
 
     return createElement(component, {
       ...restProps,
-      style: {...restProps.style, display: 'flex'},
       className,
       ref,
     });
