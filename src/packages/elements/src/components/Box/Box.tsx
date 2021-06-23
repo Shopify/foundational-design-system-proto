@@ -1,7 +1,7 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
 import classnames from 'classnames';
 
-import {atoms, Atoms} from '../styles';
+import {atoms, Atoms} from '../../atoms';
 
 export interface BoxProps
   extends Omit<

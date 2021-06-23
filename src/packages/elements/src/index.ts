@@ -1,9 +1,10 @@
 // Components
-export * from './Box';
-export * from './Flex';
+export * from './components/Box';
+export * from './components/Flex';
+export * from './components/Text';
 
-// Styles
-export * from './styles';
+// Atoms
+export * from './atoms';
 
 // Themes
 export * from './themes';
