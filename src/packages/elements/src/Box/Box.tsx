@@ -8,7 +8,24 @@ export interface BoxProps
       AllHTMLAttributes<HTMLElement>,
       'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor'
     >,
-    Atoms {
+    Pick<
+      Atoms,
+      | 'margin'
+      | 'marginX'
+      | 'marginY'
+      | 'marginTop'
+      | 'marginBottom'
+      | 'marginLeft'
+      | 'marginRight'
+      | 'padding'
+      | 'paddingX'
+      | 'paddingY'
+      | 'paddingTop'
+      | 'paddingBottom'
+      | 'paddingLeft'
+      | 'paddingRight'
+      | 'textAlign'
+    > {
   component?: ElementType;
 }
 
@@ -16,7 +33,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
       component = 'div',
-      className,
       margin,
       marginX,
       marginY,
@@ -36,7 +52,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     }: BoxProps,
     ref,
   ) => {
-    const atomClasses = classnames(
+    const className = classnames(
       atoms({
         margin,
         marginX,
@@ -54,12 +70,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         paddingRight,
         textAlign,
       }),
-      className,
+      restProps.className,
     );
 
     return createElement(component, {
-      className: atomClasses,
       ...restProps,
+      className,
       ref,
     });
   },

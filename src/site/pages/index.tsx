@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Box} from '@polaris/elements';
+import {Box, Flex} from '@polaris/elements';
 
 import {Heading} from '../components/Heading';
 import {Layout} from '../components/Layout';
@@ -12,10 +12,12 @@ const IndexPage = () => {
     <Layout>
       <Heading>
         <Box margin="base">
-          <span role="img" aria-label={sparkles}>
-            ✨
-          </span>{' '}
-          Polaris wito
+          <Flex>
+            <span role="img" aria-label={sparkles}>
+              ✨
+            </span>
+            <p>Polaris working in the open</p>
+          </Flex>
         </Box>
       </Heading>
 
