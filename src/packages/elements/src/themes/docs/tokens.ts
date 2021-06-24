@@ -9,6 +9,10 @@ const fontWeights = {
   ...tokens.fontWeights,
 };
 
+const fontSizes = {
+  ...tokens.fontSizes,
+};
+
 const spacing = {
   ...tokens.spacing,
   none: '0px',
@@ -22,6 +26,7 @@ const spacing = {
 
 const docsTokens = {
   fonts,
+  fontSizes,
   fontWeights,
   spacing,
 };
