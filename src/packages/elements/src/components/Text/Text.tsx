@@ -12,10 +12,10 @@ import {atoms, Atoms} from '../../atoms/atoms.css';
 import * as styles from './Text.css';
 
 interface TextStyleProps {
-  weight?: keyof typeof styles.weight;
   align?: Atoms['textAlign'];
+  fontSize?: Atoms['fontSize'];
   type?: Exclude<keyof typeof styles.font, 'brand' | 'heading'>;
-  fontSize?: keyof typeof styles.fontSize;
+  weight?: Atoms['fontWeight'];
 }
 
 export interface TextProps
@@ -33,9 +33,7 @@ export const useTextStyles = ({
 }: TextStyleProps) =>
   classnames(
     styles.font[type],
-    atoms({textAlign: align}),
-    styles.weight[weight],
-    styles.fontSize[fontSize],
+    atoms({textAlign: align, fontSize, fontWeight: weight}),
   );
 
 export const Text = forwardRef<HTMLElement, TextProps>(
