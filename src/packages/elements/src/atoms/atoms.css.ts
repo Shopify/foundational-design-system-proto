@@ -2,7 +2,7 @@ import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
 import {vars} from '../themes/vars.css';
 
-const {spacing} = vars;
+const {spacing, fontWeights, fontSizes} = vars;
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'];
 
 const styles = createAtomicStyles({
@@ -32,6 +32,8 @@ const styles = createAtomicStyles({
     gap: spacing,
     flexGrow: [0, 1],
     flexShrink: [0],
+    fontWeight: fontWeights,
+    fontSize: fontSizes,
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
