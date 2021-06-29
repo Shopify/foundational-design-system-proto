@@ -10,6 +10,7 @@ export interface BoxProps
     >,
     Pick<
       Atoms,
+      | 'display'
       | 'margin'
       | 'marginX'
       | 'marginY'
@@ -25,6 +26,15 @@ export interface BoxProps
       | 'paddingLeft'
       | 'paddingRight'
       | 'textAlign'
+      | 'flexDirection'
+      | 'alignItems'
+      | 'alignSelf'
+      | 'justifyContent'
+      | 'justifySelf'
+      | 'wrap'
+      | 'gap'
+      | 'flexGrow'
+      | 'flexShrink'
     > {
   component?: ElementType;
 }
@@ -33,6 +43,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
       component = 'div',
+      display,
       margin,
       marginX,
       marginY,
@@ -48,12 +59,22 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingLeft,
       paddingRight,
       textAlign,
+      flexDirection,
+      alignItems,
+      alignSelf,
+      justifyContent,
+      justifySelf,
+      wrap,
+      gap,
+      flexGrow,
+      flexShrink,
       ...restProps
     }: BoxProps,
     ref,
   ) => {
     const className = classnames(
       atoms({
+        display,
         margin,
         marginX,
         marginY,
@@ -69,6 +90,15 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         paddingLeft,
         paddingRight,
         textAlign,
+        flexDirection,
+        alignItems,
+        alignSelf,
+        justifyContent,
+        justifySelf,
+        wrap,
+        gap,
+        flexGrow,
+        flexShrink,
       }),
       restProps.className,
     );
