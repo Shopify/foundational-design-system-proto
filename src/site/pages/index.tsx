@@ -11,24 +11,25 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Box margin="base">
-          <Flex>
-            <span role="img" aria-label={sparkles}>
-              ✨
-            </span>
-            <Text weight="medium" fontSize="2xl">
-              Polaris
-            </Text>
-          </Flex>
+        <Box margin="base" display="flex" alignItems="center" gap="base">
+          <span role="img" aria-label={sparkles}>
+            ✨
+          </span>
+          <Text weight="medium" fontSize="2xl">
+            Polaris
+          </Text>
+
           <Text>working in the open</Text>
         </Box>
       </Heading>
 
       <Box margin="base">
-        <Link to="/about">About page</Link>
-        <Box as="p" textAlign="center">
-          Polaris is changing
-        </Box>
+        <Flex gap="base">
+          <Link to="/about">About page</Link>
+          <Box as="p" textAlign="center">
+            Polaris is changing
+          </Box>
+        </Flex>
       </Box>
     </Layout>
   );

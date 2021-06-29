@@ -17,6 +17,17 @@ const styles = createAtomicStyles({
     paddingLeft: spacing,
     paddingRight: spacing,
     textAlign: ['left', 'center', 'right'],
+    display: [
+      'block',
+      'inline',
+      'inline-block',
+      'flex',
+      'inline-flex',
+      'grid',
+      'inline-grid',
+      'flow-root',
+      'contents',
+    ],
     // Flex
     flexDirection: ['row', 'column', 'row-reverse', 'column-reverse'],
     alignItems: [...flexAlignment, 'baseline'],
