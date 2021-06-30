@@ -15,10 +15,10 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@polaris/composed": ["src/packages/composed/src"],
-      "@polaris/elements": ["src/packages/elements/src"],
-      "@polaris/icons": ["src/packages/icons/src"],
-      "@polaris/tokens": ["src/packages/tokens/src"],
+      "@polaris/composed": ["@polaris/composed/src"],
+      "@polaris/elements": ["@polaris/elements/src"],
+      "@polaris/icons": ["@polaris/icons/src"],
+      "@polaris/tokens": ["@polaris/tokens/src"],
     }
   },
   "include": ["src"],

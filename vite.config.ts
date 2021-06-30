@@ -6,11 +6,11 @@ import svgr from 'vite-plugin-svgr';
 import {vanillaExtractPlugin} from '@vanilla-extract/vite-plugin';
 
 function getPackage(packageName, path = 'src') {
-  return resolve(__dirname, 'src', 'packages', packageName, path);
+  return resolve(__dirname, '@polaris', packageName, path);
 }
 
 export default defineConfig({
-  root: './src/polaris.shopify.com',
+  root: './polaris.shopify.com',
   plugins: [svgr(), reactRefresh(), vanillaExtractPlugin()],
   resolve: {
     alias: {
