@@ -6,9 +6,9 @@
 
 > Building the platform for design systems across Shopify. This website is focused on centralizing systems, documentation and global foundations.
 
-| Current status | Owner | Help |
-|----------------|-------|------|
-| ongoing | [@polaris-team](https://github.com/orgs/Shopify/teams/polaris-team/members) | [#polaris](https://shopify.slack.com/app_redirect?channel=polaris) |                                                                                                                                                                          
+| Current status | Owner                                                                       | Help                                                               |
+| -------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| ongoing        | [@polaris-team](https://github.com/orgs/Shopify/teams/polaris-team/members) | [#polaris](https://shopify.slack.com/app_redirect?channel=polaris) |
 
 ## Projects
 
@@ -16,14 +16,15 @@ A public version of our [Github Project](https://github.com/orgs/Shopify/project
 
 ## How to use this repo
 
-### Development quick start guide
+### polaris.shopify.com quick start guide
 
-Make sure [dev](https://development.shopify.io/engineering/keytech/dev/getting_started) is installed on your computer then run the following commands to get started:
+Make sure [Git](https://git-scm.com/downloads) and [Node.js](https://nodejs.org/en/) are installed on your computer then run the following commands to get started:
 
-```
-$ dev clone polaris                     # git clone repository
-$ dev up                                # prepare dependencies
-$ dev server                            # run local instance of polaris.shopify.com
+```shell
+$ git clone https://github.com/Shopify/polaris.git   # git clone repository
+$ cd polaris                                         # access the files
+$ npm install                                        # install dependencies
+$ npm run dev                                        # run local instance of polaris.shopify.com
 ```
 
 ## Contribute to our explorations
