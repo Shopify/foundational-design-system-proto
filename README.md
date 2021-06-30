@@ -21,10 +21,10 @@ A public version of our [Github Project](https://github.com/orgs/Shopify/project
 Make sure [Git](https://git-scm.com/downloads) and [Node.js](https://nodejs.org/en/) are installed on your computer then run the following commands to get started:
 
 ```shell
-$ git clone https://github.com/Shopify/polaris.git   # git clone repository
-$ cd polaris                                         # access the files
-$ npm install                                        # install dependencies
-$ npm run dev                                        # run local instance of polaris.shopify.com
+$ git clone https://github.com/Shopify/polaris.git    # git clone repository
+$ cd polaris                                          # access the files
+$ npm install                                         # install dependencies
+$ npm run dev                                         # run polars.shopify.com locally
 ```
 
 ## Contribute to our explorations
