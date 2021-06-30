@@ -3,7 +3,7 @@ import {atoms, vars} from '@polaris/elements';
 
 export const root = composeStyles(
   atoms({
-    margin: 'base',
+    margin: '4x',
   }),
   style({
     fontFamily: vars.fonts.body,

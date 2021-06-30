@@ -11,7 +11,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Box margin="base" display="flex" alignItems="center" gap="base">
+        <Box margin="4x" display="flex" alignItems="center" gap="4x">
           <span role="img" aria-label={sparkles}>
             ✨
           </span>
@@ -23,8 +23,8 @@ const IndexPage = () => {
         </Box>
       </Heading>
 
-      <Box margin="base">
-        <Flex gap="base">
+      <Box margin="4x">
+        <Flex gap="4x">
           <Link to="/about">About page</Link>
           <Box as="p" textAlign="center">
             Polaris is changing
