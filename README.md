@@ -6,11 +6,9 @@
 
 > Building the platform for design systems across Shopify. This website is focused on centralizing systems, documentation and global foundations.
 
-|                |                                                                                                                                      |
-|----------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| Current status | ongoing                                                                                                                              |
-| Owner          | [@polaris-team](https://github.com/orgs/Shopify/teams/polaris-team/members)                                                          |
-| Help           | [#polaris](https://shopify.slack.com/app_redirect?channel=polaris)                                                                   |
+| Current status | Owner | Help |
+|----------------|-------|------|
+| ongoing | [@polaris-team](https://github.com/orgs/Shopify/teams/polaris-team/members) | [#polaris](https://shopify.slack.com/app_redirect?channel=polaris) |                                                                                                                                                                          
 
 ## Projects
 
