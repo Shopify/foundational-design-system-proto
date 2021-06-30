@@ -10,7 +10,7 @@ function getPackage(packageName, path = 'src') {
 }
 
 export default defineConfig({
-  root: './src/site',
+  root: './src/polaris.shopify.com',
   plugins: [svgr(), reactRefresh(), vanillaExtractPlugin()],
   resolve: {
     alias: {
