@@ -16,12 +16,12 @@ const fontSizes = {
 const spacing = {
   ...tokens.spacing,
   none: '0px',
-  extraTight: tokens.spacing[1],
-  tight: tokens.spacing[2],
-  baseTight: tokens.spacing[3],
-  base: tokens.spacing[4],
-  loose: tokens.spacing[5],
-  extraLoose: tokens.spacing[6],
+  half: tokens.spacing[0.5],
+  '1': tokens.spacing[1],
+  '2': tokens.spacing[2],
+  '3': tokens.spacing[3],
+  '4': tokens.spacing[4],
+  '5': tokens.spacing[5],
 };
 
 const docsTokens = {
