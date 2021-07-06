@@ -15,8 +15,7 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@polaris/composed": ["@polaris/composed/src"],
-      "@polaris/elements": ["@polaris/elements/src"],
+      "@polaris/components": ["@polaris/components/src"],
       "@polaris/icons": ["@polaris/icons/src"],
       "@polaris/tokens": ["@polaris/tokens/src"],
     }

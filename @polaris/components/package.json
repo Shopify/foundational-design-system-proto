@@ -1,9 +1,9 @@
 {
-  "name": "@polaris/elements",
+  "name": "@polaris/components",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "dist/polaris-elements.cjs.js",
-  "module": "dist/polaris-elements.esm.js",
+  "main": "dist/polaris-components.cjs.js",
+  "module": "dist/polaris-components.esm.js",
   "dependencies": {
     "classnames": "^2.3.1"
   },

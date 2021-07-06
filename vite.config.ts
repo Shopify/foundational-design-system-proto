@@ -14,8 +14,7 @@ export default defineConfig({
   plugins: [svgr(), reactRefresh(), vanillaExtractPlugin()],
   resolve: {
     alias: {
-      '@polaris/composed': getPackage('composed'),
-      '@polaris/elements': getPackage('elements'),
+      '@polaris/components': getPackage('components'),
       '@polaris/icons': getPackage('icons'),
       '@polaris/tokens': getPackage('tokens'),
     },
