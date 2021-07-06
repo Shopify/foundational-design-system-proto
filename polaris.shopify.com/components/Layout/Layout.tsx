@@ -8,7 +8,7 @@ const {themeClass} = theme;
 
 export const Layout = ({className, ...props}: ComponentProps<typeof Box>) => (
   <Box
-    margin="4x"
+    margin="4"
     {...props}
     className={classnames(themeClass, root, className)}
   />
