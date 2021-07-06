@@ -20,8 +20,8 @@ const spacing = {
   '1': tokens.spacing[1],
   '2': tokens.spacing[2],
   '3': tokens.spacing[3],
-  '4x': tokens.spacing[4],
-  '5x': tokens.spacing[5],
+  '4': tokens.spacing[4],
+  '5': tokens.spacing[5],
 };
 
 const docsTokens = {
