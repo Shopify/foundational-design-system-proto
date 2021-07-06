@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import {Link as RouterLink} from 'react-router-dom';
-import {Link as PolarisLink} from '@polaris/elements';
+import {Link as PolarisLink} from '@polaris/components';
 
 type LinkProps = ComponentProps<typeof RouterLink> &
   ComponentProps<typeof PolarisLink>;

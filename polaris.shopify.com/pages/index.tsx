@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Flex, Text} from '@polaris/elements';
+import {Box, Flex, Text} from '@polaris/components';
 
 import {Heading} from '../components/Heading';
 import {Layout} from '../components/Layout';

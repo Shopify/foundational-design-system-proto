@@ -1,6 +1,6 @@
 import React, {ComponentProps} from 'react';
 import classnames from 'classnames';
-import {docsTheme as theme, Box} from '@polaris/elements';
+import {docsTheme as theme, Box} from '@polaris/components';
 
 import {root} from './Layout.css';
 
