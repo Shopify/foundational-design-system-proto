@@ -1,4 +1,4 @@
-import React, {ElementType, AllHTMLAttributes} from 'react';
+import React, {ElementType, createElement, AllHTMLAttributes} from 'react';
 import classnames from 'classnames';
 
 import {variant, linkStyle} from './Link.css';
@@ -9,21 +9,21 @@ interface LinkProps extends AllHTMLAttributes<HTMLAnchorElement> {
 }
 
 export const Link = ({
-  component: Element = 'a',
+  component = 'a',
   children,
   className,
   ...props
 }: LinkProps) => {
-  return (
-    <Element
-      className={classnames(
+  return createElement(
+    component,
+    {
+      className: classnames(
         linkStyle,
         props.variant && variant[props.variant],
         className,
-      )}
-      {...props}
-    >
-      {children}
-    </Element>
+      ),
+      ...props,
+    },
+    children,
   );
 };
