@@ -17,5 +17,6 @@
     "react/react-in-jsx-scope": 0,
     "import/no-extraneous-dependencies": 0,
     "@shopify/strict-component-boundaries": 0
-  }
+  },
+  "ignorePatterns": ["node_modules", "dist", ".yarn/"]
 }
