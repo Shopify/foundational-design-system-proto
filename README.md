@@ -4,7 +4,7 @@
 
 ## About this repo
 
-> Building the platform for design systems across Shopify. This website is focused on centralizing systems, documentation and global foundations.
+> The experience platform for Shopify. This repository is focused on centralizing systems, documentation and foundations.
 
 | Current status | Owner                                                                       | Help                                                               |
 | -------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
