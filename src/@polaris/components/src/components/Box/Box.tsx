@@ -37,11 +37,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       alignItems,
       alignSelf,
       justifyContent,
+      placeContent,
       justifySelf,
       flexWrap,
       gap,
       flexGrow,
       flexShrink,
+      gridArea,
       ...restProps
     }: BoxProps,
     ref,
@@ -66,6 +68,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         textAlign,
         flexBasis,
         flexDirection,
+        placeContent,
         alignItems,
         alignSelf,
         justifyContent,
@@ -81,6 +84,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     return createElement(component, {
       ...restProps,
       className,
+      style: {gridArea, ...restProps.style},
       ref,
     });
   },
