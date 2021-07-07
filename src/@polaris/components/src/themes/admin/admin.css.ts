@@ -4,4 +4,4 @@ import {vars} from '../vars.css';
 
 import tokens from './tokens';
 
-export const themeName = createTheme(vars, tokens);
+export const themeClass = createTheme(vars, tokens);

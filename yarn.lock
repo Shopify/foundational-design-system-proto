@@ -1294,6 +1294,13 @@
     dedent "^0.7.0"
     deep-object-diff "^1.1.0"
 
+"@vanilla-extract/dynamic@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/dynamic/-/dynamic-1.0.0.tgz#5791fc9f952c2289748f66067f174395ef4f6dd5"
+  integrity sha512-D86aOvC2kNdsTRWJyNcxHJ/KIT6raQdKxYF51GUgjYw7kaTAG7a4Vlem1BfQjKNa8tNdHlFYhQpD1eSJw+Ezvw==
+  dependencies:
+    "@vanilla-extract/private" "^1.0.0"
+
 "@vanilla-extract/integration@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-1.0.1.tgz#48ebe910f29b0da88e9876286f4d0b658a6f27ae"

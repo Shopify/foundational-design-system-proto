@@ -4,6 +4,7 @@ import {Box, Flex, Text} from '@polaris/components';
 import {Heading} from '../components/Heading';
 import {Layout} from '../components/Layout';
 import {Link} from '../components/Link';
+import {ThemeSwitcher} from '../components/ThemeSwitcher';
 
 const IndexPage = () => {
   const sparkles = 'sparkles';
@@ -31,6 +32,8 @@ const IndexPage = () => {
           </Box>
         </Flex>
       </Box>
+
+      <ThemeSwitcher />
     </Layout>
   );
 };
