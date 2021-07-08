@@ -11,7 +11,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Box margin="4" display="flex" alignItems="center" gap="4">
+        <Flex align="center" gap="4" margin="4">
           <span role="img" aria-label={sparkles}>
             ✨
           </span>
@@ -20,7 +20,7 @@ const IndexPage = () => {
           </Text>
 
           <Text>working in the open</Text>
-        </Box>
+        </Flex>
       </Heading>
 
       <Box margin="4">

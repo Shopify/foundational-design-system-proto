@@ -30,6 +30,7 @@ const styles = createAtomicStyles({
     ],
     // Flex
     flexDirection: ['row', 'column', 'row-reverse', 'column-reverse'],
+    flexWrap: ['wrap', 'nowrap', 'wrap-reverse'],
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
     justifyContent: [
@@ -39,7 +40,6 @@ const styles = createAtomicStyles({
       'space-between',
     ],
     justifySelf: flexAlignment,
-    wrap: ['wrap', 'nowrap', 'wrap-reverse'],
     gap: spacing,
     flexGrow: [0, 1],
     flexShrink: [0],
