@@ -1,7 +1,5 @@
 import React, {ComponentProps} from 'react';
-import {Box} from '@polaris/components';
-
-import {ThemeProvider} from '../ThemeProvider';
+import {Box, ThemeProvider} from '@polaris/components';
 
 import {root} from './Layout.css';
 

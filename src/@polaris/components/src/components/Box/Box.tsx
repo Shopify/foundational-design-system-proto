@@ -1,14 +1,21 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
-import classnames from 'classnames';
+import classnames, {Argument} from 'classnames';
 
 import {atoms, Atoms} from '../../atoms';
 
 export interface BoxProps
   extends Omit<
       AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor'
+      | 'content'
+      | 'height'
+      | 'translate'
+      | 'color'
+      | 'width'
+      | 'className'
+      | 'cursor'
     >,
     Atoms {
+  className?: Argument[] | string;
   component?: ElementType;
 }
 
