@@ -4,7 +4,7 @@ import {Atoms} from '../../atoms';
 import {Box, BoxProps} from '../Box/Box';
 
 export interface FlexProps extends Omit<BoxProps, 'wrap'> {
-  align?: Atoms['flexDirection'];
+  align?: Atoms['alignItems'];
   basis?: Atoms['flexBasis'];
   direction?: Atoms['flexDirection'];
   grow?: Atoms['flexGrow'];
