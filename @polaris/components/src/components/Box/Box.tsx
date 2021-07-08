@@ -8,34 +8,7 @@ export interface BoxProps
       AllHTMLAttributes<HTMLElement>,
       'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor'
     >,
-    Pick<
-      Atoms,
-      | 'display'
-      | 'margin'
-      | 'marginX'
-      | 'marginY'
-      | 'marginTop'
-      | 'marginBottom'
-      | 'marginLeft'
-      | 'marginRight'
-      | 'padding'
-      | 'paddingX'
-      | 'paddingY'
-      | 'paddingTop'
-      | 'paddingBottom'
-      | 'paddingLeft'
-      | 'paddingRight'
-      | 'textAlign'
-      | 'flexDirection'
-      | 'alignItems'
-      | 'alignSelf'
-      | 'justifyContent'
-      | 'justifySelf'
-      | 'wrap'
-      | 'gap'
-      | 'flexGrow'
-      | 'flexShrink'
-    > {
+    Atoms {
   component?: ElementType;
 }
 
@@ -64,7 +37,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       alignSelf,
       justifyContent,
       justifySelf,
-      wrap,
+      flexWrap,
       gap,
       flexGrow,
       flexShrink,
@@ -95,7 +68,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         alignSelf,
         justifyContent,
         justifySelf,
-        wrap,
+        flexWrap,
         gap,
         flexGrow,
         flexShrink,
@@ -110,3 +83,5 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     });
   },
 );
+
+Box.displayName = 'Box';
