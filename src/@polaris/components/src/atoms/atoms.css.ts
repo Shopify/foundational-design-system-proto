@@ -3,7 +3,7 @@ import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 import {vars} from '../themes/vars.css';
 
 const {spacing, fontWeights, fontSizes} = vars;
-const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'];
+const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
 const styles = createAtomicStyles({
   properties: {
@@ -29,6 +29,7 @@ const styles = createAtomicStyles({
       'contents',
     ],
     // Flex
+    flexBasis: [0, 1, 2, 3, '25%', '30%', '50%', '70%', '75%'],
     flexDirection: ['row', 'column', 'row-reverse', 'column-reverse'],
     flexWrap: ['wrap', 'nowrap', 'wrap-reverse'],
     alignItems: [...flexAlignment, 'baseline'],
