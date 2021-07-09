@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {Grid, Box, Flex, Text} from '@polaris/components';
 
 import {Heading} from '../components/Heading';
@@ -39,15 +38,15 @@ const IndexPage = () => {
         </Flex>
       </Box>
 
-      <Box margin="base">
-        <Grid gap="base" gridTemplateAreas={GRID_TEMPLATE_AREAS}>
+      <Box margin="4">
+        <Grid gap="4" areas={GRID_TEMPLATE_AREAS}>
           <Box
             display="grid"
             gridArea="area1"
             placeContent="center"
             style={{background: 'lightgray'}}
           >
-            grid area 1
+            area 1
           </Box>
           <Box
             display="grid"
@@ -55,7 +54,7 @@ const IndexPage = () => {
             placeContent="center"
             style={{background: 'lightgray'}}
           >
-            grid area 2
+            area 2
           </Box>
           <Box
             display="grid"
@@ -63,7 +62,7 @@ const IndexPage = () => {
             placeContent="center"
             style={{background: 'lightgray'}}
           >
-            grid area 3
+            area 3
           </Box>
           <Box
             display="grid"
@@ -71,7 +70,7 @@ const IndexPage = () => {
             placeContent="center"
             style={{background: 'lightgray'}}
           >
-            grid area 4
+            area 4
           </Box>
           <Box
             display="grid"
@@ -79,7 +78,7 @@ const IndexPage = () => {
             placeContent="center"
             style={{background: 'lightgray'}}
           >
-            grid area 5
+            area 5
           </Box>
           <Box
             display="grid"
@@ -87,18 +86,26 @@ const IndexPage = () => {
             placeContent="center"
             style={{background: 'lightgray'}}
           >
-            grid area 6
+            area 6
           </Box>
         </Grid>
       </Box>
 
-      <Box
-        margin="extraLoose"
-        style={{background: 'lightgray', height: '1px'}}
-      />
+      <Box margin="4" style={{background: 'lightgray', height: '1px'}} />
 
-      <Box margin="base">
-        <Grid gap="base" grid="1fr / auto-flow">
+      <Box margin="4">
+        <Grid gap="4" grid="1fr / auto-flow">
+          <Flex style={{background: 'lightgray'}}>cell 1</Flex>
+          <Flex style={{background: 'lightgray'}}>cell 2</Flex>
+          <Flex style={{background: 'lightgray'}}>cell 3</Flex>
+          <Flex style={{background: 'lightgray'}}>cell 4</Flex>
+        </Grid>
+      </Box>
+
+      <Box margin="4" style={{background: 'lightgray', height: '1px'}} />
+
+      <Box margin="4">
+        <Grid gap="4" columns={['1fr', '1fr']} rows={['100px', '1fr']}>
           <Grid placeContent="center" style={{background: 'lightgray'}}>
             cell 1
           </Grid>

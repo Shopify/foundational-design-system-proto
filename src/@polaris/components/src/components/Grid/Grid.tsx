@@ -1,79 +1,57 @@
-import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
-import classnames from 'classnames';
+import React, {forwardRef, ElementType} from 'react';
 
-import {atoms, Atoms} from '../../atoms/atoms.css';
+import {Atoms} from '../../atoms/atoms.css';
+import {Box, BoxProps} from '../Box/Box';
 
-import * as styles from './Grid.css';
-
-export interface GridProps
-  extends Omit<
-      AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor'
-    >,
-    Pick<
-      Atoms,
-      | 'alignItems'
-      | 'alignSelf'
-      | 'justifyContent'
-      | 'justifySelf'
-      | 'gap'
-      | 'placeContent'
-    > {
+export interface GridProps extends Omit<BoxProps, 'rows'> {
+  align?: Atoms['alignItems'];
+  justify?: Atoms['justifyContent'];
+  gap?: Atoms['gap'];
+  place?: Atoms['placeContent'];
   grid?: string;
-  gridTemplateRows?: string;
-  gridTemplateColumns?: string;
-  gridTemplateAreas?: string[];
-  gridArea?: string;
+  rows?: string[];
+  autoRows?: string;
+  columns?: string[];
+  areas?: string[];
+  area?: string;
   component?: ElementType;
 }
 
 export const Grid = forwardRef<HTMLElement, GridProps>(
   (
     {
-      component = 'div',
-      alignItems,
-      alignSelf,
-      justifyContent,
-      justifySelf,
-      wrap,
+      align,
       gap,
       grid,
-      gridArea,
-      gridTemplateAreas,
-      gridTemplateRows,
-      gridTemplateColumns,
-      placeContent,
+      area,
+      areas,
+      columns,
+      rows,
+      autoRows,
+      justify,
+      place,
       ...restProps
-    }: GridProps,
+    },
     ref,
   ) => {
-    const className = classnames(
-      styles.grid,
-      atoms({
-        alignItems,
-        alignSelf,
-        justifyContent,
-        justifySelf,
-        placeContent,
-        wrap,
-        gap,
-      }),
-      restProps.className,
+    return (
+      <Box
+        ref={ref}
+        display="grid"
+        grid={grid}
+        gridArea={area}
+        gridTemplateAreas={areas}
+        gridTemplateColumns={columns}
+        gridTemplateRows={rows}
+        gridAutoRows={autoRows}
+        alignItems={align}
+        justifyContent={justify}
+        gap={gap}
+        placeContent={place}
+        {...restProps}
+      />
     );
-
-    const {style, ...props} = restProps;
-
-    return createElement(component, {
-      ...props,
-      className,
-      style: {
-        grid,
-        gridArea,
-        gridTemplateAreas: `'${gridTemplateAreas?.join(`' '`)}'`,
-        gridTemplateColumns,
-        ...style,
-      },
-      ref,
-    });
   },
 );
+
+Grid.displayName = 'Grid';

@@ -9,6 +9,12 @@ export interface BoxProps
       'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor'
     >,
     Atoms {
+  grid?: string;
+  gridArea?: string;
+  gridAutoRows?: string;
+  gridTemplateAreas?: string[];
+  gridTemplateColumns?: string[];
+  gridTemplateRows?: string[];
   component?: ElementType;
 }
 
@@ -43,9 +49,14 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       gap,
       flexGrow,
       flexShrink,
+      grid,
       gridArea,
+      gridAutoRows,
+      gridTemplateAreas,
+      gridTemplateColumns,
+      gridTemplateRows,
       ...restProps
-    }: BoxProps,
+    },
     ref,
   ) => {
     const className = classnames(
@@ -84,7 +95,15 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     return createElement(component, {
       ...restProps,
       className,
-      style: {gridArea, ...restProps.style},
+      style: {
+        grid,
+        gridArea,
+        gridTemplateAreas: `'${gridTemplateAreas?.join(`' '`)}'`,
+        gridAutoRows,
+        gridTemplateColumns: gridTemplateColumns?.join(' '),
+        gridTemplateRows: gridTemplateRows?.join(' '),
+        ...restProps.style,
+      },
       ref,
     });
   },

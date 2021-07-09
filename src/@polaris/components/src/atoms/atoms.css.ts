@@ -44,7 +44,6 @@ const styles = createAtomicStyles({
     gap: spacing,
     flexGrow: [0, 1],
     flexShrink: [0],
-    // Grid
     placeContent: ['center'],
     fontWeight: fontWeights,
     fontSize: fontSizes,

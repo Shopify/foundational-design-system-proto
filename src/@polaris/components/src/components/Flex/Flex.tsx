@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react';
 import {Atoms} from '../../atoms';
 import {Box, BoxProps} from '../Box/Box';
 
-export interface FlexProps extends Omit<BoxProps, 'wrap'> {
+export interface FlexProps extends Omit<BoxProps, 'wrap' | 'placeContent'> {
   align?: Atoms['alignItems'];
   basis?: Atoms['flexBasis'];
   direction?: Atoms['flexDirection'];
@@ -15,16 +15,7 @@ export interface FlexProps extends Omit<BoxProps, 'wrap'> {
 
 export const Flex = forwardRef<HTMLElement, FlexProps>(
   (
-    {
-      align,
-      basis,
-      direction,
-      grow,
-      justify,
-      shrink,
-      wrap,
-      ...restProps
-    }: FlexProps,
+    {align, basis, direction, grow, justify, shrink, wrap, ...restProps},
     ref,
   ) => {
     return (
