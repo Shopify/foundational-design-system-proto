@@ -1,13 +1,10 @@
-/* eslint-disable no-implicit-coercion */
+const baseUnit = 4;
 
-const unit = 4;
-const px = (value: number) => `${value}px`;
+const scale = [0.5, 1, 2, 3, 4, 5];
 
-export const spacing = {
-  0.5: px(unit * 0.5),
-  1: px(unit * 1),
-  2: px(unit * 2),
-  3: px(unit * 3),
-  4: px(unit * 4),
-  5: px(unit * 5),
-};
+export const spacing = Object.fromEntries(
+  scale.map((value: number | string) => [
+    value,
+    `${Number(value) * baseUnit}px`,
+  ]),
+);
