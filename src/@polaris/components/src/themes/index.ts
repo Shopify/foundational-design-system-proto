@@ -1,5 +1,5 @@
 // Utilities
-export {mapToProperty} from './utils';
+export {createPolarisTheme, mapToProperty} from './utils';
 
 // Themes
 export * as adminTheme from './admin';

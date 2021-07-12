@@ -1,13 +1,13 @@
 import React, {ChangeEventHandler} from 'react';
 import {adminTheme, docsTheme, useTheme, Box} from '@polaris/components';
 
-import tokens from '../../polaris.config';
+import customTheme from '../../polaris.css';
 
-const defaultTheme = 'docs';
+const defaultTheme = 'custom';
 const themes = {
   admin: adminTheme,
   docs: docsTheme,
-  custom: {themeClass: '', tokens},
+  custom: customTheme,
 };
 
 export const ThemeSwitcher = () => {
