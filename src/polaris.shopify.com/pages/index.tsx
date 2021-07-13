@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ComponentProps} from 'react';
 import {Grid, Box, Flex, Text} from '@polaris/components';
 
 import {Heading} from '../components/Heading';
@@ -40,54 +40,12 @@ const IndexPage = () => {
 
       <Box margin="4">
         <Grid gap="4" areas={GRID_TEMPLATE_AREAS}>
-          <Box
-            display="grid"
-            gridArea="area1"
-            placeContent="center"
-            style={{background: 'lightgray'}}
-          >
-            area 1
-          </Box>
-          <Box
-            display="grid"
-            gridArea="area2"
-            placeContent="center"
-            style={{background: 'lightgray'}}
-          >
-            area 2
-          </Box>
-          <Box
-            display="grid"
-            gridArea="area3"
-            placeContent="center"
-            style={{background: 'lightgray'}}
-          >
-            area 3
-          </Box>
-          <Box
-            display="grid"
-            gridArea="area4"
-            placeContent="center"
-            style={{background: 'lightgray'}}
-          >
-            area 4
-          </Box>
-          <Box
-            display="grid"
-            gridArea="area5"
-            placeContent="center"
-            style={{background: 'lightgray'}}
-          >
-            area 5
-          </Box>
-          <Box
-            display="grid"
-            gridArea="area6"
-            placeContent="center"
-            style={{background: 'lightgray'}}
-          >
-            area 6
-          </Box>
+          <GridItem gridArea="area1">area 1</GridItem>
+          <GridItem gridArea="area2">area 2</GridItem>
+          <GridItem gridArea="area3">area 3</GridItem>
+          <GridItem gridArea="area4">area 4</GridItem>
+          <GridItem gridArea="area5">area 5</GridItem>
+          <GridItem gridArea="area6">area 6</GridItem>
         </Grid>
       </Box>
 
@@ -95,10 +53,10 @@ const IndexPage = () => {
 
       <Box margin="4">
         <Grid gap="4" grid="1fr / auto-flow">
-          <Flex style={{background: 'lightgray'}}>cell 1</Flex>
-          <Flex style={{background: 'lightgray'}}>cell 2</Flex>
-          <Flex style={{background: 'lightgray'}}>cell 3</Flex>
-          <Flex style={{background: 'lightgray'}}>cell 4</Flex>
+          <GridItem>cell 1</GridItem>
+          <GridItem>cell 2</GridItem>
+          <GridItem>cell 3</GridItem>
+          <GridItem>cell 4</GridItem>
         </Grid>
       </Box>
 
@@ -106,22 +64,18 @@ const IndexPage = () => {
 
       <Box margin="4">
         <Grid gap="4" columns={['1fr', '1fr']} rows={['100px', '1fr']}>
-          <Grid placeContent="center" style={{background: 'lightgray'}}>
-            cell 1
-          </Grid>
-          <Grid placeContent="center" style={{background: 'lightgray'}}>
-            cell 2
-          </Grid>
-          <Grid placeContent="center" style={{background: 'lightgray'}}>
-            cell 3
-          </Grid>
-          <Grid placeContent="center" style={{background: 'lightgray'}}>
-            cell 4
-          </Grid>
+          <GridItem>cell 1</GridItem>
+          <GridItem>cell 2</GridItem>
+          <GridItem>cell 3</GridItem>
+          <GridItem>cell 4</GridItem>
         </Grid>
       </Box>
     </Layout>
   );
 };
+
+const GridItem = (props: ComponentProps<typeof Grid>) => (
+  <Grid placeContent="center" style={{background: 'lightgray'}} {...props} />
+);
 
 export default IndexPage;
