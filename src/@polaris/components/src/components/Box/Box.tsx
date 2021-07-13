@@ -98,7 +98,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       style: {
         grid,
         gridArea,
-        gridTemplateAreas: `'${gridTemplateAreas?.join(`' '`)}'`,
+        gridTemplateAreas: gridTemplateAreas
+          ? `'${gridTemplateAreas.join(`' '`)}'`
+          : null,
         gridAutoRows,
         gridTemplateColumns: gridTemplateColumns?.join(' '),
         gridTemplateRows: gridTemplateRows?.join(' '),
