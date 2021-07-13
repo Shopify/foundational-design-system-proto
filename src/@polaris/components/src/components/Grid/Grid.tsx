@@ -1,30 +1,24 @@
-import React, {forwardRef, ElementType} from 'react';
+import React, {forwardRef} from 'react';
 
 import {Atoms} from '../../atoms/atoms.css';
 import {Box, BoxProps} from '../Box/Box';
 
 export interface GridProps extends Omit<BoxProps, 'rows'> {
-  alignItems?: Atoms['alignItems'];
-  alignSelf?: Atoms['alignSelf'];
-  justifyContent?: Atoms['justifyContent'];
-  justifySelf?: Atoms['justifySelf'];
   gap?: Atoms['gap'];
   place?: Atoms['placeContent'];
   grid?: string;
   rows?: string[];
   autoRows?: string;
+  autoColumns?: string;
   columns?: string[];
   areas?: string[];
   area?: string;
-  component?: ElementType;
 }
 
 export const Grid = forwardRef<HTMLElement, GridProps>(
   (
     {
       component,
-      alignItems,
-      alignSelf,
       gap,
       grid,
       area,
@@ -32,8 +26,7 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
       columns,
       rows,
       autoRows,
-      justifyContent,
-      justifySelf,
+      autoColumns,
       place,
       ...rest
     },
@@ -45,10 +38,6 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
         ref={ref}
         display="grid"
         component={component}
-        alignItems={alignItems}
-        alignSelf={alignSelf}
-        justifyContent={justifyContent}
-        justifySelf={justifySelf}
         gap={gap}
         placeContent={place}
         style={{
@@ -57,9 +46,10 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
           gridTemplateColumns: columns?.join(' '),
           gridTemplateRows: rows?.join(' '),
           gridAutoRows: autoRows,
-          ...(areas?.length
-            ? {gridTemplateAreas: `'${areas.join(`' '`)}'`}
-            : {}),
+          gridAutoColumns: autoColumns,
+          gridTemplateAreas: areas?.length
+            ? `'${areas.join(`' '`)}'`
+            : undefined,
           ...style,
         }}
         {...props}
