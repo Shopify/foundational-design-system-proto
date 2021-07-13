@@ -4,8 +4,10 @@ import {Atoms} from '../../atoms/atoms.css';
 import {Box, BoxProps} from '../Box/Box';
 
 export interface GridProps extends Omit<BoxProps, 'rows'> {
-  align?: Atoms['alignItems'];
-  justify?: Atoms['justifyContent'];
+  alignItems?: Atoms['alignItems'];
+  alignSelf?: Atoms['alignSelf'];
+  justifyContent?: Atoms['justifyContent'];
+  justifySelf?: Atoms['justifySelf'];
   gap?: Atoms['gap'];
   place?: Atoms['placeContent'];
   grid?: string;
@@ -20,7 +22,9 @@ export interface GridProps extends Omit<BoxProps, 'rows'> {
 export const Grid = forwardRef<HTMLElement, GridProps>(
   (
     {
-      align,
+      component,
+      alignItems,
+      alignSelf,
       gap,
       grid,
       area,
@@ -28,27 +32,37 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
       columns,
       rows,
       autoRows,
-      justify,
+      justifyContent,
+      justifySelf,
       place,
-      ...restProps
+      ...rest
     },
     ref,
   ) => {
+    const {style, ...props} = rest;
     return (
       <Box
         ref={ref}
         display="grid"
-        grid={grid}
-        gridArea={area}
-        gridTemplateAreas={areas}
-        gridTemplateColumns={columns}
-        gridTemplateRows={rows}
-        gridAutoRows={autoRows}
-        alignItems={align}
-        justifyContent={justify}
+        component={component}
+        alignItems={alignItems}
+        alignSelf={alignSelf}
+        justifyContent={justifyContent}
+        justifySelf={justifySelf}
         gap={gap}
         placeContent={place}
-        {...restProps}
+        style={{
+          grid,
+          gridArea: area,
+          gridTemplateColumns: columns?.join(' '),
+          gridTemplateRows: rows?.join(' '),
+          gridAutoRows: autoRows,
+          ...(areas?.length
+            ? {gridTemplateAreas: `'${areas.join(`' '`)}'`}
+            : {}),
+          ...style,
+        }}
+        {...props}
       />
     );
   },

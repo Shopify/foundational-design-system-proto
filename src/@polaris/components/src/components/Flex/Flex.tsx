@@ -4,32 +4,47 @@ import {Atoms} from '../../atoms';
 import {Box, BoxProps} from '../Box/Box';
 
 export interface FlexProps extends Omit<BoxProps, 'wrap' | 'placeContent'> {
-  align?: Atoms['alignItems'];
+  alignItems?: Atoms['alignItems'];
+  alignSelf?: Atoms['alignSelf'];
+  justifyContent?: Atoms['justifyContent'];
+  justifySelf?: Atoms['justifySelf'];
   basis?: Atoms['flexBasis'];
   direction?: Atoms['flexDirection'];
   grow?: Atoms['flexGrow'];
-  justify?: Atoms['justifyContent'];
   shrink?: Atoms['flexShrink'];
   wrap?: Atoms['flexWrap'];
 }
 
 export const Flex = forwardRef<HTMLElement, FlexProps>(
   (
-    {align, basis, direction, grow, justify, shrink, wrap, ...restProps},
+    {
+      alignItems,
+      alignSelf,
+      basis,
+      direction,
+      grow,
+      justifyContent,
+      justifySelf,
+      shrink,
+      wrap,
+      ...rest
+    },
     ref,
   ) => {
     return (
       <Box
         ref={ref}
         display="flex"
-        alignItems={align}
+        alignItems={alignItems}
+        alignSelf={alignSelf}
+        justifyContent={justifyContent}
+        justifySelf={justifySelf}
         flexBasis={basis}
         flexDirection={direction}
         flexGrow={grow}
         flexShrink={shrink}
         flexWrap={wrap}
-        justifyContent={justify}
-        {...restProps}
+        {...rest}
       />
     );
   },
