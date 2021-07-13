@@ -40,12 +40,12 @@ const IndexPage = () => {
 
       <Box margin="4">
         <Grid gap="4" areas={GRID_TEMPLATE_AREAS}>
-          <GridItem gridArea="area1">area 1</GridItem>
-          <GridItem gridArea="area2">area 2</GridItem>
-          <GridItem gridArea="area3">area 3</GridItem>
-          <GridItem gridArea="area4">area 4</GridItem>
-          <GridItem gridArea="area5">area 5</GridItem>
-          <GridItem gridArea="area6">area 6</GridItem>
+          <GridItem area="area1">area 1</GridItem>
+          <GridItem area="area2">area 2</GridItem>
+          <GridItem area="area3">area 3</GridItem>
+          <GridItem area="area4">area 4</GridItem>
+          <GridItem area="area5">area 5</GridItem>
+          <GridItem area="area6">area 6</GridItem>
         </Grid>
       </Box>
 
@@ -70,6 +70,7 @@ const IndexPage = () => {
           <GridItem>cell 4</GridItem>
         </Grid>
       </Box>
+      <div style={{background: 'red'}} />
     </Layout>
   );
 };
@@ -79,7 +80,7 @@ const Divider = () => (
 );
 
 const GridItem = (props: ComponentProps<typeof Grid>) => (
-  <Grid placeContent="center" style={{background: 'lightgray'}} {...props} />
+  <Grid.Item place="center" style={{background: 'lightgray'}} {...props} />
 );
 
 export default IndexPage;

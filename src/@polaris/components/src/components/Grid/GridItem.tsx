@@ -1,12 +1,10 @@
-import classNames from 'classnames';
 import React, {forwardRef} from 'react';
 
 import {atoms} from '../../atoms/atoms.css';
 
-import {GridItem} from './GridItem';
-import {GridProps} from './types';
+import {GridItemProps} from './types';
 
-export const Grid = forwardRef<HTMLElement, GridProps>(
+export const GridItem = forwardRef<HTMLElement, GridItemProps>(
   (
     {
       align,
@@ -36,8 +34,8 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
           gridTemplateColumns: columns?.join(' '),
           gridTemplateRows: rows?.join(' '),
           gridAutoRows: autoRows,
-          alignItems: align,
-          justifyContent: justify,
+          alignSelf: align,
+          justifySelf: justify,
           placeContent: place,
           ...restProps.style,
         },
@@ -48,5 +46,4 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
   },
 );
 
-Grid.displayName = 'Grid';
-Grid.Item = GridItem;
+GridItem.displayName = 'GridItem';
