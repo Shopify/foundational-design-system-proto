@@ -49,7 +49,7 @@ const IndexPage = () => {
         </Grid>
       </Box>
 
-      <Box margin="4" style={{background: 'lightgray', height: '1px'}} />
+      <Divider />
 
       <Box margin="4">
         <Grid gap="4" grid="1fr / auto-flow">
@@ -60,7 +60,7 @@ const IndexPage = () => {
         </Grid>
       </Box>
 
-      <Box margin="4" style={{background: 'lightgray', height: '1px'}} />
+      <Divider />
 
       <Box margin="4">
         <Grid gap="4" columns={['1fr', '1fr']} rows={['100px', '1fr']}>
@@ -73,6 +73,10 @@ const IndexPage = () => {
     </Layout>
   );
 };
+
+const Divider = () => (
+  <Box margin="4" style={{background: 'lightgray', height: '1px'}} />
+);
 
 const GridItem = (props: ComponentProps<typeof Grid>) => (
   <Grid placeContent="center" style={{background: 'lightgray'}} {...props} />
