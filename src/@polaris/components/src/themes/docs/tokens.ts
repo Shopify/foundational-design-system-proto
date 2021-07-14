@@ -1,28 +1,4 @@
-import tokens from '@polaris/tokens';
-
-const fonts = {
-  body: tokens.fonts.system,
-  code: tokens.fonts.monospace,
-};
-
-const fontWeights = {
-  ...tokens.fontWeights,
-};
-
-const fontSizes = {
-  ...tokens.fontSizes,
-};
-
-const spacing = {
-  ...tokens.spacing,
-  none: '0px',
-  half: tokens.spacing[0.5],
-  '1': tokens.spacing[1],
-  '2': tokens.spacing[2],
-  '3': tokens.spacing[3],
-  '4': tokens.spacing[4],
-  '5': tokens.spacing[5],
-};
+import {fonts, fontSizes, fontWeights, spacing} from '@polaris/tokens';
 
 const docsTokens = {
   fonts,

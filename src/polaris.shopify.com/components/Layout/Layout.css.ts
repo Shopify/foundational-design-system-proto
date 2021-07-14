@@ -3,9 +3,9 @@ import {atoms, vars} from '@polaris/components';
 
 export const root = composeStyles(
   atoms({
-    margin: '4',
+    marginY: '4',
   }),
   style({
-    fontFamily: vars.fonts.body,
+    fontFamily: vars.fonts.system,
   }),
 );

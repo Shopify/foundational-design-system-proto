@@ -1,17 +1,17 @@
 import {style, styleVariants} from '@vanilla-extract/css';
-import {tokens} from '@polaris/tokens';
+import {colors} from '@polaris/tokens';
 
 export const linkStyle = style({
-  color: tokens.colors.interactive,
+  color: colors.interactive,
   textDecoration: 'underline',
   cursor: 'pointer',
 
   ':hover': {
-    color: tokens.colors.hover,
+    color: colors.hover,
   },
 
   ':active': {
-    color: tokens.colors.pressed,
+    color: colors.pressed,
   },
 });
 
