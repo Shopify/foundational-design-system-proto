@@ -1,4 +1,5 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
+import colors from 'src/@polaris/tokens/src/colors';
 
 import {vars} from '../themes/vars.css';
 
@@ -17,6 +18,8 @@ const styles = createAtomicStyles({
     paddingLeft: spacing,
     paddingRight: spacing,
     textAlign: ['left', 'center', 'right'],
+    backgroundColor: colors,
+    borderRadius: spacing,
     display: [
       'block',
       'inline',
