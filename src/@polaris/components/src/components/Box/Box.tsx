@@ -78,7 +78,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         flexShrink,
       }),
       rest.className,
-    );
+    ) || null;
 
     return createElement(component, {
       ...rest,
