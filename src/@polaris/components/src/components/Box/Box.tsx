@@ -6,7 +6,7 @@ import {atoms, Atoms} from '../../atoms';
 export interface BoxProps
   extends Omit<
       AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor'
+      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
     >,
     Atoms {
   component?: ElementType;
@@ -45,6 +45,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       flexShrink,
       backgroundColor,
       borderRadius,
+      width,
+      minWidth,
+      maxWidth,
+      height,
+      minHeight,
+      maxHeight,
       ...rest
     },
     ref,
@@ -81,6 +87,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           flexShrink,
           backgroundColor,
           borderRadius,
+          width,
+          minWidth,
+          maxWidth,
+          height,
+          minHeight,
+          maxHeight,
         }),
         rest.className,
       ) || null;
