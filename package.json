@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "cd src/@polaris/components && yarn build",
+    "build": "cd src/@polaris/components && yarn build && cd ../../..",
     "build:app": "tsc && vite build",
     "start": "vite preview",
     "lint": "eslint '**/*.{js,ts,tsx}'",
