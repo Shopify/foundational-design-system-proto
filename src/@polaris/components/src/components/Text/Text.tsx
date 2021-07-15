@@ -27,7 +27,7 @@ export interface TextProps
 
 export const useTextStyles = ({
   weight = 'regular',
-  type = 'body',
+  type = 'system',
   align,
   fontSize = 'base',
 }: TextStyleProps) =>

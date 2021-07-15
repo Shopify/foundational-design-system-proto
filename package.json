@@ -1,9 +1,20 @@
 {
-  "name": "polaris",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@shopify/layout-experimental",
+  "version": "0.0.1-alpha",
   "author": "Shopify",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/layout-experimental.umd.js",
+  "module": "./dist/layout-experimental.es.js",
+  "types": "./dist/components/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/layout-experimental.es.js",
+      "require": "./dist/layout-experimental.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "cd src/@polaris/components && yarn build && cd ../../..",
@@ -18,7 +29,6 @@
     "@vanilla-extract/sprinkles": "^0.4.2",
     "@vanilla-extract/vite-plugin": "^1.0.0",
     "classnames": "^2.3.1",
-    "polished": "^4.1.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.2.0"
