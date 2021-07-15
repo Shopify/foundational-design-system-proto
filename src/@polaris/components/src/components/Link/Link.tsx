@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import {variant, linkStyle} from './Link.css';
 
-interface LinkProps extends AllHTMLAttributes<HTMLAnchorElement> {
+export interface LinkProps extends AllHTMLAttributes<HTMLAnchorElement> {
   component?: ElementType;
   variant?: 'nounderline';
 }

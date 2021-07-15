@@ -129,6 +129,7 @@ const styles = createAtomicStyles({
       full: '100%',
       screen: '100vh',
     },
+    color: colors,
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
@@ -137,6 +138,7 @@ const styles = createAtomicStyles({
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
+    spacing: ['gap'],
   },
 });
 

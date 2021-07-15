@@ -41,6 +41,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       justifySelf,
       flexWrap,
       gap,
+      spacing,
       flexGrow,
       flexShrink,
       backgroundColor,
@@ -51,6 +52,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       height,
       minHeight,
       maxHeight,
+      color,
       ...rest
     },
     ref,
@@ -83,6 +85,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           justifySelf,
           flexWrap,
           gap,
+          spacing,
           flexGrow,
           flexShrink,
           backgroundColor,
@@ -93,6 +96,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           height,
           minHeight,
           maxHeight,
+          color,
         }),
         rest.className,
       ) || null;

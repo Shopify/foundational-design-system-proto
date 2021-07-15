@@ -1,6 +1,6 @@
 {
   "name": "@shopify/layout-experimental",
-  "version": "0.0.1-alpha",
+  "version": "0.0.4-alpha",
   "author": "Shopify",
   "license": "MIT",
   "files": [
@@ -54,5 +54,8 @@
     "singleQuote": true,
     "trailingComma": "all",
     "bracketSpacing": false
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
