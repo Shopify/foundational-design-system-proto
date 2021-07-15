@@ -1,5 +1,14 @@
-import React, {ComponentProps} from 'react';
-import {Grid, Box, Flex, Text} from '@polaris/components';
+import React from 'react';
+import {
+  Box,
+  BoxProps,
+  Flex,
+  Grid,
+  GridProps,
+  Inline,
+  Stack,
+  Text,
+} from '@polaris/components';
 
 import {Heading} from '../components/Heading';
 import {Layout} from '../components/Layout';
@@ -70,14 +79,38 @@ const IndexPage = () => {
           <GridItem>cell 4</GridItem>
         </Grid>
       </Box>
+
+      <Divider />
+
+      <Box margin="4">
+        <Stack align="center" justify="space-evenly" spacing="4">
+          <BoxItem style={{minHeight: '100px'}}>Stack 1</BoxItem>
+          <BoxItem style={{minHeight: '80px'}}>Stack 2</BoxItem>
+          <BoxItem style={{minHeight: '120px'}}>Stack 3</BoxItem>
+        </Stack>
+      </Box>
+
+      <Divider />
+
+      <Box margin="4">
+        <Inline align="center" justify="flex-end" spacing="4">
+          <BoxItem style={{minWidth: '100px'}}>Inline 1</BoxItem>
+          <BoxItem style={{minWidth: '80px'}}>Inline 2</BoxItem>
+          <BoxItem style={{minWidth: '120px'}}>Inline 3</BoxItem>
+        </Inline>
+      </Box>
     </Layout>
   );
 };
 
 const Divider = () => <Box margin="4" backgroundColor="gray-300" height="px" />;
 
-const GridItem = (props: ComponentProps<typeof Grid>) => (
+const GridItem = (props: GridProps) => (
   <Grid placeContent="center" backgroundColor="gray-300" {...props} />
+);
+
+const BoxItem = (props: BoxProps) => (
+  <Box backgroundColor="gray-300" {...props} />
 );
 
 export default IndexPage;
