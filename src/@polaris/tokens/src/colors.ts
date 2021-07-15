@@ -14,6 +14,7 @@ export const colors = {
   interactive: '#2c63cb',
   pressed: '#103262',
   hover: '#1F5199',
+  brand: '#5A31F4',
 };
 
 export default colors;

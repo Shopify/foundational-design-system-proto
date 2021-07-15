@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Flex, Text, Grid} from '@polaris/components';
 import {Icon} from '@shopify/polaris';
 import '@shopify/polaris/dist/styles.css';
+import './demo.css';
 import {
   ArrowRightMinor,
   ArrowLeftMinor,
@@ -58,22 +59,26 @@ const DemoPage = () => {
             />
           </Box>
         </Box>
-        <Box padding="5" backgroundColor="gray-0" paddingTop="24">
-          <Flex justifyContent="space-between" alignItems="center">
-            <Text weight="strong" fontSize="5xl">
+        <Box padding="5" backgroundColor="gray-0" paddingTop="16">
+          <Flex
+            justifyContent="space-between"
+            alignItems="center"
+            marginBottom="4"
+          >
+            <Text component="h1" weight="strong" fontSize="3xl">
               SnowDevil
             </Text>
             <Box
-              borderRadius="2"
+              borderRadius="1"
               paddingX="4"
-              paddingY="1"
               backgroundColor="gray-900"
               color="gray-0"
+              alignSelf="center"
             >
-              <Text fontSize="sm">Follow</Text>
+              <Text fontSize="xs">Follow</Text>
             </Box>
           </Flex>
-          <Box as="p">
+          <Box component="p">
             Snowdevil is not your typical snowboard store. Instead, Snowdevil is
             a partnership among two riders who are only interested in selling
             boards and bindings that they love to ride on...{' '}
@@ -85,7 +90,7 @@ const DemoPage = () => {
               <Box>
                 <img src="/static/demo/burton-logo.png" alt="Burton" />
               </Box>
-              <Text>
+              <Text fontSize="sm">
                 Similar to Burton, Never Summer, Arbor, and 5 other stores you
                 follow
               </Text>
@@ -93,7 +98,7 @@ const DemoPage = () => {
           </Box>
 
           <Flex justifyContent="space-between">
-            <Text weight="strong" fontSize="3xl">
+            <Text component="h2" weight="strong" fontSize="xl">
               Featured products
             </Text>
             <Icon source={ArrowRightMinor} />
@@ -114,12 +119,20 @@ const DemoPage = () => {
             <Box>
               <Box borderRadius="4" style={{overflow: 'hidden'}}>
                 <img src="/static/demo/burton-stylus.jpg" alt="Burton Stylus" />
+                <Box
+                  color="gray-0"
+                  display="inline-block"
+                  borderRadius="1"
+                  backgroundColor="brand"
+                >
+                  <Text fontSize="xs">Sale</Text>
+                </Box>
               </Box>
 
               <Text weight="medium">Burton Stylus Flat Top</Text>
               <br />
               <Text>$899.99</Text>
-              <Text>$719.99</Text>
+              <Text color="brand">$719.99</Text>
             </Box>
           </Grid>
 
