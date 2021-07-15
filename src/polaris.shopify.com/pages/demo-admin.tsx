@@ -32,9 +32,10 @@ const DemoPage = () => {
             title="SnowDevil"
             breadcrumbs={[{content: 'Home', url: '/'}]}
             thumbnail={
-              <Thumbnail
-                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-                alt="Black leather pet collar"
+              <Avatar
+                name="SnowDevil"
+                size="large"
+                source="/static/demo/snowdevil.png"
               />
             }
             primaryAction={{content: 'Follow'}}
@@ -56,7 +57,11 @@ const DemoPage = () => {
                   <Stack.Item>
                     <Stack wrap={false}>
                       <Stack.Item>
-                        <Avatar name="Burton" size="small" initials="B" />
+                        <Avatar
+                          name="Burton"
+                          size="small"
+                          source="/static/demo/burton-logo.png"
+                        />
                       </Stack.Item>
                       <Stack.Item>
                         <Avatar
@@ -93,7 +98,7 @@ const DemoPage = () => {
                 <Stack.Item>
                   <Thumbnail
                     size="large"
-                    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                    source="/static/demo/burton-throwback.jpg"
                     alt="Black choker necklace"
                   />
                   <TextContainer>
@@ -107,7 +112,7 @@ const DemoPage = () => {
                 <Stack.Item>
                   <Thumbnail
                     size="large"
-                    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                    source="/static/demo/burton-stylus.jpg"
                     alt="Black choker necklace"
                   />
                   <TextContainer>
