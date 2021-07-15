@@ -2,5 +2,7 @@ dependencies:
   override:
     - yarn
 deploy:
+  pre:
+    - yarn build
   override:
     - buildkite-trigger polaris-publish-package
