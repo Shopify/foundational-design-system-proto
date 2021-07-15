@@ -38,17 +38,6 @@ const DemoPage = () => {
               />
             }
             primaryAction={{content: 'Follow'}}
-            secondaryActions={[
-              {
-                content: 'Duplicate',
-                accessibilityLabel: 'Secondary action label',
-                onAction: () => {},
-              },
-              {
-                content: 'View on your store',
-                onAction: () => {},
-              },
-            ]}
           >
             <Stack distribution="fillEvenly">
               <Card sectioned>
@@ -57,7 +46,7 @@ const DemoPage = () => {
                     Snowdevil is not your typical snowboard store. Instead,
                     Snowdevil is a partnership among two riders who are only
                     interested in selling boards and bindings that they love to
-                    ride on... <Link to="#">more</Link>
+                    ride on... <Link to="#">view more</Link>
                   </p>
                 </TextContainer>
               </Card>
@@ -70,7 +59,11 @@ const DemoPage = () => {
                         <Avatar name="Burton" size="small" initials="B" />
                       </Stack.Item>
                       <Stack.Item>
-                        <Avatar name="Summer" size="small" initials="S" />
+                        <Avatar
+                          name="Never Summer"
+                          size="small"
+                          initials="NS"
+                        />
                       </Stack.Item>
                       <Stack.Item>
                         <Avatar name="Arbor" size="small" initials="A" />
@@ -104,7 +97,11 @@ const DemoPage = () => {
                     alt="Black choker necklace"
                   />
                   <TextContainer>
-                    <p>Hello world</p>
+                    <p>
+                      Burton Throwback
+                      <br />
+                      $175.00
+                    </p>
                   </TextContainer>
                 </Stack.Item>
                 <Stack.Item>
@@ -114,27 +111,10 @@ const DemoPage = () => {
                     alt="Black choker necklace"
                   />
                   <TextContainer>
-                    <p>Hello world</p>
-                  </TextContainer>
-                </Stack.Item>
-                <Stack.Item>
-                  <Thumbnail
-                    size="large"
-                    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-                    alt="Black choker necklace"
-                  />
-                  <TextContainer>
-                    <p>Hello world</p>
-                  </TextContainer>
-                </Stack.Item>
-                <Stack.Item>
-                  <Thumbnail
-                    size="large"
-                    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-                    alt="Black choker necklace"
-                  />
-                  <TextContainer>
-                    <p>Hello world</p>
+                    <p>
+                      Burton Stylus Flat Top <br />
+                      <span>$899.99</span> <span>$719.99</span>
+                    </p>
                   </TextContainer>
                 </Stack.Item>
               </Stack>
