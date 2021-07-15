@@ -34,7 +34,7 @@ const DemoPage = () => {
           overflow: 'hidden',
         }}
       >
-        <Box color="gray-0" style={{position: 'relative'}}>
+        <Box color="gray-0" position="relative">
           <img src="/static/demo/hero.jpg" alt="Snowboarder" />
           <Flex
             justifyContent="space-between"
@@ -85,7 +85,14 @@ const DemoPage = () => {
             <Link to="#">view more</Link>
           </Box>
 
-          <Box padding="4">
+          <Box
+            padding="3"
+            marginY="6"
+            borderStyle="solid"
+            borderWidth="1px"
+            borderColor="gray-300"
+            borderRadius="2"
+          >
             <Flex>
               <Box>
                 <img src="/static/demo/burton-logo.png" alt="Burton" />
@@ -117,13 +124,17 @@ const DemoPage = () => {
               <Text> $175.00</Text>
             </Box>
             <Box>
-              <Box borderRadius="4" style={{overflow: 'hidden'}}>
+              <Box borderRadius="4" overflow="hidden" position="relative">
                 <img src="/static/demo/burton-stylus.jpg" alt="Burton Stylus" />
                 <Box
                   color="gray-0"
                   display="inline-block"
                   borderRadius="1"
                   backgroundColor="brand"
+                  paddingX="2"
+                  position="absolute"
+                  bottom="2"
+                  left="2"
                 >
                   <Text fontSize="xs">Sale</Text>
                 </Box>
