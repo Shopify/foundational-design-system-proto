@@ -41,6 +41,7 @@ const DemoPage = () => {
           border: '5px solid black',
           borderRadius: '40px',
           marginTop: '50px',
+          marginLeft: '30px',
         }}
       >
         <AppProvider i18n={enTranslations}>
