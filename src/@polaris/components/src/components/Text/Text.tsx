@@ -5,7 +5,7 @@ import {
   ElementType,
   ReactNode,
 } from 'react';
-import classnames from 'classnames';
+import {classNames} from '@polaris/components';
 
 import {atoms, Atoms} from '../../atoms/atoms.css';
 
@@ -31,7 +31,7 @@ export const useTextStyles = ({
   align,
   fontSize = 'base',
 }: TextStyleProps) =>
-  classnames(
+  classNames(
     styles.font[type],
     atoms({textAlign: align, fontSize, fontWeight: weight}),
   );
@@ -44,7 +44,7 @@ export const Text = forwardRef<HTMLElement, TextProps>(
     return createElement(
       component,
       {
-        className: classnames(
+        className: classNames(
           useTextStyles({weight, type, align, fontSize}),
           className,
         ),
