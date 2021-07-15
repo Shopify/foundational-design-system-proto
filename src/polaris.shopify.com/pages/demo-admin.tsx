@@ -10,6 +10,7 @@ import {
   Stack,
   Avatar,
   Page,
+  Badge,
 } from '@shopify/polaris';
 import {ArrowRightMinor} from '@shopify/polaris-icons';
 import '@shopify/polaris/dist/styles.css';
@@ -110,11 +111,19 @@ const DemoPage = () => {
                   </TextContainer>
                 </Stack.Item>
                 <Stack.Item>
-                  <Thumbnail
-                    size="large"
-                    source="/static/demo/burton-stylus.jpg"
-                    alt="Black choker necklace"
-                  />
+                  <div style={{position: 'relative'}}>
+                    <Thumbnail
+                      size="large"
+                      source="/static/demo/burton-stylus.jpg"
+                      alt="Black choker necklace"
+                    />
+                    <div
+                      style={{position: 'absolute', bottom: '3px', left: '3px'}}
+                    >
+                      <Badge status="info">Sale</Badge>
+                    </div>
+                  </div>
+
                   <TextContainer>
                     <p>
                       Burton Stylus Flat Top <br />
