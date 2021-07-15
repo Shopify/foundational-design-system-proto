@@ -6,6 +6,15 @@ import {vars} from '../themes/vars.css';
 const {spacing, fontWeights, fontSizes} = vars;
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
+const textDecorationLine = [
+  'none',
+  'underline',
+  'overline',
+  'line-through',
+  'blink',
+  'initial',
+] as const;
+
 const screens = {
   'screen-sm': '640px',
   'screen-md': '768px',
@@ -130,6 +139,7 @@ const styles = createAtomicStyles({
       screen: '100vh',
     },
     color: colors,
+    textDecorationLine,
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
@@ -139,6 +149,7 @@ const styles = createAtomicStyles({
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     spacing: ['gap'],
+    textDecoration: ['textDecorationLine'],
   },
 });
 
