@@ -1,5 +1,7 @@
 import React from 'react';
-import {Atoms, Flex, FlexProps} from '@polaris/components';
+
+import {Atoms} from '../../atoms';
+import {Flex, FlexProps} from '../Flex';
 
 export interface InlineProps extends FlexProps {
   align?: Atoms['alignItems'];
