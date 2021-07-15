@@ -137,6 +137,7 @@ const styles = createAtomicStyles({
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
+    spacing: ['gap'],
   },
 });
 
