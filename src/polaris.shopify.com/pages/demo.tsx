@@ -94,9 +94,23 @@ const DemoPage = () => {
             borderRadius="2"
           >
             <Flex>
-              <Box>
-                <img src="/static/demo/burton-logo.png" alt="Burton" />
-              </Box>
+              <Flex flexShrink={0} flexDirection="row-reverse" marginRight="4">
+                <Box
+                  marginLeft="-3"
+                  style={{width: '24px', height: '24px'}}
+                  backgroundColor="light-violet-09"
+                  borderRadius="2"
+                />
+                <Box
+                  marginLeft="-3"
+                  style={{width: '24px', height: '24px'}}
+                  backgroundColor="light-azure-09"
+                  borderRadius="2"
+                />
+                <Box style={{width: '24px', height: '24px'}}>
+                  <img src="/static/demo/burton-logo.png" alt="Burton" />
+                </Box>
+              </Flex>
               <Text fontSize="sm">
                 Similar to Burton, Never Summer, Arbor, and 5 other stores you
                 follow

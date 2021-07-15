@@ -15,6 +15,8 @@ export const colors = {
   pressed: '#103262',
   hover: '#1F5199',
   brand: '#5A31F4',
+  'light-azure-09': '#4090FF',
+  'light-violet-09': '#C669EC',
 };
 
 export default colors;
