@@ -12,8 +12,16 @@ import {
   Page,
   Badge,
   TextStyle,
+  ButtonGroup,
+  Button,
 } from '@shopify/polaris';
-import {ArrowRightMinor} from '@shopify/polaris-icons';
+import {
+  ArrowRightMinor,
+  HomeMajor,
+  SearchMajor,
+  CheckoutMajor,
+  CustomersMajor,
+} from '@shopify/polaris-icons';
 import '@shopify/polaris/dist/styles.css';
 
 import {Heading} from '../components/Heading';
@@ -27,7 +35,13 @@ const DemoPage = () => {
       <Link to="/">Back home</Link>
 
       <div
-        style={{width: '375px', height: '858px', border: '1px solid hotpink'}}
+        style={{
+          width: '375px',
+          height: '858px',
+          border: '5px solid black',
+          borderRadius: '40px',
+          marginTop: '50px',
+        }}
       >
         <AppProvider i18n={enTranslations}>
           <Page
@@ -44,16 +58,14 @@ const DemoPage = () => {
           >
             <div style={{marginLeft: '2rem', marginRight: '2rem'}}>
               <Stack distribution="fillEvenly" spacing="loose" vertical>
-                <Card sectioned>
-                  <TextContainer>
-                    <p>
-                      Snowdevil is not your typical snowboard store. Instead,
-                      Snowdevil is a partnership among two riders who are only
-                      interested in selling boards and bindings that they love
-                      to ride on... <Link to="#">view more</Link>
-                    </p>
-                  </TextContainer>
-                </Card>
+                <TextContainer>
+                  <p>
+                    Snowdevil is not your typical snowboard store. Instead,
+                    Snowdevil is a partnership among two riders who are only
+                    interested in selling boards and bindings that they love to
+                    ride on... <Link to="#">view more</Link>
+                  </p>
+                </TextContainer>
 
                 <Card sectioned>
                   <Stack wrap={false}>
@@ -143,6 +155,24 @@ const DemoPage = () => {
                       </p>
                     </TextContainer>
                   </Stack.Item>
+                </Stack>
+                <Stack distribution="center">
+                  <ButtonGroup segmented>
+                    <Button
+                      icon={HomeMajor}
+                      accessibilityLabel="Home"
+                      pressed
+                    />
+                    <Button icon={SearchMajor} accessibilityLabel="Search" />
+                    <Button
+                      icon={CheckoutMajor}
+                      accessibilityLabel="Checkout"
+                    />
+                    <Button
+                      icon={CustomersMajor}
+                      accessibilityLabel="Customer"
+                    />
+                  </ButtonGroup>
                 </Stack>
               </Stack>
             </div>
