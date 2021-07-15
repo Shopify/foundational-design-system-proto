@@ -11,6 +11,7 @@ import {
   Avatar,
   Page,
   Badge,
+  TextStyle,
 } from '@shopify/polaris';
 import {ArrowRightMinor} from '@shopify/polaris-icons';
 import '@shopify/polaris/dist/styles.css';
@@ -41,98 +42,110 @@ const DemoPage = () => {
             }
             primaryAction={{content: 'Follow'}}
           >
-            <Stack distribution="fillEvenly">
-              <Card sectioned>
-                <TextContainer>
-                  <p>
-                    Snowdevil is not your typical snowboard store. Instead,
-                    Snowdevil is a partnership among two riders who are only
-                    interested in selling boards and bindings that they love to
-                    ride on... <Link to="#">view more</Link>
-                  </p>
-                </TextContainer>
-              </Card>
-
-              <Card sectioned>
-                <Stack wrap={false}>
-                  <Stack.Item>
-                    <Stack wrap={false}>
-                      <Stack.Item>
-                        <Avatar
-                          name="Burton"
-                          size="small"
-                          source="/static/demo/burton-logo.png"
-                        />
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Avatar
-                          name="Never Summer"
-                          size="small"
-                          initials="NS"
-                        />
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Avatar name="Arbor" size="small" initials="A" />
-                      </Stack.Item>
-                    </Stack>
-                  </Stack.Item>
-                  <Stack.Item fill>
+            <div style={{marginLeft: '2rem', marginRight: '2rem'}}>
+              <Stack distribution="fillEvenly" spacing="loose" vertical>
+                <Card sectioned>
+                  <TextContainer>
                     <p>
-                      Similar to Burton, Never Summer, Arbor, and 5 other stores
-                      you follow
+                      Snowdevil is not your typical snowboard store. Instead,
+                      Snowdevil is a partnership among two riders who are only
+                      interested in selling boards and bindings that they love
+                      to ride on... <Link to="#">view more</Link>
                     </p>
+                  </TextContainer>
+                </Card>
+
+                <Card sectioned>
+                  <Stack wrap={false}>
+                    <Stack.Item>
+                      <Stack wrap={false}>
+                        <Stack.Item>
+                          <Avatar
+                            name="Burton"
+                            size="small"
+                            source="/static/demo/burton-logo.png"
+                          />
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Avatar
+                            name="Never Summer"
+                            size="small"
+                            initials="NS"
+                          />
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Avatar name="Arbor" size="small" initials="A" />
+                        </Stack.Item>
+                      </Stack>
+                    </Stack.Item>
+                    <Stack.Item fill>
+                      <p>
+                        Similar to Burton, Never Summer, Arbor, and 5 other
+                        stores you follow
+                      </p>
+                    </Stack.Item>
+                  </Stack>
+                </Card>
+
+                <Stack wrap={false}>
+                  <Stack.Item fill>
+                    <TextContainer>
+                      <PolarisHeading>Featured products</PolarisHeading>
+                    </TextContainer>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Icon source={ArrowRightMinor} />
                   </Stack.Item>
                 </Stack>
-              </Card>
-
-              <Stack wrap={false}>
-                <Stack.Item fill>
-                  <TextContainer>
-                    <PolarisHeading>Featured products</PolarisHeading>
-                  </TextContainer>
-                </Stack.Item>
-                <Stack.Item>
-                  <Icon source={ArrowRightMinor} />
-                </Stack.Item>
-              </Stack>
-              <Stack>
-                <Stack.Item>
-                  <Thumbnail
-                    size="large"
-                    source="/static/demo/burton-throwback.jpg"
-                    alt="Black choker necklace"
-                  />
-                  <TextContainer>
-                    <p>
-                      Burton Throwback
-                      <br />
-                      $175.00
-                    </p>
-                  </TextContainer>
-                </Stack.Item>
-                <Stack.Item>
-                  <div style={{position: 'relative'}}>
+                <Stack spacing="loose" distribution="fillEvenly">
+                  <Stack.Item>
                     <Thumbnail
                       size="large"
-                      source="/static/demo/burton-stylus.jpg"
+                      source="/static/demo/burton-throwback.jpg"
                       alt="Black choker necklace"
                     />
-                    <div
-                      style={{position: 'absolute', bottom: '3px', left: '3px'}}
-                    >
-                      <Badge status="info">Sale</Badge>
+                    <TextContainer>
+                      <p>
+                        <TextStyle variation="strong">
+                          Burton Throwback
+                        </TextStyle>
+                        <br />
+                        $175.00
+                      </p>
+                    </TextContainer>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <div style={{position: 'relative'}}>
+                      <Thumbnail
+                        size="large"
+                        source="/static/demo/burton-stylus.jpg"
+                        alt="Black choker necklace"
+                      />
+                      <div
+                        style={{
+                          position: 'absolute',
+                          bottom: '3px',
+                          left: '3px',
+                        }}
+                      >
+                        <Badge status="success">Sale</Badge>
+                      </div>
                     </div>
-                  </div>
 
-                  <TextContainer>
-                    <p>
-                      Burton Stylus Flat Top <br />
-                      <span>$899.99</span> <span>$719.99</span>
-                    </p>
-                  </TextContainer>
-                </Stack.Item>
+                    <TextContainer>
+                      <p>
+                        <TextStyle variation="strong">
+                          Burton Stylus Flat Top
+                        </TextStyle>
+                        <br />
+                        <TextStyle variation="subdued">$899.99</TextStyle>{' '}
+                        <TextStyle variation="positive">$719.99</TextStyle>
+                      </p>
+                    </TextContainer>
+                  </Stack.Item>
+                </Stack>
               </Stack>
-            </Stack>
+            </div>
           </Page>
         </AppProvider>
       </div>
