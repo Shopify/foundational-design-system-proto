@@ -32,7 +32,7 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
     },
     ref,
   ) => {
-    const {style, ...props} = rest;
+    const {UNSAFE_style, ...props} = rest;
     return (
       <Box
         ref={ref}
@@ -40,7 +40,7 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
         component={component}
         gap={gap}
         placeContent={place}
-        style={{
+        UNSAFE_style={{
           grid,
           gridArea: area,
           gridTemplateColumns: columns?.join(' '),
@@ -50,7 +50,7 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
           gridTemplateAreas: areas?.length
             ? `'${areas.join(`' '`)}'`
             : undefined,
-          ...style,
+          ...UNSAFE_style,
         }}
         {...props}
       />

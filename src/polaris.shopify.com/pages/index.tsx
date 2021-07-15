@@ -84,9 +84,9 @@ const IndexPage = () => {
 
       <Box margin="4">
         <Stack align="center" justify="space-evenly" spacing="4">
-          <BoxItem style={{minHeight: '100px'}}>Stack 1</BoxItem>
-          <BoxItem style={{minHeight: '80px'}}>Stack 2</BoxItem>
-          <BoxItem style={{minHeight: '120px'}}>Stack 3</BoxItem>
+          <BoxItem UNSAFE_style={{minHeight: '100px'}}>Stack 1</BoxItem>
+          <BoxItem UNSAFE_style={{minHeight: '80px'}}>Stack 2</BoxItem>
+          <BoxItem UNSAFE_style={{minHeight: '120px'}}>Stack 3</BoxItem>
         </Stack>
       </Box>
 
@@ -94,21 +94,26 @@ const IndexPage = () => {
 
       <Box margin="4">
         <Inline align="center" justify="flex-end" spacing="4">
-          <BoxItem style={{minWidth: '100px'}}>Inline 1</BoxItem>
-          <BoxItem style={{minWidth: '80px'}}>Inline 2</BoxItem>
-          <BoxItem style={{minWidth: '120px'}}>Inline 3</BoxItem>
+          <BoxItem UNSAFE_style={{minWidth: '100px'}}>Inline 1</BoxItem>
+          <BoxItem UNSAFE_style={{minWidth: '80px'}}>Inline 2</BoxItem>
+          <BoxItem UNSAFE_style={{minWidth: '120px'}}>Inline 3</BoxItem>
         </Inline>
       </Box>
 
       {/* negative margins */}
       <Box margin="4">
         <Inline align="center" spacing="-5">
-          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>Inline 1</BoxItem>
-          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>Inline 2</BoxItem>
-          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>Inline 3</BoxItem>
+          <BoxItem UNSAFE_style={{minWidth: '80px', border: 'solid black 1px'}}>
+            Inline 1
+          </BoxItem>
+          <BoxItem UNSAFE_style={{minWidth: '80px', border: 'solid black 1px'}}>
+            Inline 2
+          </BoxItem>
+          <BoxItem UNSAFE_style={{minWidth: '80px', border: 'solid black 1px'}}>
+            Inline 3
+          </BoxItem>
         </Inline>
       </Box>
-
     </Layout>
   );
 };

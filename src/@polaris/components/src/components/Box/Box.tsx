@@ -1,4 +1,10 @@
-import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
+import React, {
+  createElement,
+  forwardRef,
+  AllHTMLAttributes,
+  ElementType,
+  CSSProperties,
+} from 'react';
 import classnames from 'classnames';
 
 import {atoms, Atoms} from '../../atoms';
@@ -6,9 +12,17 @@ import {atoms, Atoms} from '../../atoms';
 export interface BoxProps
   extends Omit<
       AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
+      | 'content'
+      | 'height'
+      | 'translate'
+      | 'color'
+      | 'width'
+      | 'cursor'
+      | 'size'
+      | 'style'
     >,
     Atoms {
+  UNSAFE_style?: CSSProperties;
   component?: ElementType;
 }
 
@@ -53,6 +67,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       minHeight,
       maxHeight,
       color,
+      UNSAFE_style,
       ...rest
     },
     ref,
@@ -104,6 +119,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     return createElement(component, {
       ...rest,
       className,
+      style: UNSAFE_style,
       ref,
     });
   },
