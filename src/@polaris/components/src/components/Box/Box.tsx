@@ -52,6 +52,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       height,
       minHeight,
       maxHeight,
+      color,
       ...rest
     },
     ref,
@@ -95,6 +96,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           height,
           minHeight,
           maxHeight,
+          color,
         }),
         rest.className,
       ) || null;

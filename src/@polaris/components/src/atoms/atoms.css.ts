@@ -129,6 +129,7 @@ const styles = createAtomicStyles({
       full: '100%',
       screen: '100vh',
     },
+    color: colors,
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
