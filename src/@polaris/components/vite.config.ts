@@ -13,6 +13,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: '@polaris/layout-experimental',
     },
+    outDir: '../../../dist',
     rollupOptions: {
       external: ['react'],
       output: {
