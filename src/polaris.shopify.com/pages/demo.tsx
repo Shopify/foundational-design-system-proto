@@ -156,7 +156,7 @@ const DemoPage = () => {
 
               <Text weight="medium">Burton Stylus Flat Top</Text>
               <br />
-              <Text>$899.99</Text>
+              <Text textDecoration="line-through">$899.99</Text>
               <Text color="brand">$719.99</Text>
             </Box>
           </Grid>
