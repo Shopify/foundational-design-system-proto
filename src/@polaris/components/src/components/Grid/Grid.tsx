@@ -1,6 +1,6 @@
 import React, {forwardRef} from 'react';
 
-import {Atoms} from '../../atoms/atoms.css';
+import {Atoms} from '../../atoms';
 import {Box, BoxProps} from '../Box/Box';
 
 export interface GridProps extends Omit<BoxProps, 'rows'> {
