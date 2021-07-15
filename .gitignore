@@ -18,3 +18,7 @@ yarn-error.log*
 # Shopify
 /.shadowenv.d/
 /.dev/
+
+# yalc
+.yalc
+yalc.lock

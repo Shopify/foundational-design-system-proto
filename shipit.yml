@@ -1,0 +1,6 @@
+dependencies:
+  override:
+    - yarn
+deploy:
+  override:
+    - buildkite-trigger polaris-publish-package
