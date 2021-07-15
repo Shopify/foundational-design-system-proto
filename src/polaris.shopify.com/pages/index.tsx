@@ -74,12 +74,10 @@ const IndexPage = () => {
   );
 };
 
-const Divider = () => (
-  <Box margin="4" style={{background: 'lightgray', height: '1px'}} />
-);
+const Divider = () => <Box margin="4" backgroundColor="gray-300" height="px" />;
 
 const GridItem = (props: ComponentProps<typeof Grid>) => (
-  <Grid placeContent="center" style={{background: 'lightgray'}} {...props} />
+  <Grid placeContent="center" backgroundColor="gray-300" {...props} />
 );
 
 export default IndexPage;
