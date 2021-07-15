@@ -53,5 +53,8 @@
     "singleQuote": true,
     "trailingComma": "all",
     "bracketSpacing": false
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
