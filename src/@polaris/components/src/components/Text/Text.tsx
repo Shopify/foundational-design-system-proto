@@ -17,6 +17,7 @@ interface TextStyleProps {
   type?: Exclude<keyof typeof styles.font, 'brand' | 'heading'>;
   weight?: Atoms['fontWeight'];
   color?: Atoms['color'];
+  textDecoration?: Atoms['textDecoration'];
 }
 
 export interface TextProps
@@ -32,10 +33,17 @@ export const useTextStyles = ({
   align,
   fontSize = 'base',
   color,
+  textDecoration,
 }: TextStyleProps) =>
   classNames(
     styles.font[type],
-    atoms({textAlign: align, fontSize, fontWeight: weight, color}),
+    atoms({
+      textAlign: align,
+      fontSize,
+      fontWeight: weight,
+      color,
+      textDecoration,
+    }),
   );
 
 export const Text = forwardRef<HTMLElement, TextProps>(
@@ -48,6 +56,7 @@ export const Text = forwardRef<HTMLElement, TextProps>(
       type,
       fontSize,
       color,
+      textDecoration,
       children,
     },
     ref,
@@ -55,8 +64,8 @@ export const Text = forwardRef<HTMLElement, TextProps>(
     return createElement(
       component,
       {
-        className: classNames(
-          useTextStyles({weight, type, align, fontSize, color}),
+        className: classnames(
+          useTextStyles({weight, type, align, fontSize, color, textDecoration}),
           className,
         ),
         ref,
