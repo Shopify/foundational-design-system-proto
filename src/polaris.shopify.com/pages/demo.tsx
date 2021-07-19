@@ -40,7 +40,10 @@ const DemoPage = () => {
             <Flex
               justifyContent="space-between"
               paddingX="4"
-              style={{position: 'absolute', top: '50%', left: 0, right: 0}}
+              position="absolute"
+              left="0"
+              right="0"
+              style={{top: '50%'}}
             >
               <Icon source={ArrowLeftMinor} color="subdued" />
               <Icon source={MobileHorizontalDotsMajor} color="subdued" />
@@ -70,15 +73,15 @@ const DemoPage = () => {
               <Text component="h1" weight="strong" fontSize="3xl">
                 SnowDevil
               </Text>
-              <Box
+              <Flex
                 borderRadius="1"
-                paddingX="4"
+                paddingX="3"
                 backgroundColor="gray-900"
                 color="gray-0"
-                alignSelf="center"
+                paddingY="1.5"
               >
                 <Text fontSize="xs">Follow</Text>
-              </Box>
+              </Flex>
             </Flex>
             <Box component="p">
               Snowdevil is not your typical snowboard store. Instead, Snowdevil
@@ -133,7 +136,7 @@ const DemoPage = () => {
 
             <Grid gap="4" columns={['1fr', '1fr']}>
               <Box>
-                <Box borderRadius="4" style={{overflow: 'hidden'}}>
+                <Box borderRadius="4" overflow="hidden">
                   <img
                     src="/static/demo/burton-throwback.jpg"
                     alt="Burton Throwback"
@@ -149,27 +152,29 @@ const DemoPage = () => {
                     src="/static/demo/burton-stylus.jpg"
                     alt="Burton Stylus"
                   />
-                  <Box
+                  <Flex
                     color="gray-0"
-                    display="inline-block"
                     borderRadius="1"
                     backgroundColor="brand"
                     paddingX="2"
+                    paddingY="0.5"
                     position="absolute"
                     bottom="2"
                     left="2"
                   >
                     <Text fontSize="xs">Sale</Text>
-                  </Box>
+                  </Flex>
                 </Box>
 
                 <Text weight="medium">Burton Stylus Flat Top</Text>
                 <br />
-                <Text textDecoration="line-through">$899.99</Text>
+                <Text textDecoration="line-through" color="gray-500">
+                  $899.99
+                </Text>
                 <Text color="brand">$719.99</Text>
               </Box>
               <Box>
-                <Box borderRadius="4" style={{overflow: 'hidden'}}>
+                <Box borderRadius="4" overflow="hidden">
                   <img
                     src="/static/demo/burton-throwback.jpg"
                     alt="Burton Throwback"
@@ -185,23 +190,25 @@ const DemoPage = () => {
                     src="/static/demo/burton-stylus.jpg"
                     alt="Burton Stylus"
                   />
-                  <Box
+                  <Flex
                     color="gray-0"
-                    display="inline-block"
                     borderRadius="1"
                     backgroundColor="brand"
                     paddingX="2"
+                    paddingY="1"
                     position="absolute"
                     bottom="2"
                     left="2"
                   >
                     <Text fontSize="xs">Sale</Text>
-                  </Box>
+                  </Flex>
                 </Box>
 
                 <Text weight="medium">Burton Stylus Flat Top</Text>
                 <br />
-                <Text textDecoration="line-through">$899.99</Text>
+                <Text textDecoration="line-through" color="gray-500">
+                  $899.99
+                </Text>
                 <Text color="brand">$719.99</Text>
               </Box>
             </Grid>
@@ -213,7 +220,10 @@ const DemoPage = () => {
                   backgroundColor="gray-0"
                   paddingX="6"
                   paddingY="6"
-                  style={{boxShadow: '0 5px 10px #999'}}
+                  style={{
+                    boxShadow:
+                      '0 9px 46px rgba(0,0,0,0.12), 0 11px 15px rgba(0,0,0,0.20)',
+                  }}
                 >
                   <Flex gap="5">
                     <Icon source={HomeMajor} />
