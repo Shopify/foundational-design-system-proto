@@ -54,6 +54,7 @@
     "bracketSpacing": false
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org/"
   }
 }
