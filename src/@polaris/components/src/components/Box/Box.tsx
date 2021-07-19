@@ -1,6 +1,6 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
-import {classNames} from '@polaris/components';
 
+import {classNames} from '../utilities/css';
 import {atoms, Atoms} from '../../atoms';
 
 export interface BoxProps
