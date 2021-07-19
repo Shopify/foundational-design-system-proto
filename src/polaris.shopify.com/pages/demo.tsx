@@ -206,13 +206,13 @@ const DemoPage = () => {
               </Box>
             </Grid>
 
-            <Box position="sticky" bottom="4">
+            <Box position="sticky" bottom="8">
               <Flex justifyContent="center">
                 <Box
                   borderRadius="96"
                   backgroundColor="gray-0"
-                  paddingX="5"
-                  paddingY="3"
+                  paddingX="6"
+                  paddingY="6"
                   style={{boxShadow: '0 5px 10px #999'}}
                 >
                   <Flex gap="5">
