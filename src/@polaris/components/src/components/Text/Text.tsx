@@ -64,7 +64,7 @@ export const Text = forwardRef<HTMLElement, TextProps>(
     return createElement(
       component,
       {
-        className: classnames(
+        className: classNames(
           useTextStyles({weight, type, align, fontSize, color, textDecoration}),
           className,
         ),
