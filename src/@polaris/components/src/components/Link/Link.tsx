@@ -1,5 +1,6 @@
 import React, {ElementType, createElement, AllHTMLAttributes} from 'react';
-import {classNames} from '@polaris/components';
+
+import {classNames} from '../utilities/css';
 
 import {variant, linkStyle} from './Link.css';
 
