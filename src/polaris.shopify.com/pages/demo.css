@@ -9,3 +9,7 @@ html, body {
     margin: initial;
     color: inherit;
 }
+
+.Polaris-Icon svg {
+    fill: currentColor;
+}

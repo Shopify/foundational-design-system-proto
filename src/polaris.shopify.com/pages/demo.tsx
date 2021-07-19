@@ -34,11 +34,12 @@ const DemoPage = () => {
           overflow: 'hidden',
         }}
       >
-        <Box position="relative">
+        <Grid rows={['auto', '1fr']}>
           <Box color="gray-0" position="relative">
             <img src="/static/demo/hero.jpg" alt="Snowboarder" />
             <Flex
               justifyContent="space-between"
+              paddingX="4"
               style={{position: 'absolute', top: '50%', left: 0, right: 0}}
             >
               <Icon source={ArrowLeftMinor} color="subdued" />
@@ -47,11 +48,11 @@ const DemoPage = () => {
 
             <Box
               style={{
-                position: 'absolute',
                 width: '88px',
                 bottom: '-44px',
-                left: '10px',
               }}
+              position="absolute"
+              left="4"
             >
               <img
                 src="/static/demo/snowdevil.png"
@@ -123,7 +124,7 @@ const DemoPage = () => {
               </Flex>
             </Box>
 
-            <Flex justifyContent="space-between">
+            <Flex justifyContent="space-between" marginBottom="5">
               <Text component="h2" weight="strong" fontSize="xl">
                 Featured products
               </Text>
@@ -131,6 +132,42 @@ const DemoPage = () => {
             </Flex>
 
             <Grid gap="4" columns={['1fr', '1fr']}>
+              <Box>
+                <Box borderRadius="4" style={{overflow: 'hidden'}}>
+                  <img
+                    src="/static/demo/burton-throwback.jpg"
+                    alt="Burton Throwback"
+                  />
+                </Box>
+                <Text weight="medium">Burton Throwback</Text>
+                <br />
+                <Text> $175.00</Text>
+              </Box>
+              <Box>
+                <Box borderRadius="4" overflow="hidden" position="relative">
+                  <img
+                    src="/static/demo/burton-stylus.jpg"
+                    alt="Burton Stylus"
+                  />
+                  <Box
+                    color="gray-0"
+                    display="inline-block"
+                    borderRadius="1"
+                    backgroundColor="brand"
+                    paddingX="2"
+                    position="absolute"
+                    bottom="2"
+                    left="2"
+                  >
+                    <Text fontSize="xs">Sale</Text>
+                  </Box>
+                </Box>
+
+                <Text weight="medium">Burton Stylus Flat Top</Text>
+                <br />
+                <Text textDecoration="line-through">$899.99</Text>
+                <Text color="brand">$719.99</Text>
+              </Box>
               <Box>
                 <Box borderRadius="4" style={{overflow: 'hidden'}}>
                   <img
@@ -188,7 +225,7 @@ const DemoPage = () => {
               </Flex>
             </Box>
           </Box>
-        </Box>
+        </Grid>
       </div>
     </Layout>
   );
