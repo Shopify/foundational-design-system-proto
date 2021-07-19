@@ -5,7 +5,7 @@ import {
   ElementType,
   ReactNode,
 } from 'react';
-import classnames from 'classnames';
+import {classNames} from '@polaris/components';
 
 import {atoms, Atoms} from '../../atoms/atoms.css';
 
@@ -35,7 +35,7 @@ export const useTextStyles = ({
   color,
   textDecoration,
 }: TextStyleProps) =>
-  classnames(
+  classNames(
     styles.font[type],
     atoms({
       textAlign: align,
