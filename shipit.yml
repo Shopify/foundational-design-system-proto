@@ -5,4 +5,4 @@ deploy:
   pre:
     - yarn build
   override:
-    - yarn publish
+    - npm publish

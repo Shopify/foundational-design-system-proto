@@ -38,6 +38,15 @@ const borderStyle = [
 
 const borderWidth = [`0`, `1px`, `2px`, `3px`, `4px`, `5px`] as const;
 
+const textDecorationLine = [
+  'none',
+  'underline',
+  'overline',
+  'line-through',
+  'blink',
+  'initial',
+] as const;
+
 const screens = {
   'screen-sm': '640px',
   'screen-md': '768px',
@@ -162,6 +171,7 @@ const styles = createAtomicStyles({
       screen: '100vh',
     },
     color: colors,
+    textDecorationLine,
     position,
     top: {...positionValues, ...spacing},
     right: {...positionValues, ...spacing},
@@ -180,6 +190,7 @@ const styles = createAtomicStyles({
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     spacing: ['gap'],
+    textDecoration: ['textDecorationLine'],
   },
 });
 
