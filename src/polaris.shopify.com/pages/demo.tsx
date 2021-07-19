@@ -225,28 +225,25 @@ const DemoPage = () => {
                 <Text color="brand">$719.99</Text>
               </Box>
             </Grid>
-
-            <Box position="sticky" bottom="8">
-              <Flex justifyContent="center">
-                <Box
-                  borderRadius="96"
-                  backgroundColor="gray-0"
-                  paddingX="6"
-                  paddingY="6"
-                  style={{
-                    boxShadow:
-                      '0 9px 46px rgba(0,0,0,0.12), 0 11px 15px rgba(0,0,0,0.20)',
-                  }}
-                >
-                  <Flex gap="5">
-                    <Icon source={HomeMajor} />
-                    <Icon source={SearchMajor} />
-                    <Icon source={CheckoutMajor} />
-                    <Icon source={CustomersMajor} />
-                  </Flex>
+            <Flex justifyContent="center" position="sticky" bottom="8">
+              <Flex
+                gap="5"
+                backgroundColor="gray-0"
+                borderRadius="96"
+                padding="6"
+                style={{
+                  boxShadow:
+                    '0 9px 46px rgba(0,0,0,0.12), 0 11px 15px rgba(0,0,0,0.20)',
+                }}
+              >
+                <Box color="brand">
+                  <Icon source={HomeMajor} />
                 </Box>
+                <Icon source={SearchMajor} />
+                <Icon source={CheckoutMajor} />
+                <Icon source={CustomersMajor} />
               </Flex>
-            </Box>
+            </Flex>
           </Box>
         </Grid>
       </div>
