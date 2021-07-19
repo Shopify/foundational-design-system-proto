@@ -2,7 +2,7 @@ import {style, styleVariants} from '@vanilla-extract/css';
 import {colors} from '@polaris/tokens';
 
 export const linkStyle = style({
-  color: colors.interactive,
+  color: colors.black,
   textDecoration: 'underline',
   cursor: 'pointer',
 

@@ -18,6 +18,14 @@ import {Layout} from '../components/Layout';
 import {Link} from '../components/Link';
 
 const DemoPage = () => {
+  const strings = {
+    snowboarder: 'Snowboarder',
+    snowDevil: 'SnowDevil',
+    burton: 'Burton',
+    burtonThrowback: 'Burton Throwback',
+    burtonStylus: 'Burton Stylus',
+  };
+
   return (
     <Layout>
       <Heading>Demo page</Heading>
@@ -36,7 +44,7 @@ const DemoPage = () => {
       >
         <Grid rows={['auto', '1fr']}>
           <Box color="gray-0" position="relative">
-            <img src="/static/demo/hero.jpg" alt="Snowboarder" />
+            <img src="/static/demo/hero.jpg" alt={strings.snowboarder} />
             <Flex
               justifyContent="space-between"
               paddingX="4"
@@ -59,7 +67,7 @@ const DemoPage = () => {
             >
               <img
                 src="/static/demo/snowdevil.png"
-                alt="SnowDevil"
+                alt={strings.snowDevil}
                 width="100%"
               />
             </Box>
@@ -87,7 +95,9 @@ const DemoPage = () => {
               Snowdevil is not your typical snowboard store. Instead, Snowdevil
               is a partnership among two riders who are only interested in
               selling boards and bindings that they love to ride on...{' '}
-              <Link to="#">view more</Link>
+              <Link to="#">
+                <Text weight="strong">view more</Text>
+              </Link>
             </Box>
 
             <Box
@@ -117,7 +127,10 @@ const DemoPage = () => {
                     borderRadius="2"
                   />
                   <Box style={{width: '24px', height: '24px'}}>
-                    <img src="/static/demo/burton-logo.png" alt="Burton" />
+                    <img
+                      src="/static/demo/burton-logo.png"
+                      alt={strings.burton}
+                    />
                   </Box>
                 </Flex>
                 <Text fontSize="sm">
@@ -139,7 +152,7 @@ const DemoPage = () => {
                 <Box borderRadius="4" overflow="hidden">
                   <img
                     src="/static/demo/burton-throwback.jpg"
-                    alt="Burton Throwback"
+                    alt={strings.burtonThrowback}
                   />
                 </Box>
                 <Text weight="medium">Burton Throwback</Text>
@@ -150,7 +163,7 @@ const DemoPage = () => {
                 <Box borderRadius="4" overflow="hidden" position="relative">
                   <img
                     src="/static/demo/burton-stylus.jpg"
-                    alt="Burton Stylus"
+                    alt={strings.burtonStylus}
                   />
                   <Flex
                     color="gray-0"
@@ -177,7 +190,7 @@ const DemoPage = () => {
                 <Box borderRadius="4" overflow="hidden">
                   <img
                     src="/static/demo/burton-throwback.jpg"
-                    alt="Burton Throwback"
+                    alt={strings.burtonThrowback}
                   />
                 </Box>
                 <Text weight="medium">Burton Throwback</Text>
@@ -188,7 +201,7 @@ const DemoPage = () => {
                 <Box borderRadius="4" overflow="hidden" position="relative">
                   <img
                     src="/static/demo/burton-stylus.jpg"
-                    alt="Burton Stylus"
+                    alt={strings.burtonStylus}
                   />
                   <Flex
                     color="gray-0"
