@@ -1,5 +1,5 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
-import classnames from 'classnames';
+import {classNames} from '@polaris/components';
 
 import {atoms, Atoms} from '../../atoms';
 
