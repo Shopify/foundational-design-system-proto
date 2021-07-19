@@ -67,7 +67,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     ref,
   ) => {
     const className =
-      classnames(
+      classNames(
         atoms({
           display,
           margin,
