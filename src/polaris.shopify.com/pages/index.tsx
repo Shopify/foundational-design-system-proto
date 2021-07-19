@@ -105,12 +105,17 @@ const IndexPage = () => {
       {/* negative margins */}
       <Box margin="4">
         <Inline align="center" spacing="-5">
-          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>Inline 1</BoxItem>
-          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>Inline 2</BoxItem>
-          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>Inline 3</BoxItem>
+          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>
+            Inline 1
+          </BoxItem>
+          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>
+            Inline 2
+          </BoxItem>
+          <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>
+            Inline 3
+          </BoxItem>
         </Inline>
       </Box>
-
     </Layout>
   );
 };

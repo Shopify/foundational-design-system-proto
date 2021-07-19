@@ -1,5 +1,6 @@
 import React, {ElementType, createElement, AllHTMLAttributes} from 'react';
-import classnames from 'classnames';
+
+import {classNames} from '../utilities/css';
 
 import {variant, linkStyle} from './Link.css';
 
@@ -17,7 +18,7 @@ export const Link = ({
   return createElement(
     component,
     {
-      className: classnames(
+      className: classNames(
         linkStyle,
         props.variant && variant[props.variant],
         className,

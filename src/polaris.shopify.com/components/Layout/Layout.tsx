@@ -1,6 +1,5 @@
 import React, {ComponentProps} from 'react';
-import classnames from 'classnames';
-import {docsTheme as theme, Container} from '@polaris/components';
+import {docsTheme as theme, Container, classNames} from '@polaris/components';
 
 import {root} from './Layout.css';
 
@@ -17,6 +16,6 @@ export const Layout = ({
       lg: 'screen-lg',
     }}
     {...props}
-    className={classnames(themeClass, root, className)}
+    className={classNames(themeClass, root, className)}
   />
 );
