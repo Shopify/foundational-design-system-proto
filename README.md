@@ -27,6 +27,12 @@ $ npm install                                         # install dependencies
 $ npm run dev                                         # run polars.shopify.com locally
 ```
 
+## Try out the experimental release
+
+We have created an [initial release](https://www.npmjs.com/package/@shopify/layout-experimental) for sharing and testing layout components: Box, Grid, Flex, and more. You can check out examples of how they are used and try them out yourself at the [Layout Experimental CodeSandbox](https://codesandbox.io/s/layout-experimental-demo-wcxdj?file=/src/pages/index.js).
+
+See [this discussion](https://github.com/Shopify/polaris/discussions/178) for how to use the experimental components in your own project.
+
 ## Contribute to our explorations
 
 We'd love to hear what you think. Start a conversation in [Github Discussions](https://github.com/Shopify/polaris/discussions)!
