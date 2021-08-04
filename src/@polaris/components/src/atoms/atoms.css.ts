@@ -92,6 +92,10 @@ const maxWidthSizes = {
   '7xl': '80rem',
 };
 
+const boxShadow = {
+  ...vars.shadows,
+};
+
 const styles = createAtomicStyles({
   conditions: {
     sm: {},
@@ -181,6 +185,7 @@ const styles = createAtomicStyles({
     borderWidth,
     borderColor: colors,
     borderStyle,
+    boxShadow,
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
