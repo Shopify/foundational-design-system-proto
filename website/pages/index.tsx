@@ -26,7 +26,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Heading>
-        <Flex alignItems="center" gap="4" margin="4">
+        <Flex alignItems="center" gap={4} margin={4}>
           <span role="img" aria-label={sparkles}>
             ✨
           </span>
@@ -38,8 +38,8 @@ const IndexPage = () => {
         </Flex>
       </Heading>
 
-      <Box margin="4">
-        <Flex gap="4">
+      <Box margin={4}>
+        <Flex gap={4}>
           <Link to="/about">About page</Link>
           <Box as="p" textAlign="center">
             Polaris is changing
@@ -47,8 +47,8 @@ const IndexPage = () => {
         </Flex>
       </Box>
 
-      <Box margin="4">
-        <Grid gap="4" areas={GRID_TEMPLATE_AREAS}>
+      <Box margin={4}>
+        <Grid gap={4} areas={GRID_TEMPLATE_AREAS}>
           <GridItem area="area1">area 1</GridItem>
           <GridItem area="area2">area 2</GridItem>
           <GridItem area="area3">area 3</GridItem>
@@ -60,8 +60,8 @@ const IndexPage = () => {
 
       <Divider />
 
-      <Box margin="4">
-        <Grid gap="4" grid="1fr / auto-flow">
+      <Box margin={4}>
+        <Grid gap={4} grid="1fr / auto-flow">
           <GridItem>cell 1</GridItem>
           <GridItem>cell 2</GridItem>
           <GridItem>cell 3</GridItem>
@@ -71,8 +71,8 @@ const IndexPage = () => {
 
       <Divider />
 
-      <Box margin="4">
-        <Grid gap="4" columns={['1fr', '1fr']} rows={['100px', '1fr']}>
+      <Box margin={4}>
+        <Grid gap={4} columns={['1fr', '1fr']} rows={['100px', '1fr']}>
           <GridItem>cell 1</GridItem>
           <GridItem>cell 2</GridItem>
           <GridItem>cell 3</GridItem>
@@ -82,8 +82,8 @@ const IndexPage = () => {
 
       <Divider />
 
-      <Box margin="4">
-        <Stack align="center" justify="space-evenly" spacing="4">
+      <Box margin={4}>
+        <Stack align="center" justify="space-evenly" spacing={4}>
           <BoxItem style={{minHeight: '100px'}}>Stack 1</BoxItem>
           <BoxItem style={{minHeight: '80px'}}>Stack 2</BoxItem>
           <BoxItem style={{minHeight: '120px'}}>Stack 3</BoxItem>
@@ -92,8 +92,8 @@ const IndexPage = () => {
 
       <Divider />
 
-      <Box margin="4">
-        <Inline align="center" justify="flex-end" spacing="4">
+      <Box margin={4}>
+        <Inline align="center" justify="flex-end" spacing={4}>
           <BoxItem style={{minWidth: '100px'}}>Inline 1</BoxItem>
           <BoxItem style={{minWidth: '80px'}}>Inline 2</BoxItem>
           <BoxItem style={{minWidth: '120px'}}>Inline 3</BoxItem>
@@ -101,8 +101,8 @@ const IndexPage = () => {
       </Box>
 
       {/* negative margins */}
-      <Box margin="4">
-        <Inline align="center" spacing="-5">
+      <Box margin={4}>
+        <Inline align="center" spacing={-5}>
           <BoxItem style={{minWidth: '80px', border: 'solid black 1px'}}>
             Inline 1
           </BoxItem>
@@ -118,7 +118,7 @@ const IndexPage = () => {
   );
 };
 
-const Divider = () => <Box margin="4" backgroundColor="gray-300" height="px" />;
+const Divider = () => <Box margin={4} backgroundColor="gray-300" height="px" />;
 
 const GridItem = (props: GridProps) => (
   <Grid placeContent="center" backgroundColor="gray-300" {...props} />
