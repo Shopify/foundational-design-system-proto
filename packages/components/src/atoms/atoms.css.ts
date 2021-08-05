@@ -97,6 +97,30 @@ const boxShadow = {
 };
 
 const styles = createAtomicStyles({
+  properties: {
+    top: {...positionValues, ...spacing},
+    right: {...positionValues, ...spacing},
+    bottom: {...positionValues, ...spacing},
+    left: {...positionValues, ...spacing},
+    backgroundColor: colors,
+    borderColor: colors,
+    borderStyle,
+    borderWidth,
+    boxShadow,
+    color: colors,
+    fontSize: fontSizes,
+    fontWeight: fontWeights,
+    overflow,
+    placeContent: ['center'],
+    textAlign: ['left', 'center', 'right'],
+    textDecorationLine,
+  },
+  shorthands: {
+    textDecoration: ['textDecorationLine'],
+  },
+});
+
+const responsiveStyles = createAtomicStyles({
   conditions: {
     sm: {},
     md: {'@media': `screen and (min-width: ${screens['screen-md']})`},
@@ -108,14 +132,7 @@ const styles = createAtomicStyles({
   properties: {
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
-    backgroundColor: colors,
-    borderColor: colors,
     borderRadius: spacing,
-    borderStyle,
-    borderWidth,
-    bottom: {...positionValues, ...spacing},
-    boxShadow,
-    color: colors,
     display: [
       'block',
       'inline',
@@ -132,8 +149,6 @@ const styles = createAtomicStyles({
     flexGrow: [0, 1],
     flexShrink: [0],
     flexWrap: ['wrap', 'nowrap', 'wrap-reverse'],
-    fontSize: fontSizes,
-    fontWeight: fontWeights,
     gap: spacing,
     height: {...sizes, screen: '100vh'},
     justifyContent: [
@@ -143,7 +158,6 @@ const styles = createAtomicStyles({
       'space-between',
     ],
     justifySelf: flexAlignment,
-    left: {...positionValues, ...spacing},
     marginBottom: {...spacing, auto: 'auto'},
     marginLeft: {...spacing, auto: 'auto'},
     marginRight: {...spacing, auto: 'auto'},
@@ -165,17 +179,11 @@ const styles = createAtomicStyles({
       'min-content': 'min-content',
       'max-content': 'max-content',
     },
-    overflow,
     paddingBottom: {...spacing, auto: 'auto'},
     paddingLeft: {...spacing, auto: 'auto'},
     paddingRight: {...spacing, auto: 'auto'},
     paddingTop: {...spacing, auto: 'auto'},
-    placeContent: ['center'],
     position,
-    right: {...positionValues, ...spacing},
-    textAlign: ['left', 'center', 'right'],
-    textDecorationLine,
-    top: {...positionValues, ...spacing},
     width: sizes,
   },
   shorthands: {
@@ -186,10 +194,9 @@ const styles = createAtomicStyles({
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     spacing: ['gap'],
-    textDecoration: ['textDecorationLine'],
   },
 });
 
-export const atoms = createAtomsFn(styles);
+export const atoms = createAtomsFn(styles, responsiveStyles);
 
 export type Atoms = Parameters<typeof atoms>[0];
