@@ -12,9 +12,12 @@
     "site": "lerna run --stream --scope website dev",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "version": "changeset version && yarn",
+    "release": "yarn build && changeset publish"
   },
   "dependencies": {
+    "@changesets/cli": "^2.16.0",
     "@shopify/eslint-plugin": "^40.2.3",
     "@types/node": "^15.6.1",
     "@types/react": "^17.0.0",
