@@ -1,5 +1,5 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
-import colors from 'src/@polaris/tokens/src/colors';
+import {colors} from '@polaris/tokens';
 
 import {vars} from '../themes/vars.css';
 

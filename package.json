@@ -1,60 +1,39 @@
 {
-  "name": "@shopify/layout-experimental",
-  "version": "0.0.1-alpha.1",
+  "name": "polaris",
+  "private": true,
   "author": "Shopify",
   "license": "MIT",
-  "files": [
-    "dist"
+  "workspaces": [
+    "packages/*",
+    "website"
   ],
-  "main": "./dist/layout-experimental.umd.js",
-  "module": "./dist/layout-experimental.es.js",
-  "types": "./dist/components/src/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/layout-experimental.es.js",
-      "require": "./dist/layout-experimental.umd.js"
-    }
-  },
   "scripts": {
-    "dev": "vite",
-    "build": "cd src/@polaris/components && yarn build && cd ../../..",
-    "build:app": "tsc && vite build",
-    "start": "vite preview",
+    "build": "lerna run --scope @polaris/* build",
+    "site": "lerna run --stream --scope website dev",
     "lint": "eslint '**/*.{js,ts,tsx}'",
-    "type-check": "tsc",
-    "test": "yarn lint && yarn type-check"
+    "tsc": "tsc --noEmit",
+    "test": "jest"
   },
   "dependencies": {
-    "@vanilla-extract/css": "^1.0.0",
-    "@vanilla-extract/sprinkles": "^0.4.2",
-    "@vanilla-extract/vite-plugin": "^1.0.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-router-dom": "^5.2.0"
-  },
-  "devDependencies": {
     "@shopify/eslint-plugin": "^40.2.3",
     "@types/node": "^15.6.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@types/react-router-dom": "^5.1.7",
-    "@vitejs/plugin-react-refresh": "^1.3.1",
-    "concurrently": "^6.2.0",
+    "@vanilla-extract/css": "^1.2.1",
+    "@vanilla-extract/sprinkles": "^1.0.0",
+    "@vanilla-extract/vite-plugin": "^1.1.1",
     "eslint": "^7.27.0",
     "jest": "^27.0.1",
+    "lerna": "^4.0.0",
     "prettier": "^2.3.0",
+    "react": "^17.0.0",
     "typescript": "^4.3.2",
-    "vite": "^2.3.7",
-    "vite-plugin-svgr": "^0.3.0"
+    "vite": "^2.4.4"
   },
   "prettier": {
     "arrowParens": "always",
     "singleQuote": true,
     "trailingComma": "all",
     "bracketSpacing": false
-  },
-  "publishConfig": {
-    "access": "public",
-    "@shopify:registry": "https://registry.npmjs.org/"
   }
 }

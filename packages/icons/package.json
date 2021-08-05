@@ -1,0 +1,13 @@
+{
+  "name": "@polaris/icons",
+  "version": "0.0.0",
+  "author": "Shopify",
+  "license": "MIT",
+  "main": "dist/polaris-icons.cjs.js",
+  "module": "dist/polaris-icons.esm.js",
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org/"
+  }
+}
