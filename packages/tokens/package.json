@@ -1,0 +1,25 @@
+{
+  "name": "@polaris/tokens",
+  "version": "0.0.0",
+  "author": "Shopify",
+  "license": "MIT",
+  "main": "./dist/polaris-tokens.cjs.js",
+  "module": "./dist/polaris-tokens.es.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/polaris-tokens.es.js",
+      "require": "./dist/polaris-tokens.cjs.js"
+    }
+  },
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "yarn build:js && yarn build:types",
+    "build:js": "vite build",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
+  }
+}

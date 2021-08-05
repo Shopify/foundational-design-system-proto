@@ -1,4 +1,4 @@
-import React, {ElementType, createElement, AllHTMLAttributes} from 'react';
+import {ElementType, createElement, AllHTMLAttributes} from 'react';
 
 import {classNames} from '../utilities/css';
 
