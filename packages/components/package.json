@@ -16,16 +16,17 @@
       "require": "./dist/style.css"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "yarn build:js && yarn build:types",
-    "build:js": "vite build",
-    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
-    "watch": "vite build --watch"
+    "watch": "vite build --watch",
+    "build": "nx run @polaris/components:build",
+    "serve": "nx run @polaris/components:serve"
   },
   "dependencies": {
     "@polaris/tokens": "*"

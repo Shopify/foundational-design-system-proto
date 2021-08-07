@@ -8,10 +8,10 @@
     "website"
   ],
   "scripts": {
-    "build": "lerna run --scope @polaris/* build",
-    "watch": "lerna run --parallel watch",
-    "dev": "concurrently npm:watch npm:site",
-    "site": "lerna run --stream --scope website dev",
+    "build": "nx run-many --target=build --all --parallel",
+    "site": "nx run website:serve",
+    "dep-graph": "nx dep-graph",
+    "dep-graph:affected": "yarn nx affected:dep-graph",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
     "test": "jest",
@@ -30,7 +30,6 @@
     "concurrently": "^6.2.1",
     "eslint": "^7.27.0",
     "jest": "^27.0.1",
-    "lerna": "^4.0.0",
     "prettier": "^2.3.0",
     "react": "^17.0.0",
     "typescript": "^4.3.2",
@@ -41,5 +40,13 @@
     "singleQuote": true,
     "trailingComma": "all",
     "bracketSpacing": false
+  },
+  "devDependencies": {
+    "@nrwl/next": "latest",
+    "@nrwl/cli": "latest",
+    "@nrwl/nx-cloud": "latest",
+    "@nrwl/tao": "latest",
+    "@nrwl/workspace": "latest",
+    "@wanews/nx-vite": "^0.4.2"
   }
 }

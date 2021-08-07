@@ -5,9 +5,8 @@
   "author": "Shopify",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "start": "vite preview"
+    "dev": "nx run website:serve",
+    "build": "nx run website:build"
   },
   "dependencies": {
     "@polaris/components": "*",

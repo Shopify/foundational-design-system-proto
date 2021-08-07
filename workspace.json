@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "projects": {
+    "@polaris/components": {
+      "root": "packages/components",
+      "sourceRoot": "packages/components/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@wanews/nx-vite:build",
+          "outputs": ["packages/components/dist"],
+          "options": {
+            "commands": [
+              {
+                "command": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
+              }
+            ]
+          }
+        },
+        "serve": {
+          "executor": "@wanews/nx-vite:serve",
+          "buildTarget": "build"
+        }
+      }
+    },
+    "@polaris/icons": {
+      "root": "packages/icons",
+      "type": "library"
+    },
+    "@polaris/tokens": {
+      "root": "packages/tokens",
+      "sourceRoot": "packages/tokens/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@wanews/nx-vite:build",
+          "outputs": ["packages/tokens/dist"],
+          "options": {
+            "commands": [
+              {
+                "command": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "website": {
+      "root": "website",
+      "sourceRoot": "website/src",
+      "outputs": ["websire/dist"],
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@wanews/nx-vite:build",
+          "outputs": ["packages/components/dist"],
+          "options": {
+            "commands": [
+              {
+                "command": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
+              }
+            ]
+          }
+        },
+        "serve": {
+          "executor": "@wanews/nx-vite:serve",
+          "buildTarget": "build"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@wanews/nx-vite:react": {}
+  }
+}
