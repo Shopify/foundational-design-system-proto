@@ -12,7 +12,8 @@ export default defineConfig({
       formats: ['es', 'cjs'],
       fileName: (format) => `polaris-components.${format}.js`,
     },
-    outDir: './dist',
+    outDir: resolve(__dirname, './dist'),
+    emptyOutDir: false,
     rollupOptions: {
       external: Object.keys(pkg.peerDependencies),
     },
