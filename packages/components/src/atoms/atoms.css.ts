@@ -114,6 +114,7 @@ const styles = createAtomicStyles({
     placeContent: ['center'],
     textAlign: ['left', 'center', 'right'],
     textDecorationLine,
+    userSelect: ['none', 'auto', 'text', 'contain', 'all'],
   },
   shorthands: {
     textDecoration: ['textDecorationLine'],
