@@ -1,1 +1,1 @@
-/// <reference types="vite/client" />
+import * as foo from 'vite/client';
