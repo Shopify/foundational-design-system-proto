@@ -1,8 +1,11 @@
-// Components
-export * from './components';
-
 // Atoms
 export * from './atoms';
 
-// Themes
-export * from './themes';
+// Components
+export * from './components';
+
+// Theme
+export * from './theme';
+
+// Utilities
+export * from './utilities';

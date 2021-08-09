@@ -6,7 +6,7 @@ import {
   ReactNode,
 } from 'react';
 
-import {classNames} from '../utilities/css';
+import classNames from '../../utilities/classNames';
 import {atoms, Atoms} from '../../atoms/atoms.css';
 
 import * as styles from './Text.css';
