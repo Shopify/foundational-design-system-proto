@@ -131,6 +131,7 @@ const styles = createAtomicStyles({
     textAlign: ['left', 'center', 'right'],
     textDecorationLine,
     userSelect: ['none', 'auto', 'text', 'contain', 'all'],
+    wordBreak: ['normal', 'break-all', 'break-word', 'keep-all', 'initial'],
   },
   shorthands: {
     textDecoration: ['textDecorationLine'],
