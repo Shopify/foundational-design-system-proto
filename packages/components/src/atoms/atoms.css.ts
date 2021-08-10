@@ -121,6 +121,7 @@ const styles = createAtomicStyles({
     borderWidth,
     boxShadow,
     color: colors,
+    cursor: ['default', 'pointer'],
     fontSize: fontSizes,
     fontWeight: fontWeights,
     opacity: [0.5, 0.8],
