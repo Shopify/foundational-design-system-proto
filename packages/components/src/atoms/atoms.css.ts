@@ -123,6 +123,7 @@ const styles = createAtomicStyles({
     color: colors,
     fontSize: fontSizes,
     fontWeight: fontWeights,
+    opacity: [0.5, 0.8],
     outlineColor: colors,
     outlineStyle,
     outlineWidth: borderWidth,
