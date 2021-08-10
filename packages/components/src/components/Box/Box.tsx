@@ -64,6 +64,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderWidth,
       boxShadow,
       userSelect,
+      outlineColor,
+      outlineStyle,
+      outlineWidth,
       ...rest
     },
     ref,
@@ -119,6 +122,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           borderWidth,
           boxShadow,
           userSelect,
+          outlineColor,
+          outlineStyle,
+          outlineWidth,
         }),
         rest.className,
       ) || null;

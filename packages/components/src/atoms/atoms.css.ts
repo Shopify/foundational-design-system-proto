@@ -96,6 +96,19 @@ const boxShadow = {
   ...vars.shadows,
 };
 
+const outlineStyle = [
+  'auto',
+  'none',
+  'dotted',
+  'dashed',
+  'solid',
+  'double',
+  'groove',
+  'ridge',
+  'inset',
+  'outset',
+] as const;
+
 const styles = createAtomicStyles({
   properties: {
     top: {...positionValues, ...spacing},
@@ -110,6 +123,9 @@ const styles = createAtomicStyles({
     color: colors,
     fontSize: fontSizes,
     fontWeight: fontWeights,
+    outlineColor: colors,
+    outlineStyle,
+    outlineWidth: borderWidth,
     overflow,
     placeContent: ['center'],
     textAlign: ['left', 'center', 'right'],
