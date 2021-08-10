@@ -5,7 +5,8 @@
   "license": "MIT",
   "main": "./dist/polaris-components.cjs.js",
   "module": "./dist/polaris-components.es.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/src/index.d.ts",
+  "typings": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/polaris-components.es.js",
@@ -25,7 +26,7 @@
   },
   "scripts": {
     "watch": "vite build --watch",
-    "build": "nx run @polaris/components:build",
+    "build": "nx run @polaris/components:build && tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
     "serve": "nx run @polaris/components:serve"
   },
   "dependencies": {

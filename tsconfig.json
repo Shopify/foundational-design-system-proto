@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "es5",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "declaration": true,
-    "declarationMap": true,
+    "emitDeclarationOnly": true,
     "sourceMap": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,

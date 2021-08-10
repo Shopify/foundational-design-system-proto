@@ -6,20 +6,29 @@
       "sourceRoot": "packages/components/src",
       "projectType": "library",
       "targets": {
-        "build": {
+        "build-base": {
           "executor": "@wanews/nx-vite:build",
           "outputs": ["packages/components/dist"],
-          "options": {
-            "commands": [
-              {
-                "command": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
-              }
-            ]
-          }
+          "dependsOn": [
+            {
+              "target": "build",
+              "projects": "dependencies"
+            }
+          ]
         },
-        "serve": {
-          "executor": "@wanews/nx-vite:serve",
-          "buildTarget": "build"
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "options": {
+            "main": "packages/components/src/index.ts",
+            "outputPath": "packages/components/dist/types",
+            "tsConfig": "packages/components/tsconfig.json"
+          },
+          "dependsOn": [
+            {
+              "target": "build-base",
+              "projects": "self"
+            }
+          ]
         }
       }
     },
@@ -32,16 +41,29 @@
       "sourceRoot": "packages/tokens/src",
       "projectType": "library",
       "targets": {
-        "build": {
+        "build-base": {
           "executor": "@wanews/nx-vite:build",
           "outputs": ["packages/tokens/dist"],
+          "dependsOn": [
+            {
+              "target": "build",
+              "projects": "dependencies"
+            }
+          ]
+        },
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
           "options": {
-            "commands": [
-              {
-                "command": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
-              }
-            ]
-          }
+            "main": "packages/tokens/src/index.ts",
+            "outputPath": "packages/tokens/dist/types",
+            "tsConfig": "packages/tokens/tsconfig.json"
+          },
+          "dependsOn": [
+            {
+              "target": "build-base",
+              "projects": "self"
+            }
+          ]
         }
       }
     },
@@ -54,13 +76,12 @@
         "build": {
           "executor": "@wanews/nx-vite:build",
           "outputs": ["packages/components/dist"],
-          "options": {
-            "commands": [
-              {
-                "command": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
-              }
-            ]
-          }
+          "dependsOn": [
+            {
+              "target": "build",
+              "projects": "dependencies"
+            }
+          ]
         },
         "serve": {
           "executor": "@wanews/nx-vite:serve",
