@@ -64,6 +64,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderWidth,
       boxShadow,
       userSelect,
+      wordBreak,
       ...rest
     },
     ref,
@@ -119,6 +120,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           borderWidth,
           boxShadow,
           userSelect,
+          wordBreak,
         }),
         rest.className,
       ) || null;
