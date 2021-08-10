@@ -22,6 +22,7 @@
   },
   "exclude": ["node_modules"],
   "include": [
+    "./jest.setup.ts",
     "packages/**/*",
     "website/**/*",
   ]
