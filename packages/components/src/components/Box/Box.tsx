@@ -72,6 +72,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       cursor,
       pointerEvents,
       transition,
+      whiteSpace,
       ...rest
     },
     ref,
@@ -135,6 +136,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           cursor,
           pointerEvents,
           transition,
+          whiteSpace,
         }),
         rest.className,
       ) || null;

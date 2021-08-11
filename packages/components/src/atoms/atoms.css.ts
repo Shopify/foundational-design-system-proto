@@ -139,6 +139,14 @@ const styles = createAtomicStyles({
     textDecorationLine,
     transition,
     userSelect: ['none', 'auto', 'text', 'contain', 'all'],
+    whiteSpace: [
+      'normal',
+      'nowrap',
+      'pre',
+      'pre-wrap',
+      'pre-line',
+      'break-spaces',
+    ],
     wordBreak: ['normal', 'break-all', 'break-word', 'keep-all', 'initial'],
   },
   shorthands: {
