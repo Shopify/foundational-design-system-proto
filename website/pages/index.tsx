@@ -41,6 +41,7 @@ const IndexPage = () => {
       <Box margin={4}>
         <Flex gap={4}>
           <Link to="/about">About page</Link>
+          <Link to="/about" variant="nounderline">New Link</Link>
           <Box as="p" textAlign="center">
             Polaris is changing
           </Box>
