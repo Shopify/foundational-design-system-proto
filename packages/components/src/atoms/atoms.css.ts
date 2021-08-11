@@ -4,24 +4,9 @@ import {colors} from '@polaris/tokens';
 import {vars} from '../theme/vars.css';
 
 const {spacing, fontWeights, fontSizes} = vars;
-const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
-const position = [
-  'absolute',
-  'relative',
-  'static',
-  'fixed',
-  'sticky',
-  'initial',
-] as const;
-const positionValues = ['0', 'auto', '50%', '100%', 'inital'] as const;
-const overflow = [
-  'visible',
-  'hidden',
-  'clip',
-  'scroll',
-  'auto',
-  'initial',
-] as const;
+const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'];
+const positionValues = ['0', 'auto', '50%', '100%', 'inital'];
+const overflow = ['visible', 'hidden', 'clip', 'scroll', 'auto', 'initial'];
 
 const borderStyle = [
   'none',
@@ -34,9 +19,9 @@ const borderStyle = [
   'ridge',
   'inset',
   'outset',
-] as const;
+];
 
-const borderWidth = [`0`, `1px`, `2px`, `3px`, `4px`, `5px`] as const;
+const borderWidth = [`0`, `1px`, `2px`, `3px`, `4px`, `5px`];
 
 const textDecorationLine = [
   'none',
@@ -45,7 +30,7 @@ const textDecorationLine = [
   'line-through',
   'blink',
   'initial',
-] as const;
+];
 
 const screens = {
   'screen-sm': '640px',
@@ -172,7 +157,7 @@ const styles = createAtomicStyles({
     },
     color: colors,
     textDecorationLine,
-    position,
+    position: ['absolute', 'relative', 'static', 'fixed', 'sticky', 'initial'],
     top: {...positionValues, ...spacing},
     right: {...positionValues, ...spacing},
     bottom: {...positionValues, ...spacing},
