@@ -1,15 +1,15 @@
 {
-  "name": "@polaris/components",
+  "name": "@polaris/themes",
   "version": "0.0.0",
   "author": "Shopify",
   "license": "MIT",
-  "main": "./dist/polaris-components.cjs.js",
-  "module": "./dist/polaris-components.es.js",
+  "main": "./dist/polaris-themes.cjs.js",
+  "module": "./dist/polaris-themes.es.js",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/polaris-components.es.js",
-      "require": "./dist/polaris-components.cjs.js"
+      "import": "./dist/polaris-themes.es.js",
+      "require": "./dist/polaris-themes.cjs.js"
     },
     "./styles": {
       "import": "./dist/style.css",
@@ -28,7 +28,7 @@
     "watch": "vite build --watch"
   },
   "dependencies": {
-    "@polaris/atoms": "*"
+    "@polaris/tokens": "*"
   },
   "peerDependencies": {
     "@vanilla-extract/css": "^1.2.1",

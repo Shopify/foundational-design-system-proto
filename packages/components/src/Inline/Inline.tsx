@@ -1,6 +1,6 @@
 import React from 'react';
+import {Atoms} from '@polaris/atoms';
 
-import {Atoms} from '../../atoms';
 import {Flex, FlexProps} from '../Flex';
 
 export interface InlineProps extends FlexProps {

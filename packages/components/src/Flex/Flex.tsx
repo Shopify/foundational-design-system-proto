@@ -1,6 +1,6 @@
 import React, {forwardRef} from 'react';
+import {Atoms} from '@polaris/atoms';
 
-import {Atoms} from '../../atoms';
 import {Box, BoxProps} from '../Box/Box';
 
 export interface FlexProps extends Omit<BoxProps, 'wrap' | 'placeContent'> {

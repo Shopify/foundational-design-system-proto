@@ -1,6 +1,6 @@
 import {styleVariants} from '@vanilla-extract/css';
+import {vars} from '@polaris/themes';
 
-import {vars} from '../../theme/vars.css';
-import mapToProperty from '../../utilities/mapToProperty';
+import mapToProperty from '../utilities/mapToProperty';
 
 export const font = styleVariants(vars.fonts, mapToProperty('fontFamily'));

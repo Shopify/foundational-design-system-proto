@@ -1,7 +1,7 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
-import {vars} from '../theme/vars.css';
+import {vars} from '@polaris/themes';
 
-const {colors, fontWeights, fontSizes} = vars;
+const {fontWeights, fontSizes, colors} = vars;
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
 const screens = {

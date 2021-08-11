@@ -1,6 +1,6 @@
 import React from 'react';
+import {Atoms} from '@polaris/atoms';
 
-import {Atoms} from '../../atoms';
 import {Box, BoxProps} from '../Box';
 
 export interface ContainerProps extends BoxProps {

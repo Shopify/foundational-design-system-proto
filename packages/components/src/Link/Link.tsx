@@ -1,6 +1,6 @@
 import {ElementType, createElement, AllHTMLAttributes} from 'react';
 
-import classNames from '../../utilities/classNames';
+import classNames from '../utilities/classNames';
 
 import {variant, linkStyle} from './Link.css';
 

@@ -5,9 +5,9 @@ import {
   ElementType,
   ReactNode,
 } from 'react';
+import {atoms, Atoms} from '@polaris/atoms';
 
-import classNames from '../../utilities/classNames';
-import {atoms, Atoms} from '../../atoms/atoms.css';
+import classNames from '../utilities/classNames';
 
 import * as styles from './Text.css';
 
