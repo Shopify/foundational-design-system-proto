@@ -130,6 +130,7 @@ const styles = createAtomicStyles({
     outlineWidth: borderWidth,
     overflow,
     placeContent: ['center'],
+    pointerEvents: ['auto', 'none'],
     textAlign: ['left', 'center', 'right'],
     textDecorationLine,
     userSelect: ['none', 'auto', 'text', 'contain', 'all'],

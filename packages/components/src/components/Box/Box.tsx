@@ -70,6 +70,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       wordBreak,
       opacity,
       cursor,
+      pointerEvents,
       ...rest
     },
     ref,
@@ -131,6 +132,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           wordBreak,
           opacity,
           cursor,
+          pointerEvents,
         }),
         rest.className,
       ) || null;
