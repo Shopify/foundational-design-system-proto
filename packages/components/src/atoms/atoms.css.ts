@@ -121,7 +121,7 @@ const styles = createAtomicStyles({
     borderWidth,
     boxShadow,
     color: colors,
-    cursor: ['default', 'pointer', 'grab', 'grabbing'],
+    cursor: ['auto', 'default', 'pointer', 'grab', 'grabbing'],
     fontSize: fontSizes,
     fontWeight: fontWeights,
     opacity: [0.5, 0.8],
