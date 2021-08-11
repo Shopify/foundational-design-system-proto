@@ -71,6 +71,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       opacity,
       cursor,
       pointerEvents,
+      whiteSpace,
       ...rest
     },
     ref,
@@ -133,6 +134,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           opacity,
           cursor,
           pointerEvents,
+          whiteSpace,
         }),
         rest.className,
       ) || null;
