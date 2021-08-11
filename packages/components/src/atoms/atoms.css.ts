@@ -109,6 +109,10 @@ const outlineStyle = [
   'outset',
 ] as const;
 
+const transition = {
+  ...vars.transitions,
+};
+
 const styles = createAtomicStyles({
   properties: {
     top: {...positionValues, ...spacing},
@@ -133,6 +137,7 @@ const styles = createAtomicStyles({
     pointerEvents: ['auto', 'none'],
     textAlign: ['left', 'center', 'right'],
     textDecorationLine,
+    transition,
     userSelect: ['none', 'auto', 'text', 'contain', 'all'],
     wordBreak: ['normal', 'break-all', 'break-word', 'keep-all', 'initial'],
   },

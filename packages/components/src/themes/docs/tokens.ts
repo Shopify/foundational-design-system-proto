@@ -1,4 +1,11 @@
-import {fonts, fontSizes, fontWeights, spacing, shadows} from '@polaris/tokens';
+import {
+  fonts,
+  fontSizes,
+  fontWeights,
+  spacing,
+  shadows,
+  transitions,
+} from '@polaris/tokens';
 
 const docsTokens = {
   fonts,
@@ -6,6 +13,7 @@ const docsTokens = {
   fontWeights,
   spacing,
   shadows,
+  transitions,
 };
 
 export default docsTokens;
