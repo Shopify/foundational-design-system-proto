@@ -1,6 +1,6 @@
 import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
 
-import {classNames} from '../utilities/css';
+import classNames from '../../utilities/classNames';
 import {atoms, Atoms} from '../../atoms';
 
 export interface BoxProps

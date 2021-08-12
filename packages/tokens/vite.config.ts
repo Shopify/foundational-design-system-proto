@@ -9,6 +9,7 @@ export default defineConfig({
       formats: ['es', 'cjs'],
       fileName: (format) => `polaris-tokens.${format}.js`,
     },
-    outDir: './dist',
+    outDir: resolve(__dirname, './dist'),
+    emptyOutDir: false,
   },
 });

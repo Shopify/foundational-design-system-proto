@@ -9,26 +9,36 @@
   ],
   "scripts": {
     "build": "lerna run --scope @polaris/* build",
+    "watch": "lerna run --parallel watch",
+    "dev": "concurrently npm:watch npm:site",
     "site": "lerna run --stream --scope website dev",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
-    "test": "jest"
+    "test": "vite-jest",
+    "version": "changeset version && yarn",
+    "release": "yarn build && changeset publish"
   },
   "dependencies": {
+    "@changesets/cli": "^2.16.0",
     "@shopify/eslint-plugin": "^40.2.3",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@types/jest": "^26.0.24",
     "@types/node": "^15.6.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vanilla-extract/css": "^1.2.1",
     "@vanilla-extract/sprinkles": "^1.0.0",
     "@vanilla-extract/vite-plugin": "^1.1.1",
+    "concurrently": "^6.2.1",
     "eslint": "^7.27.0",
     "jest": "^27.0.1",
     "lerna": "^4.0.0",
     "prettier": "^2.3.0",
     "react": "^17.0.0",
     "typescript": "^4.3.2",
-    "vite": "^2.4.4"
+    "vite": "^2.4.4",
+    "vite-jest": "^0.0.3"
   },
   "prettier": {
     "arrowParens": "always",

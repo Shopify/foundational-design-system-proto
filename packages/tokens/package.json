@@ -20,6 +20,7 @@
   "scripts": {
     "build": "yarn build:js && yarn build:types",
     "build:js": "vite build",
-    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "watch": "vite build --watch"
   }
 }
