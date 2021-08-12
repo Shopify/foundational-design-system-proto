@@ -1,36 +1,8 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
-import {colors} from '@polaris/tokens';
-
 import {vars} from '../theme/vars.css';
 
-const {spacing, fontWeights, fontSizes} = vars;
-const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'];
-const positionValues = ['0', 'auto', '50%', '100%', 'inital'];
-const overflow = ['visible', 'hidden', 'clip', 'scroll', 'auto', 'initial'];
-
-const borderStyle = [
-  'none',
-  'hidden',
-  'dotted',
-  'dashed',
-  'solid',
-  'double',
-  'groove',
-  'ridge',
-  'inset',
-  'outset',
-];
-
-const borderWidth = [`0`, `1px`, `2px`, `3px`, `4px`, `5px`];
-
-const textDecorationLine = [
-  'none',
-  'underline',
-  'overline',
-  'line-through',
-  'blink',
-  'initial',
-];
+const {colors, fontWeights, fontSizes} = vars;
+const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
 const screens = {
   'screen-sm': '640px',
@@ -40,9 +12,13 @@ const screens = {
   'screen-2xl': '1536px',
 };
 
+const spacing = {
+  ...vars.spacing,
+  auto: 'auto',
+};
+
 const sizes = {
   ...spacing,
-  auto: 'auto',
   '1/2': '50%',
   '1/3': '33.333333%',
   '2/3': '66.666667%',
@@ -87,17 +63,21 @@ const styles = createAtomicStyles({
   },
   defaultCondition: 'sm',
   properties: {
-    marginTop: {...spacing, auto: 'auto'},
-    marginBottom: {...spacing, auto: 'auto'},
-    marginLeft: {...spacing, auto: 'auto'},
-    marginRight: {...spacing, auto: 'auto'},
-    paddingTop: {...spacing, auto: 'auto'},
-    paddingBottom: {...spacing, auto: 'auto'},
-    paddingLeft: {...spacing, auto: 'auto'},
-    paddingRight: {...spacing, auto: 'auto'},
+    marginTop: spacing,
+    marginBottom: spacing,
+    marginLeft: spacing,
+    marginRight: spacing,
+    paddingTop: spacing,
+    paddingBottom: spacing,
+    paddingLeft: spacing,
+    paddingRight: spacing,
     textAlign: ['left', 'center', 'right'],
     backgroundColor: colors,
-    borderRadius: spacing,
+    borderRadius: {
+      none: '0px',
+      rounded: '0.25rem',
+      full: '9999px',
+    },
     display: [
       'block',
       'inline',
@@ -121,7 +101,7 @@ const styles = createAtomicStyles({
       'space-between',
     ],
     justifySelf: flexAlignment,
-    gap: spacing,
+    gap: vars.spacing, // don't include "auto" here
     flexGrow: [0, 1],
     flexShrink: [0],
     placeContent: ['center'],
@@ -156,16 +136,34 @@ const styles = createAtomicStyles({
       screen: '100vh',
     },
     color: colors,
-    textDecorationLine,
+    textDecorationLine: [
+      'none',
+      'underline',
+      'overline',
+      'line-through',
+      'blink',
+      'initial',
+    ],
     position: ['absolute', 'relative', 'static', 'fixed', 'sticky', 'initial'],
-    top: {...positionValues, ...spacing},
-    right: {...positionValues, ...spacing},
-    bottom: {...positionValues, ...spacing},
-    left: {...positionValues, ...spacing},
-    overflow,
-    borderWidth,
+    top: sizes,
+    right: sizes,
+    bottom: sizes,
+    left: sizes,
+    overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto', 'initial'],
+    borderWidth: [`0`, `1px`, `2px`, `3px`, `4px`, `5px`],
     borderColor: colors,
-    borderStyle,
+    borderStyle: [
+      'none',
+      'hidden',
+      'dotted',
+      'dashed',
+      'solid',
+      'double',
+      'groove',
+      'ridge',
+      'inset',
+      'outset',
+    ],
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
