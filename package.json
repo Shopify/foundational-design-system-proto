@@ -15,6 +15,7 @@
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
     "test": "vite-jest",
+    "cypress:open": "cypress open",
     "version": "changeset version && yarn",
     "release": "yarn build && changeset publish"
   },
@@ -31,6 +32,7 @@
     "@vanilla-extract/sprinkles": "^1.0.0",
     "@vanilla-extract/vite-plugin": "^1.1.1",
     "concurrently": "^6.2.1",
+    "cypress": "^8.2.0",
     "eslint": "^7.27.0",
     "jest": "^27.0.1",
     "lerna": "^4.0.0",
