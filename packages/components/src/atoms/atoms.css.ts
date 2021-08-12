@@ -4,7 +4,6 @@ import {vars} from '../theme/vars.css';
 
 const {colors, fontWeights, fontSizes, shadows} = vars;
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
-const positionValues = ['0', 'auto', '50%', '100%', 'inital'] as const;
 const borderWidth = [`0`, `1px`, `2px`, `3px`, `4px`, `5px`] as const;
 
 const screens = {
@@ -79,10 +78,6 @@ const transition = {
 
 const styles = createAtomicStyles({
   properties: {
-    top: {...positionValues, ...spacing},
-    right: {...positionValues, ...spacing},
-    bottom: {...positionValues, ...spacing},
-    left: {...positionValues, ...spacing},
     backgroundColor: colors,
     borderColor: colors,
     borderStyle: [
