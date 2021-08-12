@@ -1,5 +1,5 @@
 describe('Website', () => {
-  it('opens the main websit url', () => {
+  it('opens the main website url', () => {
     cy.visit('/')
   })
 })
