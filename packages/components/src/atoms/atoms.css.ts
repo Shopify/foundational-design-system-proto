@@ -55,27 +55,6 @@ const maxWidthSizes = {
   '7xl': '80rem',
 };
 
-const boxShadow = {
-  ...shadows,
-};
-
-const outlineStyle = [
-  'auto',
-  'none',
-  'dotted',
-  'dashed',
-  'solid',
-  'double',
-  'groove',
-  'ridge',
-  'inset',
-  'outset',
-] as const;
-
-const transition = {
-  ...vars.transitions,
-};
-
 const unresponsiveStyles = createAtomicStyles({
   properties: {
     backgroundColor: colors,
@@ -93,14 +72,25 @@ const unresponsiveStyles = createAtomicStyles({
       'outset',
     ],
     borderWidth,
-    boxShadow,
+    boxShadow: shadows,
     color: colors,
     cursor: ['auto', 'default', 'pointer', 'grab', 'grabbing'],
     fontSize: fontSizes,
     fontWeight: fontWeights,
     opacity: [0.5, 0.8],
     outlineColor: colors,
-    outlineStyle,
+    outlineStyle: [
+      'auto',
+      'none',
+      'dotted',
+      'dashed',
+      'solid',
+      'double',
+      'groove',
+      'ridge',
+      'inset',
+      'outset',
+    ],
     outlineWidth: borderWidth,
     overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto', 'initial'],
     placeContent: ['center'],
@@ -114,7 +104,7 @@ const unresponsiveStyles = createAtomicStyles({
       'blink',
       'initial',
     ],
-    transition,
+    transition: vars.transitions,
     userSelect: ['none', 'auto', 'text', 'contain', 'all'],
     whiteSpace: [
       'normal',
@@ -220,6 +210,6 @@ const responsiveStyles = createAtomicStyles({
   },
 });
 
-export const atoms = createAtomsFn(styles, responsiveStyles);
+export const atoms = createAtomsFn(unresponsiveStyles, responsiveStyles);
 
 export type Atoms = Parameters<typeof atoms>[0];
