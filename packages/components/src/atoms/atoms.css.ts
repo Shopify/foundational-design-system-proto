@@ -77,7 +77,7 @@ const transition = {
   ...vars.transitions,
 };
 
-const styles = createAtomicStyles({
+const unresponsiveStyles = createAtomicStyles({
   properties: {
     top: {...positionValues, ...spacing},
     right: {...positionValues, ...spacing},
