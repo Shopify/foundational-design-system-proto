@@ -15,5 +15,3 @@ export const colors = {
   pressed: '#103262',
   hover: '#1F5199',
 };
-
-export default colors;
