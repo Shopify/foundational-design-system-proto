@@ -1,5 +1,9 @@
 import {createTheme, createThemeContract} from '@vanilla-extract/css';
 import * as tokens from '@polaris/tokens';
 
-export const vars = createThemeContract(tokens);
-export const themeClass = createTheme(vars, tokens);
+const theme = {
+  spacing: tokens.spacing,
+};
+
+export const vars = createThemeContract(theme);
+export const themeClass = createTheme(vars, theme);

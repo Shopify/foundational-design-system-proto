@@ -1,11 +1,5 @@
-import {style, composeStyles} from '@vanilla-extract/css';
-import {atoms, vars} from '@polaris/components';
+import {atoms} from '@polaris/components';
 
-export const root = composeStyles(
-  atoms({
-    marginY: 4,
-  }),
-  style({
-    fontFamily: vars.fonts.system,
-  }),
-);
+export const root = atoms({
+  marginY: 4,
+});

@@ -2,16 +2,14 @@ import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
 import {vars} from '../theme/vars.css';
 
-const {colors, fontWeights, fontSizes, shadows} = vars;
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
-const borderWidth = [`0`, `1px`, `2px`, `3px`, `4px`, `5px`] as const;
 
-const screens = {
-  'screen-sm': '640px',
-  'screen-md': '768px',
-  'screen-lg': '1024px',
-  'screen-xl': '1280px',
-  'screen-2xl': '1536px',
+const breakpoints = {
+  xs: '0px',
+  sm: '600px',
+  md: '960px',
+  lg: '1280px',
+  xl: '1920px',
 };
 
 const spacing = {
@@ -39,26 +37,8 @@ const sizes = {
   full: '100%',
 };
 
-const maxWidthSizes = {
-  0: '0px',
-  none: 'none',
-  xs: '20rem',
-  sm: '24rem',
-  md: '28rem',
-  lg: '32rem',
-  xl: '36rem',
-  '2xl': '42rem',
-  '3xl': '48rem',
-  '4xl': '56rem',
-  '5xl': '64rem',
-  '6xl': '72rem',
-  '7xl': '80rem',
-};
-
 const unresponsiveStyles = createAtomicStyles({
   properties: {
-    backgroundColor: colors,
-    borderColor: colors,
     borderStyle: [
       'none',
       'hidden',
@@ -71,14 +51,7 @@ const unresponsiveStyles = createAtomicStyles({
       'inset',
       'outset',
     ],
-    borderWidth,
-    boxShadow: shadows,
-    color: colors,
     cursor: ['auto', 'default', 'pointer', 'grab', 'grabbing'],
-    fontSize: fontSizes,
-    fontWeight: fontWeights,
-    opacity: [0.5, 0.8],
-    outlineColor: colors,
     outlineStyle: [
       'auto',
       'none',
@@ -91,7 +64,6 @@ const unresponsiveStyles = createAtomicStyles({
       'inset',
       'outset',
     ],
-    outlineWidth: borderWidth,
     overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto', 'initial'],
     placeContent: ['center'],
     pointerEvents: ['auto', 'none'],
@@ -104,7 +76,6 @@ const unresponsiveStyles = createAtomicStyles({
       'blink',
       'initial',
     ],
-    transition: vars.transitions,
     userSelect: ['none', 'auto', 'text', 'contain', 'all'],
     whiteSpace: [
       'normal',
@@ -123,13 +94,13 @@ const unresponsiveStyles = createAtomicStyles({
 
 const responsiveStyles = createAtomicStyles({
   conditions: {
-    sm: {},
-    md: {'@media': `screen and (min-width: ${screens['screen-md']})`},
-    lg: {'@media': `screen and (min-width: ${screens['screen-lg']})`},
-    xl: {'@media': `screen and (min-width: ${screens['screen-xl']})`},
-    '2xl': {'@media': `screen and (min-width: ${screens['screen-2xl']})`},
+    xs: {},
+    sm: {'@media': `screen and (min-width: ${breakpoints.sm})`},
+    md: {'@media': `screen and (min-width: ${breakpoints.md})`},
+    lg: {'@media': `screen and (min-width: ${breakpoints.lg})`},
+    xl: {'@media': `screen and (min-width: ${breakpoints.xl})`},
   },
-  defaultCondition: 'sm',
+  defaultCondition: 'xs',
   properties: {
     top: sizes,
     right: sizes,
@@ -137,10 +108,6 @@ const responsiveStyles = createAtomicStyles({
     left: sizes,
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
-    backgroundColor: colors,
-    borderColor: colors,
-    borderRadius: {none: '0px', rounded: '0.25rem', full: '9999px'},
-    color: colors,
     display: [
       'block',
       'inline',
@@ -152,16 +119,19 @@ const responsiveStyles = createAtomicStyles({
       'flow-root',
       'contents',
     ],
-    flexBasis: [0, 1, 2, 3, '25%', '30%', '50%', '70%', '75%'],
+    flex: {
+      1: '1 1 0%',
+      auto: '1 1 auto',
+      initial: '0 1 auto',
+      none: 'none',
+    },
     flexDirection: ['row', 'column', 'row-reverse', 'column-reverse'],
     flexGrow: [0, 1],
-    flexShrink: [0],
+    flexShrink: [0, 1],
     flexWrap: ['wrap', 'nowrap', 'wrap-reverse'],
-    fontSize: fontSizes,
-    fontWeight: fontWeights,
     // don't include "auto" for gap
     gap: vars.spacing,
-    height: {...sizes, screen: '100vh'},
+    height: {...sizes},
     justifyContent: [
       ...flexAlignment,
       'space-around',
@@ -173,17 +143,18 @@ const responsiveStyles = createAtomicStyles({
     marginLeft: spacing,
     marginRight: spacing,
     marginTop: spacing,
-    maxHeight: {...sizes, 0: '0px', full: '100%', screen: '100vh'},
+    maxHeight: {...sizes, 0: '0px', full: '100%'},
     maxWidth: {
       ...sizes,
-      ...screens,
-      ...maxWidthSizes,
+      ...breakpoints,
+      0: '0px',
+      none: 'none',
       full: '100%',
       'min-content': 'min-content',
       'max-content': 'max-content',
       prose: '60ch',
     },
-    minHeight: {0: '0px', full: '100%', screen: '100vh'},
+    minHeight: {0: '0px', full: '100%'},
     minWidth: {
       0: '0px',
       full: '100%',

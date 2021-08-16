@@ -1,7 +1,7 @@
 import * as tokens from '../src';
 
 describe('Tokens', () => {
-  it('include colors scale', () => {
-    expect(tokens.colors).toBeDefined();
+  it('include spacing scale', () => {
+    expect(tokens.spacing).toBeDefined();
   });
 });
