@@ -8,11 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      
+      - name: Enable node
+        uses: actions/setup-node@v2
         with:
           node-version: '14.17.0'
 
-      - name: restore lerna
+      - name: Restore Lerna cache
         uses: actions/cache@v2
         with:
           path: |
@@ -20,8 +22,17 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - run: yarn --frozen-lockfile
-      - run: yarn build
-      - run: yarn tsc
-      - run: yarn lint
-      - run: yarn test
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
+        
+      - name: Build
+        run: yarn build
+
+      - name: Type check
+        run: yarn tsc
+
+      - name: Lint
+        run: yarn lint
+      
+      - name: Test
+        run: yarn test
