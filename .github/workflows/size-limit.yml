@@ -4,8 +4,8 @@ on:
   pull_request:
     branches:
       - main
-  paths:
-    - 'packages/components/**'
+    paths:
+      - 'packages/components/**'
 
 jobs:
   size:
