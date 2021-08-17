@@ -7,12 +7,11 @@ import {
   GridProps,
   Inline,
   Stack,
-  Text,
 } from '@polaris/components';
+import {Link} from 'react-router-dom';
 
 import {Heading} from '../components/Heading';
 import {Layout} from '../components/Layout';
-import {Link} from '../components/Link';
 
 const GRID_TEMPLATE_AREAS = [
   'area1 area2 area2 area2',
@@ -30,11 +29,9 @@ const IndexPage = () => {
           <span role="img" aria-label={sparkles}>
             ✨
           </span>
-          <Text weight="medium" fontSize="2xl">
-            Polaris
-          </Text>
+          <h1>Polaris</h1>
 
-          <Text>working in the open</Text>
+          <p>working in the open</p>
         </Flex>
       </Heading>
 
@@ -118,14 +115,16 @@ const IndexPage = () => {
   );
 };
 
-const Divider = () => <Box margin={4} backgroundColor="gray-300" height="px" />;
+const Divider = () => (
+  <Box margin={4} height="px" style={{backgroundColor: 'silver'}} />
+);
 
 const GridItem = (props: GridProps) => (
-  <Grid placeContent="center" backgroundColor="gray-300" {...props} />
+  <Grid placeContent="center" style={{backgroundColor: 'silver'}} {...props} />
 );
 
 const BoxItem = (props: BoxProps) => (
-  <Box backgroundColor="gray-300" {...props} />
+  <Box style={{backgroundColor: 'silver'}} {...props} />
 );
 
 export default IndexPage;

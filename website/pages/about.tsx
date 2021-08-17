@@ -1,8 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import {Heading} from '../components/Heading';
 import {Layout} from '../components/Layout';
-import {Link} from '../components/Link';
 
 const AboutPage = () => {
   return (

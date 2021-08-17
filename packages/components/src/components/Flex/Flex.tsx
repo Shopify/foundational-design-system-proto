@@ -4,7 +4,6 @@ import {Atoms} from '../../atoms';
 import {Box, BoxProps} from '../Box/Box';
 
 export interface FlexProps extends Omit<BoxProps, 'wrap' | 'placeContent'> {
-  basis?: Atoms['flexBasis'];
   direction?: Atoms['flexDirection'];
   grow?: Atoms['flexGrow'];
   shrink?: Atoms['flexShrink'];
@@ -12,12 +11,11 @@ export interface FlexProps extends Omit<BoxProps, 'wrap' | 'placeContent'> {
 }
 
 export const Flex = forwardRef<HTMLElement, FlexProps>(
-  ({basis, direction, grow, shrink, wrap, ...rest}, ref) => {
+  ({direction, grow, shrink, wrap, ...rest}, ref) => {
     return (
       <Box
         ref={ref}
         display="flex"
-        flexBasis={basis}
         flexDirection={direction}
         flexGrow={grow}
         flexShrink={shrink}
