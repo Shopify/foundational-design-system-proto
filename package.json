@@ -17,7 +17,7 @@
     "test": "vite-jest",
     "version": "changeset version && yarn",
     "release": "yarn build && changeset publish",
-    "postinstall": "lerna exec yarn",
+    "postinstall": "lerna bootstrap",
     "size": "yarn build && size-limit"
   },
   "dependencies": {

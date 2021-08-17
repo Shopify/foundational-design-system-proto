@@ -24,6 +24,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn --frozen-lockfile
+      - run: yarn build
       - run: yarn tsc
       - run: yarn lint
       - run: yarn test
