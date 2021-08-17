@@ -16,14 +16,14 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "isolatedModules": true,
     "downlevelIteration": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true
   },
   "exclude": ["node_modules"],
   "include": [
     "./jest.setup.ts",
     "packages/**/*",
     "website/**/*",
-  ]
+  ],
 }
