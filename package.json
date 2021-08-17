@@ -15,7 +15,9 @@
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
     "test": "vite-jest",
-    "cypress:open": "cypress open",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:test": "start-server-and-test 'yarn run dev' http-get://localhost:3000 'yarn run cy:run'",
     "version": "changeset version && yarn",
     "release": "yarn build && changeset publish"
   },
@@ -47,5 +49,8 @@
     "singleQuote": true,
     "trailingComma": "all",
     "bracketSpacing": false
+  },
+  "devDependencies": {
+    "start-server-and-test": "^1.13.1"
   }
 }
