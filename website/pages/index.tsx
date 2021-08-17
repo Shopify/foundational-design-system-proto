@@ -24,30 +24,6 @@ const IndexPage = () => {
 
       <Divider />
 
-      <h2>Border radius</h2>
-      <Flex gap={4}>
-        <Box
-          style={{backgroundColor: 'silver'}}
-          height={16}
-          width="1/3"
-          borderRadius="none"
-        />
-        <Box
-          style={{backgroundColor: 'silver'}}
-          height={16}
-          width="1/3"
-          borderRadius="rounded"
-        />
-        <Box
-          style={{backgroundColor: 'silver'}}
-          height={16}
-          width="1/3"
-          borderRadius="full"
-        />
-      </Flex>
-
-      <Divider />
-
       <h2>Inline – Wrap (Default)</h2>
       <Inline gap={2}>
         <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
