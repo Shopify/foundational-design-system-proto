@@ -1,7 +1,7 @@
-type Falsy = boolean | undefined | null | 0;
+export type ClassValue = string | number | null | boolean | undefined;
 
-function classNames(...classes: (string | Falsy)[]) {
-  return classes.filter(Boolean).join(' ') || undefined;
+function classNames(...classes: ClassValue[]): string {
+  return classes.filter(Boolean).join(' ') || '';
 }
 
 export default classNames;
