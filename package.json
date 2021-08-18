@@ -54,6 +54,7 @@
     "bracketSpacing": false
   },
   "devDependencies": {
+    "eslint-plugin-cypress": "^2.11.3",
     "start-server-and-test": "^1.13.1"
   }
 }
