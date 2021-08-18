@@ -1,50 +1,39 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack} from '@polaris/components';
+import {Stack} from '@polaris/components';
 
+import {AdminBox} from '../components/AdminBox';
 import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
   return (
     <Layout>
-      <h2>Flex</h2>
-      <Flex gap={4}>
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-      </Flex>
+      <Stack gap={4}>
+        <AdminBox
+          width="full"
+          height="baseLoose"
+          style={{backgroundColor: 'silver'}}
+        >
+          Admin box 1
+        </AdminBox>
 
-      <Divider />
+        <AdminBox
+          width="full"
+          height="base"
+          style={{backgroundColor: 'silver'}}
+        >
+          Admin box 2
+        </AdminBox>
 
-      <h2>Stack</h2>
-      <Stack gap={2} align="center">
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
+        <AdminBox
+          width="full"
+          height="baseExtraTight"
+          style={{backgroundColor: 'silver'}}
+        >
+          Admin box 3
+        </AdminBox>
       </Stack>
-
-      <Divider />
-
-      <h2>Inline – Wrap (Default)</h2>
-      <Inline gap={2}>
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-      </Inline>
-
-      <Divider />
-
-      <h2>Inline – No wrap</h2>
-      <Inline gap={2} wrap="nowrap">
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-      </Inline>
     </Layout>
   );
 };
-
-const Divider = () => (
-  <Box margin={4} height="px" style={{backgroundColor: 'silver'}} />
-);
 
 export default IndexPage;
