@@ -2030,6 +2030,11 @@
     pkg-dir "^4.2.0"
     pluralize "^8.0.0"
 
+"@shopify/prettier-config@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@shopify/prettier-config/-/prettier-config-1.1.2.tgz#612f87c0cd1196e8b43c85425e587d0fa7f1172d"
+  integrity sha512-5ugCL9sPGzmOaZjeRGaWUWhHgAbemrS6z+R7v6gwiD+BiqSeoFhIY+imLpfdFCVpuOGalpHeCv6o3gv++EHs0A==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"
@@ -9399,11 +9404,6 @@ prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
-
-prettier@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
-  integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
 
 pretty-format@^26.0.0, pretty-format@^26.6.2:
   version "26.6.2"
