@@ -1,131 +1,41 @@
-import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
+import React, {forwardRef, AllHTMLAttributes, ElementType} from 'react';
 
-import classNames from '../../utilities/classNames';
+import classNames, {ClassValue} from '../../utilities/classNames';
 import {atoms, Atoms} from '../../atoms';
 
 export interface BoxProps
   extends Omit<
       AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
+      'height' | 'width' | 'color' | 'cursor' | 'className'
     >,
     Atoms {
   component?: ElementType;
+  className?: ClassValue;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
-  (
-    {
-      component = 'div',
-      display,
-      margin,
-      marginX,
-      marginY,
-      marginTop,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      padding,
-      paddingX,
-      paddingY,
-      paddingTop,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      textAlign,
-      alignItems,
-      alignSelf,
-      justifyContent,
-      placeContent,
-      justifySelf,
-      gap,
-      spacing,
-      flex,
-      flexDirection,
-      flexGrow,
-      flexShrink,
-      flexWrap,
-      width,
-      minWidth,
-      maxWidth,
-      height,
-      minHeight,
-      maxHeight,
-      position,
-      top,
-      right,
-      bottom,
-      left,
-      overflow,
-      borderStyle,
-      userSelect,
-      outlineStyle,
-      wordBreak,
-      cursor,
-      pointerEvents,
-      whiteSpace,
-      ...rest
-    },
-    ref,
-  ) => {
-    const className =
-      classNames(
-        atoms({
-          display,
-          margin,
-          marginX,
-          marginY,
-          marginTop,
-          marginBottom,
-          marginLeft,
-          marginRight,
-          padding,
-          paddingX,
-          paddingY,
-          paddingTop,
-          paddingBottom,
-          paddingLeft,
-          paddingRight,
-          textAlign,
-          flex,
-          flexDirection,
-          placeContent,
-          alignItems,
-          alignSelf,
-          justifyContent,
-          justifySelf,
-          flexWrap,
-          gap,
-          spacing,
-          flexGrow,
-          flexShrink,
-          width,
-          minWidth,
-          maxWidth,
-          height,
-          minHeight,
-          maxHeight,
-          position,
-          top,
-          right,
-          bottom,
-          left,
-          overflow,
-          borderStyle,
-          userSelect,
-          outlineStyle,
-          wordBreak,
-          cursor,
-          pointerEvents,
-          whiteSpace,
-        }),
-        rest.className,
-      ) || null;
+  ({component: Component = 'div', className, ...props}: BoxProps, ref) => {
+    const atomProps: {[key: string]: unknown} = {};
+    const nativeProps: {[key: string]: unknown} = {};
 
-    return createElement(component, {
-      ...rest,
-      className,
-      ref,
-    });
+    for (const key in props) {
+      if (atoms.properties.has(key as keyof Omit<Atoms, 'reset'>)) {
+        atomProps[key] = props[key as keyof typeof props];
+      } else {
+        nativeProps[key] = props[key as keyof typeof props];
+      }
+    }
+
+    const userClasses = classNames(className);
+    const atomicClasses = atoms(atomProps);
+
+    return (
+      <Component
+        ref={ref}
+        className={`${atomicClasses}${userClasses ? ` ${userClasses}` : ''}`}
+        {...nativeProps}
+      />
+    );
   },
 );
 
