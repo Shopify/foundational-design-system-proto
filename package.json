@@ -13,14 +13,11 @@
     "dev": "concurrently npm:watch npm:site",
     "site": "lerna run --stream --scope website dev",
     "lint": "eslint '**/*.{js,ts,tsx}'",
-    "tsc": "tsc && yarn run tsc:lint && yarn run tsc:cy",
-    "tsc:lint": "tsc --project tsconfig.lint.json",
-    "tsc:cy": "tsc --project cypress/tsconfig.json",
+    "tsc": "tsc --noEmit",
     "test": "vite-jest",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:test": "start-server-and-test 'yarn run dev' http-get://localhost:3000 'yarn run cy:run'",
-
+    "cypress": "start-server-and-test 'yarn run dev' http-get://localhost:3000 'yarn run cy:run'",
     "version": "changeset version && yarn",
     "release": "yarn build && changeset publish"
   },
