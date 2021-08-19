@@ -5,8 +5,10 @@
     "plugin:@shopify/react",
     "plugin:@shopify/jest",
     "plugin:@shopify/node",
-    "plugin:@shopify/prettier"
+    "plugin:@shopify/prettier",
+    "plugin:cypress/recommended"
   ],
+  "plugins": ["cypress"],
   "settings": {
     "react": {
       "version": "17.0.0"
@@ -18,5 +20,11 @@
     "import/no-extraneous-dependencies": 0,
     "@shopify/strict-component-boundaries": 0
   },
-  "ignorePatterns": ["node_modules", "dist", ".yarn/"]
+  "ignorePatterns": ["node_modules", "dist", ".yarn/"],
+  "overrides": [{
+    "files": [ "cypress/**/*.spec.ts" ],
+    "rules": {
+      "jest/valid-expect": 0
+    }
+  }]
 }
