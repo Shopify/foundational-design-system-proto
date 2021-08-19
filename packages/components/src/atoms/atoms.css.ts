@@ -1,63 +1,24 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
-import {colors} from '@polaris/tokens';
 
 import {vars} from '../theme/vars.css';
 
-const {spacing, fontWeights, fontSizes} = vars;
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
-const position = [
-  'absolute',
-  'relative',
-  'static',
-  'fixed',
-  'sticky',
-  'initial',
-] as const;
-const positionValues = ['0', 'auto', '50%', '100%', 'inital'] as const;
-const overflow = [
-  'visible',
-  'hidden',
-  'clip',
-  'scroll',
-  'auto',
-  'initial',
-] as const;
 
-const borderStyle = [
-  'none',
-  'hidden',
-  'dotted',
-  'dashed',
-  'solid',
-  'double',
-  'groove',
-  'ridge',
-  'inset',
-  'outset',
-] as const;
+const breakpoints = {
+  xs: '0px',
+  sm: '600px',
+  md: '960px',
+  lg: '1280px',
+  xl: '1920px',
+};
 
-const borderWidth = [`0`, `1px`, `2px`, `3px`, `4px`, `5px`] as const;
-
-const textDecorationLine = [
-  'none',
-  'underline',
-  'overline',
-  'line-through',
-  'blink',
-  'initial',
-] as const;
-
-const screens = {
-  'screen-sm': '640px',
-  'screen-md': '768px',
-  'screen-lg': '1024px',
-  'screen-xl': '1280px',
-  'screen-2xl': '1536px',
+const spacing = {
+  ...vars.spacing,
+  auto: 'auto',
 };
 
 const sizes = {
   ...spacing,
-  auto: 'auto',
   '1/2': '50%',
   '1/3': '33.333333%',
   '2/3': '66.666667%',
@@ -76,43 +37,77 @@ const sizes = {
   full: '100%',
 };
 
-const maxWidthSizes = {
-  0: '0px',
-  none: 'none',
-  xs: '20rem',
-  sm: '24rem',
-  md: '28rem',
-  lg: '32rem',
-  xl: '36rem',
-  '2xl': '42rem',
-  '3xl': '48rem',
-  '4xl': '56rem',
-  '5xl': '64rem',
-  '6xl': '72rem',
-  '7xl': '80rem',
-};
-
-const styles = createAtomicStyles({
-  conditions: {
-    sm: {},
-    md: {'@media': `screen and (min-width: ${screens['screen-md']})`},
-    lg: {'@media': `screen and (min-width: ${screens['screen-lg']})`},
-    xl: {'@media': `screen and (min-width: ${screens['screen-xl']})`},
-    '2xl': {'@media': `screen and (min-width: ${screens['screen-2xl']})`},
-  },
-  defaultCondition: 'sm',
+const unresponsiveStyles = createAtomicStyles({
   properties: {
-    marginTop: {...spacing, auto: 'auto'},
-    marginBottom: {...spacing, auto: 'auto'},
-    marginLeft: {...spacing, auto: 'auto'},
-    marginRight: {...spacing, auto: 'auto'},
-    paddingTop: {...spacing, auto: 'auto'},
-    paddingBottom: {...spacing, auto: 'auto'},
-    paddingLeft: {...spacing, auto: 'auto'},
-    paddingRight: {...spacing, auto: 'auto'},
+    borderStyle: [
+      'none',
+      'hidden',
+      'dotted',
+      'dashed',
+      'solid',
+      'double',
+      'groove',
+      'ridge',
+      'inset',
+      'outset',
+    ],
+    cursor: ['auto', 'default', 'pointer', 'grab', 'grabbing'],
+    outlineStyle: [
+      'auto',
+      'none',
+      'dotted',
+      'dashed',
+      'solid',
+      'double',
+      'groove',
+      'ridge',
+      'inset',
+      'outset',
+    ],
+    overflow: ['visible', 'hidden', 'clip', 'scroll', 'auto', 'initial'],
+    placeContent: ['center'],
+    pointerEvents: ['auto', 'none'],
     textAlign: ['left', 'center', 'right'],
-    backgroundColor: colors,
-    borderRadius: spacing,
+    textDecorationLine: [
+      'none',
+      'underline',
+      'overline',
+      'line-through',
+      'blink',
+      'initial',
+    ],
+    userSelect: ['none', 'auto', 'text', 'contain', 'all'],
+    whiteSpace: [
+      'normal',
+      'nowrap',
+      'pre',
+      'pre-wrap',
+      'pre-line',
+      'break-spaces',
+    ],
+    wordBreak: ['normal', 'break-all', 'break-word', 'keep-all', 'initial'],
+  },
+  shorthands: {
+    textDecoration: ['textDecorationLine'],
+  },
+});
+
+const responsiveStyles = createAtomicStyles({
+  conditions: {
+    xs: {},
+    sm: {'@media': `screen and (min-width: ${breakpoints.sm})`},
+    md: {'@media': `screen and (min-width: ${breakpoints.md})`},
+    lg: {'@media': `screen and (min-width: ${breakpoints.lg})`},
+    xl: {'@media': `screen and (min-width: ${breakpoints.xl})`},
+  },
+  defaultCondition: 'xs',
+  properties: {
+    top: sizes,
+    right: sizes,
+    bottom: sizes,
+    left: sizes,
+    alignItems: [...flexAlignment, 'baseline'],
+    alignSelf: [...flexAlignment, 'baseline'],
     display: [
       'block',
       'inline',
@@ -124,11 +119,19 @@ const styles = createAtomicStyles({
       'flow-root',
       'contents',
     ],
-    flexBasis: [0, 1, 2, 3, '25%', '30%', '50%', '70%', '75%'],
+    flex: {
+      1: '1 1 0%',
+      auto: '1 1 auto',
+      initial: '0 1 auto',
+      none: 'none',
+    },
     flexDirection: ['row', 'column', 'row-reverse', 'column-reverse'],
+    flexGrow: [0, 1],
+    flexShrink: [0, 1],
     flexWrap: ['wrap', 'nowrap', 'wrap-reverse'],
-    alignItems: [...flexAlignment, 'baseline'],
-    alignSelf: [...flexAlignment, 'baseline'],
+    // don't include "auto" for gap
+    gap: vars.spacing,
+    height: {...sizes},
     justifyContent: [
       ...flexAlignment,
       'space-around',
@@ -136,51 +139,36 @@ const styles = createAtomicStyles({
       'space-between',
     ],
     justifySelf: flexAlignment,
-    gap: spacing,
-    flexGrow: [0, 1],
-    flexShrink: [0],
-    placeContent: ['center'],
-    fontWeight: fontWeights,
-    fontSize: fontSizes,
-    width: sizes,
+    marginBottom: spacing,
+    marginLeft: spacing,
+    marginRight: spacing,
+    marginTop: spacing,
+    maxHeight: {...sizes, 0: '0px', full: '100%'},
+    maxWidth: {
+      ...sizes,
+      ...breakpoints,
+      0: '0px',
+      none: 'none',
+      full: '100%',
+      'min-content': 'min-content',
+      'max-content': 'max-content',
+      prose: '60ch',
+    },
+    minHeight: {0: '0px', full: '100%'},
     minWidth: {
       0: '0px',
       full: '100%',
       'min-content': 'min-content',
       'max-content': 'max-content',
     },
-    maxWidth: {
-      ...sizes,
-      ...screens,
-      ...maxWidthSizes,
-      full: '100%',
-      'min-content': 'min-content',
-      'max-content': 'max-content',
-      prose: '60ch',
-    },
-    height: {...sizes, screen: '100vh'},
-    minHeight: {
-      0: '0px',
-      full: '100%',
-      screen: '100vh',
-    },
-    maxHeight: {
-      ...sizes,
-      0: '0px',
-      full: '100%',
-      screen: '100vh',
-    },
-    color: colors,
-    textDecorationLine,
-    position,
-    top: {...positionValues, ...spacing},
-    right: {...positionValues, ...spacing},
-    bottom: {...positionValues, ...spacing},
-    left: {...positionValues, ...spacing},
-    overflow,
-    borderWidth,
-    borderColor: colors,
-    borderStyle,
+    paddingBottom: spacing,
+    paddingLeft: spacing,
+    paddingRight: spacing,
+    paddingTop: spacing,
+    placeContent: ['center'],
+    position: ['absolute', 'relative', 'static', 'fixed', 'sticky', 'initial'],
+    textAlign: ['left', 'center', 'right'],
+    width: sizes,
   },
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
@@ -190,10 +178,9 @@ const styles = createAtomicStyles({
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     spacing: ['gap'],
-    textDecoration: ['textDecorationLine'],
   },
 });
 
-export const atoms = createAtomsFn(styles);
+export const atoms = createAtomsFn(unresponsiveStyles, responsiveStyles);
 
 export type Atoms = Parameters<typeof atoms>[0];

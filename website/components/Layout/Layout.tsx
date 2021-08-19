@@ -9,9 +9,9 @@ export const Layout = ({
 }: ComponentProps<typeof Container>) => (
   <Container
     maxWidth={{
-      sm: 'prose',
-      md: 'screen-md',
-      lg: 'screen-lg',
+      xs: 'prose',
+      sm: 'md',
+      md: 'lg',
     }}
     {...props}
     className={classNames(themeClass, root, className)}

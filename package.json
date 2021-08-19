@@ -19,39 +19,39 @@
     "cy:run": "cypress run",
     "cypress": "start-server-and-test 'yarn run dev' http-get://localhost:3000 'yarn run cy:run'",
     "version": "changeset version && yarn",
-    "release": "yarn build && changeset publish"
+    "release": "yarn build && changeset publish",
+    "postinstall": "lerna bootstrap",
+    "size": "yarn build && size-limit"
   },
   "dependencies": {
+    "@vanilla-extract/css": "^1.2.1",
+    "@vanilla-extract/sprinkles": "^1.0.0",
+    "@vanilla-extract/vite-plugin": "^1.1.1",
+    "react": "^17.0.0",
+    "vite": "^2.4.4"
+  },
+  "devDependencies": {
     "@changesets/cli": "^2.16.0",
     "@shopify/eslint-plugin": "^40.2.3",
+    "@shopify/prettier-config": "^1.1.2",
+    "@size-limit/preset-big-lib": "^5.0.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.24",
     "@types/node": "^15.6.1",
-    "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@vanilla-extract/css": "^1.2.1",
-    "@vanilla-extract/sprinkles": "^1.0.0",
-    "@vanilla-extract/vite-plugin": "^1.1.1",
+    "@types/react": "^17.0.0",
     "concurrently": "^6.2.1",
     "cypress": "^8.2.0",
     "eslint": "^7.27.0",
+    "eslint-plugin-cypress": "^2.11.3",
     "jest": "^27.0.1",
     "lerna": "^4.0.0",
-    "prettier": "^2.3.0",
-    "react": "^17.0.0",
+    "prettier": "^2.3.2",
+    "size-limit": "^5.0.2",
+    "start-server-and-test": "^1.13.1",
     "typescript": "^4.3.2",
-    "vite": "^2.4.4",
     "vite-jest": "^0.0.3"
   },
-  "prettier": {
-    "arrowParens": "always",
-    "singleQuote": true,
-    "trailingComma": "all",
-    "bracketSpacing": false
-  },
-  "devDependencies": {
-    "eslint-plugin-cypress": "^2.11.3",
-    "start-server-and-test": "^1.13.1"
-  }
+  "prettier": "@shopify/prettier-config"
 }

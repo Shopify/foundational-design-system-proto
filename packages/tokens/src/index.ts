@@ -1,3 +1,1 @@
-export * from './colors';
-export * from './typography';
-export * from './spacing';
+export {spacing} from './spacing';
