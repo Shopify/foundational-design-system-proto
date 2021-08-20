@@ -1,5 +1,7 @@
 import React, {ComponentProps} from 'react';
-import {themeClass, Container, classNames} from '@polaris/components';
+import {Container, classNames} from '@polaris/components';
+
+import {themeClass} from '../theme.css';
 
 import {root} from './Layout.css';
 
