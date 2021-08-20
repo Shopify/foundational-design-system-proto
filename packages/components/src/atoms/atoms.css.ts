@@ -184,3 +184,7 @@ const responsiveStyles = createAtomicStyles({
 export const atoms = createAtomsFn(unresponsiveStyles, responsiveStyles);
 
 export type Atoms = Parameters<typeof atoms>[0];
+
+export function isAtomsKey(key: string): key is keyof Atoms {
+  return atoms.properties.has(key as keyof Atoms);
+}

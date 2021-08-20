@@ -1,42 +1,40 @@
 import React, {forwardRef, AllHTMLAttributes, ElementType} from 'react';
 
-import classNames, {ClassValue} from '../../utilities/classNames';
-import {atoms, Atoms} from '../../atoms';
+import classNames from '../../utilities/classNames';
+import {atoms, Atoms, isAtomsKey} from '../../atoms';
 
 export interface BoxProps
   extends Omit<
       AllHTMLAttributes<HTMLElement>,
-      'height' | 'width' | 'color' | 'cursor' | 'className'
+      'height' | 'width' | 'color' | 'cursor'
     >,
     Atoms {
   component?: ElementType;
-  className?: ClassValue;
 }
 
-export const Box = forwardRef<HTMLElement, BoxProps>(
-  ({component: Component = 'div', className, ...props}: BoxProps, ref) => {
-    const atomProps: {[key: string]: unknown} = {};
-    const nativeProps: {[key: string]: unknown} = {};
+export const Box = forwardRef<HTMLElement, BoxProps>((props: BoxProps, ref) => {
+  const {component: Component = 'div', className, ...restProps} = props;
 
-    for (const key in props) {
-      if (atoms.properties.has(key as keyof Omit<Atoms, 'reset'>)) {
-        atomProps[key] = props[key as keyof typeof props];
-      } else {
-        nativeProps[key] = props[key as keyof typeof props];
-      }
+  const atomProps: {[key: string]: unknown} = {};
+  const nativeProps: {[key: string]: unknown} = {};
+
+  for (const key in restProps) {
+    if (isAtomsKey(key)) {
+      atomProps[key] = props[key];
+    } else {
+      nativeProps[key] = props[key as keyof BoxProps];
     }
+  }
 
-    const userClasses = classNames(className);
-    const atomicClasses = atoms(atomProps);
+  const atomicClasses = atoms(atomProps);
 
-    return (
-      <Component
-        ref={ref}
-        className={`${atomicClasses}${userClasses ? ` ${userClasses}` : ''}`}
-        {...nativeProps}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      ref={ref}
+      className={classNames(atomicClasses, className)}
+      {...nativeProps}
+    />
+  );
+});
 
 Box.displayName = 'Box';
