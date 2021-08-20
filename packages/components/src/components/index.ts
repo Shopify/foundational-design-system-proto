@@ -6,3 +6,4 @@ export * from './Flex';
 export * from './Grid';
 export * from './Inline';
 export * from './Stack';
+export * from './ThemeTest';
