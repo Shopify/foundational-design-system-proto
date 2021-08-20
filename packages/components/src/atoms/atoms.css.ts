@@ -1,6 +1,6 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
 
-import {vars} from '../theme/vars.css';
+import {defaultVars} from '../theme/vars.css';
 
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
@@ -13,7 +13,7 @@ const breakpoints = {
 };
 
 const spacing = {
-  ...vars.spacing,
+  ...defaultVars.spacing,
   auto: 'auto',
 };
 
@@ -130,7 +130,7 @@ const responsiveStyles = createAtomicStyles({
     flexShrink: [0, 1],
     flexWrap: ['wrap', 'nowrap', 'wrap-reverse'],
     // don't include "auto" for gap
-    gap: vars.spacing,
+    gap: defaultVars.spacing,
     height: {...sizes},
     justifyContent: [
       ...flexAlignment,
