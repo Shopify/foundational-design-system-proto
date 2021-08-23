@@ -1,11 +1,15 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack} from '@polaris/components';
+import {Box, Flex, Inline, Stack, ButtonBase} from '@polaris/components';
 
 import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
   return (
     <Layout>
+      <h2>Button</h2>
+      <ButtonBase />
+      <Divider />
+
       <h2>Flex</h2>
       <Flex gap={4}>
         <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
