@@ -79,5 +79,5 @@ export function createTheme<T extends ThemeOptions>(options?: T) {
 
   const themeClass = veCreateTheme(vars, theme);
 
-  return [themeClass, vars as ThemeVars<Theme & DeepRequired<T>>];
+  return [themeClass, vars] as [string, ThemeVars<Theme & DeepRequired<T>>];
 }
