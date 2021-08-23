@@ -25,6 +25,7 @@ type DeepRequired<T> = {
 // utility has a constraint which expects `Theme` to be a type alias.
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 type Theme = {
+  breakpoints: typeof tokens.breakpoints;
   color: {
     scheme: 'light' | 'dark';
     placeholder1: string;
@@ -36,6 +37,7 @@ type Theme = {
 type ThemeOptions = DeepPartial<Theme>;
 
 export const defaultTheme: Theme = {
+  breakpoints: tokens.breakpoints,
   color: {
     scheme: 'light',
     placeholder1: '#B4CDED',
