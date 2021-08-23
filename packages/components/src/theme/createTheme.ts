@@ -3,7 +3,7 @@ import {
   createTheme as veCreateTheme,
   createThemeContract,
 } from '@vanilla-extract/css';
-import {ThemeVars} from '@vanilla-extract/css/dist/declarations/src/types';
+import {MapLeafNodes, CSSVarFunction} from '@vanilla-extract/private';
 import * as tokens from '@polaris/tokens';
 
 import {defaultVars} from './vars.css';
@@ -43,6 +43,17 @@ export const defaultTheme: Theme = {
   },
   spacing: tokens.spacing,
 };
+
+interface NullableTokens {
+  [key: string]: string | NullableTokens | null;
+}
+
+// NOTE: This is a recreation of vanilla-extract's `ThemeVars` type
+// as it is not exposed from the library.
+type ThemeVars<TThemeContract extends NullableTokens> = MapLeafNodes<
+  TThemeContract,
+  CSSVarFunction
+>;
 
 /**
  * Generates a vanilla-extract theme consisting of the base Shopify theme contract.
