@@ -1,16 +1,10 @@
 import {createAtomicStyles, createAtomsFn} from '@vanilla-extract/sprinkles';
+// using values from tokens due to CSS scoping issue when using `vars`
+import {breakpoints} from '@polaris/tokens';
 
 import {vars} from '../theme/vars.css';
 
 const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
-
-const breakpoints = {
-  xs: '0px',
-  sm: '600px',
-  md: '960px',
-  lg: '1280px',
-  xl: '1920px',
-};
 
 const spacing = {
   ...vars.spacing,
