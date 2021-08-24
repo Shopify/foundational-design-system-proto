@@ -1,1 +1,3 @@
-export {vars, themeClass} from './vars.css';
+export {defaultVars} from './vars.css';
+
+export {defaultTheme, createTheme} from './createTheme';

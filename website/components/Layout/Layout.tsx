@@ -1,6 +1,8 @@
 import React, {ComponentProps} from 'react';
 import clsx from 'clsx';
-import {themeClass, Container} from '@polaris/components';
+import {Container} from '@polaris/components';
+
+import {themeClass} from '../theme.css';
 
 import {root} from './Layout.css';
 

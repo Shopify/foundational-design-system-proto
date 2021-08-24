@@ -1,10 +1,5 @@
-import {createTheme, createThemeContract} from '@vanilla-extract/css';
-import * as tokens from '@polaris/tokens';
+import {createThemeContract} from '@vanilla-extract/css';
 
-const theme = {
-  breakpoints: tokens.breakpoints,
-  spacing: tokens.spacing,
-};
+import {defaultTheme} from './index';
 
-export const vars = createThemeContract(theme);
-export const themeClass = createTheme(vars, theme);
+export const defaultVars = createThemeContract(defaultTheme);

@@ -28,7 +28,8 @@
     "watch": "vite build --watch"
   },
   "dependencies": {
-    "@polaris/tokens": "*"
+    "@polaris/tokens": "*",
+    "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
     "@vanilla-extract/css": "^1.2.1",
