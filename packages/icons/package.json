@@ -5,9 +5,14 @@
   "license": "MIT",
   "main": "dist/polaris-icons.cjs.js",
   "module": "dist/polaris-icons.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1"
   }
 }

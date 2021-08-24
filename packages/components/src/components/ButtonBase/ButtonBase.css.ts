@@ -1,34 +1,42 @@
-import {style} from 'vanilla-extract/css';
+import {style} from '@vanilla-extract/css';
 
 export const root = style({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   position: 'relative',
-  //   WebkitTapHighlightColor: 'transparent',
-  backgroundColor: 'transparent', // Reset default value
+  // WebkitTapHighlightColor: 'transparent',
+  // Reset default value
+  backgroundColor: 'transparent',
   // We disable the focus ring for mouse, touch and keyboard users.
   outline: 0,
   border: 0,
-  margin: 0, // Remove the margin in Safari
+  // Remove the margin in Safari
+  margin: 0,
   borderRadius: 0,
-  padding: 0, // Remove the padding in Firefox
+  // Remove the padding in Firefox
+  padding: 0,
   cursor: 'pointer',
   userSelect: 'none',
   verticalAlign: 'middle',
-  //   '-moz-appearance': 'none', // Reset
-  //   '-webkit-appearance': 'none', // Reset
+  // Reset
+  // '-moz-appearance': 'none',
+  // Reset
+  // '-webkit-appearance': 'none',
   textDecoration: 'none',
   // So we take precedent over the style of a native <a /> element.
   color: 'inherit',
-  '&::-moz-focus-inner': {
-    borderStyle: 'none', // Remove Firefox dotted outline.
-  },
-  '&$disabled': {
-    pointerEvents: 'none', // Disable link interactions
-    cursor: 'default',
-  },
-  '@media print': {
-    colorAdjust: 'exact',
-  },
+  // '&::-moz-focus-inner': {
+  // Remove Firefox dotted outline.
+  // borderStyle: 'none',
+  // },
+  // '@media print': {
+  //   colorAdjust: 'exact',
+  // },
+});
+
+export const disabled = style({
+  // Disable link interactions
+  pointerEvents: 'none',
+  cursor: 'default',
 });

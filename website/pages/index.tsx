@@ -7,7 +7,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <h2>Button</h2>
-      <ButtonBase />
+      <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
       <Divider />
 
       <h2>Flex</h2>

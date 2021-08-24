@@ -14,6 +14,7 @@
     "@polaris/tokens": "*",
     "@vanilla-extract/css": "^1.2.1",
     "@vanilla-extract/sprinkles": "^1.0.0",
+    "clsx": "^1.1.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.2.0",
