@@ -38,11 +38,13 @@ export const ButtonBase: <T extends React.ElementType>(
 ) {
   const {
     className = '',
-    as: Component = 'button',
+    as: asProp = 'button',
     disabled = false,
     type = 'button',
     ...restProps
   } = props;
+
+  const Component = restProps.href ? 'a' : asProp;
 
   return (
     <Component
