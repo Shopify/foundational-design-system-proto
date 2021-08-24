@@ -1,5 +1,12 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack, ButtonBase} from '@polaris/components';
+import {
+  Box,
+  Flex,
+  Inline,
+  Stack,
+  ButtonBase,
+  Button,
+} from '@polaris/components';
 
 import {Layout} from '../components/Layout';
 
@@ -8,6 +15,7 @@ const IndexPage = () => {
     <Layout>
       <h2>Button</h2>
       <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
+      <Button onClick={() => console.log('Hello')}>A button</Button>
       <Divider />
 
       <h2>Flex</h2>

@@ -7,3 +7,4 @@ export * from './Grid';
 export * from './Inline';
 export * from './Stack';
 export * from './ButtonBase';
+export * from './Button';
