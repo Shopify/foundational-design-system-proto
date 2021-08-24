@@ -1,5 +1,6 @@
 import React, {ComponentProps} from 'react';
-import {Container, classNames} from '@polaris/components';
+import clsx from 'clsx';
+import {Container} from '@polaris/components';
 
 import {themeClass} from '../theme.css';
 
@@ -16,6 +17,6 @@ export const Layout = ({
       md: 'lg',
     }}
     {...props}
-    className={classNames(themeClass, root, className)}
+    className={clsx(themeClass, root, className)}
   />
 );
