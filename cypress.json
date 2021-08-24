@@ -2,6 +2,6 @@
   "baseUrl": "http://localhost:3000",
   "fixturesFolder": false,
   "pluginsFile": false,
-  "supportFile": false,
+  "supportFile": "./cypress/support/index.ts",
   "video": false
 }

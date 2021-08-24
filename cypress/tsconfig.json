@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "types": ["cypress"]
+    "types": [
+      "cypress",
+      "@percy/cypress"
+    ]
   },
   "include": ["**/*.ts"]
 }
