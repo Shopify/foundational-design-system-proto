@@ -1,22 +1,31 @@
 import {style, styleVariants} from '@vanilla-extract/css';
-import {tokens} from '@polaris/tokens';
+// import {defaultVars} from '../../theme';
 
-export const linkStyle = style({
-  color: tokens.colors.interactive,
+//Need a variation for having an external link icon?
+
+export const root = style({
+  // default unvisited color
+  //   color: defaultVars.color.placeholder1,
   textDecoration: 'underline',
   cursor: 'pointer',
 
-  ':hover': {
-    color: tokens.colors.hover,
-  },
+  //   ':visited': {
+  //     // default hover color
+  //     color: defaultVars.color.placeholder2,
+  //   },
 
-  ':active': {
-    color: tokens.colors.pressed,
-  },
+  //   ':hover': {
+  //     // default hover color
+  //     color: defaultVars.color.placeholder2,
+  //   },
+
+  //   ':active': {
+  //     color: defaultVars.color.placeholder2,
+  //   },
 });
 
 export const variant = styleVariants({
-  nounderline: {
+  noUnderline: {
     textDecoration: 'none',
   },
 });
