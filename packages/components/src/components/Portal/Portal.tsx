@@ -29,6 +29,8 @@ export interface PortalProps {
 /**
  * Portals provide a first-class way to render children into a DOM node
  * that exists outside the DOM hierarchy of the parent component.
+ *
+ * Derived from Material-UI's [Portal](https://github.com/mui-org/material-ui/blob/120c564109245a3b070b1cbaf2c9f3f8659fd9fa/packages/material-ui/src/Portal/Portal.js#L21)
  */
 export const Portal = React.forwardRef<Element, PortalProps>(function Portal(
   props,

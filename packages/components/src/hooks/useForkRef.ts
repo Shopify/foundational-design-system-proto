@@ -10,7 +10,7 @@ import type {AnyRef} from '../utilities';
  * This means react will call the old forkRef with `null` and the new forkRef
  * with the ref. Cleanup naturally emerges from this behavior
  *
- * > Credit: Material-UI and Rooks
+ * Derived from: Material-UI and Rooks
  */
 export function useForkRef<T>(refA: AnyRef<T>, refB: AnyRef<T>): AnyRef<T> {
   return React.useMemo(() => {
