@@ -2,11 +2,10 @@ import React, {Suspense, lazy} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import '@polaris/components/styles';
 import './styles/index.css';
 
-const Index = lazy(() => import('./pages'));
-const About = lazy(() => import('./pages/about'));
+import Index from './pages';
+import About from './pages/about';
 
 ReactDOM.render(
   <React.StrictMode>

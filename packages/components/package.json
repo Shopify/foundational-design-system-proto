@@ -3,20 +3,7 @@
   "version": "0.0.0",
   "author": "Shopify",
   "license": "MIT",
-  "main": "./dist/polaris-components.cjs.js",
-  "module": "./dist/polaris-components.es.js",
-  "types": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/polaris-components.es.js",
-      "require": "./dist/polaris-components.cjs.js"
-    },
-    "./styles": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
-    }
-  },
-  "files": ["dist"],
+  "main": "./src/index.ts",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"

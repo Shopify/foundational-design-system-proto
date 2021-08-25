@@ -1,5 +1,6 @@
 import {createTheme, createThemeContract} from '@vanilla-extract/css';
-import * as tokens from '@polaris/tokens';
+
+import * as tokens from '../../../tokens/src';
 
 const theme = {
   spacing: tokens.spacing,
