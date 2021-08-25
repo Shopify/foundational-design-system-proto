@@ -53,6 +53,7 @@ export const Portal = React.forwardRef<Element, PortalProps>(function Portal(
   useIsomorphicLayoutEffect(() => {
     if (container && !disablePortal) {
       setRef(ref, container);
+
       return () => {
         setRef(ref, null);
       };
