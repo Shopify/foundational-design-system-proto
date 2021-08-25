@@ -2,11 +2,16 @@ import React from 'react';
 
 import {Box, BoxProps} from '../Box';
 
-export interface CenterProps extends BoxProps {}
+export type CenterProps<T extends React.ElementType> = BoxProps<T>;
 
-export const Center = ({...rest}: CenterProps) => {
+export const Center = <T extends React.ElementType>(props: CenterProps<T>) => {
   return (
-    <Box display="flex" alignItems="center" justifyContent="center" {...rest} />
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      {...props}
+    />
   );
 };
 
