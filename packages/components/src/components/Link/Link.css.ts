@@ -6,19 +6,16 @@ import {style, styleVariants} from '@vanilla-extract/css';
 export const root = style({
   // default unvisited color
   //   color: defaultVars.color.placeholder1,
-  textDecoration: 'underline',
-  cursor: 'pointer',
-
+  //   textDecoration: 'underline',
+  //   cursor: 'pointer',
   //   ':visited': {
   //     // default hover color
   //     color: defaultVars.color.placeholder2,
   //   },
-
   //   ':hover': {
   //     // default hover color
   //     color: defaultVars.color.placeholder2,
   //   },
-
   //   ':active': {
   //     color: defaultVars.color.placeholder2,
   //   },

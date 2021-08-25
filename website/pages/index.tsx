@@ -1,11 +1,15 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack} from '@polaris/components';
+import {Box, Flex, Inline, Stack, Link} from '@polaris/components';
+import {Link as RouterLink} from 'react-router-dom';
 
 import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
   return (
     <Layout>
+      <Link as={RouterLink} to="/about">
+        hi
+      </Link>
       <h2>Flex</h2>
       <Flex gap={4}>
         <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
