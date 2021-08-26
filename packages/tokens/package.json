@@ -12,7 +12,9 @@
       "require": "./dist/polaris-tokens.cjs.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
