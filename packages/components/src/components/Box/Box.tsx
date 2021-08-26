@@ -1,4 +1,5 @@
-import React, {forwardRef, AllHTMLAttributes, ElementType} from 'react';
+import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {atoms, Atoms} from '../../atoms';
 
@@ -6,38 +7,35 @@ function isAtomsProp(key: string): key is keyof Atoms {
   return atoms.properties.has(key as keyof Omit<Atoms, 'reset'>);
 }
 
-export interface BoxProps
-  extends Omit<
-      AllHTMLAttributes<HTMLElement>,
-      'height' | 'width' | 'color' | 'cursor'
-    >,
-    Atoms {
-  component?: ElementType;
-}
+interface Props extends Atoms {}
 
-export const Box = forwardRef<HTMLElement, BoxProps>(
-  ({component: Component = 'div', className = '', ...props}: BoxProps, ref) => {
-    const atomProps: {[key: string]: unknown} = {};
-    const nativeProps: {[key: string]: unknown} = {};
+type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', Props>;
 
-    for (const key in props) {
-      if (isAtomsProp(key)) {
-        atomProps[key] = props[key as keyof typeof props];
-      } else {
-        nativeProps[key] = props[key as keyof typeof props];
-      }
+export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
+
+export const Box = React.forwardRef((props, ref) => {
+  const {as: Component = 'div', className = '', ...restProps} = props;
+
+  const atomProps: {[key: string]: unknown} = {};
+  const nativeProps: {[key: string]: unknown} = {};
+
+  for (const key in restProps) {
+    if (isAtomsProp(key)) {
+      atomProps[key] = restProps[key as keyof typeof restProps];
+    } else {
+      nativeProps[key] = restProps[key as keyof typeof restProps];
     }
+  }
 
-    const atomicClasses = atoms(atomProps);
+  const atomicClasses = atoms(atomProps);
 
-    return (
-      <Component
-        ref={ref}
-        className={`${atomicClasses} ${className}`}
-        {...nativeProps}
-      />
-    );
-  },
-);
+  return (
+    <Component
+      ref={ref}
+      className={`${atomicClasses} ${className}`}
+      {...nativeProps}
+    />
+  );
+}) as PolymorphicBox;
 
 Box.displayName = 'Box';

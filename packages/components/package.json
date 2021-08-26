@@ -16,7 +16,9 @@
       "require": "./dist/style.css"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
@@ -29,6 +31,7 @@
   },
   "dependencies": {
     "@polaris/tokens": "*",
+    "@radix-ui/react-polymorphic": "^0.0.13",
     "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
