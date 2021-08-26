@@ -24,8 +24,5 @@
     "build:js": "vite build",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
     "watch": "vite build --watch"
-  },
-  "dependencies": {
-    "@radix-ui/react-polymorphic": "^0.0.13"
   }
 }

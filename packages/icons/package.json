@@ -11,8 +11,5 @@
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
-  },
-  "dependencies": {
-    "@radix-ui/react-polymorphic": "^0.0.13"
   }
 }
