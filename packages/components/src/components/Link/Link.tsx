@@ -1,44 +1,34 @@
 import React from 'react';
-import {Atoms} from '../../atoms';
-import type {
-  PolymorphicComponentPropsWithRef,
-  PolymorphicRef,
-} from './Polymorphic';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
+
+import {atoms, Atoms} from '../../atoms';
 import * as styles from './Link.css';
 
 // TODO: Add atom & native props like box (or create helper function)
 
 interface Props {
   children?: React.ReactNode;
+  // Do we need to give the ability to access this?
   cursor?: Atoms['cursor'];
+  // Should we do this instead with underline like material ui? > Less CSS
   decoration?: Atoms['textDecorationLine'];
   external?: boolean;
 }
 
-export type LinkProps<T extends React.ElementType> =
-  PolymorphicComponentPropsWithRef<T, Props>;
+type PolymorphicLink = Polymorphic.ForwardRefComponent<'a', Props>;
 
-type LinkComponent = (<T extends React.ElementType = 'a'>(
-  props: LinkProps<T>,
-) => React.ReactElement | null) & {displayName?: string};
+export type LinkProps = Polymorphic.OwnProps<PolymorphicLink>;
 
-export const Link: LinkComponent = React.forwardRef(
-  <T extends React.ElementType = 'a'>(
-    props: LinkProps<T>,
-    ref?: PolymorphicRef<T>,
-  ) => {
-    const {as: Component = 'a', children, className = '', ...restProps} = props;
+export const Link = React.forwardRef((props, ref) => {
+  const {as: Component = 'a', children, className = '', ...restProps} = props;
 
-    return (
-      <Component
-        ref={ref}
-        className={[styles.root, styles.variant[props.variant], className]
-          .filter(Boolean)
-          .join(' ')}
-        {...restProps}
-      >
-        {children}
-      </Component>
-    );
-  },
-);
+  return (
+    <Component
+      ref={ref}
+      className={`${styles.root} ${className}`}
+      {...restProps}
+    >
+      {children}
+    </Component>
+  );
+}) as PolymorphicLink;

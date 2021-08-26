@@ -1,7 +1,7 @@
 import React from 'react';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
-
 import {atoms, Atoms} from '../../atoms';
+
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 function isAtomsProp(key: string): key is keyof Atoms {
   return atoms.properties.has(key as keyof Omit<Atoms, 'reset'>);
