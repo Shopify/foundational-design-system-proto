@@ -1,15 +1,31 @@
 import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {Atoms} from '../../atoms';
 import {Flex, FlexProps} from '../Flex';
 
-export interface InlineProps extends FlexProps {
+interface Props {
   align?: Atoms['alignItems'];
   justify?: Atoms['justifyContent'];
 }
 
-export function Inline({align, justify, wrap = 'wrap', ...rest}: InlineProps) {
+type PolymorphicInline = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Flex>,
+  FlexProps & Props
+>;
+
+export type InlineProps = Polymorphic.OwnProps<PolymorphicInline>;
+
+export const Inline = React.forwardRef((props, ref) => {
+  const {align, justify, wrap = 'wrap', ...restProps} = props;
+
   return (
-    <Flex wrap={wrap} alignItems={align} justifyContent={justify} {...rest} />
+    <Flex
+      ref={ref}
+      wrap={wrap}
+      alignItems={align}
+      justifyContent={justify}
+      {...restProps}
+    />
   );
-}
+}) as PolymorphicInline;
