@@ -7,7 +7,7 @@ import {Layout} from '../components/Layout';
 const IndexPage = () => {
   return (
     <Layout>
-      <Link as={RouterLink} to="/about">
+      <Link as={RouterLink} to="/about" textDecoration="overline">
         hi
       </Link>
       <h2>Flex</h2>

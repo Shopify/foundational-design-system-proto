@@ -1,17 +1,15 @@
 import React from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-import {atoms, Atoms} from '../../atoms';
+import {atoms, Atoms, getAtomProps} from '../../atoms';
 import * as styles from './Link.css';
-
-// TODO: Add atom & native props like box (or create helper function)
 
 interface Props {
   children?: React.ReactNode;
   // Do we need to give the ability to access this?
   cursor?: Atoms['cursor'];
   // Should we do this instead with underline like material ui? > Less CSS
-  decoration?: Atoms['textDecorationLine'];
+  textDecoration?: Atoms['textDecorationLine'];
   external?: boolean;
 }
 
@@ -22,11 +20,15 @@ export type LinkProps = Polymorphic.OwnProps<PolymorphicLink>;
 export const Link = React.forwardRef((props, ref) => {
   const {as: Component = 'a', children, className = '', ...restProps} = props;
 
+  const {atomProps, nativeProps} = getAtomProps(restProps);
+
+  const atomicClasses = atoms(atomProps);
+
   return (
     <Component
       ref={ref}
-      className={`${styles.root} ${className}`}
-      {...restProps}
+      className={`${styles.root} ${atomicClasses} ${className}}`}
+      {...nativeProps}
     >
       {children}
     </Component>

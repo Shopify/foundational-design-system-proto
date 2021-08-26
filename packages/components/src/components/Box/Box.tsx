@@ -1,11 +1,7 @@
 import React from 'react';
-import {atoms, Atoms} from '../../atoms';
-
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-function isAtomsProp(key: string): key is keyof Atoms {
-  return atoms.properties.has(key as keyof Omit<Atoms, 'reset'>);
-}
+import {atoms, Atoms, getAtomProps} from '../../atoms';
 
 interface Props extends Atoms {}
 
@@ -16,16 +12,7 @@ export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
 export const Box = React.forwardRef((props, ref) => {
   const {as: Component = 'div', className = '', ...restProps} = props;
 
-  const atomProps: {[key: string]: unknown} = {};
-  const nativeProps: {[key: string]: unknown} = {};
-
-  for (const key in restProps) {
-    if (isAtomsProp(key)) {
-      atomProps[key] = restProps[key as keyof typeof restProps];
-    } else {
-      nativeProps[key] = restProps[key as keyof typeof restProps];
-    }
-  }
+  const {atomProps, nativeProps} = getAtomProps(restProps);
 
   const atomicClasses = atoms(atomProps);
 
