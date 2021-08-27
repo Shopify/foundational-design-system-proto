@@ -1,6 +1,6 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack, Link} from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
+import {Box, Flex, Inline, Stack, Link, TextField} from '@polaris/components';
 
 import {Layout} from '../components/Layout';
 
@@ -68,6 +68,9 @@ const IndexPage = () => {
         <Box style={{backgroundColor: 'silver'}} height="20" width="1/3" />
         <Box style={{backgroundColor: 'silver'}} height="24" width="1/3" />
       </Inline>
+
+      <h2>TextField</h2>
+      <TextField id="my-text-input" label="Label" />
     </Layout>
   );
 };

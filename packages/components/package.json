@@ -30,6 +30,7 @@
     "watch": "vite build --watch"
   },
   "dependencies": {
+    "@capsizecss/vanilla-extract": "^1.0.0",
     "@polaris/tokens": "*",
     "@radix-ui/react-polymorphic": "^0.0.13",
     "clsx": "^1.1.1",
