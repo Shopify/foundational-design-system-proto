@@ -4,20 +4,16 @@ import ReactDOM from 'react-dom';
 import {useForkRef, useIsomorphicLayoutEffect} from '../../hooks';
 import {isValidElementWithRef, setRef} from '../../utilities';
 
-type Instance = Parameters<typeof ReactDOM.findDOMNode>[0];
-type Container = Instance | (() => Instance) | null;
-
 export interface PortalProps {
   key?: string | null;
   children?: React.ReactNode;
 
   /**
-   * An HTML element, component instance, or function that returns either.
-   * The `Portal`'s children will be appended to the `container`.
+   * An HTML Element the `Portal`'s children will be appended to.
    *
    * `document.body` is applied by default.
    */
-  container?: Container;
+  container?: Element;
 
   /**
    * Disables the portal allowing the children to stay within their
@@ -42,11 +38,7 @@ export const Portal = React.forwardRef<Element, PortalProps>(function Portal(
 
   useIsomorphicLayoutEffect(() => {
     if (!disablePortal) {
-      const node = ReactDOM.findDOMNode(
-        typeof containerProp === 'function' ? containerProp() : containerProp,
-      );
-
-      setContainer(node instanceof Element ? node : document.body);
+      setContainer(containerProp || document.body);
     }
   }, [containerProp, disablePortal]);
 
