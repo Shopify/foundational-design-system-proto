@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {useForkRef, useIsomorphicLayoutEffect} from '../../hooks';
 import {isValidElementWithRef, setRef} from '../../utilities';
 
-export interface PortalProps {
+interface Props {
   key?: string | null;
   children?: React.ReactNode;
 
@@ -22,17 +23,23 @@ export interface PortalProps {
   disablePortal?: boolean;
 }
 
+type PolymorphicPortal = Polymorphic.ForwardRefComponent<'div', Props>;
+
+export type PortalProps = Polymorphic.OwnProps<PolymorphicPortal>;
+
 /**
  * Portals provide a first-class way to render children into a DOM node
  * that exists outside the DOM hierarchy of the parent component.
  *
  * Derived from Material-UI's [Portal](https://github.com/mui-org/material-ui/blob/120c564109245a3b070b1cbaf2c9f3f8659fd9fa/packages/material-ui/src/Portal/Portal.js#L21)
  */
-export const Portal = React.forwardRef<Element, PortalProps>(function Portal(
-  props,
-  ref,
-) {
-  const {children, container: containerProp, disablePortal = false} = props;
+export const Portal = React.forwardRef(function Portal(props, ref) {
+  const {
+    as: Component = 'div',
+    children,
+    container: containerProp,
+    disablePortal = false,
+  } = props;
 
   const [container, setContainer] = React.useState<null | Element>(null);
 
@@ -70,8 +77,10 @@ export const Portal = React.forwardRef<Element, PortalProps>(function Portal(
   }
 
   return container
-    ? ReactDOM.createPortal(children, container, props.key)
+    ? ReactDOM.createPortal(
+        <Component>{children}</Component>,
+        container,
+        props.key,
+      )
     : container;
-});
-
-export default Portal;
+}) as PolymorphicPortal;
