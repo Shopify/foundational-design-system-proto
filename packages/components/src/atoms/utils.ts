@@ -1,7 +1,7 @@
-import {atoms, Atoms} from './atoms.css';
+import {sprinkles, Sprinkles} from './sprinkles.css';
 
-function isAtomsProp(key: string): key is keyof Atoms {
-  return atoms.properties.has(key as keyof Omit<Atoms, 'reset'>);
+function isAtomsProp(key: string): key is keyof Sprinkles {
+  return sprinkles.properties.has(key as keyof Sprinkles);
 }
 
 export function splitProps<T extends {[key: string]: any}>(props: T) {
