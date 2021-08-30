@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import clsx from 'clsx';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {useForkRef, useIsomorphicLayoutEffect} from '../../hooks';
 import {isValidElementWithRef, setRef} from '../../utilities';
+import {useTheme} from '../../theme';
 
 interface Props {
   key?: string | null;
@@ -37,11 +39,14 @@ export const Portal = React.forwardRef(function Portal(props, ref) {
   const {
     as: Component = 'div',
     children,
+    className,
     container: containerProp,
     disablePortal = false,
+    ...restProps
   } = props;
 
   const [container, setContainer] = React.useState<null | Element>(null);
+  const {themeClass} = useTheme();
 
   useIsomorphicLayoutEffect(() => {
     if (!disablePortal) {
@@ -66,19 +71,26 @@ export const Portal = React.forwardRef(function Portal(props, ref) {
     ref,
   );
 
+  const rootProps = {
+    ...restProps,
+    className: clsx(themeClass, className),
+  };
+
   if (disablePortal) {
+    let content = children;
+
     if (React.isValidElement(children)) {
-      return React.cloneElement(children, {
+      content = React.cloneElement(children, {
         ref: forkRef,
       });
     }
 
-    return <>{children}</>;
+    return <Component {...rootProps}>{content}</Component>;
   }
 
   return container
     ? ReactDOM.createPortal(
-        <Component>{children}</Component>,
+        <Component {...rootProps}>{children}</Component>,
         container,
         props.key,
       )
