@@ -1,18 +1,11 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack, Portal} from '@polaris/components';
+import {Box, Flex, Inline, Portal, Stack} from '@polaris/components';
 
 import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
   return (
     <Layout>
-      <Portal>
-        <h2>Portal</h2>
-      </Portal>
-      <Portal disablePortal>
-        <h2>Disabled with Element</h2>
-      </Portal>
-      <Portal disablePortal>Disabled without Element</Portal>
       <h2>Flex</h2>
       <Flex gap={4}>
         <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
