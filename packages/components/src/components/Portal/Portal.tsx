@@ -67,7 +67,9 @@ export const Portal = React.forwardRef(function Portal(props, ref) {
   }, [ref, container, disablePortal]);
 
   const mergedRefs = useMergeRefs(
-    isValidElementWithRef(children) ? children.ref : null,
+    React.isValidElement(children)
+      ? (children as {ref?: React.Ref<unknown>})?.ref
+      : null,
     ref,
   );
 
