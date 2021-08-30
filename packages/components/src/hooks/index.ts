@@ -1,2 +1,2 @@
-export {useForkRef} from './useForkRef';
 export {useIsomorphicLayoutEffect} from './useIsomorphicLayoutEffect';
+export {useMergeRefs} from './useMergeRefs';

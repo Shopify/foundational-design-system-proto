@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-import {useForkRef, useIsomorphicLayoutEffect} from '../../hooks';
-import {isValidElementWithRef, setRef} from '../../utilities';
+import {useMergeRefs, useIsomorphicLayoutEffect} from '../../hooks';
+import {isValidElementWithRef, assignRef} from '../../utilities';
 import {useTheme} from '../../theme';
 
 interface Props {
@@ -56,17 +56,17 @@ export const Portal = React.forwardRef(function Portal(props, ref) {
 
   useIsomorphicLayoutEffect(() => {
     if (container && !disablePortal) {
-      setRef(ref, container);
+      assignRef(ref, container);
 
       return () => {
-        setRef(ref, null);
+        assignRef(ref, null);
       };
     }
 
     return undefined;
   }, [ref, container, disablePortal]);
 
-  const forkRef = useForkRef(
+  const mergedRefs = useMergeRefs(
     isValidElementWithRef(children) ? children.ref : null,
     ref,
   );
@@ -81,7 +81,7 @@ export const Portal = React.forwardRef(function Portal(props, ref) {
 
     if (React.isValidElement(children)) {
       content = React.cloneElement(children, {
-        ref: forkRef,
+        ref: mergedRefs,
       });
     }
 
