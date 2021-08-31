@@ -20,8 +20,9 @@
     "cypress": "start-server-and-test 'yarn run dev' http-get://localhost:3000 'yarn run cy:run'",
     "version": "changeset version && yarn",
     "release": "yarn build && changeset publish",
-    "postinstall": "lerna bootstrap",
-    "size": "yarn build && size-limit"
+    "postinstall": "lerna bootstrap && yarn build",
+    "size": "yarn build && size-limit",
+    "clean": "lerna exec -- rm -rf ./dist && lerna exec -- rm -rf ./node_modules"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.2.1",
