@@ -1,15 +1,16 @@
 import React from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
+import classNames from 'classnames';
 
 import {atoms, Atoms, getAtomProps} from '../../atoms';
 import * as styles from './Link.css';
 
 interface Props {
   children?: React.ReactNode;
-  // Do we need to give the ability to access this?
-  cursor?: Atoms['cursor'];
-  // Should we do this instead with underline like material ui? > Less CSS
+  //   cursor?: Atoms['cursor'];
   textDecoration?: Atoms['textDecorationLine'];
+  variant?: keyof typeof styles.variant;
+  //   textDecorationHover?: 'hoverNone' | 'hoverUnderline';
   external?: boolean;
 }
 
@@ -18,7 +19,14 @@ type PolymorphicLink = Polymorphic.ForwardRefComponent<'a', Props>;
 export type LinkProps = Polymorphic.OwnProps<PolymorphicLink>;
 
 export const Link = React.forwardRef((props, ref) => {
-  const {as: Component = 'a', children, className = '', ...restProps} = props;
+  const {
+    as: Component = 'a',
+    className,
+    children,
+    // textDecoration,
+    variant,
+    ...restProps
+  } = props;
 
   const {atomProps, nativeProps} = getAtomProps(restProps);
 
@@ -27,7 +35,12 @@ export const Link = React.forwardRef((props, ref) => {
   return (
     <Component
       ref={ref}
-      className={`${styles.root} ${atomicClasses} ${className}}`}
+      className={classNames(
+        styles.root,
+        variant && styles.variant[variant],
+        atomicClasses,
+        className,
+      )}
       {...nativeProps}
     >
       {children}

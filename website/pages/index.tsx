@@ -7,8 +7,17 @@ import {Layout} from '../components/Layout';
 const IndexPage = () => {
   return (
     <Layout>
+      <Link as={RouterLink} to="/about">
+        Default
+      </Link>
       <Link as={RouterLink} to="/about" textDecoration="overline">
-        hi
+        Test1
+      </Link>
+      <Link as={RouterLink} to="/about" variant="underlineNone">
+        Test2
+      </Link>
+      <Link as={RouterLink} to="/about" className="underlineNone">
+        Test3
       </Link>
       <h2>Flex</h2>
       <Flex gap={4}>
