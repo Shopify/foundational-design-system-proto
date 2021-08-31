@@ -2,15 +2,12 @@ import React from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import classNames from 'classnames';
 
-import {atoms, Atoms, getAtomProps} from '../../atoms';
+import {atoms, getAtomProps} from '../../atoms';
 import * as styles from './Link.css';
 
 interface Props {
   children?: React.ReactNode;
-  //   cursor?: Atoms['cursor'];
-  textDecoration?: Atoms['textDecorationLine'];
   variant?: keyof typeof styles.variant;
-  //   textDecorationHover?: 'hoverNone' | 'hoverUnderline';
   external?: boolean;
 }
 
@@ -23,8 +20,8 @@ export const Link = React.forwardRef((props, ref) => {
     as: Component = 'a',
     className,
     children,
-    // textDecoration,
     variant,
+    external,
     ...restProps
   } = props;
 
@@ -41,6 +38,8 @@ export const Link = React.forwardRef((props, ref) => {
         atomicClasses,
         className,
       )}
+      rel={external ? 'noopener norefferer' : undefined}
+      target={external ? '_blank' : undefined}
       {...nativeProps}
     >
       {children}
