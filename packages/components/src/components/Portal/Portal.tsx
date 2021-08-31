@@ -10,9 +10,8 @@ interface Props {
   children?: React.ReactNode;
 
   /**
-   * An HTML Element the `Portal`'s children will be appended to.
-   *
-   * `document.body` is applied by default.
+   * The HTML Element the `Portal`'s children are appended to.
+   * @default document.body
    */
   container?: Element;
 }
