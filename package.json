@@ -12,7 +12,7 @@
     "build": "npm run build -w packages/tokens -w packages/components",
     "watch": "npm run watch -w packages/components & npm run watch -w packages/tokens",
     "dev": "npm run watch & npm run site",
-    "site": "npm run dev --workspace website",
+    "site": "npm run dev -w website",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
     "test": "vite-jest",
