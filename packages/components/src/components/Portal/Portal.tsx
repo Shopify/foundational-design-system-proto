@@ -21,10 +21,6 @@ type PolymorphicPortal = Polymorphic.ForwardRefComponent<'div', Props>;
 
 export type PortalProps = Polymorphic.OwnProps<PolymorphicPortal>;
 
-/**
- * Portals provide a first-class way to render children into a DOM node
- * that exists outside the DOM hierarchy of the parent component.
- */
 export const Portal = React.forwardRef(function Portal(props, ref) {
   const {as: Component = 'div', className, container, ...restProps} = props;
 
