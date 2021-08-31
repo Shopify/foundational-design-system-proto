@@ -8,7 +8,7 @@ const ThemeContext = React.createContext<ThemeContextValue>({themeClass: ''});
 
 export interface ThemeProviderProps {
   children: React.ReactNode;
-  themeClass: string;
+  themeClass: ThemeContextValue['themeClass'];
 }
 
 export function ThemeProvider(props: ThemeProviderProps) {
