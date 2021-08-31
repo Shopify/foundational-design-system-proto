@@ -1,132 +1,41 @@
-import {createElement, forwardRef, AllHTMLAttributes, ElementType} from 'react';
+import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-import classNames from '../../utilities/classNames';
 import {atoms, Atoms} from '../../atoms';
 
-export interface BoxProps
-  extends Omit<
-      AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
-    >,
-    Atoms {
-  component?: ElementType;
+function isAtomsProp(key: string): key is keyof Atoms {
+  return atoms.properties.has(key as keyof Omit<Atoms, 'reset'>);
 }
 
-export const Box = forwardRef<HTMLElement, BoxProps>(
-  (
-    {
-      component = 'div',
-      display,
-      margin,
-      marginX,
-      marginY,
-      marginTop,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      padding,
-      paddingX,
-      paddingY,
-      paddingTop,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      textAlign,
-      alignItems,
-      alignSelf,
-      justifyContent,
-      placeContent,
-      justifySelf,
-      gap,
-      spacing,
-      flex,
-      flexDirection,
-      flexGrow,
-      flexShrink,
-      flexWrap,
-      width,
-      minWidth,
-      maxWidth,
-      height,
-      minHeight,
-      maxHeight,
-      position,
-      top,
-      right,
-      bottom,
-      left,
-      overflow,
-      borderStyle,
-      userSelect,
-      outlineStyle,
-      wordBreak,
-      cursor,
-      pointerEvents,
-      whiteSpace,
-      ...rest
-    },
-    ref,
-  ) => {
-    const className =
-      classNames(
-        atoms({
-          display,
-          margin,
-          marginX,
-          marginY,
-          marginTop,
-          marginBottom,
-          marginLeft,
-          marginRight,
-          padding,
-          paddingX,
-          paddingY,
-          paddingTop,
-          paddingBottom,
-          paddingLeft,
-          paddingRight,
-          textAlign,
-          flex,
-          flexDirection,
-          placeContent,
-          alignItems,
-          alignSelf,
-          justifyContent,
-          justifySelf,
-          flexWrap,
-          gap,
-          spacing,
-          flexGrow,
-          flexShrink,
-          width,
-          minWidth,
-          maxWidth,
-          height,
-          minHeight,
-          maxHeight,
-          position,
-          top,
-          right,
-          bottom,
-          left,
-          overflow,
-          borderStyle,
-          userSelect,
-          outlineStyle,
-          wordBreak,
-          cursor,
-          pointerEvents,
-          whiteSpace,
-        }),
-        rest.className,
-      ) || null;
+interface Props extends Atoms {}
 
-    return createElement(component, {
-      ...rest,
-      className,
-      ref,
-    });
-  },
-);
+type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', Props>;
+
+export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
+
+export const Box = React.forwardRef((props, ref) => {
+  const {as: Component = 'div', className = '', ...restProps} = props;
+
+  const atomProps: {[key: string]: unknown} = {};
+  const nativeProps: {[key: string]: unknown} = {};
+
+  for (const key in restProps) {
+    if (isAtomsProp(key)) {
+      atomProps[key] = restProps[key as keyof typeof restProps];
+    } else {
+      nativeProps[key] = restProps[key as keyof typeof restProps];
+    }
+  }
+
+  const atomicClasses = atoms(atomProps);
+
+  return (
+    <Component
+      ref={ref}
+      className={`${atomicClasses} ${className}`}
+      {...nativeProps}
+    />
+  );
+}) as PolymorphicBox;
 
 Box.displayName = 'Box';

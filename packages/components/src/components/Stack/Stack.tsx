@@ -1,21 +1,32 @@
 import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {Atoms} from '../../atoms';
 import {Flex, FlexProps} from '../Flex';
 
-export interface StackProps extends FlexProps {
+interface Props {
   align?: Atoms['alignItems'];
   justify?: Atoms['justifyContent'];
 }
 
-export function Stack({align, justify, wrap = 'wrap', ...rest}: StackProps) {
+type PolymorphicStack = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof Flex>,
+  FlexProps & Props
+>;
+
+export type StackProps = Polymorphic.OwnProps<PolymorphicStack>;
+
+export const Stack = React.forwardRef((props, ref) => {
+  const {align, justify, wrap = 'wrap', ...restProps} = props;
+
   return (
     <Flex
+      ref={ref}
       direction="column"
       wrap={wrap}
       alignItems={align}
       justifyContent={justify}
-      {...rest}
+      {...restProps}
     />
   );
-}
+}) as PolymorphicStack;
