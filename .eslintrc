@@ -20,7 +20,7 @@
     "import/no-extraneous-dependencies": 0,
     "@shopify/strict-component-boundaries": 0
   },
-  "ignorePatterns": ["node_modules", "dist", ".yarn/"],
+  "ignorePatterns": ["node_modules", "dist"],
   "overrides": [{
     "files": [ "cypress/**/*.spec.ts" ],
     "rules": {

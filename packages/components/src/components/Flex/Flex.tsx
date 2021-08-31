@@ -13,15 +13,17 @@ export interface FlexProps extends Omit<BoxProps, 'wrap' | 'placeContent'> {
 export const Flex = forwardRef<HTMLElement, FlexProps>(
   ({direction, grow, shrink, wrap, ...rest}, ref) => {
     return (
-      <Box
-        ref={ref}
-        display="flex"
-        flexDirection={direction}
-        flexGrow={grow}
-        flexShrink={shrink}
-        flexWrap={wrap}
-        {...rest}
-      />
+      <div style={{outline: 'red 3px solid'}}>
+        <Box
+          ref={ref}
+          display="flex"
+          flexDirection={direction}
+          flexGrow={grow}
+          flexShrink={shrink}
+          flexWrap={wrap}
+          {...rest}
+        />
+      </div>
     );
   },
 );

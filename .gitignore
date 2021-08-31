@@ -11,8 +11,6 @@ dist
 
 # debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 *.log
 
 # Shopify

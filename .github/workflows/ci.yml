@@ -8,31 +8,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Enable node
         uses: actions/setup-node@v2
         with:
-          node-version: '14.17.0'
-
-      - name: Restore Lerna cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          node-version: '14.17.6'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install Dependencies
-        run: yarn --frozen-lockfile
-        
+        run: npm i
+
       - name: Build
-        run: yarn build
+        run: npm build
 
       - name: Type check
-        run: yarn tsc
+        run: npm tsc
 
       - name: Lint
-        run: yarn lint
-      
+        run: npm lint
+
       - name: Test
-        run: yarn test
+        run: npm test

@@ -1,8 +1,8 @@
 dependencies:
   override:
-    - yarn
+    - npm
 deploy:
   pre:
-    - yarn build
+    - npm run build
   override:
-    - npm publish
+    - npm run publish

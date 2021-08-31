@@ -32,7 +32,7 @@ export const spacing = {
   '11': '2.75rem',
   '12': '3rem',
   '14': '3.5rem',
-  '16': '4rem',
+  '16': '10rem',
   '20': '5rem',
   '24': '6rem',
   '28': '7rem',
