@@ -1,41 +1,21 @@
 import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import clsx from 'clsx';
 
 import * as styles from './ButtonBase.css';
 
-export type PolymorphicProps<
-  TElementType extends React.ElementType,
-  TProps,
-> = TProps & {
-  as?: TElementType;
-} & Omit<React.ComponentProps<TElementType>, 'as'>;
+interface Props {
+  children?: React.ReactNode;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+}
 
-export type ButtonBaseProps<
-  TElementType extends React.ElementType = React.ElementType,
-> = PolymorphicProps<
-  TElementType,
-  {
-    className?: string;
-    type?: string;
+type PolymorphicButtonBase = Polymorphic.ForwardRefComponent<'button', Props>;
 
-    /**
-     * The content of the component.
-     */
-    children?: React.ReactNode;
+export type ButtonBaseProps = Polymorphic.OwnProps<PolymorphicButtonBase>;
 
-    /**
-     * If `true`, the base button will be disabled.
-     */
-    disabled?: boolean;
-  }
->;
-
-export const ButtonBase: <T extends React.ElementType>(
-  props: ButtonBaseProps<T>,
-) => React.ReactElement | null = React.forwardRef(function ButtonBase(
-  props: ButtonBaseProps,
-  ref: React.Ref<Element>,
-) {
+export const ButtonBase = React.forwardRef((props, ref) => {
   const {
     className = '',
     as: asProp = 'button',
@@ -44,7 +24,7 @@ export const ButtonBase: <T extends React.ElementType>(
     ...restProps
   } = props;
 
-  const Component = restProps.href ? 'a' : asProp;
+  const Component = (restProps.href ? 'a' : asProp) as 'button';
 
   return (
     <Component
@@ -60,4 +40,4 @@ export const ButtonBase: <T extends React.ElementType>(
       {...restProps}
     />
   );
-});
+}) as PolymorphicButtonBase;
