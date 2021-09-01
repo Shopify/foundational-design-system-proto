@@ -1,6 +1,6 @@
 import React from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import {atoms, getAtomProps} from '../../atoms';
 
@@ -36,7 +36,7 @@ export const Link = React.forwardRef((props, ref) => {
 
   return (
     <Component
-      className={classNames(
+      className={clsx(
         styles.root,
         variant && styles.variant[variant],
         atomicClasses,
