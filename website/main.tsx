@@ -7,6 +7,7 @@ import './styles/index.css';
 
 const Index = lazy(() => import('./pages'));
 const About = lazy(() => import('./pages/about'));
+const Guides = lazy(() => import('./pages/guides'));
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={Index} />
           <Route path="/about" component={About} />
+          <Route path="/guides" component={Guides} />
         </Switch>
       </Suspense>
     </Router>
