@@ -38,48 +38,48 @@ interface Props {
    * [focus-lock] Allows "ignoring" focus on some elements
    * @see {@link https://github.com/theKashey/react-focus-lock#api}
    */
-  shouldIgnore?: (candidate: HTMLElement) => boolean;
+  shouldIgnore?: FocusOnProps['shouldIgnore'];
 
   /**
    * Action to perform on Esc key press
    */
-  onEscapeKey?: (event: Event) => void;
+  onEscapeKey?: FocusOnProps['onEscapeKey'];
 
   /**
    * Action to perform on click outside
    */
-  onClickOutside?: (event: MouseEvent | TouchEvent) => void;
+  onClickOutside?: FocusOnProps['onClickOutside'];
 
   /**
    * Callback on lock activation
    * @param node The main node
    */
-  onActivation?: (node: HTMLElement) => void;
+  onActivation?: FocusOnProps['onActivation'];
 
   /**
    * Callback on lock deactivation
    */
-  onDeactivation?: () => void;
+  onDeactivation?: FocusOnProps['onDeactivation'];
 
   /**
    * [scroll-lock] Control isolation
    * @see {@link https://github.com/theKashey/react-remove-scroll#usage}
    */
-  noIsolation?: boolean;
+  noIsolation?: FocusOnProps['noIsolation'];
 
   /**
    * [scroll-lock] Full page inert (event suppression)
    * @default false
    * @see {@link https://github.com/theKashey/react-remove-scroll#usage}
    */
-  inert?: boolean;
+  inert?: FocusOnProps['inert'];
 
   /**
    * [scroll-lock] Allows scroll based zoom
    * @default false
    * @see https://github.com/theKashey/react-remove-scroll#usage
    */
-  allowPinchZoom?: boolean;
+  allowPinchZoom?: FocusOnProps['allowPinchZoom'];
 }
 
 // Default React.ElementType derived from the following declaration file:
