@@ -30,12 +30,12 @@ export const Link = React.forwardRef((props, ref) => {
 
   const atomicClasses = atoms(atomProps);
 
-  const newTab = !external
-    ? null
-    : {
+  const newTab = external
+    ? {
         rel: 'noopener norefferer',
         target: '_blank',
-      };
+      }
+    : null;
 
   return (
     <Component
