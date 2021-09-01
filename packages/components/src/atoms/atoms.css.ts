@@ -103,6 +103,7 @@ const responsiveStyles = createAtomicStyles({
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
     display: [
+      'none',
       'block',
       'inline',
       'inline-block',
