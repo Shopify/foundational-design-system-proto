@@ -6,11 +6,11 @@ export const root = style({
   },
 });
 
-export const variant = styleVariants({
-  underlineNone: {
+export const underline = styleVariants({
+  none: {
     textDecoration: 'none',
   },
-  underlineAlways: {
+  always: {
     ':hover': {
       textDecoration: 'underline',
     },

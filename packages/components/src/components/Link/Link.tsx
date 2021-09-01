@@ -9,7 +9,7 @@ import * as styles from './Link.css';
 interface Props {
   children: React.ReactNode;
   external?: boolean;
-  variant?: keyof typeof styles.variant;
+  underline?: keyof typeof styles.underline;
 }
 
 type PolymorphicLink = Polymorphic.ForwardRefComponent<'a', Props>;
@@ -22,7 +22,7 @@ export const Link = React.forwardRef((props, ref) => {
     children,
     className,
     external,
-    variant,
+    underline,
     ...restProps
   } = props;
 
@@ -38,7 +38,7 @@ export const Link = React.forwardRef((props, ref) => {
     <Component
       className={clsx(
         styles.root,
-        variant && styles.variant[variant],
+        underline && styles.underline[underline],
         atomicClasses,
         className,
       )}

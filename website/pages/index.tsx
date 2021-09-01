@@ -22,11 +22,11 @@ const IndexPage = () => {
         Router Link - External
       </Link>
       <br />
-      <Link href="/about" variant="underlineNone">
+      <Link href="/about" underline="none">
         Hyperlink - No Underline Variant
       </Link>
       <br />
-      <Link as={RouterLink} to="/about" variant="underlineAlways">
+      <Link as={RouterLink} to="/about" underline="always">
         Router Link - Always Underlined Variant
       </Link>
       <br />
