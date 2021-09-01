@@ -8,15 +8,16 @@ import {root} from './Layout.css';
 
 export const Layout = ({
   className,
+  maxWidth = {
+    xs: 'prose',
+    sm: 'md',
+    md: 'lg',
+  },
   ...props
 }: ComponentProps<typeof Container>) => (
   <ThemeProvider themeClass={themeClass}>
     <Container
-      maxWidth={{
-        xs: 'prose',
-        sm: 'md',
-        md: 'lg',
-      }}
+      maxWidth={maxWidth}
       {...props}
       className={clsx(themeClass, root, className)}
     />
