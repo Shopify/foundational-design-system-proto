@@ -17,7 +17,9 @@ export const Layout = ({
 }: ComponentProps<typeof Container>) => (
   <ThemeProvider themeClass={themeClass}>
     <Container
-      maxWidth={maxWidth}
+      height="full"
+      width="full"
+      maxWidth="full"
       {...props}
       className={clsx(themeClass, root, className)}
     />

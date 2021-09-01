@@ -6,16 +6,17 @@ import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
   return (
-    <Layout>
+    <Layout
+      padding={{
+        xs: 4,
+        sm: 8,
+        md: 8,
+        lg: 16,
+        xl: 24,
+      }}
+    >
       <Inline
         marginBottom={8}
-        padding={{
-          xs: 4,
-          sm: 8,
-          md: 8,
-          lg: 16,
-          xl: 24,
-        }}
         justify="space-between"
         align="center"
         wrap={{
@@ -72,7 +73,7 @@ const IndexPage = () => {
 };
 
 const Divider = () => (
-  <Box margin={4} height="px" style={{backgroundColor: 'silver'}} />
+  <Box marginY={4} height="px" style={{backgroundColor: 'silver'}} />
 );
 
 export default IndexPage;
