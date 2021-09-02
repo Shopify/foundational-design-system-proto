@@ -1,7 +1,7 @@
 import React from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-import {atoms, Atoms, getAtomProps} from '../../atoms';
+import {atoms, Atoms, splitProps} from '../../atoms';
 
 interface Props extends Atoms {}
 
@@ -12,7 +12,7 @@ export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
 export const Box = React.forwardRef((props, ref) => {
   const {as: Component = 'div', className = '', ...restProps} = props;
 
-  const {atomProps, nativeProps} = getAtomProps(restProps);
+  const {atomProps, nativeProps} = splitProps(restProps);
 
   const atomicClasses = atoms(atomProps);
 

@@ -2,7 +2,7 @@ import React from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import clsx from 'clsx';
 
-import {atoms, getAtomProps} from '../../atoms';
+import {atoms, splitProps} from '../../atoms';
 
 import * as styles from './Link.css';
 
@@ -26,7 +26,7 @@ export const Link = React.forwardRef((props, ref) => {
     ...restProps
   } = props;
 
-  const {atomProps, nativeProps} = getAtomProps(restProps);
+  const {atomProps, nativeProps} = splitProps(restProps);
 
   const atomicClasses = atoms(atomProps);
 
