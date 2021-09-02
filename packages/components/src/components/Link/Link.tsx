@@ -22,7 +22,7 @@ export const Link = React.forwardRef((props, ref) => {
     children,
     className,
     external,
-    underline,
+    underline = 'hover',
     ...restProps
   } = props;
 
@@ -39,12 +39,7 @@ export const Link = React.forwardRef((props, ref) => {
 
   return (
     <Component
-      className={clsx(
-        styles.root,
-        underline && styles.underline[underline],
-        atomicClasses,
-        className,
-      )}
+      className={clsx(styles.underline[underline], atomicClasses, className)}
       ref={ref}
       {...externalProps}
       {...nativeProps}
