@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import clsx from 'clsx';
-
 import {
   Box,
   Container,
@@ -18,11 +17,16 @@ import * as styles from './layout.css';
 
 const LayoutGuide = () => {
   return (
-    <Layout maxWidth="full">
+    <Layout>
       <Header />
 
-      <Container maxWidth="full" className={clsx(styles.ContainerRoot)}>
+      <Container
+        as="main"
+        maxWidth="full"
+        className={clsx(styles.ContainerRoot)}
+      >
         <Navbar />
+        <Hero />
       </Container>
     </Layout>
   );
@@ -35,11 +39,11 @@ const Header = () => (
     as="header"
     marginBottom={8}
     padding={{
-      xs: 4,
+      xs: 0,
       sm: 8,
-      md: 8,
-      lg: 8,
-      xl: 8,
+      md: 12,
+      lg: 16,
+      xl: 20,
     }}
     justify="space-between"
     align="center"
@@ -51,7 +55,7 @@ const Header = () => (
       xl: 'nowrap',
     }}
   >
-    <h1>Guides</h1>
+    <h1>Guides: layout</h1>
     <Box as="ul" gap={8} className={styles.LinkListRoot}>
       <li>
         <Link to="/">Home</Link>
@@ -76,7 +80,13 @@ const Navbar = () => {
   return (
     <Stack as="nav" className="Navbar">
       <Inline
-        paddingX={8}
+        paddingX={{
+          xs: 0,
+          sm: 8,
+          md: 12,
+          lg: 16,
+          xl: 20,
+        }}
         align="center"
         justify="space-between"
         className={clsx(styles.InlineRoot)}
@@ -123,9 +133,7 @@ const Navbar = () => {
             width={16}
             borderStyle="dashed"
             className={clsx(styles.CenterRootItem)}
-          >
-            Sign up
-          </Box>
+          />
         </Center>
       </Inline>
 
@@ -149,5 +157,119 @@ const Navbar = () => {
         ))}
       </Center>
     </Stack>
+  );
+};
+
+const Hero = () => {
+  return (
+    <Flex
+      gap={8}
+      paddingX={{
+        xs: 0,
+        sm: 8,
+        md: 12,
+        lg: 16,
+        xl: 20,
+      }}
+      paddingY={{
+        xs: 0,
+        sm: 8,
+        md: 12,
+        lg: 16,
+        xl: 20,
+      }}
+      wrap={{
+        xs: 'wrap',
+        sm: 'wrap',
+      }}
+      className={clsx(styles.FlexRoot)}
+    >
+      <Stack
+        flex={1}
+        justify="center"
+        width="1/2"
+        height="auto"
+        className={styles.StackRoot}
+      >
+        <Box width="full" height={24} className={styles.StackRootItem} />
+        <Box width="full" height={8} className={styles.StackRootItem} />
+        <Box width="full" height={16} className={styles.StackRootItem} />
+      </Stack>
+
+      <Grid
+        flex={1}
+        width="1/2"
+        height="full"
+        columns={['4fr', '1fr', '1fr', '2fr', '2fr', '3fr', '1fr', '4fr']}
+        rows={['.25fr .25fr .25fr .25fr .25fr .25fr .25fr .25fr .25fr']}
+        className={styles.GridRoot}
+      >
+        <Box
+          width={{
+            xs: 24,
+            sm: 32,
+            md: 44,
+            lg: 56,
+            xl: 64,
+          }}
+          height={{
+            xs: 16,
+            sm: 24,
+            md: 36,
+            lg: 48,
+            xl: 56,
+          }}
+          className={styles.GridRootItem}
+          style={{
+            gridRow: '1 / span 5',
+            gridColumn: '4 / span 3',
+          }}
+        />
+        <Box
+          width={{
+            xs: 24,
+            sm: 48,
+            md: 64,
+            lg: 80,
+            xl: 96,
+          }}
+          height={{
+            xs: 16,
+            sm: 36,
+            md: 48,
+            lg: 60,
+            xl: 72,
+          }}
+          className={styles.GridRootItem}
+          style={{
+            gridRow: 'span 2 / 9',
+            gridColumn: 'span 5 / 10',
+            justifySelf: 'flex-end',
+          }}
+        />
+        <Box
+          width={{
+            xs: 32,
+            sm: 40,
+            md: 48,
+            lg: 64,
+            xl: 72,
+          }}
+          height={{
+            xs: 20,
+            sm: 24,
+            md: 36,
+            lg: 48,
+            xl: 56,
+          }}
+          className={styles.GridRootItem}
+          style={{
+            gridRow: 'span 4 / 10',
+            gridColumn: '1 / span 4',
+            alignSelf: 'flex-end',
+          }}
+        />
+      </Grid>
+    </Flex>
   );
 };

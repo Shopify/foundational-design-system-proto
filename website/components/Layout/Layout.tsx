@@ -4,15 +4,8 @@ import {Container, ThemeProvider} from '@polaris/components';
 
 import {themeClass} from '../theme.css';
 
-import {root} from './Layout.css';
-
 export const Layout = ({
   className,
-  maxWidth = {
-    xs: 'prose',
-    sm: 'md',
-    md: 'lg',
-  },
   ...props
 }: ComponentProps<typeof Container>) => (
   <ThemeProvider themeClass={themeClass}>
@@ -21,7 +14,7 @@ export const Layout = ({
       width="full"
       maxWidth="full"
       {...props}
-      className={clsx(themeClass, root, className)}
+      className={clsx(themeClass, className)}
     />
   </ThemeProvider>
 );

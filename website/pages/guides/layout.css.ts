@@ -1,7 +1,6 @@
-import {atoms} from '@polaris/components';
 import {style} from '@vanilla-extract/css';
 
-/****  Layout component identifier styles  ****/
+/** Layout component identifier styles  */
 
 export const InlineRoot = style({
   background: 'rgba(232, 23, 138, .25)',
@@ -74,7 +73,7 @@ export const DecorativeBoxRoot = style({
   borderStyle: 'solid',
 });
 
-/****  Page styles  ****/
+/**  Page styles  */
 
 export const LinkListRoot = style({
   listStyle: 'none',
