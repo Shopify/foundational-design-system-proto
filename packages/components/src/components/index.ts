@@ -6,4 +6,5 @@ export * from './Flex';
 export * from './Grid';
 export * from './Inline';
 export * from './Link';
+export * from './Portal';
 export * from './Stack';
