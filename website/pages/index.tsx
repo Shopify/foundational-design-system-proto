@@ -15,7 +15,14 @@ const IndexPage = () => {
     <Layout>
       <h2>Button</h2>
       <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
-      <Button onClick={() => console.log('Hello')}>A button</Button>
+      <br />
+      <Button onClick={() => console.log('Hello')} marginBottom={4}>
+        Button
+      </Button>
+      <br />
+      <Button href="http://www.shopify.com/" marginBottom={4}>
+        Link
+      </Button>
       <Divider />
 
       <h2>Flex</h2>
