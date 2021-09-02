@@ -1,4 +1,4 @@
-import {atoms} from '../../../packages/components/src';
+import {atoms} from '@polaris/components';
 
 export const root = atoms({
   marginY: '4',

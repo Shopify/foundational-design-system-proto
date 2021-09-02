@@ -1,6 +1,6 @@
 import React from 'react';
+import {Box, Flex, Inline, Stack} from '@polaris/components';
 
-import {Box, Flex, Inline, Stack} from '../../packages/components/src';
 import {Layout} from '../components/Layout';
 
 const IndexPage = () => {

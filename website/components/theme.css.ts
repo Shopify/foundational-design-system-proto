@@ -1,3 +1,3 @@
-import {createTheme} from '../../packages/components/src';
+import {createTheme} from '@polaris/components';
 
 export const [themeClass, vars] = createTheme();

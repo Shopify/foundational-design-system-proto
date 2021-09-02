@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "declaration": true,
@@ -18,7 +18,12 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "downlevelIteration": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@polaris/components": ["packages/components/src/index.ts"],
+      "@polaris/tokens": ["packages/tokens/src/index.ts"]
+    }
   },
   "exclude": ["node_modules"],
   "include": [
