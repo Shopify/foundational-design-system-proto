@@ -10,8 +10,7 @@
   "scripts": {
     "build": "lerna run --scope @polaris/* build",
     "watch": "lerna run --parallel watch",
-    "dev": "yarn site",
-    "site": "lerna run --stream --scope website dev",
+    "dev": "lerna run --stream --scope website dev",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
     "test": "vite-jest",
