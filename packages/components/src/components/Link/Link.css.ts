@@ -1,13 +1,7 @@
 import {styleVariants} from '@vanilla-extract/css';
 
 export const underline = styleVariants({
-  none: {
-    textDecoration: 'none',
-    ':hover': {
-      textDecoration: 'none',
-    },
-  },
-  hover: {
+  default: {
     textDecoration: 'underline',
     ':hover': {
       textDecoration: 'none',
@@ -17,6 +11,12 @@ export const underline = styleVariants({
     textDecoration: 'underline',
     ':hover': {
       textDecoration: 'underline',
+    },
+  },
+  none: {
+    textDecoration: 'none',
+    ':hover': {
+      textDecoration: 'none',
     },
   },
 });
