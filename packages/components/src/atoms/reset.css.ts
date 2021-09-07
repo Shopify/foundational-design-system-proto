@@ -1,5 +1,7 @@
 import {style, composeStyles} from '@vanilla-extract/css';
 
+import 'focus-visible';
+
 /**
  * Selector for `focus-visible` package
  * https://github.com/WICG/focus-visible
@@ -101,6 +103,7 @@ export const element = {
   article: block,
   aside: block,
   details: block,
+  div: block,
   figcaption: block,
   figure: block,
   footer: block,
