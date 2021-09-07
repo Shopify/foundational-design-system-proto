@@ -2615,10 +2615,10 @@
     dedent "^0.7.0"
     deep-object-diff "^1.1.0"
 
-"@vanilla-extract/css@^1.3.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-1.4.0.tgz#6b364d8fbab4dd2dc0bf66aa9af3ea3f2cef2811"
-  integrity sha512-gJ73SxZSkDoc19gKozVD4u8uUq4e0txqDfF0+LYC3e5rlavCdFsssg9XvlglUw75b9FFJAHaBkLAbDDBf3eL3A==
+"@vanilla-extract/css@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-1.4.1.tgz#d75f3944de50c703d213bf1d2c2abb68ff1b29fc"
+  integrity sha512-WRjGajMsSNR9sm3ObA9RhNjU0VQQhaPHHj5ZFeXEbAannF7FPGZsB5xk7NODrYPhBBqOaWJsqmrDycx5DLjapg==
   dependencies:
     "@emotion/hash" "^0.8.0"
     "@vanilla-extract/private" "^1.0.1"
@@ -2630,12 +2630,12 @@
     deep-object-diff "^1.1.0"
     deepmerge "^4.2.2"
 
-"@vanilla-extract/integration@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-1.2.0.tgz#057a9a74bd6bf8ea2cfadb89d9b90fb8629efae9"
-  integrity sha512-mawQst1Kk8LnsTXNcQ5VBTmg11DeYgctUG/G/l4ELlaINUAdvc7mguuf46nqXA1lfkrMbjquaBeiZQ9/Vz6x0g==
+"@vanilla-extract/integration@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-1.3.0.tgz#3d3119db30d8a45368c012d5785939cadc007cec"
+  integrity sha512-XN2xg1w8zYICgemLZczCRFTJDatYU22Tx3/bEGnCjOgvGZKCjPsAX9+T/eNkl4/oqb5Z03FP0RAKy19f0Ko7gA==
   dependencies:
-    "@vanilla-extract/css" "^1.3.0"
+    "@vanilla-extract/css" "^1.4.1"
     chalk "^4.1.1"
     dedent "^0.7.0"
     esbuild "^0.11.16"
@@ -2654,12 +2654,17 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-1.0.0.tgz#44ff25e9782ba48e8a32aa1282d1772df16a2d6d"
   integrity sha512-owMxzIZ9YIMAUNkHfr4B+GKAOW2jaZLCYk66rwRwY2olHS1MX8I0L5CESzRgkh4shuH7sUCUYLhIS247/SLK4w==
 
-"@vanilla-extract/vite-plugin@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/vite-plugin/-/vite-plugin-2.0.1.tgz#61a358a1d70866d2e94386b98ced4f0e05e9cedf"
-  integrity sha512-B6Kftqy0BH62mwbEq5YYAVU362qq0DfmoQmvoITJEydwmDjgldDMZtip/yl1LV7KQrzA7LnUngmat7G0rgAxKQ==
+"@vanilla-extract/sprinkles@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/sprinkles/-/sprinkles-1.2.0.tgz#1c9eabfe1c3a11456ec08f45df5f9b1c830e2430"
+  integrity sha512-m7CgRpAYyOFj7SbuCmEk3S6JGL7+EtCgXly3yKTcIb1sSn3kDa7EirF6+WWk8QxUwmZuluu7ylRRMMHK1HC/Cw==
+
+"@vanilla-extract/vite-plugin@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/vite-plugin/-/vite-plugin-2.0.2.tgz#90074cdc3fa23e9af5c8a499035d82b12fd945bc"
+  integrity sha512-CVN7WysbIzeu54mT+f0rHefCotjx4W7FpHxqaYo9mDkBXpd7fkFt/y8xL3kcyZ4uAIBBANTKUH1AWEBh586oFw==
   dependencies:
-    "@vanilla-extract/integration" "^1.2.0"
+    "@vanilla-extract/integration" "^1.3.0"
 
 "@vitejs/plugin-react-refresh@^1.3.1":
   version "1.3.6"
@@ -5163,10 +5168,10 @@ esbuild@^0.11.16:
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.23.tgz#c42534f632e165120671d64db67883634333b4b8"
   integrity sha512-iaiZZ9vUF5wJV8ob1tl+5aJTrwDczlvGP0JoMmnpC2B0ppiMCu8n8gmy5ZTGl5bcG081XBVn+U+jP+mPFm5T5Q==
 
-esbuild@^0.12.8:
-  version "0.12.17"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.17.tgz#5816f905c2905de0ebbc658860df7b5b48afbcd3"
-  integrity sha512-GshKJyVYUnlSXIZj/NheC2O0Kblh42CS7P1wJyTbbIHevTG4jYMS9NNw8EOd8dDWD0dzydYHS01MpZoUcQXB4g==
+esbuild@^0.12.17:
+  version "0.12.25"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.25.tgz#c2131cef022cf9fe94aaa5e00110b27fc976221a"
+  integrity sha512-woie0PosbRSoN8gQytrdCzUbS2ByKgO8nD1xCZkEup3D9q92miCze4PqEI9TZDYAuwn6CruEnQpJxgTRWdooAg==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -12014,12 +12019,12 @@ vite-plugin-svgr@^0.3.0:
   dependencies:
     "@svgr/core" "^5.5.0"
 
-vite@^2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.4.4.tgz#8c402a07ad45f168f6eb5428bead38f3e4363e47"
-  integrity sha512-m1wK6pFJKmaYA6AeZIUXyiAgUAAJzVXhIMYCdZUpCaFMGps0v0IlNJtbmPvkUhVEyautalajmnW5X6NboUPsnw==
+vite@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.5.4.tgz#2dab98835be64c4157eba225e0becb9d373f608a"
+  integrity sha512-EAdbX8A6MJaqC6UuicZtoxY9+BdaBdcGVaROXvsu+vnlGyzZzm63QQgANJryIB0DvenveHAoCriN+dAnoS+TIQ==
   dependencies:
-    esbuild "^0.12.8"
+    esbuild "^0.12.17"
     postcss "^8.3.6"
     resolve "^1.20.0"
     rollup "^2.38.5"
