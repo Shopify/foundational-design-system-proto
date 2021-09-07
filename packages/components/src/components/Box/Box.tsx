@@ -3,7 +3,7 @@ import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {atoms, Atoms, splitProps} from '../../atoms';
 
-interface Props extends Atoms {}
+interface Props extends Omit<Atoms, 'reset'> {}
 
 type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', Props>;
 
@@ -14,7 +14,10 @@ export const Box = React.forwardRef((props, ref) => {
 
   const {atomProps, nativeProps} = splitProps(restProps);
 
-  const atomicClasses = atoms(atomProps);
+  const atomicClasses = atoms({
+    reset: typeof Component === 'string' ? Component : 'div',
+    ...atomProps,
+  });
 
   return (
     <Component
