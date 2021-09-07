@@ -31,7 +31,7 @@ const sizes = {
   full: '100%',
 };
 
-const unresponsiveStyles = createAtomicStyles({
+export const unresponsiveStyles = createAtomicStyles({
   properties: {
     borderStyle: [
       'none',
@@ -86,7 +86,7 @@ const unresponsiveStyles = createAtomicStyles({
   },
 });
 
-const responsiveStyles = createAtomicStyles({
+export const responsiveStyles = createAtomicStyles({
   conditions: {
     xs: {},
     sm: {'@media': `screen and (min-width: ${breakpoints.sm})`},
@@ -175,6 +175,6 @@ const responsiveStyles = createAtomicStyles({
   },
 });
 
-export const atoms = createAtomsFn(unresponsiveStyles, responsiveStyles);
+export const sprinkles = createAtomsFn(unresponsiveStyles, responsiveStyles);
 
-export type Atoms = Parameters<typeof atoms>[0];
+export type Sprinkles = Parameters<typeof sprinkles>[0];

@@ -1,5 +1,6 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack, FocusLock} from '@polaris/components';
+import {Box, Flex, Inline, Stack, Link} from '@polaris/components';
+import {Link as RouterLink} from 'react-router-dom';
 
 import {Layout} from '../components/Layout';
 
@@ -17,108 +18,73 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <h2>Focus Lock</h2>
-      <p>isFocusLocked: {isFocusLocked.toString()}</p>
-      <p>isScrollLocked: {isScrollLocked.toString()}</p>
-
+      <h2>Link</h2>
+      <Link href="/about">Hyperlink</Link>
       <br />
+      <Link as={RouterLink} to="/about">
+        Router Link
+      </Link>
       <br />
-
-      <button type="button" onClick={toggleFocusLock}>
-        Toggle Focus Lock
-      </button>
-      <button type="button" onClick={toggleScrollLock}>
-        Toggle Scroll Lock
-      </button>
-      {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-      <p>
-        👆 Focus will return to this button when the Focus Lock is disabled.
-      </p>
-
+      <Link href="/about" external>
+        Hyperlink - External
+      </Link>
       <br />
+      <Link as={RouterLink} to="/about" external>
+        Router Link - External
+      </Link>
       <br />
-
-      <FocusLock
-        focusLock={isFocusLocked}
-        scrollLock={isScrollLocked}
-        onEscapeKey={toggleFocusLock}
-      >
-        <h3>Focus Lock Group</h3>
-        <Flex gap={4}>
-          <button type="button" onClick={toggleFocusLock}>
-            Toggle Focus Lock
-          </button>
-          <button type="button" onClick={toggleFocusLock}>
-            Toggle Focus Lock
-          </button>
-          <button type="button" onClick={toggleFocusLock}>
-            Toggle Focus Lock
-          </button>
-        </Flex>
-      </FocusLock>
-
+      <Link href="/about" underline="none">
+        Hyperlink - No Underline Variant
+      </Link>
+      <br />
+      <Link as={RouterLink} to="/about" underline="always">
+        Router Link - Always Underlined Variant
+      </Link>
+      <br />
+      <Link href="/about" aria-label="Label text here">
+        Hyperlink - Aria Label
+      </Link>
+      <br />
       <Divider />
-
       <h2>Flex</h2>
-      <Flex gap={4}>
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
+      <Flex gap="4">
+        <Box style={{backgroundColor: 'silver'}} height="16" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="20" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="24" width="1/3" />
       </Flex>
 
       <Divider />
 
       <h2>Stack</h2>
-      <Stack gap={2} align="center">
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
+      <Stack gap="2" align="center">
+        <Box style={{backgroundColor: 'silver'}} height="16" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="20" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="24" width="1/3" />
       </Stack>
 
       <Divider />
 
       <h2>Inline – Wrap (Default)</h2>
-      <Inline gap={2}>
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
+      <Inline gap="2">
+        <Box style={{backgroundColor: 'silver'}} height="16" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="20" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="24" width="1/3" />
       </Inline>
 
       <Divider />
 
       <h2>Inline – No wrap</h2>
-      <Inline gap={2} wrap="nowrap">
-        <Box style={{backgroundColor: 'silver'}} height={16} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={20} width="1/3" />
-        <Box style={{backgroundColor: 'silver'}} height={24} width="1/3" />
+      <Inline gap="2" wrap="nowrap">
+        <Box style={{backgroundColor: 'silver'}} height="16" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="20" width="1/3" />
+        <Box style={{backgroundColor: 'silver'}} height="24" width="1/3" />
       </Inline>
     </Layout>
   );
 };
 
 const Divider = () => (
-  <Box margin={4} height="px" style={{backgroundColor: 'silver'}} />
+  <Box margin="4" height="px" style={{backgroundColor: 'silver'}} />
 );
 
 export default IndexPage;
