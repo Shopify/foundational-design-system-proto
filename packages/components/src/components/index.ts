@@ -6,5 +6,6 @@ export * from './Flex';
 export * from './FocusLock';
 export * from './Grid';
 export * from './Inline';
+export * from './Modal';
 export * from './Portal';
 export * from './Stack';
