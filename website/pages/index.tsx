@@ -7,6 +7,7 @@ import {
   ButtonBase,
   Button,
   Link,
+  DevDocsButton,
 } from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
 
@@ -25,6 +26,8 @@ const IndexPage = () => {
       <Button href="http://www.shopify.com/" marginBottom={4}>
         Link
       </Button>
+      <br />
+      <DevDocsButton onClick={() => console.log('Hello')}>Button</DevDocsButton>
       <Divider />
 
       <h2>Link</h2>
