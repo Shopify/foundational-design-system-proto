@@ -22,7 +22,7 @@ export const Link = React.forwardRef((props, ref) => {
     children,
     className,
     external,
-    underline = 'hover',
+    underline = 'default',
     ...restProps
   } = props;
 
