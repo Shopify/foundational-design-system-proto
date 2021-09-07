@@ -8,10 +8,8 @@
     "website"
   ],
   "scripts": {
-    "build": "lerna run --scope @polaris/* build",
-    "watch": "lerna run --parallel watch",
-    "dev": "concurrently npm:watch npm:site",
-    "site": "lerna run --stream --scope website dev",
+    "build": "yarn workspaces run build",
+    "dev": "yarn workspace website dev",
     "lint": "eslint '**/*.{js,ts,tsx}'",
     "tsc": "tsc --noEmit",
     "test": "vite-jest",
@@ -20,16 +18,14 @@
     "cypress": "start-server-and-test 'yarn run dev' http-get://localhost:3000 'yarn run cy:run'",
     "version": "changeset version && yarn",
     "release": "yarn build && changeset publish",
-    "postinstall": "lerna bootstrap && yarn build",
-    "size": "yarn build && size-limit",
-    "clean": "lerna exec -- rm -rf ./dist && lerna exec -- rm -rf ./node_modules"
+    "size": "yarn build && size-limit"
   },
   "dependencies": {
-    "@vanilla-extract/css": "^1.2.1",
-    "@vanilla-extract/sprinkles": "^1.0.0",
-    "@vanilla-extract/vite-plugin": "^1.1.1",
+    "@vanilla-extract/css": "^1.4.1",
+    "@vanilla-extract/sprinkles": "^1.2.0",
+    "@vanilla-extract/vite-plugin": "^2.0.2",
     "react": "^17.0.0",
-    "vite": "^2.4.4"
+    "vite": "^2.5.4"
   },
   "devDependencies": {
     "@changesets/cli": "^2.16.0",
@@ -40,14 +36,12 @@
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^26.0.24",
     "@types/node": "^15.6.1",
-    "@types/react-dom": "^17.0.0",
     "@types/react": "^17.0.0",
-    "concurrently": "^6.2.1",
+    "@types/react-dom": "^17.0.0",
     "cypress": "^8.2.0",
     "eslint": "^7.27.0",
     "eslint-plugin-cypress": "^2.11.3",
     "jest": "^27.0.1",
-    "lerna": "^4.0.0",
     "prettier": "^2.3.2",
     "size-limit": "^5.0.2",
     "start-server-and-test": "^1.13.1",
