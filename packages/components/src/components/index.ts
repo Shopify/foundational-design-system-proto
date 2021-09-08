@@ -1,5 +1,6 @@
 // Components
 export * from './Box';
+export * from './Backdrop';
 export * from './Center';
 export * from './Container';
 export * from './Flex';
