@@ -2,6 +2,7 @@
 export * from './Box';
 export * from './Center';
 export * from './Container';
+export * from './Fade';
 export * from './Flex';
 export * from './FocusLock';
 export * from './Grid';

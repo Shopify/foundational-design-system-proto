@@ -1,13 +1,24 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack, Link} from '@polaris/components';
+import {Box, Flex, Inline, Stack, Link, Fade} from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
 
 import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
+  const [inProp, setIn] = React.useState(false);
+
+  function toggleIn() {
+    setIn((prevIn) => !prevIn);
+  }
+
   return (
     <Layout>
-      <h2>Link</h2>
+      <button type="button" onClick={toggleIn}>
+        Toggle Fade
+      </button>
+      <Fade in={inProp}>
+        <h2>Link</h2>
+      </Fade>
       <Link href="/about">Hyperlink</Link>
       <br />
       <Link as={RouterLink} to="/about">
