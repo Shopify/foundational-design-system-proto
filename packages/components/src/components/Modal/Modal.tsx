@@ -13,12 +13,17 @@ type OnCloseEvent = KeyboardEvent | React.MouseEvent;
 type OnCloseReason = 'escapeKeyDown' | 'backdropClick';
 
 interface Props {
+  //
+  /**
+   * The content of the Modal (e.g. `<div />`).
+   * It should be only one element that accepts a `className` prop.
+   */
+  children: NonNullable<React.ReactElement>;
   disableEscapeKeyDown?: boolean;
   focusLock?: FocusLockProps['focusLock'];
   scrollLock?: FocusLockProps['scrollLock'];
   BackdropComponent?: React.ComponentType<BackdropProps> | null;
   backdropProps?: BackdropProps;
-  children?: React.ReactNode;
   container?: PortalProps['container'];
   onClose?: (
     event: OnCloseEvent,
@@ -80,19 +85,18 @@ export const Modal = React.forwardRef((props, ref) => {
         {BackdropComponent && (
           <BackdropComponent {...backdropProps} onClick={handleBackdropClick} />
         )}
-        <div
-          className={styles.contentContainer}
-          style={{border: '2px solid red'}}
+        <Component
+          ref={ref}
+          className={clsx(styles.root, className)}
+          {...restProps}
         >
-          <Component
-            ref={ref}
-            className={clsx(styles.content, className)}
-            style={{border: '2px solid blue'}}
-            {...restProps}
-          >
-            {children}
-          </Component>
-        </div>
+          {React.cloneElement(React.Children.only(children), {
+            className: clsx(
+              styles.resetPointerEvents,
+              children.props.className,
+            ),
+          })}
+        </Component>
       </FocusLock>
     </Portal>
   );
@@ -109,12 +113,3 @@ function createOnCloseContext(reason: OnCloseReason) {
     },
   };
 }
-
-/*
-            {!React.isValidElement(children) ? children : React.cloneElement(
-              React.Children.only(children) ? children : null,
-              {
-                className: clsx(styles.content, children.props.className),
-              },
-            )}
-*/

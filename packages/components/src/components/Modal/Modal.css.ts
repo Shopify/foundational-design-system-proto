@@ -10,18 +10,16 @@ export const resetStackingContext = atoms({
   zIndex: 0,
 });
 
-export const contentContainer = atoms({
+export const root = atoms({
   position: 'fixed',
   top: 0,
   right: 0,
   bottom: 0,
   left: 0,
-  overflowY: 'auto',
-  overflowX: 'hidden',
+  // Disable pointer-events to allow the Backdrop to be clickable.
   pointerEvents: 'none',
 });
 
-export const content = atoms({
-  display: 'inline-block',
+export const resetPointerEvents = atoms({
   pointerEvents: 'auto',
 });
