@@ -1,7 +1,9 @@
 import React from 'react';
+import clsx from 'clsx';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {useEvent} from '../../hooks';
+import {Backdrop, BackdropProps} from '../Backdrop';
 import {Portal, PortalProps} from '../Portal';
 import {FocusLock, FocusLockProps} from '../FocusLock';
 
@@ -11,9 +13,13 @@ type OnCloseEvent = KeyboardEvent | React.MouseEvent;
 type OnCloseReason = 'escapeKeyDown' | 'backdropClick';
 
 interface Props {
+  disableEscapeKeyDown?: boolean;
+  focusLock?: FocusLockProps['focusLock'];
+  scrollLock?: FocusLockProps['scrollLock'];
+  BackdropComponent?: React.ComponentType<BackdropProps> | null;
+  backdropProps?: BackdropProps;
   children?: React.ReactNode;
-  BackdropComponent?: React.ComponentType<BackdropProps>;
-  open?: FocusLockProps['enabled'];
+  container?: PortalProps['container'];
   onClose?: (
     event: OnCloseEvent,
     context: {
@@ -22,23 +28,25 @@ interface Props {
       isBackdropClick(event: OnCloseEvent): event is React.MouseEvent;
     },
   ) => void;
-  disableEscapeKeyDown?: boolean;
+  open?: FocusLockProps['enabled'];
 }
 
-type PolymorphicModal = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof Portal>,
-  PortalProps & Props
->;
+type PolymorphicModal = Polymorphic.ForwardRefComponent<'div', Props>;
 
 export type ModalProps = Polymorphic.OwnProps<PolymorphicModal>;
 
 export const Modal = React.forwardRef((props, ref) => {
   const {
+    as: Component = 'div',
     BackdropComponent = Backdrop,
+    backdropProps,
     children,
-    open = false,
-    onClose,
+    className,
     disableEscapeKeyDown = false,
+    focusLock = true,
+    onClose,
+    open = false,
+    scrollLock = true,
     ...restProps
   } = props;
 
@@ -48,9 +56,6 @@ export const Modal = React.forwardRef((props, ref) => {
     }
 
     if (!disableEscapeKeyDown) {
-      // Stope propagation in case there is listener for the escape key higher in the DOM.
-      event.stopPropagation();
-
       if (onClose) {
         onClose(event, createOnCloseContext('escapeKeyDown'));
       }
@@ -65,23 +70,33 @@ export const Modal = React.forwardRef((props, ref) => {
 
   // eslint-disable-next-line no-negated-condition
   return !open ? null : (
-    <Portal ref={ref} {...restProps}>
-      <FocusLock enabled={open}>
-        <BackdropComponent onClick={handleBackdropClick} />
-        {children}
+    <Portal className={styles.fixedStackingContext}>
+      <FocusLock
+        className={styles.resetStackingContext}
+        enabled={open}
+        focusLock={focusLock}
+        scrollLock={scrollLock}
+      >
+        {BackdropComponent && (
+          <BackdropComponent {...backdropProps} onClick={handleBackdropClick} />
+        )}
+        <div
+          className={styles.contentContainer}
+          style={{border: '2px solid red'}}
+        >
+          <Component
+            ref={ref}
+            className={clsx(styles.content, className)}
+            style={{border: '2px solid blue'}}
+            {...restProps}
+          >
+            {children}
+          </Component>
+        </div>
       </FocusLock>
     </Portal>
   );
 }) as PolymorphicModal;
-
-export interface BackdropProps {
-  onClick?: React.MouseEventHandler;
-}
-
-function Backdrop(props: BackdropProps) {
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-  return <div className={styles.backdrop} onClick={props.onClick} />;
-}
 
 function createOnCloseContext(reason: OnCloseReason) {
   return {
@@ -94,3 +109,12 @@ function createOnCloseContext(reason: OnCloseReason) {
     },
   };
 }
+
+/*
+            {!React.isValidElement(children) ? children : React.cloneElement(
+              React.Children.only(children) ? children : null,
+              {
+                className: clsx(styles.content, children.props.className),
+              },
+            )}
+*/

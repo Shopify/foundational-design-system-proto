@@ -1,21 +1,27 @@
-import {style} from '@vanilla-extract/css';
+import {atoms} from '../../atoms';
 
-// export const fixedStackingContext = atoms({
-//   position: 'fixed',
-//   zIndex: 'modal',
-// });
+export const fixedStackingContext = atoms({
+  position: 'fixed',
+  zIndex: 'modal',
+});
 
-export const backdrop = style({
+export const resetStackingContext = atoms({
+  position: 'relative',
+  zIndex: 0,
+});
+
+export const contentContainer = atoms({
   position: 'fixed',
   top: 0,
-  left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  // eslint-disable-next-line no-warning-comments
-  // TODO: Use theme zIndex
-  zIndex: 1040,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  left: 0,
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  pointerEvents: 'none',
+});
+
+export const content = atoms({
+  display: 'inline-block',
+  pointerEvents: 'auto',
 });
