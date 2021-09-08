@@ -15,7 +15,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const tokens = {
     ...createColorTokens({successHue: 0, warningHue: 100}),
-    ...createSpacingTokens({multiple: levers.multiple || 1}),
+    ...createSpacingTokens({multiple: levers.multiple}),
     ...createMotionTokens(),
   };
 
