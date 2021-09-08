@@ -32,6 +32,7 @@ type Theme = {
     placeholder2: string;
   };
   spacing: typeof tokens.spacing;
+  zIndex: typeof tokens.zIndex;
 };
 
 type ThemeOptions = DeepPartial<Theme>;
@@ -44,6 +45,7 @@ export const defaultTheme: Theme = {
     placeholder2: '#BFCC94',
   },
   spacing: tokens.spacing,
+  zIndex: tokens.zIndex,
 };
 
 interface NullableTokens {

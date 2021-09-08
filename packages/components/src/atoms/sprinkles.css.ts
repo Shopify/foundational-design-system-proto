@@ -80,6 +80,12 @@ export const unresponsiveStyles = createAtomicStyles({
       'break-spaces',
     ],
     wordBreak: ['normal', 'break-all', 'break-word', 'keep-all', 'initial'],
+    zIndex: {
+      0: 0,
+      1: 1,
+      2: 2,
+      ...defaultVars.zIndex,
+    },
   },
   shorthands: {
     textDecoration: ['textDecorationLine'],
