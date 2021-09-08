@@ -13,12 +13,20 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      <h2>Fade</h2>
       <button type="button" onClick={toggleIn}>
         Toggle Fade
       </button>
-      <Fade in={inProp}>
-        <h2>Link</h2>
+      <Fade in={inProp} timeout={300}>
+        <Box
+          style={{backgroundColor: 'silver'}}
+          height="16"
+          width="16"
+          marginY="4"
+        />
       </Fade>
+      <Divider />
+      <h2>Link</h2>
       <Link href="/about">Hyperlink</Link>
       <br />
       <Link as={RouterLink} to="/about">
