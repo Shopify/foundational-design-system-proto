@@ -1,6 +1,6 @@
 import {TokenExtensions, TokenList, TokenFormat} from './types';
 
-const BASE_SPACING_UNIT = 4;
+const BASE_SPACING_UNIT = 0.25;
 const SPACING_MULTIPLE_MIN = 1;
 const SPACING_MULTIPLE_MAX = 10;
 const ONE_FRAME = 1000 / 60;
@@ -123,7 +123,7 @@ export const createSpacingTokens = ({
       : 1;
 
   const values: {[key: string]: number} = {};
-  for (let i = 0; i < 10; i++) {
+  for (let i = 1; i <= 50; i++) {
     values[`spacing-${i}`] = BASE_SPACING_UNIT * validMultiple * i;
   }
 

@@ -1,7 +1,21 @@
 import type {NextPage} from 'next';
 import Head from 'next/head';
+import React from 'react';
+import {
+  createColorTokens,
+  createMotionTokens,
+  createSpacingTokens,
+} from '../../packages/functions';
+import {TokenValue} from '../../packages/functions/types';
 
 const Home: NextPage = () => {
+  const colorTokens = createColorTokens({
+    successHue: 100,
+    warningHue: 0,
+  });
+  const spacingTokens = createSpacingTokens({multiple: 1});
+  const motionTokens = createMotionTokens();
+
   return (
     <div>
       <Head>
@@ -10,7 +24,97 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <p>Content goes here</p>
+      <h1>WIP Tokens</h1>
+      <h2>Color tokens</h2>
+      {Object.entries(colorTokens).map(([key, value]) => {
+        return (
+          <TokenRow
+            key={key}
+            name={key}
+            value={value.value}
+            description={value.description}
+          >
+            <div
+              style={{
+                width: 60,
+                height: 60,
+                display: 'inline-block',
+                verticalAlign: 'middle',
+                marginRight: 10,
+                background: value.value,
+              }}
+            ></div>
+          </TokenRow>
+        );
+      })}
+
+      <h2>Spacing tokens</h2>
+      {Object.entries(spacingTokens).map(([key, value]) => {
+        return (
+          <TokenRow
+            key={key}
+            name={key}
+            value={value.value}
+            description={value.description}
+          >
+            <div
+              style={{
+                marginBottom: 10,
+                width: 60,
+                height: value.value,
+                display: 'inline-block',
+                verticalAlign: 'middle',
+                marginRight: 10,
+                background: 'pink',
+              }}
+            ></div>
+          </TokenRow>
+        );
+      })}
+
+      <h2>Motion tokens</h2>
+      {Object.entries(motionTokens).map(([key, value]) => {
+        return (
+          <TokenRow
+            key={key}
+            name={key}
+            value={value.value}
+            description={value.description}
+          >
+            ...
+          </TokenRow>
+        );
+      })}
+    </div>
+  );
+};
+
+type TokenRowProps = {
+  name: string;
+  value: TokenValue;
+  description: string;
+  children: React.ReactNode;
+};
+
+const TokenRow = ({name, value, description, children}: TokenRowProps) => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        gap: 20,
+        paddingTop: 10,
+        borderTop: '1px solid #ededed',
+      }}
+    >
+      <div>{children}</div>
+      <div>
+        <h3 style={{margin: '0 0 -1rem'}}>{name}</h3>
+        <p>{description}</p>
+      </div>
+      <div style={{marginLeft: 'auto'}}>
+        <p>{value}</p>
+      </div>
     </div>
   );
 };
