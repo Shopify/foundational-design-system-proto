@@ -8,4 +8,5 @@ export * from './Grid';
 export * from './Inline';
 export * from './Link';
 export * from './Portal';
+export * from './Slide';
 export * from './Stack';
