@@ -1,12 +1,60 @@
+/* eslint-disable react/jsx-child-element-spacing */
 import React from 'react';
-import {Box, Flex, Inline, Stack, Link} from '@polaris/components';
+import {
+  Box,
+  Flex,
+  Inline,
+  Stack,
+  Link,
+  Slide,
+  SlideProps,
+} from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
 
 import {Layout} from '../components/Layout';
 
 const IndexPage = () => {
+  const [inProp, setIn] = React.useState(false);
+  const [direction, setDirection] =
+    React.useState<SlideProps['direction']>('bottom');
+
+  function toggleIn() {
+    setIn((prevIn) => !prevIn);
+  }
+
   return (
     <Layout>
+      <h2>Slide: {inProp.toString()}</h2>
+      <button type="button" onClick={toggleIn}>
+        Toggle Slide
+      </button>
+      <br />
+      {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+      <label>
+        Slide Direction:
+        <select
+          value={direction}
+          onChange={(event) =>
+            setDirection(event.target.value as SlideProps['direction'])
+          }
+        >
+          <option value="top">Top</option>
+          <option value="right">Right</option>
+          <option value="bottom">Bottom</option>
+          <option value="left">Left</option>
+        </select>
+      </label>
+      <Slide in={inProp} direction={direction}>
+        <Box
+          style={{backgroundColor: 'silver'}}
+          height="16"
+          width="16"
+          marginY="4"
+        />
+      </Slide>
+
+      <Divider />
+
       <h2>Link</h2>
       <Link href="/about">Hyperlink</Link>
       <br />
