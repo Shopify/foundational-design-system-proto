@@ -13,6 +13,7 @@ const spacing = {
 
 const sizes = {
   ...spacing,
+  0: 0,
   '1/2': '50%',
   '1/3': '33.333333%',
   '2/3': '66.666667%',
@@ -80,6 +81,12 @@ export const unresponsiveStyles = createAtomicStyles({
       'break-spaces',
     ],
     wordBreak: ['normal', 'break-all', 'break-word', 'keep-all', 'initial'],
+    zIndex: {
+      0: 0,
+      1: 1,
+      2: 2,
+      ...defaultVars.zIndex,
+    },
   },
   shorthands: {
     textDecoration: ['textDecorationLine'],

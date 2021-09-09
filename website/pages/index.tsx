@@ -1,12 +1,44 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack, Link} from '@polaris/components';
+import {Box, Flex, Inline, Link, Modal, Stack} from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
 
 import {Layout} from '../components/Layout';
 
+import * as styles from './index.css';
+
 const IndexPage = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
     <Layout>
+      <h2>Modal</h2>
+      <p>isOpen: {isOpen.toString()}</p>
+      <button type="button" onClick={() => setIsOpen(true)}>
+        Toggle Modal
+      </button>
+
+      <Modal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className={styles.modalRoot}
+      >
+        <section className={styles.modalContent}>
+          <h3>Modal Content</h3>
+          {Array.from({length: 20}, (_) => (
+            <button
+              style={{display: 'block'}}
+              type="button"
+              // eslint-disable-next-line no-alert
+              onClick={() => alert('Clickable')}
+            >
+              Test Focus Trap
+            </button>
+          ))}
+        </section>
+      </Modal>
+
+      <Divider />
+
       <h2>Link</h2>
       <Link href="/about">Hyperlink</Link>
       <br />
