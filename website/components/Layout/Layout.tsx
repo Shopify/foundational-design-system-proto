@@ -2,23 +2,19 @@ import React, {ComponentProps} from 'react';
 import clsx from 'clsx';
 import {Container, ThemeProvider} from '@polaris/components';
 
-import {themeClass} from '../theme.css';
-
-import {root} from './Layout.css';
+import {defaultThemeClass} from '..';
 
 export const Layout = ({
   className,
   ...props
 }: ComponentProps<typeof Container>) => (
-  <ThemeProvider themeClass={themeClass}>
+  <ThemeProvider themeClass={defaultThemeClass}>
     <Container
-      maxWidth={{
-        xs: 'prose',
-        sm: 'md',
-        md: 'lg',
-      }}
+      height="full"
+      width="full"
+      maxWidth="full"
       {...props}
-      className={clsx(themeClass, root, className)}
+      className={clsx(defaultThemeClass, className)}
     />
   </ThemeProvider>
 );

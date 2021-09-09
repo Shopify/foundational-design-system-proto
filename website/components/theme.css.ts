@@ -1,6 +1,6 @@
 import {createTheme} from '@polaris/components';
 
-export const [themeClass, vars] = createTheme();
+export const [defaultThemeClass, defaultVars] = createTheme();
 
 export const [devDocsThemeClass, devDocsVars] = createTheme({
   color: {

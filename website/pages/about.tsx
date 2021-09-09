@@ -1,14 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
-import {Heading} from '../components/Heading';
-import {Layout} from '../components/Layout';
+import {Header, Layout} from '../components';
 
 const AboutPage = () => {
   return (
     <Layout>
-      <Heading>About page</Heading>
-      <Link to="/">Back home</Link>
+      <Header
+        title="About"
+        links={[
+          {to: '/', children: 'Home'},
+          {to: '/guides/layout', children: 'Layout guide'},
+        ]}
+      />
     </Layout>
   );
 };
