@@ -3,79 +3,61 @@ import {style} from '@vanilla-extract/css';
 /** Layout component identifier styles  */
 
 export const InlineRoot = style({
-  background: 'rgba(232, 23, 138, .25)',
-  borderColor: '#E8178A',
-  borderStyle: 'solid',
+  background: 'rgba(232, 23, 138, .20)',
+  border: '2px solid #E8178A',
 });
 
 export const InlineRootItem = style({
-  background: 'rgba(232, 23, 138, .25)',
-  borderColor: '#E8178A',
-  borderStyle: 'dashed',
+  background: 'rgba(232, 23, 138, .35)',
+  border: '2px dashed #E8178A',
 });
 
 export const StackRoot = style({
   background: 'rgba(239, 216, 12, .20)',
-  borderColor: '#EFD80C',
-  borderStyle: 'solid',
+  border: '2px solid #EFD80C',
 });
 
 export const StackRootItem = style({
   background: 'rgba(239, 216, 12, .35)',
-  borderColor: '#EFD80C',
-  borderStyle: 'dashed',
+  border: '2px dashed #EFD80C',
 });
 
 export const CenterRoot = style({
-  borderColor: '#BB5609',
-  borderStyle: 'solid',
+  background: 'rgba(255, 107, 0, .20)',
+  border: '2px solid #BB5609',
 });
 
 export const CenterRootItem = style({
-  background: 'rgba(255, 107, 0, .25)',
-  borderColor: '#BB5609',
-  borderStyle: 'dashed',
+  background: 'rgba(255, 107, 0, .35)',
+  border: '2px dashed #BB5609',
 });
 
 export const FlexRoot = style({
-  background: 'rgba(21, 217, 168, .25)',
-  borderColor: '#15D9A8',
-  borderStyle: 'solid',
+  background: 'rgba(21, 217, 168, .20)',
+  border: '2px solid #15D9A8',
 });
 
 export const FlexRootItem = style({
-  background: 'rgba(21, 217, 168, .25)',
-  borderColor: '#15D9A8',
-  borderStyle: 'dashed',
+  background: 'rgba(21, 217, 168, .35)',
+  border: '2px dashed #15D9A8',
 });
 
 export const GridRoot = style({
-  background: 'rgba(7, 82, 228, .25)',
-  borderColor: '#0752E4',
-  borderStyle: 'solid',
+  background: 'rgba(7, 82, 228, .20)',
+  border: '2px solid #0752E4',
 });
 
 export const GridRootItem = style({
-  background: 'rgba(7, 82, 228, .25)',
-  borderColor: '#0752E4',
-  borderStyle: 'dashed',
+  background: 'rgba(7, 82, 228, .35)',
+  border: '2px dashed #0752E4',
 });
 
 export const ContainerRoot = style({
-  background: 'rgba(92, 106, 196, .25)',
-  borderColor: '#5C6AC4',
-  borderStyle: 'solid',
+  background: 'rgba(92, 106, 196, .20)',
+  border: '4px solid #5C6AC4',
 });
 
 export const DecorativeBoxRoot = style({
-  background: 'rgba(96, 106, 196, .25)',
-  borderColor: '#0826E9',
-  borderStyle: 'solid',
-});
-
-/**  Page styles  */
-
-export const LinkListRoot = style({
-  listStyle: 'none',
-  margin: 0,
+  background: 'rgba(96, 106, 196, .35)',
+  border: '2px solid #46519B',
 });
