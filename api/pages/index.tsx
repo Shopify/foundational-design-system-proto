@@ -2,18 +2,19 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import React from 'react';
 import {
-  getreakpointTokens,
+  getBreakpointTokens,
   getColorTokens,
   getMotionTokens,
   getSpacingTokens,
 } from '../../packages/functions';
 import {TokenValue} from '../../packages/functions/types';
+import {ALLOWED_ENDPOINTS} from './api/[endpoint]';
 
 const Home: NextPage = () => {
   const colorTokens = getColorTokens();
   const spacingTokens = getSpacingTokens({multiple: 1});
   const motionTokens = getMotionTokens();
-  const breakPointTokens = getreakpointTokens();
+  const breakPointTokens = getBreakpointTokens();
 
   return (
     <div>
@@ -24,6 +25,14 @@ const Home: NextPage = () => {
       </Head>
 
       <h1>WIP Tokens</h1>
+      <p>These tokens can also be fetched through the API:</p>
+      <ul>
+        {ALLOWED_ENDPOINTS.map((endpoint) => (
+          <li key={endpoint}>
+            <a href={`api/${endpoint}`}>{endpoint}</a>
+          </li>
+        ))}
+      </ul>
       <h2>Color tokens</h2>
       {Object.entries(colorTokens).map(([key, value]) => {
         return (

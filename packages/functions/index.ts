@@ -287,7 +287,7 @@ export const getMotionTokens = (): TokenList => {
  *
  * @returns A TokenList
  */
-export const getreakpointTokens = (): TokenList => {
+export const getBreakpointTokens = (): TokenList => {
   return {
     xs: {
       value: '0',

@@ -1,12 +1,14 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import {
-  getreakpointTokens,
+  getBreakpointTokens,
   getColorTokens,
   getMotionTokens,
   getSpacingTokens,
   formatTokens,
 } from '../../../packages/functions';
 import {TokenList} from '../../../packages/functions/types';
+
+export const ALLOWED_ENDPOINTS = ['tokens.json', 'tokens.css', 'tokens.sass'];
 
 interface Request extends NextApiRequest {
   query: {
@@ -24,10 +26,8 @@ interface APIResponse {
   tokens: TokenList;
 }
 
-const allowedEndpoints = ['tokens.json', 'tokens.css', 'tokens.sass'];
-
 export default function handler(req: Request, res: NextApiResponse) {
-  const endpointIsAllowed = !!allowedEndpoints.find(
+  const endpointIsAllowed = !!ALLOWED_ENDPOINTS.find(
     (endpoint) => endpoint === req.query.endpoint,
   );
 
@@ -48,7 +48,7 @@ export default function handler(req: Request, res: NextApiResponse) {
     ...getColorTokens(),
     ...getSpacingTokens({multiple: levers.multiple}),
     ...getMotionTokens(),
-    ...getreakpointTokens(),
+    ...getBreakpointTokens(),
   };
 
   const response: APIResponse = {
