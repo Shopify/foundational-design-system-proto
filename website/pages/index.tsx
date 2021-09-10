@@ -7,11 +7,12 @@ import {
   ButtonBase,
   Button,
   Link,
-  DevDocsButton,
 } from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
 
+import {devDocsThemeClass} from '../components/theme.css';
 import {Layout} from '../components/Layout';
+import {DevDocsButton} from '../components/DevDocsButton';
 
 const IndexPage = () => {
   return (
@@ -27,7 +28,11 @@ const IndexPage = () => {
         Link
       </Button>
       <br />
-      <DevDocsButton onClick={() => console.log('Hello')}>Button</DevDocsButton>
+      <div className={devDocsThemeClass}>
+        <DevDocsButton onClick={() => console.log('Hello')}>
+          Button
+        </DevDocsButton>
+      </div>
       <Divider />
 
       <h2>Link</h2>

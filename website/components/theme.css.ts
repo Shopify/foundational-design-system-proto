@@ -7,5 +7,7 @@ export const [devDocsThemeClass, devDocsVars] = createTheme({
     scheme: 'light',
     primary: 'hotpink',
     placeholder2: '#BFCC94',
+    surface: '#fafbfb',
+    border: '#8c9196',
   },
 });

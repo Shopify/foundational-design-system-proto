@@ -10,4 +10,3 @@ export * from './Portal';
 export * from './Stack';
 export * from './ButtonBase';
 export * from './Button';
-export * from './DevDocsButton';
