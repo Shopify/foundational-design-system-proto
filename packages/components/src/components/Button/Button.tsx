@@ -1,22 +1,19 @@
 import React from 'react';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {ButtonBase, ButtonBaseProps} from '../ButtonBase';
-import type {PolymorphicProps} from '../ButtonBase/ButtonBase';
 
 import * as styles from './Button.css';
 
-export type ButtonProps<
-  TElementType extends React.ElementType = React.ElementType,
-> = PolymorphicProps<
-  TElementType,
-  {
-    className?: string;
-  }
-> &
-  ButtonBaseProps<TElementType>;
+interface Props {}
 
-export const Button: <T extends React.ElementType>(
-  props: ButtonProps<T>,
-) => React.ReactElement | null = (props: ButtonProps) => {
-  return <ButtonBase className={styles.root} {...props} />;
-};
+type PolymorphicButton = Polymorphic.ForwardRefComponent<
+  Polymorphic.IntrinsicElement<typeof ButtonBase>,
+  ButtonBaseProps & Props
+>;
+
+export type ButtonProps = Polymorphic.OwnProps<PolymorphicButton>;
+
+export const Button = React.forwardRef((props, ref) => {
+  return <ButtonBase ref={ref} className={styles.root} {...props} />;
+}) as PolymorphicButton;
