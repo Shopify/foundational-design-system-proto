@@ -34,6 +34,7 @@ type Theme = {
   spacing: typeof tokens.spacing;
   motion: {
     duration: typeof tokens.duration;
+    easing: typeof tokens.easing;
   };
 };
 
@@ -49,6 +50,7 @@ export const defaultTheme: Theme = {
   spacing: tokens.spacing,
   motion: {
     duration: tokens.duration,
+    easing: tokens.easing,
   },
 };
 

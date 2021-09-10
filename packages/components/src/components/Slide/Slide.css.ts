@@ -2,9 +2,10 @@ import {styleVariants} from '@vanilla-extract/css';
 
 import type {TransitionStyleVariants} from '../../utilities/motion';
 
-// eslint-disable-next-line no-warning-comments
-// TODO: Add `--slide-curve` custom property to enable custom or themed timing functions.
-const transition = `opacity var(--slide-duration) ease-in-out, transform var(--slide-duration) ease-in-out`;
+const transition = `
+  opacity var(--slide-duration) var(--slide-easing),
+  transform var(--slide-duration) var(--slide-easing)
+`;
 
 export const transitions = styleVariants<TransitionStyleVariants>({
   entering: {

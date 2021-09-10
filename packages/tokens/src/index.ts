@@ -1,3 +1,3 @@
 export {breakpoints} from './breakpoints';
-export {duration} from './motion';
+export {duration, easing} from './motion';
 export {spacing} from './spacing';

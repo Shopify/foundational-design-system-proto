@@ -8,21 +8,26 @@ import * as styles from './Slide.css';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';
 
+type Distance = number | string;
+
 type Duration = number | keyof typeof defaultVars.motion.duration;
 
-type Distance = number | string;
+type MotionEasing = keyof typeof defaultVars.motion.easing;
+
+type Easing = string | MotionEasing;
 
 export interface SlideProps {
   in: boolean;
 
   /**
    * The content of the Modal (e.g. `<div />`).
-   * It should be only one element that accepts a `className` prop.
+   * It should be only one element that accepts a `className` and `ref` prop.
    */
   children: NonNullable<React.ReactElement>;
   direction?: Direction;
-  duration?: Duration;
   distance?: Distance;
+  duration?: Duration;
+  easing?: Easing;
 }
 
 export const Slide = (props: SlideProps) => {
@@ -30,8 +35,9 @@ export const Slide = (props: SlideProps) => {
     in: inProp,
     children,
     direction = 'bottom',
-    duration = 1000,
+    duration = 300,
     distance = 200,
+    easing = 'easeInOut',
   } = props;
 
   const ref = React.useRef<null | HTMLElement>(null);
@@ -50,9 +56,10 @@ export const Slide = (props: SlideProps) => {
           ref,
           className: clsx(styles.transitions[status], children.props.className),
           style: {
-            '--slide-duration': getSlideDuration(duration),
-            '--slide-distance': getSlideDistance(distance),
             '--slide-direction': getSlideDirection(direction),
+            '--slide-distance': getSlideDistance(distance),
+            '--slide-duration': getSlideDuration(duration),
+            '--slide-easing': getSlideEasing(easing),
             ...children.props.style,
           },
         })
@@ -89,14 +96,24 @@ function getSlideDirection(direction: Direction) {
   return `translate(${translate.x}, ${translate.y})`;
 }
 
+function getSlideDistance(distance: Distance) {
+  return typeof distance === 'number' ? `${distance}px` : distance;
+}
+
 function getSlideDuration(duration: Duration) {
   return typeof duration === 'number'
     ? `${duration}ms`
     : defaultVars.motion.duration[duration];
 }
 
-function getSlideDistance(distance: Distance) {
-  return typeof distance === 'number' ? `${distance}px` : distance;
+const EASING_KEYS = Object.keys(defaultVars.motion.easing);
+
+function isEasingKey(easing: Easing): easing is MotionEasing {
+  return EASING_KEYS.includes(easing);
+}
+
+function getSlideEasing(easing: Easing) {
+  return isEasingKey(easing) ? defaultVars.motion.easing[easing] : easing;
 }
 
 function getTransitionDuration(element: HTMLElement) {
