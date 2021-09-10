@@ -44,7 +44,7 @@ export default function handler(req: Request, res: NextApiResponse) {
   // TODO: validate inputs
 
   const tokens: TokenList = {
-    ...createColorTokens({successHue: 0, warningHue: 100}),
+    ...createColorTokens(),
     ...createSpacingTokens({multiple: levers.multiple}),
     ...createMotionTokens(),
   };

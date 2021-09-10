@@ -4,6 +4,56 @@ const BASE_SPACING_UNIT = 0.25;
 const SPACING_MULTIPLE_MIN = 1;
 const SPACING_MULTIPLE_MAX = 10;
 const ONE_FRAME = 1000 / 60;
+const POLARIS_ROOT_COLORS = {
+  azure: {
+    name: 'Azure',
+    hue: 209,
+  },
+  blue: {
+    name: 'Blue',
+    hue: 247,
+  },
+  cyan: {
+    name: 'Cyan',
+    hue: 194,
+  },
+  gray: {
+    name: 'Cyan',
+    hue: 210,
+  },
+  green: {
+    name: 'Green',
+    hue: 157,
+  },
+  lime: {
+    name: 'Lime',
+    hue: 112,
+  },
+  magenta: {
+    name: 'Magenta',
+    hue: 323,
+  },
+  orange: {
+    name: 'Orange',
+    hue: 39,
+  },
+  rose: {
+    name: 'Rose',
+    hue: 347,
+  },
+  teal: {
+    name: 'Teal',
+    hue: 187,
+  },
+  violet: {
+    name: 'Violet',
+    hue: 280,
+  },
+  yellow: {
+    name: 'Yellow',
+    hue: 65,
+  },
+};
 
 /**
  * Convert hyphen-case-words to camelCaseWords
@@ -80,18 +130,19 @@ export const formatTokens = (
  * @param levers - Configuration for the colors
  * @returns A TokenList
  */
-export const createColorTokens = ({
-  successHue = 0,
-  warningHue = 0,
-}): TokenList => {
-  const values = {
-    success: `hsl(${successHue}, 50%, 50%)`,
-    'success-darker': `hsl(${successHue}, 50%, 30%)`,
-    'success-lighter': `hsl(${successHue}, 50%, 70%)`,
-    warning: `hsl(${warningHue}, 50%, 50%)`,
-    'warning-darker': `hsl(${warningHue}, 50%, 30%)`,
-    'warning-lighter': `hsl(${warningHue}, 50%, 70%)`,
-  };
+export const createColorTokens = (): TokenList => {
+  const values: {[key: string]: string} = {};
+
+  // Loop through our colors (hues)
+  Object.entries(POLARIS_ROOT_COLORS).forEach(([key, color]) => {
+    const steps = 21;
+
+    // Create 21 tokens for each hue, each with a higher lightness
+    for (let i = 0; i < steps; i++) {
+      const lightness = Math.round((i / steps) * 100);
+      values[`${key}-${i}`] = `hsl(${color.hue}deg, 80%, ${lightness}%)`;
+    }
+  });
 
   const tokens: TokenList = {};
   Object.entries(values).forEach(([key, value]) => {

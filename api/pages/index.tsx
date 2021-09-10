@@ -9,10 +9,7 @@ import {
 import {TokenValue} from '../../packages/functions/types';
 
 const Home: NextPage = () => {
-  const colorTokens = createColorTokens({
-    successHue: 100,
-    warningHue: 0,
-  });
+  const colorTokens = createColorTokens();
   const spacingTokens = createSpacingTokens({multiple: 1});
   const motionTokens = createMotionTokens();
 
@@ -59,7 +56,8 @@ const Home: NextPage = () => {
               style={{
                 width: 30,
                 height: value.value,
-                background: `rgba(255,255,255,1)`,
+                background: `rgba(255,255,255,.1)`,
+                boxShadow: `inset 0 -1.5px white, inset 0 1.5px white`,
               }}
             ></div>
           </TokenRow>

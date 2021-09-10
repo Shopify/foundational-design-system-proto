@@ -1,3 +1,12 @@
+export interface Token {
+  value: TokenValue;
+  description: string;
+  type: 'color' | 'dimension' | 'font' | 'duration';
+  extensions: TokenExtensions;
+}
+
+export type TokenValue = string | number;
+
 export interface TokenExtensions {
   'com.shopify.react': {
     atomName: string;
@@ -12,15 +21,6 @@ export interface TokenExtensions {
     variableName: string;
   } | null;
   [key: string]: any;
-}
-
-export type TokenValue = string | number;
-
-export interface Token {
-  value: TokenValue;
-  description: string;
-  type: 'color' | 'dimension' | 'font' | 'duration';
-  extensions: TokenExtensions;
 }
 
 export interface TokenList {
