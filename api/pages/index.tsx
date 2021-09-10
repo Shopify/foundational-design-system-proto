@@ -89,14 +89,17 @@ const Home: NextPage = () => {
   );
 };
 
-type TokenRowProps = {
+const TokenRow = ({
+  name,
+  value,
+  description,
+  children,
+}: {
   name: string;
   value: TokenValue;
   description: string;
   children: React.ReactNode;
-};
-
-const TokenRow = ({name, value, description, children}: TokenRowProps) => {
+}) => {
   return (
     <div
       style={{

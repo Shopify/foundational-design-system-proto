@@ -53,7 +53,7 @@ export const formatTokens = (
       let css = ':root {\n';
       Object.entries(tokens).forEach(([_, value]) => {
         const cssExtension = value.extensions['com.shopify.css'];
-        if (cssExtension.variableName) {
+        if (cssExtension?.variableName) {
           css += `    ${cssExtension.variableName}: ${value.value};\n`;
         }
       });
@@ -65,8 +65,8 @@ export const formatTokens = (
       let sass = '';
       Object.entries(tokens).forEach(([_, value]) => {
         const sassExtension = value.extensions['com.shopify.sass'];
-        if (sassExtension.variableName) {
-          sass += `${sassExtension.variableName}: ${value.value};\n`;
+        if (sassExtension?.variableName) {
+          sass += `${sassExtension?.variableName}: ${value.value};\n`;
         }
       });
       return sass;
