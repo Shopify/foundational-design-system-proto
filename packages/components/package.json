@@ -33,7 +33,8 @@
     "@polaris/tokens": "*",
     "clsx": "^1.1.1",
     "@radix-ui/react-polymorphic": "^0.0.13",
-    "deepmerge": "^4.2.2"
+    "deepmerge": "^4.2.2",
+    "react-focus-on": "^3.5.2"
   },
   "peerDependencies": {
     "@vanilla-extract/css": "^1.2.1",

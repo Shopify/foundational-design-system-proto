@@ -1,3 +1,6 @@
+// Ensure reset and atoms are the lowest specificity
+import './atoms';
+
 // Atoms
 export * from './atoms';
 
