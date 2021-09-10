@@ -36,11 +36,9 @@ const Home: NextPage = () => {
           >
             <div
               style={{
-                width: 60,
-                height: 60,
-                display: 'inline-block',
-                verticalAlign: 'middle',
-                marginRight: 10,
+                width: 30,
+                height: 30,
+                borderRadius: 100,
                 background: value.value,
               }}
             ></div>
@@ -59,13 +57,9 @@ const Home: NextPage = () => {
           >
             <div
               style={{
-                marginBottom: 10,
-                width: 60,
+                width: 30,
                 height: value.value,
-                display: 'inline-block',
-                verticalAlign: 'middle',
-                marginRight: 10,
-                background: 'pink',
+                background: `rgba(255,255,255,1)`,
               }}
             ></div>
           </TokenRow>
@@ -101,21 +95,13 @@ const TokenRow = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        gap: 20,
-        paddingTop: 10,
-        borderTop: '1px solid #ededed',
-      }}
-    >
-      <div>{children}</div>
-      <div>
-        <h3 style={{margin: '0 0 -1rem'}}>{name}</h3>
+    <div className="token-row">
+      <div className="token-row__preview">{children}</div>
+      <div className="token-row__meta">
+        <h3>{name}</h3>
         <p>{description}</p>
       </div>
-      <div style={{marginLeft: 'auto'}}>
+      <div className="token-row__value">
         <p>{value}</p>
       </div>
     </div>
