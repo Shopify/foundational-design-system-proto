@@ -2,54 +2,37 @@ import {styleVariants} from '@vanilla-extract/css';
 
 import type {TransitionStyleVariants} from '../../utilities/motion';
 
-export type Direction = 'top' | 'right' | 'bottom' | 'left';
+// eslint-disable-next-line no-warning-comments
+// TODO: Add `--slide-curve` custom property to enable custom or themed timing functions.
+const transition = `opacity var(--slide-duration) ease-in-out, transform var(--slide-duration) ease-in-out`;
 
-export const DURATION = 500;
+export const transitions = styleVariants<TransitionStyleVariants>({
+  entering: {
+    opacity: 0,
+    transform: 'var(--slide-direction)',
+    transition,
+  },
 
-const directionTransforms: [Direction, string][] = [
-  ['top', 'translate(0px, -200px)'],
-  ['right', 'translate(200px, 0px)'],
-  ['bottom', 'translate(0px, 200px)'],
-  ['left', 'translate(-200px, 0px)'],
-];
+  entered: {
+    opacity: 1,
+    transform: 'translate(0px, 0px)',
+    transition,
+  },
 
-export const directions: {
-  [K in Direction]?: ReturnType<typeof styleVariants>;
-} = {};
+  exiting: {
+    opacity: 1,
+    transform: 'translate(0px, 0px)',
+    transition,
+  },
 
-const transition = `opacity ${DURATION}ms ease-in-out, transform ${DURATION}ms ease-in-out`;
+  exited: {
+    opacity: 0,
+    transform: 'var(--slide-direction)',
+    transition,
+  },
 
-directionTransforms.forEach((config) => {
-  const [direction, transform] = config;
-
-  directions[direction] = styleVariants<TransitionStyleVariants>({
-    entering: {
-      opacity: 0,
-      transform,
-      transition,
-    },
-
-    entered: {
-      opacity: 1,
-      transform: 'translate(0px, 0px)',
-      transition,
-    },
-
-    exiting: {
-      opacity: 1,
-      transform: 'translate(0px, 0px)',
-      transition,
-    },
-
-    exited: {
-      opacity: 0,
-      transform,
-      transition,
-    },
-
-    unmounted: {
-      opacity: 0,
-      transform,
-    },
-  });
+  unmounted: {
+    opacity: 0,
+    transform: 'var(--slide-direction)',
+  },
 });
