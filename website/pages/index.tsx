@@ -18,21 +18,17 @@ const IndexPage = () => {
   return (
     <Layout>
       <h2>Button</h2>
-      <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
-      <br />
-      <Button onClick={() => console.log('Hello')} marginBottom={4}>
-        Button
-      </Button>
-      <br />
-      <Button href="http://www.shopify.com/" marginBottom={4}>
-        Link
-      </Button>
-      <br />
-      <div className={devDocsThemeClass}>
-        <DevDocsButton onClick={() => console.log('Hello')}>
-          Button
-        </DevDocsButton>
-      </div>
+      <Flex gap="4" marginX="4">
+        <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
+        <Button onClick={() => console.log('Hello')}>Button</Button>
+        <Button href="http://www.shopify.com/">Link</Button>
+        <div className={devDocsThemeClass}>
+          <DevDocsButton onClick={() => console.log('Hello')}>
+            Button
+          </DevDocsButton>
+        </div>
+      </Flex>
+
       <Divider />
 
       <h2>Link</h2>
