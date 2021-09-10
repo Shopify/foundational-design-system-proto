@@ -1,5 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import {
+  createBreakpointTokens,
   createColorTokens,
   createMotionTokens,
   createSpacingTokens,
@@ -47,6 +48,7 @@ export default function handler(req: Request, res: NextApiResponse) {
     ...createColorTokens(),
     ...createSpacingTokens({multiple: levers.multiple}),
     ...createMotionTokens(),
+    ...createBreakpointTokens(),
   };
 
   const response: APIResponse = {

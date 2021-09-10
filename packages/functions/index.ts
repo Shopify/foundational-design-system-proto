@@ -285,3 +285,43 @@ export const createMotionTokens = (): TokenList => {
 
   return tokens;
 };
+
+/**
+ * Generates breakpoint tokens
+ *
+ * @returns A TokenList
+ */
+export const createBreakpointTokens = (): TokenList => {
+  return {
+    xs: {
+      value: '0',
+      description: 'Small devices, like wearables and smartphones',
+      type: 'dimension',
+      extensions: createTokenExtensions('xs'),
+    },
+    sm: {
+      value: '600px',
+      description: 'Mostly tablets',
+      type: 'dimension',
+      extensions: createTokenExtensions('sm'),
+    },
+    md: {
+      value: '960px',
+      description: 'Mostly tablets',
+      type: 'dimension',
+      extensions: createTokenExtensions('md'),
+    },
+    lg: {
+      value: '1280px',
+      description: 'Computers',
+      type: 'dimension',
+      extensions: createTokenExtensions('lg'),
+    },
+    xl: {
+      value: '1920px',
+      description: 'Computers',
+      type: 'dimension',
+      extensions: createTokenExtensions('xl'),
+    },
+  };
+};

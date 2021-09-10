@@ -2,6 +2,7 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import React from 'react';
 import {
+  createBreakpointTokens,
   createColorTokens,
   createMotionTokens,
   createSpacingTokens,
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
   const colorTokens = createColorTokens();
   const spacingTokens = createSpacingTokens({multiple: 1});
   const motionTokens = createMotionTokens();
+  const breakPointTokens = createBreakpointTokens();
 
   return (
     <div>
@@ -66,6 +68,20 @@ const Home: NextPage = () => {
 
       <h2>Motion tokens</h2>
       {Object.entries(motionTokens).map(([key, value]) => {
+        return (
+          <TokenRow
+            key={key}
+            name={key}
+            value={value.value}
+            description={value.description}
+          >
+            ...
+          </TokenRow>
+        );
+      })}
+
+      <h2>Breakpoint tokens</h2>
+      {Object.entries(breakPointTokens).map(([key, value]) => {
         return (
           <TokenRow
             key={key}
