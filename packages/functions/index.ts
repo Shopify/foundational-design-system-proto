@@ -130,7 +130,7 @@ export const formatTokens = (
  * @param levers - Configuration for the colors
  * @returns A TokenList
  */
-export const createColorTokens = (): TokenList => {
+export const getColorTokens = (): TokenList => {
   const values: {[key: string]: string} = {};
 
   // Loop through our colors (hues)
@@ -163,11 +163,7 @@ export const createColorTokens = (): TokenList => {
  * @param {Object} levers - Configuration for the spacing
  * @returns A TokenList
  */
-export const createSpacingTokens = ({
-  multiple,
-}: {
-  multiple: number;
-}): TokenList => {
+export const getSpacingTokens = ({multiple}: {multiple: number}): TokenList => {
   const validMultiple =
     multiple >= SPACING_MULTIPLE_MIN && multiple <= SPACING_MULTIPLE_MAX
       ? multiple
@@ -196,7 +192,7 @@ export const createSpacingTokens = ({
  * @param levers - Configuration for the typography
  * @returns A TokenList
  */
-export const createTypographyTokens = ({
+export const getTypographyTokens = ({
   baseSize = 16,
   typeRatio = 1,
 }): TokenList => {
@@ -229,7 +225,7 @@ export const createTypographyTokens = ({
  *
  * @returns A TokenList
  */
-export const createMotionTokens = (): TokenList => {
+export const getMotionTokens = (): TokenList => {
   let values: {[key: string]: {value: string; description: string}} = {};
 
   for (let i = 1; i <= 60; i++) {
@@ -291,7 +287,7 @@ export const createMotionTokens = (): TokenList => {
  *
  * @returns A TokenList
  */
-export const createBreakpointTokens = (): TokenList => {
+export const getreakpointTokens = (): TokenList => {
   return {
     xs: {
       value: '0',

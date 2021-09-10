@@ -2,18 +2,18 @@ import type {NextPage} from 'next';
 import Head from 'next/head';
 import React from 'react';
 import {
-  createBreakpointTokens,
-  createColorTokens,
-  createMotionTokens,
-  createSpacingTokens,
+  getreakpointTokens,
+  getColorTokens,
+  getMotionTokens,
+  getSpacingTokens,
 } from '../../packages/functions';
 import {TokenValue} from '../../packages/functions/types';
 
 const Home: NextPage = () => {
-  const colorTokens = createColorTokens();
-  const spacingTokens = createSpacingTokens({multiple: 1});
-  const motionTokens = createMotionTokens();
-  const breakPointTokens = createBreakpointTokens();
+  const colorTokens = getColorTokens();
+  const spacingTokens = getSpacingTokens({multiple: 1});
+  const motionTokens = getMotionTokens();
+  const breakPointTokens = getreakpointTokens();
 
   return (
     <div>

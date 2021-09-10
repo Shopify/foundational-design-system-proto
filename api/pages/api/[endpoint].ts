@@ -1,9 +1,9 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import {
-  createBreakpointTokens,
-  createColorTokens,
-  createMotionTokens,
-  createSpacingTokens,
+  getreakpointTokens,
+  getColorTokens,
+  getMotionTokens,
+  getSpacingTokens,
   formatTokens,
 } from '../../../packages/functions';
 import {TokenList} from '../../../packages/functions/types';
@@ -45,10 +45,10 @@ export default function handler(req: Request, res: NextApiResponse) {
   // TODO: validate inputs
 
   const tokens: TokenList = {
-    ...createColorTokens(),
-    ...createSpacingTokens({multiple: levers.multiple}),
-    ...createMotionTokens(),
-    ...createBreakpointTokens(),
+    ...getColorTokens(),
+    ...getSpacingTokens({multiple: levers.multiple}),
+    ...getMotionTokens(),
+    ...getreakpointTokens(),
   };
 
   const response: APIResponse = {
