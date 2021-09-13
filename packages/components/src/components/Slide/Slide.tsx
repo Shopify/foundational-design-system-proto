@@ -1,4 +1,5 @@
 import React from 'react';
+import {assignInlineVars} from '@vanilla-extract/dynamic';
 import {CSSTransition} from 'react-transition-group';
 import clsx from 'clsx';
 
@@ -35,7 +36,7 @@ export const Slide = (props: SlideProps) => {
     in: inProp,
     children,
     direction = 'bottom',
-    duration = 300,
+    duration = 400,
     distance = 200,
     easing = 'easeInOut',
   } = props;
@@ -56,10 +57,12 @@ export const Slide = (props: SlideProps) => {
           ref,
           className: clsx(styles.transitions[status], children.props.className),
           style: {
-            '--slide-direction': getSlideDirection(direction),
-            '--slide-distance': getSlideDistance(distance),
-            '--slide-duration': getSlideDuration(duration),
-            '--slide-easing': getSlideEasing(easing),
+            ...assignInlineVars({
+              [styles.slideDirectionVar]: getSlideDirection(direction),
+              [styles.slideDistanceVar]: getSlideDistance(distance),
+              [styles.slideDurationVar]: getSlideDuration(duration),
+              [styles.slideEasingVar]: getSlideEasing(easing),
+            }),
             ...children.props.style,
           },
         })
@@ -74,18 +77,18 @@ export const Slide = (props: SlideProps) => {
 const directionOrigins: {[D in Direction]: {x: string; y: string}} = {
   top: {
     x: '0px',
-    y: 'calc(var(--slide-distance) * -1)',
+    y: `calc(${styles.slideDistanceVar} * -1)`,
   },
   right: {
-    x: 'var(--slide-distance)',
+    x: styles.slideDistanceVar,
     y: '0px',
   },
   bottom: {
     x: '0px',
-    y: 'var(--slide-distance)',
+    y: styles.slideDistanceVar,
   },
   left: {
-    x: 'calc(var(--slide-distance) * -1)',
+    x: `calc(${styles.slideDistanceVar} * -1)`,
     y: '0px',
   },
 };

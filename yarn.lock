@@ -1806,6 +1806,13 @@
     deep-object-diff "^1.1.0"
     deepmerge "^4.2.2"
 
+"@vanilla-extract/dynamic@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/dynamic/-/dynamic-2.0.0.tgz#166f5b69db992f0567c637f767d9ef060f018eff"
+  integrity sha512-w24BI/NhxZ7KxKRTIkZVZA/V2BNgmZ9ocDTbqZ8+kLfEobejwS60aFkeBu/11upEc4PhmFE1v27v5M8zcaGA6Q==
+  dependencies:
+    "@vanilla-extract/private" "^1.0.0"
+
 "@vanilla-extract/integration@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-1.3.0.tgz#3d3119db30d8a45368c012d5785939cadc007cec"
@@ -1820,7 +1827,7 @@
     javascript-stringify "^2.0.1"
     lodash "^4.17.21"
 
-"@vanilla-extract/private@^1.0.1":
+"@vanilla-extract/private@^1.0.0", "@vanilla-extract/private@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.1.tgz#c9479cebea7e7fbb07a1fe5b5c988a8753ef04ed"
   integrity sha512-ABrFJGSmF7a1M+eDTsIeAErPhIeRyBY3ypyLQPc4bUVEK1mvF7F2gx4fTP81pm12bkS0GhjSJtM854lcPWhB+w==

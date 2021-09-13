@@ -32,6 +32,7 @@
   "dependencies": {
     "@polaris/tokens": "*",
     "@radix-ui/react-polymorphic": "^0.0.13",
+    "@vanilla-extract/dynamic": "^2.0.0",
     "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",
     "react-focus-on": "^3.5.2",

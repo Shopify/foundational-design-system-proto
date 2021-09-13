@@ -1,16 +1,21 @@
-import {styleVariants} from '@vanilla-extract/css';
+import {createVar, styleVariants} from '@vanilla-extract/css';
 
 import type {TransitionStyleVariants} from '../../utilities/motion';
 
+export const slideDurationVar = createVar();
+export const slideEasingVar = createVar();
+export const slideDirectionVar = createVar();
+export const slideDistanceVar = createVar();
+
 const transition = `
-  opacity var(--slide-duration) var(--slide-easing),
-  transform var(--slide-duration) var(--slide-easing)
+  opacity ${slideDurationVar} ${slideEasingVar},
+  transform ${slideDurationVar} ${slideEasingVar}
 `;
 
 export const transitions = styleVariants<TransitionStyleVariants>({
   entering: {
     opacity: 0,
-    transform: 'var(--slide-direction)',
+    transform: slideDirectionVar,
     transition,
   },
 
@@ -28,12 +33,12 @@ export const transitions = styleVariants<TransitionStyleVariants>({
 
   exited: {
     opacity: 0,
-    transform: 'var(--slide-direction)',
+    transform: slideDirectionVar,
     transition,
   },
 
   unmounted: {
     opacity: 0,
-    transform: 'var(--slide-direction)',
+    transform: slideDirectionVar,
   },
 });
