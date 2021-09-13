@@ -8,10 +8,8 @@ import * as styles from './Button.css';
 
 interface Props {}
 
-type Hi = Polymorphic.IntrinsicElement<typeof ButtonBase>;
-
 type PolymorphicButton = Polymorphic.ForwardRefComponent<
-  Hi,
+  Polymorphic.IntrinsicElement<typeof ButtonBase>,
   ButtonBaseProps & Props
 >;
 
