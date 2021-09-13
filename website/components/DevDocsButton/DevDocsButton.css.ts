@@ -9,7 +9,6 @@ export const root = style({
   paddingBottom: '5px',
   paddingLeft: devDocsVars.spacing[3],
   paddingRight: devDocsVars.spacing[3],
-  // color: '#ffffff',
   fontWeight: 400,
   fontSize: devDocsVars.spacing[4],
   lineHeight: devDocsVars.spacing[6],
