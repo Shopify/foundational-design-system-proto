@@ -2,7 +2,6 @@ import React, {Suspense, lazy} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import '@polaris/components/styles';
 import './styles/index.css';
 
 const Index = lazy(() => import('./pages'));

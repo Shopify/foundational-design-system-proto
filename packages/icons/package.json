@@ -8,6 +8,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "echo 'coming soon'"
+  },
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
