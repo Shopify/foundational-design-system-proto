@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import {ButtonBase, ButtonBaseProps} from '@polaris/components';
 
@@ -14,5 +15,13 @@ type PolymorphicDevDocsButton = Polymorphic.ForwardRefComponent<
 export type DevDocsButtonProps = Polymorphic.OwnProps<PolymorphicDevDocsButton>;
 
 export const DevDocsButton = React.forwardRef((props, ref) => {
-  return <ButtonBase ref={ref} className={styles.root} {...props} />;
+  const {className, ...restProps} = props;
+
+  return (
+    <ButtonBase
+      ref={ref}
+      className={clsx(styles.root, className)}
+      {...restProps}
+    />
+  );
 }) as PolymorphicDevDocsButton;
