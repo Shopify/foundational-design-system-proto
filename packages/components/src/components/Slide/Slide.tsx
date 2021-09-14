@@ -29,16 +29,32 @@ type MotionEasing = keyof typeof defaultVars.motion.easing;
 type Easing = string | MotionEasing;
 
 export interface SlideProps {
+  //
+  /**
+   * Triggers the enter or exit states.
+   */
   in: boolean;
 
   /**
-   * The content of the Modal (e.g. `<div />`).
+   * The content of the Slide (e.g. `<div />`).
    * It should be only one element that accepts a `className` and `ref` prop.
    */
   children: NonNullable<React.ReactElement>;
+
+  /** The direction the slide will animate in from. */
   direction?: Direction;
+
+  /** The distance the slide animation will translate. */
   distance?: Distance;
+
+  /**
+   * The duration for each transition state.
+   * Note: A single value will be used for all transition states and
+   * a configuration object can control each transition states independently.
+   */
   duration?: Duration;
+
+  /** The timing function used for all transition states. */
   easing?: Easing;
 }
 
