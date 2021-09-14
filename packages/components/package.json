@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@polaris/tokens": "*",
-    "@radix-ui/react-polymorphic": "^0.0.13",
+    "@radix-ui/react-polymorphic": "^0.0.14",
     "@vanilla-extract/dynamic": "^2.0.0",
     "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",

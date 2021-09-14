@@ -2,16 +2,20 @@
 import React from 'react';
 import {
   Box,
+  Button,
+  ButtonBase,
   Flex,
   Inline,
-  Stack,
   Link,
   Slide,
   SlideProps,
+  Stack,
 } from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
 
+import {devDocsThemeClass} from '../components/theme.css';
 import {Layout} from '../components/Layout';
+import {DevDocsButton} from '../components/DevDocsButton';
 
 const IndexPage = () => {
   const [inProp, setIn] = React.useState(false);
@@ -56,6 +60,20 @@ const IndexPage = () => {
           marginY="4"
         />
       </Slide>
+
+      <Divider />
+
+      <h2>Button</h2>
+      <Flex gap="4" marginX="4">
+        <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
+        <Button onClick={() => console.log('Hello')}>Button</Button>
+        <Button href="http://www.shopify.com/">Link</Button>
+        <div className={devDocsThemeClass}>
+          <DevDocsButton onClick={() => console.log('Hello')}>
+            Button
+          </DevDocsButton>
+        </div>
+      </Flex>
 
       <Divider />
 
