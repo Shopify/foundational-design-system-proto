@@ -157,15 +157,15 @@ export const formatTokens = (
  */
 export const getColorTokens = (): TokenList => {
   const values: {[key: string]: string} = {};
+  const saturation = 80;
 
   // Loop through our colors (hues)
   Object.entries(POLARIS_ROOT_COLORS).forEach(([key, color]) => {
     const steps = 21;
+    const hue = color.hue;
 
     // Create 21 tokens for each hue, each with a higher lightness
     for (let i = 0; i < steps; i++) {
-      const hue = color.hue;
-      const saturation = 80;
       const lightness = Math.round((i / (steps - 1)) * 100);
       values[`${key}-${i * 50}`] = hslToHex(hue, saturation, lightness);
     }
