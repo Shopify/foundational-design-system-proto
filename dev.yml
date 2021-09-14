@@ -12,6 +12,5 @@ open:
 
 commands:
   server: yarn dev
-  start: yarn start
   test: yarn test
   build: yarn build
