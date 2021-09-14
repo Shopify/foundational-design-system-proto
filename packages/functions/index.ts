@@ -115,9 +115,10 @@ export const formatTokens = (
   format: TokenFormat,
 ): string => {
   const tab = `    `;
-  const lines: string[] = [':root {'];
+  const lines: string[] = [];
   switch (format) {
     case 'css': {
+      lines.push(':root {');
       Object.entries(tokens).forEach(([_, token]) => {
         const varName = token.meta.CSSName;
         if (token.value) {
