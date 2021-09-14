@@ -54,24 +54,34 @@ const POLARIS_ROOT_COLORS = {
   },
 };
 
-/**
- * Convert hyphen-case-words to camelCaseWords
- *
- * @param str - A hyphen-case-string
- * @returns - A camelCase string
- */
-const hyphencaseToCamelcase = (str: string): string =>
-  str.replace(/-([a-z])/g, (match) => match[1].toUpperCase());
+// Copy pasta from https://stackoverflow.com/a/44134328/6488971
+function hslToHex(hue: number, saturation: number, lightness: number): string {
+  const decimalLightness = lightness / 100;
+  const someMagicalValue =
+    (saturation * Math.min(decimalLightness, 1 - decimalLightness)) / 100;
+  const _f = (someNumber: number) => {
+    const anotherMagicalValue = (someNumber + hue / 30) % 12;
+    const color =
+      decimalLightness -
+      someMagicalValue *
+        Math.max(
+          Math.min(anotherMagicalValue - 3, 9 - anotherMagicalValue, 1),
+          -1,
+        );
+    return Math.round(255 * color)
+      .toString(16)
+      .padStart(2, '0');
+  };
+  return `#${_f(0)}${_f(8)}${_f(4)}`;
+}
 
 const getVariableName = (
   key: string,
-  format: 'figma' | 'atoms' | 'css' | 'sass',
+  format: 'figma' | 'css' | 'sass',
 ): string => {
   switch (format) {
     case 'figma':
-      return 'corresponding/figma/name';
-    case 'atoms':
-      return hyphencaseToCamelcase(key);
+      return key.replace(/-/g, '/');
     case 'sass':
       return `$${key}`;
     case 'css':
@@ -88,9 +98,8 @@ const getVariableName = (
 const createTokenMeta = (key: string): TokenMeta => {
   return {
     figmaName: getVariableName(key, 'figma'),
-    atomName: getVariableName(key, 'atoms'),
-    SassVariableName: getVariableName(key, 'sass'),
-    CSSVariableName: getVariableName(key, 'css'),
+    SassName: getVariableName(key, 'sass'),
+    CSSName: getVariableName(key, 'css'),
   };
 };
 
@@ -105,38 +114,39 @@ export const formatTokens = (
   tokens: TokenList,
   format: TokenFormat,
 ): string => {
+  const tab = `    `;
+  const lines: string[] = [':root {'];
   switch (format) {
     case 'css': {
-      let css = ':root {\n';
       Object.entries(tokens).forEach(([_, token]) => {
-        const varName = token.meta.CSSVariableName;
+        const varName = token.meta.CSSName;
         if (token.value) {
-          css += `    ${varName}: ${token.value};\n`;
+          lines.push(`${tab}${varName}: ${token.value};`);
         } else if (token.aliasOf) {
           const alias = getVariableName(token.aliasOf, 'css');
-          css += `    ${varName}: var(${alias});\n`;
+          lines.push(`${tab}${varName}: var(${alias});`);
         }
       });
-      css += '}\n';
-      return css;
+      lines.push('}');
+      break;
     }
 
     case 'sass': {
-      let sass = '';
       Object.entries(tokens).forEach(([_, token]) => {
-        const varName = token.meta.SassVariableName;
+        const varName = token.meta.SassName;
         if (varName) {
           if (token.value) {
-            sass += `${varName}: ${token.value};\n`;
+            lines.push(`${varName}: ${token.value};`);
           } else if (token.aliasOf) {
             const alias = getVariableName(token.aliasOf, 'sass');
-            sass += `${varName}: ${alias};\n`;
+            lines.push(`${varName}: ${alias};`);
           }
         }
       });
-      return sass;
+      break;
     }
   }
+  return lines.join('\n');
 };
 
 /**
@@ -154,8 +164,10 @@ export const getColorTokens = (): TokenList => {
 
     // Create 21 tokens for each hue, each with a higher lightness
     for (let i = 0; i < steps; i++) {
+      const hue = color.hue;
+      const saturation = 80;
       const lightness = Math.round((i / (steps - 1)) * 100);
-      values[`${key}-${i * 50}`] = `hsl(${color.hue}deg, 80%, ${lightness}%)`;
+      values[`${key}-${i * 50}`] = hslToHex(hue, saturation, lightness);
     }
   });
 
@@ -261,7 +273,13 @@ export const getTypographyTokens = (): TokenList => {
  * @returns A TokenList
  */
 export const getMotionTokens = (): TokenList => {
-  let values: {[key: string]: {value: string; description: string}} = {};
+  let values: {
+    [key: string]: {
+      value?: string;
+      aliasOf?: string | undefined;
+      description: string;
+    };
+  } = {};
 
   for (let i = 1; i <= 60; i++) {
     const ms = Math.round(ONE_FRAME * i);
@@ -270,35 +288,40 @@ export const getMotionTokens = (): TokenList => {
 
   for (let i = 1; i <= 60; i++) {
     const ms = Math.round(ONE_FRAME * i);
-    values[`frames-${i}`] = {value: `var(--ms-${ms})`, description: ''};
+    values[`frames-${i}`] = {
+      aliasOf: `ms-${ms}`,
+      description: `The time it takes to render ${i} ${
+        i === 1 ? 'frame' : 'frames'
+      } (when rendering at 60 FPS)`,
+    };
   }
 
   values = {
     ...values,
     'duration-immediate': {
-      value: 'var(--p-ms-0)',
+      aliasOf: 'ms-0',
       description:
         'Used when the element needs to appear right away, without any motion',
     },
     'duration-swift-exit': {
-      value: 'var(--p-ms-100)',
+      aliasOf: 'ms-100',
       description: 'Used when the element should disappear quickly',
     },
     'duration-swift-enter': {
-      value: 'var(--p-ms-150)',
+      aliasOf: 'ms-150',
       description: 'Used when the element needs to appear quickly but smoothly',
     },
     'duration-default': {
-      value: 'var(--p-ms-200)',
+      aliasOf: 'ms-200',
       description: 'The default duration for elements',
     },
     'duration-clear-exit': {
-      value: 'var(--p-ms-250)',
+      aliasOf: 'ms-250',
       description:
         'Used for elements that needs to be removed in a clear and visible manner',
     },
     'duration-clear-enter': {
-      value: 'var(--p-ms-300)',
+      aliasOf: 'ms-300',
       description:
         'USed for elements that need to draw attention to themselves as they enter',
     },
@@ -308,6 +331,7 @@ export const getMotionTokens = (): TokenList => {
   Object.entries(values).forEach(([key, value]) => {
     tokens[key] = {
       value: value.value,
+      aliasOf: value.aliasOf,
       description: value.description,
       meta: createTokenMeta(key),
     };

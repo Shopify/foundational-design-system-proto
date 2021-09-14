@@ -8,10 +8,9 @@ interface Token {
 }
 
 export interface TokenMeta {
-  atomName: string | null;
   figmaName: string | null;
-  SassVariableName: string | null;
-  CSSVariableName: string | null;
+  SassName: string | null;
+  CSSName: string | null;
 }
 
 export interface TokenList {
