@@ -1,8 +1,7 @@
-import {TokenExtensions, TokenList, TokenFormat} from './types';
+import {TokenMeta, TokenList, TokenFormat} from './types';
 
-const BASE_SPACING_UNIT = 0.25;
-const SPACING_MULTIPLE_MIN = 1;
-const SPACING_MULTIPLE_MAX = 10;
+const BASE_SPACING_UNIT_REM = 0.25;
+const NUMBER_OF_ITEMS_IN_100_SCALES = 10;
 const ONE_FRAME = 1000 / 60;
 const POLARIS_ROOT_COLORS = {
   azure: {
@@ -64,26 +63,34 @@ const POLARIS_ROOT_COLORS = {
 const hyphencaseToCamelcase = (str: string): string =>
   str.replace(/-([a-z])/g, (match) => match[1].toUpperCase());
 
+const getVariableName = (
+  key: string,
+  format: 'figma' | 'atoms' | 'css' | 'sass',
+): string => {
+  switch (format) {
+    case 'figma':
+      return 'corresponding/figma/name';
+    case 'atoms':
+      return hyphencaseToCamelcase(key);
+    case 'sass':
+      return `$${key}`;
+    case 'css':
+      return `--p-${key}`;
+  }
+};
+
 /**
  * Creates an "extension" object for each token.
  *
  * @param key
- * @returns A TokenExtensions object
+ * @returns A Tokenmeta object
  */
-const createTokenExtensions = (key: string): TokenExtensions => {
+const createTokenMeta = (key: string): TokenMeta => {
   return {
-    'com.shopify.figma': {
-      name: 'corresponding/figma/name',
-    },
-    'com.shopify.react': {
-      atomName: hyphencaseToCamelcase(key),
-    },
-    'com.shopify.sass': {
-      variableName: `$${key}`,
-    },
-    'com.shopify.css': {
-      variableName: `--p-${hyphencaseToCamelcase(key)}`,
-    },
+    figmaName: getVariableName(key, 'figma'),
+    atomName: getVariableName(key, 'atoms'),
+    SassVariableName: getVariableName(key, 'sass'),
+    CSSVariableName: getVariableName(key, 'css'),
   };
 };
 
@@ -101,10 +108,13 @@ export const formatTokens = (
   switch (format) {
     case 'css': {
       let css = ':root {\n';
-      Object.entries(tokens).forEach(([_, value]) => {
-        const cssExtension = value.extensions['com.shopify.css'];
-        if (cssExtension?.variableName) {
-          css += `    ${cssExtension.variableName}: ${value.value};\n`;
+      Object.entries(tokens).forEach(([_, token]) => {
+        const varName = token.meta.CSSVariableName;
+        if (token.value) {
+          css += `    ${varName}: ${token.value};\n`;
+        } else if (token.aliasOf) {
+          const alias = getVariableName(token.aliasOf, 'css');
+          css += `    ${varName}: var(${alias});\n`;
         }
       });
       css += '}\n';
@@ -113,10 +123,15 @@ export const formatTokens = (
 
     case 'sass': {
       let sass = '';
-      Object.entries(tokens).forEach(([_, value]) => {
-        const sassExtension = value.extensions['com.shopify.sass'];
-        if (sassExtension?.variableName) {
-          sass += `${sassExtension?.variableName}: ${value.value};\n`;
+      Object.entries(tokens).forEach(([_, token]) => {
+        const varName = token.meta.SassVariableName;
+        if (varName) {
+          if (token.value) {
+            sass += `${varName}: ${token.value};\n`;
+          } else if (token.aliasOf) {
+            const alias = getVariableName(token.aliasOf, 'sass');
+            sass += `${varName}: ${alias};\n`;
+          }
         }
       });
       return sass;
@@ -139,8 +154,8 @@ export const getColorTokens = (): TokenList => {
 
     // Create 21 tokens for each hue, each with a higher lightness
     for (let i = 0; i < steps; i++) {
-      const lightness = Math.round((i / steps) * 100);
-      values[`${key}-${i}`] = `hsl(${color.hue}deg, 80%, ${lightness}%)`;
+      const lightness = Math.round((i / (steps - 1)) * 100);
+      values[`${key}-${i * 50}`] = `hsl(${color.hue}deg, 80%, ${lightness}%)`;
     }
   });
 
@@ -148,11 +163,16 @@ export const getColorTokens = (): TokenList => {
   Object.entries(values).forEach(([key, value]) => {
     tokens[key] = {
       value,
-      type: 'color',
       description: `A color with the value ${value}`,
-      extensions: createTokenExtensions(key),
+      meta: createTokenMeta(key),
     };
   });
+
+  tokens.negative = {
+    aliasOf: 'magenta-500',
+    description: 'Used for errors etc',
+    meta: createTokenMeta('negative'),
+  };
 
   return tokens;
 };
@@ -163,57 +183,72 @@ export const getColorTokens = (): TokenList => {
  * @param {Object} levers - Configuration for the spacing
  * @returns A TokenList
  */
-export const getSpacingTokens = ({multiple}: {multiple: number}): TokenList => {
-  const validMultiple =
-    multiple >= SPACING_MULTIPLE_MIN && multiple <= SPACING_MULTIPLE_MAX
-      ? multiple
-      : 1;
-
+export const getSpacingTokens = (): TokenList => {
   const values: {[key: string]: number} = {};
-  for (let i = 1; i <= 50; i++) {
-    values[`spacing-${i}`] = BASE_SPACING_UNIT * validMultiple * i;
+  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
+    values[`space-${i * 100}`] = BASE_SPACING_UNIT_REM * i;
+  }
+  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
+    values[`margin-${i * 100}`] = BASE_SPACING_UNIT_REM * i;
+  }
+  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
+    values[`padding-${i * 100}`] = BASE_SPACING_UNIT_REM * i;
   }
 
   const tokens: TokenList = {};
   Object.entries(values).forEach(([key, value]) => {
     tokens[key] = {
       value: `${value}rem`,
-      type: 'dimension',
       description: `A spacing with a value of ${value}rem`,
-      extensions: createTokenExtensions(key),
+      meta: createTokenMeta(key),
     };
   });
   return tokens;
 };
 
 /**
- * Generates typography tokens
+ * Generates typography tokeqns
  *
  * @param levers - Configuration for the typography
  * @returns A TokenList
  */
-export const getTypographyTokens = ({
-  baseSize = 16,
-  typeRatio = 1,
-}): TokenList => {
+export const getTypographyTokens = (): TokenList => {
+  const baseSize = 16;
+  const typeRatio = 1.2;
+  const lineHeight = 1.25;
+
   const values = {
-    base: Math.round(baseSize),
-    'heading-7': Math.round(baseSize * typeRatio ** 1),
-    'heading-6': Math.round(baseSize * typeRatio ** 2),
-    'heading-5': Math.round(baseSize * typeRatio ** 3),
-    'heading-4': Math.round(baseSize * typeRatio ** 4),
-    'heading-3': Math.round(baseSize * typeRatio ** 5),
-    'heading-2': Math.round(baseSize * typeRatio ** 6),
-    'heading-1': Math.round(baseSize * typeRatio ** 7),
+    'font-size-heading-1': Math.round(baseSize * typeRatio ** 1),
+    'font-size-heading-2': Math.round(baseSize * typeRatio ** 2),
+    'font-size-heading-3': Math.round(baseSize * typeRatio ** 3),
+    'font-size-heading-4': Math.round(baseSize * typeRatio ** 4),
+    'font-size-heading-5': Math.round(baseSize * typeRatio ** 5),
+    'font-size-heading-6': Math.round(baseSize * typeRatio ** 6),
+    'font-size-heading-7': Math.round(baseSize * typeRatio ** 7),
+    'font-size-body-large': Math.round(baseSize * typeRatio ** 7),
+    'font-size-body': baseSize,
+    'font-size-small': Math.round(baseSize * typeRatio ** 7),
+
+    'line-height-heading-1': Math.round(baseSize * typeRatio ** 1 * lineHeight),
+    'line-height-heading-2': Math.round(baseSize * typeRatio ** 2 * lineHeight),
+    'line-height-heading-3': Math.round(baseSize * typeRatio ** 3 * lineHeight),
+    'line-height-heading-4': Math.round(baseSize * typeRatio ** 4 * lineHeight),
+    'line-height-heading-5': Math.round(baseSize * typeRatio ** 5 * lineHeight),
+    'line-height-heading-6': Math.round(baseSize * typeRatio ** 6 * lineHeight),
+    'line-height-heading-7': Math.round(baseSize * typeRatio ** 7 * lineHeight),
+    'line-height-body-large': Math.round(
+      baseSize * typeRatio ** 7 * lineHeight,
+    ),
+    'line-height-body': Math.round(baseSize * typeRatio ** 7 * lineHeight),
+    'line-height-small': Math.round(baseSize * typeRatio ** 7 * lineHeight),
   };
 
   const tokens: TokenList = {};
   Object.entries(values).forEach(([key, value]) => {
     tokens[key] = {
       value,
-      type: 'dimension',
       description: `A font size with a value of ${value}rem`,
-      extensions: createTokenExtensions(key),
+      meta: createTokenMeta(key),
     };
   });
 
@@ -273,9 +308,8 @@ export const getMotionTokens = (): TokenList => {
   Object.entries(values).forEach(([key, value]) => {
     tokens[key] = {
       value: value.value,
-      type: 'duration',
       description: value.description,
-      extensions: createTokenExtensions(key),
+      meta: createTokenMeta(key),
     };
   });
 
@@ -289,35 +323,30 @@ export const getMotionTokens = (): TokenList => {
  */
 export const getBreakpointTokens = (): TokenList => {
   return {
-    xs: {
+    'breakpoint-xs': {
       value: '0',
       description: 'Small devices, like wearables and smartphones',
-      type: 'dimension',
-      extensions: createTokenExtensions('xs'),
+      meta: createTokenMeta('breakpoint-xs'),
     },
-    sm: {
+    'breakpoint-sm': {
       value: '600px',
       description: 'Mostly tablets',
-      type: 'dimension',
-      extensions: createTokenExtensions('sm'),
+      meta: createTokenMeta('breakpoint-sm'),
     },
-    md: {
+    'breakpoint-md': {
       value: '960px',
       description: 'Mostly tablets',
-      type: 'dimension',
-      extensions: createTokenExtensions('md'),
+      meta: createTokenMeta('breakpoint-md'),
     },
-    lg: {
+    'breakpoint-lg': {
       value: '1280px',
       description: 'Computers',
-      type: 'dimension',
-      extensions: createTokenExtensions('lg'),
+      meta: createTokenMeta('breakpoint-lg'),
     },
-    xl: {
+    'breakpoint-xl': {
       value: '1920px',
       description: 'Computers',
-      type: 'dimension',
-      extensions: createTokenExtensions('xl'),
+      meta: createTokenMeta('breakpoint-xl'),
     },
   };
 };

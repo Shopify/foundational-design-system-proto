@@ -5,14 +5,16 @@ import {
   getMotionTokens,
   getSpacingTokens,
   formatTokens,
+  getTypographyTokens,
 } from '../../../packages/functions';
 import {TokenList} from '../../../packages/functions/types';
 
-export const ALLOWED_ENDPOINTS = ['tokens.json', 'tokens.css', 'tokens.sass'];
+export const ALLOWED_FORMATS = ['json', 'css', 'sass'];
+export const DEFAULT_FORMAT = 'json';
 
 interface Request extends NextApiRequest {
   query: {
-    endpoint: string;
+    format?: string;
     multiple: string;
   };
 }
@@ -27,12 +29,10 @@ interface APIResponse {
 }
 
 export default function handler(req: Request, res: NextApiResponse) {
-  const endpointIsAllowed = !!ALLOWED_ENDPOINTS.find(
-    (endpoint) => endpoint === req.query.endpoint,
-  );
-
-  if (!endpointIsAllowed) {
-    res.status(404).end('Not found');
+  let format = DEFAULT_FORMAT;
+  const requestedFormat = req.query.format;
+  if (requestedFormat && ALLOWED_FORMATS.includes(requestedFormat)) {
+    format = requestedFormat;
   }
 
   // This would allow any "lever" to be customized through
@@ -45,10 +45,11 @@ export default function handler(req: Request, res: NextApiResponse) {
   // TODO: validate inputs
 
   const tokens: TokenList = {
-    ...getColorTokens(),
-    ...getSpacingTokens({multiple: levers.multiple}),
-    ...getMotionTokens(),
+    ...getSpacingTokens(),
+    ...getTypographyTokens(),
     ...getBreakpointTokens(),
+    ...getColorTokens(),
+    ...getMotionTokens(),
   };
 
   const response: APIResponse = {
@@ -58,8 +59,7 @@ export default function handler(req: Request, res: NextApiResponse) {
     tokens,
   };
 
-  const extension = req.query.endpoint.split('.')[1];
-  switch (extension) {
+  switch (format) {
     case 'sass':
       res.status(200).send(formatTokens(response.tokens, 'sass'));
       break;

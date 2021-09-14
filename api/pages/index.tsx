@@ -8,11 +8,11 @@ import {
   getSpacingTokens,
 } from '../../packages/functions';
 import {TokenValue} from '../../packages/functions/types';
-import {ALLOWED_ENDPOINTS} from './api/[endpoint]';
+import {ALLOWED_FORMATS} from './api/tokens';
 
 const Home: NextPage = () => {
   const colorTokens = getColorTokens();
-  const spacingTokens = getSpacingTokens({multiple: 1});
+  const spacingTokens = getSpacingTokens();
   const motionTokens = getMotionTokens();
   const breakPointTokens = getBreakpointTokens();
 
@@ -27,9 +27,11 @@ const Home: NextPage = () => {
       <h1>WIP Tokens</h1>
       <p>These tokens can also be fetched through the API:</p>
       <ul>
-        {ALLOWED_ENDPOINTS.map((endpoint) => (
-          <li key={endpoint}>
-            <a href={`api/${endpoint}`}>{endpoint}</a>
+        {ALLOWED_FORMATS.map((format) => (
+          <li key={format}>
+            <a href={`api/tokens?format=${format}`}>
+              In {format.toUpperCase()} format
+            </a>
           </li>
         ))}
       </ul>
@@ -40,6 +42,7 @@ const Home: NextPage = () => {
             key={key}
             name={key}
             value={value.value}
+            aliasOf={value.aliasOf}
             description={value.description}
           >
             <div
@@ -61,6 +64,7 @@ const Home: NextPage = () => {
             key={key}
             name={key}
             value={value.value}
+            aliasOf={value.aliasOf}
             description={value.description}
           >
             <div
@@ -82,6 +86,7 @@ const Home: NextPage = () => {
             key={key}
             name={key}
             value={value.value}
+            aliasOf={value.aliasOf}
             description={value.description}
           >
             ...
@@ -96,6 +101,7 @@ const Home: NextPage = () => {
             key={key}
             name={key}
             value={value.value}
+            aliasOf={value.aliasOf}
             description={value.description}
           >
             ...
@@ -109,11 +115,13 @@ const Home: NextPage = () => {
 const TokenRow = ({
   name,
   value,
+  aliasOf,
   description,
   children,
 }: {
   name: string;
-  value: TokenValue;
+  value?: TokenValue;
+  aliasOf?: string;
   description: string;
   children: React.ReactNode;
 }) => {
@@ -125,7 +133,7 @@ const TokenRow = ({
         <p>{description}</p>
       </div>
       <div className="token-row__value">
-        <p>{value}</p>
+        <p>{value || `Alias: ${aliasOf}`}</p>
       </div>
     </div>
   );
