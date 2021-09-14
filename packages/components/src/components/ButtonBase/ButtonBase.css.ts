@@ -1,11 +1,16 @@
 import {style} from '@vanilla-extract/css';
 
+// a silly workaround to avoid auto formatting
+const tapHighlight = '-webkit-tap-highlight-color';
+const mozAppearance = '-moz-appearance';
+const webkitAppearance = '-webkit-appearance';
+
 export const root = style({
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   position: 'relative',
-  // WebkitTapHighlightColor: 'transparent',
+  [`${tapHighlight}`]: 'transparent',
   // Reset default value
   backgroundColor: 'transparent',
   // We disable the focus ring for mouse, touch and keyboard users.
@@ -20,19 +25,17 @@ export const root = style({
   userSelect: 'none',
   verticalAlign: 'middle',
   // Reset
-  // '-moz-appearance': 'none',
+  [`${mozAppearance}`]: 'none',
   // Reset
-  // '-webkit-appearance': 'none',
+  [`${webkitAppearance}`]: 'none',
   textDecoration: 'none',
   // So we take precedent over the style of a native <a /> element.
   color: 'inherit',
-  // '&::-moz-focus-inner': {
-  // Remove Firefox dotted outline.
-  // borderStyle: 'none',
-  // },
-  // '@media print': {
-  //   colorAdjust: 'exact',
-  // },
+  '@media': {
+    print: {
+      colorAdjust: 'exact',
+    },
+  },
 });
 
 export const disabled = style({
