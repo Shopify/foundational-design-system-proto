@@ -157,7 +157,7 @@ export const formatTokens = (
  * @returns A TokenList
  */
 export const getColorTokens = (): TokenList => {
-  const values: {[key: string]: string} = {};
+  const tokens: TokenList = {};
   const saturation = 80;
 
   // Loop through our colors (hues)
@@ -168,23 +168,24 @@ export const getColorTokens = (): TokenList => {
     // Create 21 tokens for each hue, each with a higher lightness
     for (let i = 0; i < steps; i++) {
       const lightness = Math.round((i / (steps - 1)) * 100);
-      values[`${key}-${i * 50}`] = hslToHex(hue, saturation, lightness);
+      tokens[`${key}-${i * 50}`] = {
+        value: hslToHex(hue, saturation, lightness),
+        description: `A ${key} color with a lightness of ${lightness}%`,
+        meta: createTokenMeta(key),
+      };
     }
-  });
-
-  const tokens: TokenList = {};
-  Object.entries(values).forEach(([key, value]) => {
-    tokens[key] = {
-      value,
-      description: `A color with the value ${value}`,
-      meta: createTokenMeta(key),
-    };
   });
 
   tokens.negative = {
     aliasOf: 'magenta-500',
     description: 'Used for errors etc',
     meta: createTokenMeta('negative'),
+  };
+
+  tokens.positive = {
+    aliasOf: 'green-500',
+    description: 'Used for success messages etc',
+    meta: createTokenMeta('positive'),
   };
 
   return tokens;
@@ -197,25 +198,40 @@ export const getColorTokens = (): TokenList => {
  * @returns A TokenList
  */
 export const getSpacingTokens = (): TokenList => {
-  const values: {[key: string]: number} = {};
-  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
-    values[`space-${i * 100}`] = BASE_SPACING_UNIT_REM * i;
-  }
-  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
-    values[`margin-${i * 100}`] = BASE_SPACING_UNIT_REM * i;
-  }
-  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
-    values[`padding-${i * 100}`] = BASE_SPACING_UNIT_REM * i;
-  }
-
   const tokens: TokenList = {};
-  Object.entries(values).forEach(([key, value]) => {
+
+  const getSpaceTokenForIndex = (index: number) => `space-${index * 100}`;
+
+  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
+    const key = getSpaceTokenForIndex(i);
+    const value = BASE_SPACING_UNIT_REM * i;
     tokens[key] = {
-      value: `${value}rem`,
+      value,
       description: `A spacing with a value of ${value}rem`,
       meta: createTokenMeta(key),
     };
-  });
+  }
+
+  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
+    const key = `margin-${i * 100}`;
+    const aliasKey = getSpaceTokenForIndex(i);
+    tokens[key] = {
+      aliasOf: aliasKey,
+      description: `A margin equal to ${aliasKey}`,
+      meta: createTokenMeta(key),
+    };
+  }
+
+  for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
+    const key = `padding-${i * 100}`;
+    const aliasKey = getSpaceTokenForIndex(i);
+    tokens[key] = {
+      aliasOf: aliasKey,
+      description: `A padding equal to ${aliasKey}`,
+      meta: createTokenMeta(key),
+    };
+  }
+
   return tokens;
 };
 
@@ -284,14 +300,17 @@ export const getMotionTokens = (): TokenList => {
 
   for (let i = 1; i <= 60; i++) {
     const ms = Math.round(ONE_FRAME * i);
-    values[`ms-${ms}`] = {value: `${ms}ms`, description: ''};
+    values[`ms-${ms}`] = {
+      value: `${ms}ms`,
+      description: `A duration or delay equal to ${ms} milliseconds`,
+    };
   }
 
   for (let i = 1; i <= 60; i++) {
     const ms = Math.round(ONE_FRAME * i);
     values[`frames-${i}`] = {
       aliasOf: `ms-${ms}`,
-      description: `The time it takes to render ${i} ${
+      description: `The number of milliseconds it takes to render ${i} ${
         i === 1 ? 'frame' : 'frames'
       } (when rendering at 60 FPS)`,
     };

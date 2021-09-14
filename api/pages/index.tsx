@@ -72,7 +72,7 @@ const Home: NextPage = () => {
                 width: 30,
                 height: value.value,
                 background: `rgba(255,255,255,.1)`,
-                boxShadow: `inset 0 -1.5px white, inset 0 1.5px white`,
+                boxShadow: `inset 0 -1px #666, inset 0 1px #666`,
               }}
             ></div>
           </TokenRow>
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
             aliasOf={value.aliasOf}
             description={value.description}
           >
-            ...
+            &nbsp;
           </TokenRow>
         );
       })}
@@ -104,7 +104,7 @@ const Home: NextPage = () => {
             aliasOf={value.aliasOf}
             description={value.description}
           >
-            ...
+            &nbsp;
           </TokenRow>
         );
       })}
@@ -128,12 +128,22 @@ const TokenRow = ({
   return (
     <div className="token-row">
       <div className="token-row__preview">{children}</div>
-      <div className="token-row__meta">
+      <div className="token-row__name">
         <h3>{name}</h3>
-        <p>{description}</p>
       </div>
       <div className="token-row__value">
-        <p>{value || `Alias: ${aliasOf}`}</p>
+        <p>
+          {value ? (
+            value
+          ) : (
+            <>
+              <span className="token-row__value__alias">Alias</span> {aliasOf}
+            </>
+          )}
+        </p>
+      </div>
+      <div className="token-row__description">
+        <p>{description}</p>
       </div>
     </div>
   );
