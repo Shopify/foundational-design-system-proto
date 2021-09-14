@@ -137,7 +137,8 @@ const TokenRow = ({
             value
           ) : (
             <>
-              <span className="token-row__value__alias">Alias</span> {aliasOf}
+              <span className="token-row__value__alias">Alias &rarr;</span>{' '}
+              {aliasOf}
             </>
           )}
         </p>
