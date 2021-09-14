@@ -1,12 +1,36 @@
 import React from 'react';
-import {Box, Flex, Inline, Stack, Link} from '@polaris/components';
+import {
+  Box,
+  Flex,
+  Inline,
+  Stack,
+  ButtonBase,
+  Button,
+  Link,
+} from '@polaris/components';
 import {Link as RouterLink} from 'react-router-dom';
 
+import {devDocsThemeClass} from '../components/theme.css';
 import {Layout} from '../components/Layout';
+import {DevDocsButton} from '../components/DevDocsButton';
 
 const IndexPage = () => {
   return (
     <Layout>
+      <h2>Button</h2>
+      <Flex gap="4" marginX="4">
+        <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
+        <Button onClick={() => console.log('Hello')}>Button</Button>
+        <Button href="http://www.shopify.com/">Link</Button>
+        <div className={devDocsThemeClass}>
+          <DevDocsButton onClick={() => console.log('Hello')}>
+            Button
+          </DevDocsButton>
+        </div>
+      </Flex>
+
+      <Divider />
+
       <h2>Link</h2>
       <Link href="/about">Hyperlink</Link>
       <br />
