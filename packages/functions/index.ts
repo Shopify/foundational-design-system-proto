@@ -242,7 +242,6 @@ export const getSpacingTokens = (): TokenList => {
  * @returns A TokenList
  */
 export const getTypographyTokens = (): TokenList => {
-  const baseSize = 16;
   const typeRatio = 1.2;
   const lineHeight = 1.25;
 
@@ -258,13 +257,13 @@ export const getTypographyTokens = (): TokenList => {
     'font-size-body': 1,
     'font-size-small': 1 * 0.9,
 
-    'line-height-heading-1': typeRatio ** 1 * lineHeight,
-    'line-height-heading-2': typeRatio ** 2 * lineHeight,
-    'line-height-heading-3': typeRatio ** 3 * lineHeight,
+    'line-height-heading-1': typeRatio ** 7 * lineHeight,
+    'line-height-heading-2': typeRatio ** 6 * lineHeight,
+    'line-height-heading-3': typeRatio ** 5 * lineHeight,
     'line-height-heading-4': typeRatio ** 4 * lineHeight,
-    'line-height-heading-5': typeRatio ** 5 * lineHeight,
-    'line-height-heading-6': typeRatio ** 6 * lineHeight,
-    'line-height-heading-7': typeRatio ** 7 * lineHeight,
+    'line-height-heading-5': typeRatio ** 3 * lineHeight,
+    'line-height-heading-6': typeRatio ** 2 * lineHeight,
+    'line-height-heading-7': typeRatio ** 1 * lineHeight,
     'line-height-body-large': typeRatio ** 7 * lineHeight,
     'line-height-body': typeRatio ** 7 * lineHeight,
     'line-height-small': typeRatio ** 7 * lineHeight,
