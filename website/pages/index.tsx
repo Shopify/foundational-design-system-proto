@@ -8,41 +8,18 @@ const IndexPage = () => {
   return (
     <Layout>
       <h2>Card</h2>
-      <Flex gap="4">
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-          width="1/3"
-        >
-          <p>
-            Linked card&nbsp;
-            <Link href="/about">with a separate link</Link>
-          </p>
-        </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-          width="1/3"
-        >
-          <p>Placeholder</p>
-        </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-          width="1/3"
-        >
-          <p>Placeholder</p>
-        </Card>
-      </Flex>
+      <Card
+        style={{
+          backgroundColor: 'whitesmoke',
+          border: '1px solid silver',
+          borderRadius: '8px',
+        }}
+      >
+        <p>
+          Linked card&nbsp;
+          <Link href="/about">with a separate link</Link>
+        </p>
+      </Card>
       <Divider />
       <h2>Link</h2>
       <Link href="/about">Hyperlink</Link>
