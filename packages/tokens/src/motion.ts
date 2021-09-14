@@ -1,7 +1,9 @@
 export const duration = {
   immediate: '0ms',
-  swift: '100ms',
-  default: '200ms',
+  swift: '150ms',
+  swiftExit: '100ms',
+  default: '250ms',
+  defaultExit: '200ms',
 };
 
 export const easing = {

@@ -44,7 +44,11 @@ const IndexPage = () => {
           <option value="left">Left</option>
         </select>
       </label>
-      <Slide in={inProp} direction={direction}>
+      <Slide
+        in={inProp}
+        direction={direction}
+        duration={{enter: 2500, exit: 750}}
+      >
         <Box
           style={{backgroundColor: 'silver'}}
           height="16"
