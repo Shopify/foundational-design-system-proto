@@ -6,6 +6,7 @@ import {
   getColorTokens,
   getMotionTokens,
   getSpacingTokens,
+  getTypographyTokens,
 } from '../../packages/functions';
 import {TokenValue} from '../../packages/functions/types';
 import {ALLOWED_FORMATS} from './api/tokens';
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
   const spacingTokens = getSpacingTokens();
   const motionTokens = getMotionTokens();
   const breakPointTokens = getBreakpointTokens();
+  const typographyTokens = getTypographyTokens();
 
   return (
     <div>
@@ -35,6 +37,7 @@ const Home: NextPage = () => {
           </li>
         ))}
       </ul>
+
       <h2>Color tokens</h2>
       {Object.entries(colorTokens).map(([key, value]) => {
         return (
@@ -75,6 +78,21 @@ const Home: NextPage = () => {
                 boxShadow: `inset 0 -1px #666, inset 0 1px #666`,
               }}
             ></div>
+          </TokenRow>
+        );
+      })}
+
+      <h2>Typography tokens</h2>
+      {Object.entries(typographyTokens).map(([key, value]) => {
+        return (
+          <TokenRow
+            key={key}
+            name={key}
+            value={value.value}
+            aliasOf={value.aliasOf}
+            description={value.description}
+          >
+            &nbsp;
           </TokenRow>
         );
       })}

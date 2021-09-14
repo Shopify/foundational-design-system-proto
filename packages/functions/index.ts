@@ -204,7 +204,7 @@ export const getSpacingTokens = (): TokenList => {
 
   for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
     const key = getSpaceTokenForIndex(i);
-    const value = BASE_SPACING_UNIT_REM * i;
+    const value = `${BASE_SPACING_UNIT_REM * i}rem`;
     tokens[key] = {
       value,
       description: `A spacing with a value of ${value}rem`,
@@ -247,36 +247,35 @@ export const getTypographyTokens = (): TokenList => {
   const lineHeight = 1.25;
 
   const values = {
-    'font-size-heading-1': Math.round(baseSize * typeRatio ** 1),
-    'font-size-heading-2': Math.round(baseSize * typeRatio ** 2),
-    'font-size-heading-3': Math.round(baseSize * typeRatio ** 3),
-    'font-size-heading-4': Math.round(baseSize * typeRatio ** 4),
-    'font-size-heading-5': Math.round(baseSize * typeRatio ** 5),
-    'font-size-heading-6': Math.round(baseSize * typeRatio ** 6),
-    'font-size-heading-7': Math.round(baseSize * typeRatio ** 7),
-    'font-size-body-large': Math.round(baseSize * typeRatio ** 7),
-    'font-size-body': baseSize,
-    'font-size-small': Math.round(baseSize * typeRatio ** 7),
+    'font-size-heading-1': typeRatio ** 7,
+    'font-size-heading-2': typeRatio ** 6,
+    'font-size-heading-3': typeRatio ** 5,
+    'font-size-heading-4': typeRatio ** 4,
+    'font-size-heading-5': typeRatio ** 3,
+    'font-size-heading-6': typeRatio ** 2,
+    'font-size-heading-7': typeRatio ** 1,
+    'font-size-body-large': typeRatio ** 1.05,
+    'font-size-body': 1,
+    'font-size-small': 1 * 0.9,
 
-    'line-height-heading-1': Math.round(baseSize * typeRatio ** 1 * lineHeight),
-    'line-height-heading-2': Math.round(baseSize * typeRatio ** 2 * lineHeight),
-    'line-height-heading-3': Math.round(baseSize * typeRatio ** 3 * lineHeight),
-    'line-height-heading-4': Math.round(baseSize * typeRatio ** 4 * lineHeight),
-    'line-height-heading-5': Math.round(baseSize * typeRatio ** 5 * lineHeight),
-    'line-height-heading-6': Math.round(baseSize * typeRatio ** 6 * lineHeight),
-    'line-height-heading-7': Math.round(baseSize * typeRatio ** 7 * lineHeight),
-    'line-height-body-large': Math.round(
-      baseSize * typeRatio ** 7 * lineHeight,
-    ),
-    'line-height-body': Math.round(baseSize * typeRatio ** 7 * lineHeight),
-    'line-height-small': Math.round(baseSize * typeRatio ** 7 * lineHeight),
+    'line-height-heading-1': typeRatio ** 1 * lineHeight,
+    'line-height-heading-2': typeRatio ** 2 * lineHeight,
+    'line-height-heading-3': typeRatio ** 3 * lineHeight,
+    'line-height-heading-4': typeRatio ** 4 * lineHeight,
+    'line-height-heading-5': typeRatio ** 5 * lineHeight,
+    'line-height-heading-6': typeRatio ** 6 * lineHeight,
+    'line-height-heading-7': typeRatio ** 7 * lineHeight,
+    'line-height-body-large': typeRatio ** 7 * lineHeight,
+    'line-height-body': typeRatio ** 7 * lineHeight,
+    'line-height-small': typeRatio ** 7 * lineHeight,
   };
 
   const tokens: TokenList = {};
   Object.entries(values).forEach(([key, value]) => {
+    const roundedValue = Math.round(value * 10) / 10;
     tokens[key] = {
-      value,
-      description: `A font size with a value of ${value}rem`,
+      value: `${roundedValue}rem`,
+      description: `A font size with a value of ${roundedValue}rem`,
       meta: createTokenMeta(key),
     };
   });
@@ -302,7 +301,9 @@ export const getMotionTokens = (): TokenList => {
     const ms = Math.round(ONE_FRAME * i);
     values[`ms-${ms}`] = {
       value: `${ms}ms`,
-      description: `A duration or delay equal to ${ms} milliseconds`,
+      description: `A duration or delay equal to ${i} ${
+        i === 1 ? 'frame' : 'frames'
+      } (assuming 60 FPS)`,
     };
   }
 
@@ -312,7 +313,7 @@ export const getMotionTokens = (): TokenList => {
       aliasOf: `ms-${ms}`,
       description: `The number of milliseconds it takes to render ${i} ${
         i === 1 ? 'frame' : 'frames'
-      } (when rendering at 60 FPS)`,
+      } (assuming 60 FPS)`,
     };
   }
 

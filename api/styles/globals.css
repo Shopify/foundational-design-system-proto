@@ -72,6 +72,14 @@ ul {
   margin-bottom: 0;
 }
 
+.token-row__preview {
+  min-width: 30px;
+}
+
+.token-row__name {
+  min-width: 12rem;
+}
+
 .token-row__name h3 {
   margin: 0;
   min-width: 10rem;
