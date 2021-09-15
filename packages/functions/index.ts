@@ -1,9 +1,21 @@
-import {TokenMeta, TokenList, TokenFormat} from './types';
+import {Token, TokenFormat, TokenMeta, Tokens} from './types';
 
 const BASE_SPACING_UNIT_REM = 0.25;
+
 const NUMBER_OF_ITEMS_IN_100_SCALES = 10;
-const ONE_FRAME = 1000 / 60;
-const POLARIS_ROOT_COLORS = {
+
+const FPS = 60;
+
+const ONE_FRAME = 1000 / FPS;
+
+interface DefaultColors {
+  [hueName: string]: {
+    name: string;
+    hue: number;
+  };
+}
+
+const defaultColors: DefaultColors = {
   azure: {
     name: 'Azure',
     hue: 209,
@@ -57,10 +69,13 @@ const POLARIS_ROOT_COLORS = {
 // Copy pasta from https://stackoverflow.com/a/44134328/6488971
 function hslToHex(hue: number, saturation: number, lightness: number): string {
   const decimalLightness = lightness / 100;
+
   const someMagicalValue =
     (saturation * Math.min(decimalLightness, 1 - decimalLightness)) / 100;
+
   const _f = (someNumber: number) => {
     const anotherMagicalValue = (someNumber + hue / 30) % 12;
+
     const color =
       decimalLightness -
       someMagicalValue *
@@ -68,40 +83,99 @@ function hslToHex(hue: number, saturation: number, lightness: number): string {
           Math.min(anotherMagicalValue - 3, 9 - anotherMagicalValue, 1),
           -1,
         );
+
     return Math.round(255 * color)
       .toString(16)
       .padStart(2, '0');
   };
+
   return `#${_f(0)}${_f(8)}${_f(4)}`;
 }
 
-const getVariableName = (
-  key: string,
+const createFormatTokenName = (
   format: 'figma' | 'css' | 'sass',
-): string => {
+  tokenName: string,
+) => {
   switch (format) {
     case 'figma':
-      return key.replace(/-/g, '/');
+      return tokenName.replace(/-/g, '/');
     case 'sass':
-      return `$${key}`;
+      return `$${tokenName}`;
     case 'css':
-      return `--p-${key}`;
+      return `--p-${tokenName}`;
   }
 };
 
 /**
  * Creates an "extension" object for each token.
  *
- * @param key
- * @returns A Tokenmeta object
+ * @param tokenName
+ * @returns A Token metadata object
  */
-const createTokenMeta = (key: string): TokenMeta => {
+const createTokenMeta = (tokenName: string): TokenMeta => {
   return {
-    figmaName: getVariableName(key, 'figma'),
-    SassName: getVariableName(key, 'sass'),
-    CSSName: getVariableName(key, 'css'),
+    figmaName: createFormatTokenName('figma', tokenName),
+    SassName: createFormatTokenName('sass', tokenName),
+    CSSName: createFormatTokenName('css', tokenName),
   };
 };
+
+type Formatter = (tokens: Tokens) => string;
+
+const CSSTokenFormatter: Formatter = (tokens) => {
+  const tab = `    `;
+  const lines: string[] = [];
+
+  lines.push(':root {');
+
+  Object.entries(tokens).forEach(([_, token]) => {
+    const varName = token.meta.CSSName;
+
+    if (varName && token.value) {
+      lines.push(`${tab}${varName}: ${token.value};`);
+    } else if (token.aliasOf) {
+      const alias = createFormatTokenName('css', token.aliasOf);
+
+      lines.push(`${tab}${varName}: var(${alias});`);
+    }
+  });
+
+  lines.push('}');
+
+  return lines.join('\n');
+};
+
+const SASSTokenFormatter: Formatter = (tokens) => {
+  const lines: string[] = [];
+
+  Object.entries(tokens).forEach(([_, token]) => {
+    const varName = token.meta.SassName;
+
+    if (varName) {
+      if (token.value) {
+        lines.push(`${varName}: ${token.value};`);
+      } else if (token.aliasOf) {
+        const alias = createFormatTokenName('sass', token.aliasOf);
+
+        lines.push(`${varName}: ${alias};`);
+      }
+    }
+  });
+
+  return lines.join('\n');
+};
+
+type Formatters = {[T in TokenFormat]: Formatter};
+
+const formatters: Formatters = {
+  css: CSSTokenFormatter,
+  sass: SASSTokenFormatter,
+};
+
+interface FormatTokensOptions {
+  tokens: Tokens;
+  format: TokenFormat;
+}
 
 /**
  * Transforms tokens into various formats like CSS and Sass.
@@ -110,73 +184,42 @@ const createTokenMeta = (key: string): TokenMeta => {
  * @param format - The file format
  * @returns - A string with the tokens in the right format
  */
-export const formatTokens = (
-  tokens: TokenList,
-  format: TokenFormat,
-): string => {
-  const tab = `    `;
-  const lines: string[] = [];
-  switch (format) {
-    case 'css': {
-      lines.push(':root {');
-      Object.entries(tokens).forEach(([_, token]) => {
-        const varName = token.meta.CSSName;
-        if (token.value) {
-          lines.push(`${tab}${varName}: ${token.value};`);
-        } else if (token.aliasOf) {
-          const alias = getVariableName(token.aliasOf, 'css');
-          lines.push(`${tab}${varName}: var(${alias});`);
-        }
-      });
-      lines.push('}');
-      break;
-    }
-
-    case 'sass': {
-      Object.entries(tokens).forEach(([_, token]) => {
-        const varName = token.meta.SassName;
-        if (varName) {
-          if (token.value) {
-            lines.push(`${varName}: ${token.value};`);
-          } else if (token.aliasOf) {
-            const alias = getVariableName(token.aliasOf, 'sass');
-            lines.push(`${varName}: ${alias};`);
-          }
-        }
-      });
-      break;
-    }
-  }
-  return lines.join('\n');
+export const formatTokens = ({format, tokens}: FormatTokensOptions): string => {
+  return formatters[format](tokens);
 };
 
 /**
  * Generates color tokens
  *
  * @param levers - Configuration for the colors
- * @returns A TokenList
+ * @returns A Tokens
  */
-export const getColorTokens = (): TokenList => {
-  const tokens: TokenList = {};
+export const getColorTokens = (): Tokens => {
+  const tokens: Tokens = {};
   const saturation = 80;
 
   // Loop through our colors (hues)
-  Object.entries(POLARIS_ROOT_COLORS).forEach(([key, color]) => {
-    const steps = 21;
+  Object.entries(defaultColors).forEach(([hueName, color]) => {
+    const numOfShades = 20;
+    const steps = numOfShades + 1;
     const hue = color.hue;
 
     // Create 21 tokens for each hue, each with a higher lightness
     for (let i = 0; i < steps; i++) {
       const lightness = Math.round((i / (steps - 1)) * 100);
-      tokens[`${key}-${i * 50}`] = {
+      const tokenName = `${hueName}-${i * 50}`;
+
+      tokens[tokenName] = {
         value: hslToHex(hue, saturation, lightness),
-        description: `A ${key} color with a lightness of ${lightness}%`,
-        meta: createTokenMeta(key),
+        description: `A ${hueName} color with a lightness of ${lightness}%`,
+        meta: createTokenMeta(tokenName),
       };
     }
   });
 
   tokens.negative = {
+    // QUESTION: Hard coded?
+    // QUESTION: Should aliases be generated here?
     aliasOf: 'magenta-500',
     description: 'Used for errors etc',
     meta: createTokenMeta('negative'),
@@ -191,44 +234,51 @@ export const getColorTokens = (): TokenList => {
   return tokens;
 };
 
+const getSpaceTokenName = (index: number) => `space-${index * 100}`;
+
 /**
  * Generates spacing tokens
  *
+ * // THOUGHT: Should we add a param (i.e. baseFontSize) to influence the compute rem values?
  * @param {Object} levers - Configuration for the spacing
- * @returns A TokenList
+ * @returns A Tokens
  */
-export const getSpacingTokens = (): TokenList => {
-  const tokens: TokenList = {};
-
-  const getSpaceTokenForIndex = (index: number) => `space-${index * 100}`;
+export const getSpacingTokens = (): Tokens => {
+  const tokens: Tokens = {};
 
   for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
-    const key = getSpaceTokenForIndex(i);
+    const tokenName = getSpaceTokenName(i);
+
     const value = `${BASE_SPACING_UNIT_REM * i}rem`;
-    tokens[key] = {
+
+    tokens[tokenName] = {
       value,
       description: `A spacing with a value of ${value}rem`,
-      meta: createTokenMeta(key),
+      meta: createTokenMeta(tokenName),
     };
   }
 
   for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
-    const key = `margin-${i * 100}`;
-    const aliasKey = getSpaceTokenForIndex(i);
-    tokens[key] = {
-      aliasOf: aliasKey,
-      description: `A margin equal to ${aliasKey}`,
-      meta: createTokenMeta(key),
+    const tokenName = `margin-${i * 100}`;
+
+    const aliasTokenName = getSpaceTokenName(i);
+
+    tokens[tokenName] = {
+      aliasOf: aliasTokenName,
+      description: `A margin equal to ${aliasTokenName}`,
+      meta: createTokenMeta(tokenName),
     };
   }
 
   for (let i = 1; i <= NUMBER_OF_ITEMS_IN_100_SCALES; i++) {
-    const key = `padding-${i * 100}`;
-    const aliasKey = getSpaceTokenForIndex(i);
-    tokens[key] = {
-      aliasOf: aliasKey,
-      description: `A padding equal to ${aliasKey}`,
-      meta: createTokenMeta(key),
+    const tokenName = `padding-${i * 100}`;
+
+    const aliasTokenName = getSpaceTokenName(i);
+
+    tokens[tokenName] = {
+      aliasOf: aliasTokenName,
+      description: `A padding equal to ${aliasTokenName}`,
+      meta: createTokenMeta(tokenName),
     };
   }
 
@@ -236,12 +286,13 @@ export const getSpacingTokens = (): TokenList => {
 };
 
 /**
- * Generates typography tokeqns
+ * Generates typography tokens
  *
+ * // NOTE: This param isn't implemented.
  * @param levers - Configuration for the typography
- * @returns A TokenList
+ * @returns A Tokens
  */
-export const getTypographyTokens = (): TokenList => {
+export const getTypographyTokens = (): Tokens => {
   const baseSize = 16;
   const typeRatio = 1.2;
   const lineHeight = 1.25;
@@ -270,13 +321,15 @@ export const getTypographyTokens = (): TokenList => {
     'line-height-small': typeRatio ** 7 * lineHeight,
   };
 
-  const tokens: TokenList = {};
-  Object.entries(values).forEach(([key, value]) => {
+  const tokens: Tokens = {};
+
+  Object.entries(values).forEach(([tokenName, value]) => {
     const roundedValue = Math.round(value * 10) / 10;
-    tokens[key] = {
+
+    tokens[tokenName] = {
       value: `${roundedValue}rem`,
       description: `A font size with a value of ${roundedValue}rem`,
-      meta: createTokenMeta(key),
+      meta: createTokenMeta(tokenName),
     };
   });
 
@@ -286,19 +339,14 @@ export const getTypographyTokens = (): TokenList => {
 /**
  * Generates motion tokens
  *
- * @returns A TokenList
+ * @returns A Tokens
  */
-export const getMotionTokens = (): TokenList => {
-  let values: {
-    [key: string]: {
-      value?: string;
-      aliasOf?: string | undefined;
-      description: string;
-    };
-  } = {};
+export const getMotionTokens = (): Tokens => {
+  let values: {[key: string]: Omit<Token, 'meta'>} = {};
 
-  for (let i = 1; i <= 60; i++) {
+  for (let i = 1; i <= FPS; i++) {
     const ms = Math.round(ONE_FRAME * i);
+
     values[`ms-${ms}`] = {
       value: `${ms}ms`,
       description: `A duration or delay equal to ${i} ${
@@ -307,8 +355,9 @@ export const getMotionTokens = (): TokenList => {
     };
   }
 
-  for (let i = 1; i <= 60; i++) {
+  for (let i = 1; i <= FPS; i++) {
     const ms = Math.round(ONE_FRAME * i);
+
     values[`frames-${i}`] = {
       aliasOf: `ms-${ms}`,
       description: `The number of milliseconds it takes to render ${i} ${
@@ -348,13 +397,14 @@ export const getMotionTokens = (): TokenList => {
     },
   };
 
-  const tokens: TokenList = {};
-  Object.entries(values).forEach(([key, value]) => {
-    tokens[key] = {
+  const tokens: Tokens = {};
+
+  Object.entries(values).forEach(([tokenName, value]) => {
+    tokens[tokenName] = {
       value: value.value,
       aliasOf: value.aliasOf,
       description: value.description,
-      meta: createTokenMeta(key),
+      meta: createTokenMeta(tokenName),
     };
   });
 
@@ -364,9 +414,9 @@ export const getMotionTokens = (): TokenList => {
 /**
  * Generates breakpoint tokens
  *
- * @returns A TokenList
+ * @returns A Tokens
  */
-export const getBreakpointTokens = (): TokenList => {
+export const getBreakpointTokens = (): Tokens => {
   return {
     'breakpoint-xs': {
       value: '0',
