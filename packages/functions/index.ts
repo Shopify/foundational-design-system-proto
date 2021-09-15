@@ -188,10 +188,11 @@ export const getColorTokens = (): TokenList => {
     // Create 21 tokens for each hue, each with a higher lightness
     for (let i = 0; i < steps; i++) {
       const lightness = Math.round((i / (steps - 1)) * 100);
-      tokens[`${key}-${i * 50}`] = {
+      const fullKey = `${key}-${i * 50}`;
+      tokens[fullKey] = {
         value: hslToHex(hue, saturation, lightness),
         description: `A ${key} color with a lightness of ${lightness}%`,
-        meta: createTokenMeta(key),
+        meta: createTokenMeta(fullKey),
       };
     }
   });
