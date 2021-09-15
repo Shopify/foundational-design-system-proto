@@ -1,3 +1,4 @@
 {
+  // TODO: Add shopify-eslint-config
   "extends": "next/core-web-vitals"
 }
