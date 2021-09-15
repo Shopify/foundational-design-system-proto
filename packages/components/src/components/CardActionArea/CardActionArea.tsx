@@ -1,44 +1,35 @@
 import React from 'react';
 import clsx from 'clsx';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
+// import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {ButtonBase, ButtonBaseProps} from '../ButtonBase';
 
 import * as styles from './CardActionArea.css';
 
-type Inset = boolean | undefined;
-
-type ExtractChildren<T extends Inset> = T extends false | undefined
-  ? React.ReactNode
-  : never;
-
-export type Test = ExtractChildren<true>;
-
-interface Props<T extends Inset = Inset> {
-  inset?: T;
-  children: ExtractChildren<T> | undefined;
-  // children: React.ReactNode;
+// `cover` serves as a discrimated union which determines whether or not children accepted.
+interface WithCoverProps {
+  cover: true;
 }
 
-export type Test2 = Props<false>;
-export type Huh = Test2['children'];
+interface WithoutCoverProps {
+  cover?: false;
+  children: React.ReactNode;
+}
 
-type PolymorphicCardActionArea = Polymorphic.ForwardRefComponent<
-  Polymorphic.IntrinsicElement<typeof ButtonBase>,
-  Omit<ButtonBaseProps, 'children'> & Props
->;
+interface BaseProps extends Omit<ButtonBaseProps, 'as' | 'children'> {
+  className?: string;
+  onClick?: React.MouseEventHandler;
+}
 
-export type CardActionAreaProps =
-  Polymorphic.OwnProps<PolymorphicCardActionArea>;
+type CardActionAreaProps = (WithCoverProps | WithoutCoverProps) & BaseProps;
 
-export const CardActionArea = React.forwardRef((props, ref) => {
-  const {inset = false, className, ...restProps} = props;
+export const CardActionArea = (props: CardActionAreaProps) => {
+  const {cover = false, className, ...restProps} = props;
 
   return (
     <ButtonBase
-      className={clsx(styles.root, {[styles.inset]: inset}, className)}
-      ref={ref}
+      className={clsx(styles.root, {[styles.cover]: cover}, className)}
       {...restProps}
     />
   );
-}) as PolymorphicCardActionArea;
+};

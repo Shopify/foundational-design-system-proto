@@ -14,7 +14,7 @@ export const root = style({
   },
 });
 
-export const inset = style({
+export const cover = style({
   inset: '0px',
   position: 'absolute',
   zIndex: 0,

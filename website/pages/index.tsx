@@ -21,6 +21,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <h2>Card</h2>
+      {/* cover with no inner actions, cover with inner actions */}
       <Card
         style={{
           width: '300px',
@@ -29,7 +30,14 @@ const IndexPage = () => {
           borderRadius: '8px',
         }}
       >
-        <CardActionArea inset onClick={() => alert('outer')} />
+        {/* Should work */}
+        <CardActionArea onClick={() => alert('outer')}>hi</CardActionArea>
+        <CardActionArea cover onClick={() => alert('outer')} />
+        {/* Should error */}
+        <CardActionArea onClick={() => alert('outer')} />
+        <CardActionArea cover onClick={() => alert('outer')}>
+          hi
+        </CardActionArea>
         <p style={{padding: '8px'}}>
           Linked card&nbsp;
           <Button onClick={() => alert('inner')} style={{zIndex: 1}}>
@@ -45,7 +53,7 @@ const IndexPage = () => {
           borderRadius: '8px',
         }}
       >
-        <CardActionArea inset onClick={() => alert('outer')}>
+        <CardActionArea cover onClick={() => alert('outer')}>
           <p style={{padding: '8px'}}>
             Linked card&nbsp;
             {/* Don't add buttons here as the event will bubble up to the outer button (CardActionArea) */}
