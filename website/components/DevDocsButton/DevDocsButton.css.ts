@@ -4,14 +4,14 @@ import {devDocsVars} from '../theme.css';
 
 export const root = style({
   backgroundColor: devDocsVars.color.grey01,
-  borderRadius: devDocsVars.spacing[1],
+  borderRadius: devDocsVars.spacing[100],
   paddingTop: '3px',
   paddingBottom: '5px',
-  paddingLeft: devDocsVars.spacing[3],
-  paddingRight: devDocsVars.spacing[3],
+  paddingLeft: devDocsVars.spacing[300],
+  paddingRight: devDocsVars.spacing[300],
   fontWeight: 400,
-  fontSize: devDocsVars.spacing[4],
-  lineHeight: devDocsVars.spacing[6],
+  fontSize: devDocsVars.spacing[400],
+  lineHeight: devDocsVars.spacing[600],
   fontFamily: devDocsVars.fontFamily,
   border: `1px solid ${devDocsVars.color.grey10}`,
   boxShadow: `inset 0 -2px 0 ${devDocsVars.color.grey06},inset 0 1px 0 ${devDocsVars.color.grey0}`,
@@ -20,8 +20,8 @@ export const root = style({
   ':hover': {
     backgroundColor: devDocsVars.color.grey02,
     borderColor: devDocsVars.color.grey11,
-    paddingTop: devDocsVars.spacing[1],
-    paddingBottom: devDocsVars.spacing[1],
+    paddingTop: devDocsVars.spacing[100],
+    paddingBottom: devDocsVars.spacing[100],
     boxShadow: `inset 0 -1px 0 ${devDocsVars.color.grey06},inset 0 1px 0 ${devDocsVars.color.grey01}`,
   },
   ':active': {
