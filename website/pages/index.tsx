@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import {
   Box,
@@ -28,10 +29,47 @@ const IndexPage = () => {
           borderRadius: '8px',
         }}
       >
+        <CardActionArea inset onClick={() => alert('outer')} />
+        <p style={{padding: '8px'}}>
+          Linked card&nbsp;
+          <Button onClick={() => alert('inner')} style={{zIndex: 1}}>
+            with a separate link
+          </Button>
+        </p>
+      </Card>
+      <Card
+        style={{
+          width: '300px',
+          backgroundColor: 'whitesmoke',
+          border: '1px solid silver',
+          borderRadius: '8px',
+        }}
+      >
+        <CardActionArea inset onClick={() => alert('outer')}>
+          <p style={{padding: '8px'}}>
+            Linked card&nbsp;
+            {/* Don't add buttons here as the event will bubble up to the outer button (CardActionArea) */}
+            {/* <Button onClick={() => alert('inner')} style={{zIndex: 1}}>
+              with a separate link
+            </Button> */}
+          </p>
+        </CardActionArea>
+        <section>
+          <Button onClick={() => alert('outside action area')}>Hi</Button>
+        </section>
+      </Card>
+      <Card
+        style={{
+          width: '300px',
+          backgroundColor: 'whitesmoke',
+          border: '1px solid silver',
+          borderRadius: '8px',
+        }}
+      >
         <CardActionArea onClick={() => console.log('Hi')} />
         <p style={{padding: '8px'}}>
           Linked card&nbsp;
-          <Link href="/about" style={{zIndex: 1}}>
+          <Link href="/about" style={{position: 'relative'}}>
             with a separate link
           </Link>
         </p>
