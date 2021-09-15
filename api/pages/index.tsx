@@ -10,7 +10,7 @@ import {
 } from '../../packages/functions';
 // 👆 👇 SUGGESTION: Can we import these modules/types from @polaris/functions?
 import {TokenValue} from '../../packages/functions/types';
-import {FORMATS} from './api/tokens';
+import {FORMATS} from './api/beta/tokens';
 
 const Home: NextPage = () => {
   const colorTokens = getColorTokens();
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       <ul>
         {FORMATS.map((format) => (
           <li key={format}>
-            <a href={`api/tokens?format=${format}`}>
+            <a href={`api/beta/tokens?format=${format}`}>
               In {format.toUpperCase()} format
             </a>
           </li>

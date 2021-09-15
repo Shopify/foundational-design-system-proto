@@ -1,13 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
-import {
-  getBreakpointTokens,
-  getColorTokens,
-  getMotionTokens,
-  getSpacingTokens,
-  formatTokens,
-  getTypographyTokens,
-} from '../../../packages/functions';
-import {Tokens} from '../../../packages/functions/types';
+import {formatTokens, getAllTokens} from '../../../../packages/functions';
+import {Tokens} from '../../../../packages/functions/types';
 
 // SUGGESTION: This (and types) would be helpful to expose from the @polaris/tokens
 export const FORMATS = ['json', 'css', 'sass'] as const;
@@ -50,13 +43,7 @@ export default function handler(req: Request, res: NextApiResponse) {
 
   // TODO: validate inputs
 
-  const tokens: Tokens = {
-    ...getSpacingTokens(),
-    ...getTypographyTokens(),
-    ...getBreakpointTokens(),
-    ...getColorTokens(),
-    ...getMotionTokens(),
-  };
+  const tokens: Tokens = getAllTokens();
 
   const response: APIResponse = {
     meta: {

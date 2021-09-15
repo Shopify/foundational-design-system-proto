@@ -4,9 +4,9 @@ const BASE_SPACING_UNIT_REM = 0.25;
 
 const NUMBER_OF_ITEMS_IN_100_SCALES = 10;
 
-const FPS = 60;
+const FRAMES_PER_SECOND = 60;
 
-const ONE_FRAME = 1000 / FPS;
+const ONE_FRAME = 1000 / FRAMES_PER_SECOND;
 
 interface DefaultColors {
   [hueName: string]: {
@@ -67,7 +67,11 @@ const defaultColors: DefaultColors = {
 };
 
 // Copy pasta from https://stackoverflow.com/a/44134328/6488971
-function hslToHex(hue: number, saturation: number, lightness: number): string {
+const hslToHex = (
+  hue: number,
+  saturation: number,
+  lightness: number,
+): string => {
   const decimalLightness = lightness / 100;
 
   const someMagicalValue =
@@ -90,7 +94,7 @@ function hslToHex(hue: number, saturation: number, lightness: number): string {
   };
 
   return `#${_f(0)}${_f(8)}${_f(4)}`;
-}
+};
 
 const createFormatTokenName = (
   format: 'figma' | 'css' | 'sass',
@@ -189,6 +193,21 @@ export const formatTokens = ({format, tokens}: FormatTokensOptions): string => {
 };
 
 /**
+ * Generates a TokenList containing all the available tokens
+ *
+ * @returns A TokenList
+ */
+export const getAllTokens = (): Tokens => {
+  return {
+    ...getSpacingTokens(),
+    ...getTypographyTokens(),
+    ...getBreakpointTokens(),
+    ...getColorTokens(),
+    ...getMotionTokens(),
+  };
+};
+
+/**
  * Generates color tokens
  *
  * @param levers - Configuration for the colors
@@ -253,7 +272,7 @@ export const getSpacingTokens = (): Tokens => {
 
     tokens[tokenName] = {
       value,
-      description: `A spacing with a value of ${value}rem`,
+      description: `A spacing with a value of ${value}`,
       meta: createTokenMeta(tokenName),
     };
   }
@@ -293,7 +312,6 @@ export const getSpacingTokens = (): Tokens => {
  * @returns A Tokens
  */
 export const getTypographyTokens = (): Tokens => {
-  const baseSize = 16;
   const typeRatio = 1.2;
   const lineHeight = 1.25;
 
@@ -309,13 +327,13 @@ export const getTypographyTokens = (): Tokens => {
     'font-size-body': 1,
     'font-size-small': 1 * 0.9,
 
-    'line-height-heading-1': typeRatio ** 1 * lineHeight,
-    'line-height-heading-2': typeRatio ** 2 * lineHeight,
-    'line-height-heading-3': typeRatio ** 3 * lineHeight,
+    'line-height-heading-1': typeRatio ** 7 * lineHeight,
+    'line-height-heading-2': typeRatio ** 6 * lineHeight,
+    'line-height-heading-3': typeRatio ** 5 * lineHeight,
     'line-height-heading-4': typeRatio ** 4 * lineHeight,
-    'line-height-heading-5': typeRatio ** 5 * lineHeight,
-    'line-height-heading-6': typeRatio ** 6 * lineHeight,
-    'line-height-heading-7': typeRatio ** 7 * lineHeight,
+    'line-height-heading-5': typeRatio ** 3 * lineHeight,
+    'line-height-heading-6': typeRatio ** 2 * lineHeight,
+    'line-height-heading-7': typeRatio ** 1 * lineHeight,
     'line-height-body-large': typeRatio ** 7 * lineHeight,
     'line-height-body': typeRatio ** 7 * lineHeight,
     'line-height-small': typeRatio ** 7 * lineHeight,
@@ -328,7 +346,12 @@ export const getTypographyTokens = (): Tokens => {
 
     tokens[tokenName] = {
       value: `${roundedValue}rem`,
-      description: `A font size with a value of ${roundedValue}rem`,
+      description: tokenName.startsWith('font-size')
+        ? `A font size with a value of ${roundedValue}rem`
+        : `The corresponding line height for the token ${tokenName.replace(
+            'line-height',
+            'font-size',
+          )}`,
       meta: createTokenMeta(tokenName),
     };
   });
@@ -344,7 +367,7 @@ export const getTypographyTokens = (): Tokens => {
 export const getMotionTokens = (): Tokens => {
   let values: {[key: string]: Omit<Token, 'meta'>} = {};
 
-  for (let i = 1; i <= FPS; i++) {
+  for (let i = 1; i <= FRAMES_PER_SECOND; i++) {
     const ms = Math.round(ONE_FRAME * i);
 
     values[`ms-${ms}`] = {
@@ -355,7 +378,7 @@ export const getMotionTokens = (): Tokens => {
     };
   }
 
-  for (let i = 1; i <= FPS; i++) {
+  for (let i = 1; i <= FRAMES_PER_SECOND; i++) {
     const ms = Math.round(ONE_FRAME * i);
 
     values[`frames-${i}`] = {
