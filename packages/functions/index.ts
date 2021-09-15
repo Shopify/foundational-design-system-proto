@@ -56,7 +56,11 @@ const POLARIS_ROOT_COLORS = {
 };
 
 // Copy pasta from https://stackoverflow.com/a/44134328/6488971
-function hslToHex(hue: number, saturation: number, lightness: number): string {
+const hslToHex = (
+  hue: number,
+  saturation: number,
+  lightness: number,
+): string => {
   const decimalLightness = lightness / 100;
   const someMagicalValue =
     (saturation * Math.min(decimalLightness, 1 - decimalLightness)) / 100;
@@ -74,7 +78,7 @@ function hslToHex(hue: number, saturation: number, lightness: number): string {
       .padStart(2, '0');
   };
   return `#${_f(0)}${_f(8)}${_f(4)}`;
-}
+};
 
 const getVariableName = (
   key: string,
