@@ -4,6 +4,7 @@ import {
   Button,
   ButtonBase,
   Card,
+  CardActionArea,
   Flex,
   Inline,
   Link,
@@ -21,14 +22,18 @@ const IndexPage = () => {
       <h2>Card</h2>
       <Card
         style={{
+          width: '300px',
           backgroundColor: 'whitesmoke',
           border: '1px solid silver',
           borderRadius: '8px',
         }}
       >
-        <p>
+        <CardActionArea onClick={() => console.log('Hi')} />
+        <p style={{padding: '8px'}}>
           Linked card&nbsp;
-          <Link href="/about">with a separate link</Link>
+          <Link href="/about" style={{zIndex: 1}}>
+            with a separate link
+          </Link>
         </p>
       </Card>
       <Divider />

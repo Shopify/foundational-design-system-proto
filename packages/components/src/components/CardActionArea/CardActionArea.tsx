@@ -8,7 +8,7 @@ import * as styles from './CardActionArea.css';
 
 interface Props {
   inset?: boolean;
-  children: React.ReactNode;
+  // children: React.ReactNode;
 }
 
 type PolymorphicCardActionArea = Polymorphic.ForwardRefComponent<
@@ -20,7 +20,7 @@ export type CardActionAreaProps =
   Polymorphic.OwnProps<PolymorphicCardActionArea>;
 
 export const CardActionArea = React.forwardRef((props, ref) => {
-  const {inset, children, className, ...restProps} = props;
+  const {inset, className, ...restProps} = props;
 
   return (
     <ButtonBase
@@ -28,7 +28,7 @@ export const CardActionArea = React.forwardRef((props, ref) => {
       ref={ref}
       {...restProps}
     >
-      {children}
+      {/* {children} */}
     </ButtonBase>
   );
 }) as PolymorphicCardActionArea;
