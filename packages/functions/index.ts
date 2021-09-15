@@ -2,7 +2,8 @@ import {TokenMeta, TokenList, TokenFormat} from './types';
 
 const BASE_SPACING_UNIT_REM = 0.25;
 const NUMBER_OF_ITEMS_IN_100_SCALES = 10;
-const ONE_FRAME = 1000 / 60;
+const FRAMES_PER_SECOND = 60;
+const ONE_FRAME = 1000 / FRAMES_PER_SECOND;
 const POLARIS_ROOT_COLORS = {
   azure: {
     name: 'Azure',
@@ -274,7 +275,12 @@ export const getTypographyTokens = (): TokenList => {
     const roundedValue = Math.round(value * 10) / 10;
     tokens[key] = {
       value: `${roundedValue}rem`,
-      description: `A font size with a value of ${roundedValue}rem`,
+      description: key.startsWith('font-size')
+        ? `A font size with a value of ${roundedValue}rem`
+        : `The corresponding line height for the token ${key.replace(
+            'line-height',
+            'font-size',
+          )}`,
       meta: createTokenMeta(key),
     };
   });
@@ -296,7 +302,7 @@ export const getMotionTokens = (): TokenList => {
     };
   } = {};
 
-  for (let i = 1; i <= 60; i++) {
+  for (let i = 1; i <= FRAMES_PER_SECOND; i++) {
     const ms = Math.round(ONE_FRAME * i);
     values[`ms-${ms}`] = {
       value: `${ms}ms`,
@@ -306,7 +312,7 @@ export const getMotionTokens = (): TokenList => {
     };
   }
 
-  for (let i = 1; i <= 60; i++) {
+  for (let i = 1; i <= FRAMES_PER_SECOND; i++) {
     const ms = Math.round(ONE_FRAME * i);
     values[`frames-${i}`] = {
       aliasOf: `ms-${ms}`,
