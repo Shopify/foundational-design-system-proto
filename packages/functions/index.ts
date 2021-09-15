@@ -227,7 +227,7 @@ export const getSpacingTokens = (): TokenList => {
     const value = `${BASE_SPACING_UNIT_REM * i}rem`;
     tokens[key] = {
       value,
-      description: `A spacing with a value of ${value}rem`,
+      description: `A spacing with a value of ${value}`,
       meta: createTokenMeta(key),
     };
   }
