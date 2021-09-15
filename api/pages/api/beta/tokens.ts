@@ -1,13 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
-import {
-  getBreakpointTokens,
-  getColorTokens,
-  getMotionTokens,
-  getSpacingTokens,
-  formatTokens,
-  getTypographyTokens,
-} from '../../../packages/functions';
-import {TokenList} from '../../../packages/functions/types';
+import {formatTokens, getAllTokens} from '../../../../packages/functions';
+import {TokenList} from '../../../../packages/functions/types';
 
 export const ALLOWED_FORMATS = ['json', 'css', 'sass'];
 export const DEFAULT_FORMAT = 'json';
@@ -44,13 +37,7 @@ export default function handler(req: Request, res: NextApiResponse) {
 
   // TODO: validate inputs
 
-  const tokens: TokenList = {
-    ...getSpacingTokens(),
-    ...getTypographyTokens(),
-    ...getBreakpointTokens(),
-    ...getColorTokens(),
-    ...getMotionTokens(),
-  };
+  const tokens: TokenList = getAllTokens();
 
   const response: APIResponse = {
     meta: {

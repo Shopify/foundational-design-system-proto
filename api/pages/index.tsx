@@ -9,7 +9,7 @@ import {
   getTypographyTokens,
 } from '../../packages/functions';
 import {TokenValue} from '../../packages/functions/types';
-import {ALLOWED_FORMATS} from './api/tokens';
+import {ALLOWED_FORMATS} from './api/beta/tokens';
 
 const Home: NextPage = () => {
   const colorTokens = getColorTokens();
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       <ul>
         {ALLOWED_FORMATS.map((format) => (
           <li key={format}>
-            <a href={`api/tokens?format=${format}`}>
+            <a href={`api/beta/tokens?format=${format}`}>
               In {format.toUpperCase()} format
             </a>
           </li>

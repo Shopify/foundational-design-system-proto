@@ -156,6 +156,21 @@ export const formatTokens = (
 };
 
 /**
+ * Generates a TokenList containing all the available tokens
+ *
+ * @returns A TokenList
+ */
+export const getAllTokens = (): TokenList => {
+  return {
+    ...getSpacingTokens(),
+    ...getTypographyTokens(),
+    ...getBreakpointTokens(),
+    ...getColorTokens(),
+    ...getMotionTokens(),
+  };
+};
+
+/**
  * Generates color tokens
  *
  * @param levers - Configuration for the colors
