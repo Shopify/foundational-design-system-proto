@@ -161,8 +161,11 @@ const IndexPage = () => {
               Nested Button
             </Button>
           </CardActionArea>
+          <hr />
           <p>
-            THIS PATTERN IS DISCOURAGED!!! <br /> Antipattern: Nesting Buttons
+            <small>
+              THIS PATTERN IS DISCOURAGED!!! <br /> Antipattern: Nesting Buttons
+            </small>
           </p>
         </Card>
       </Grid>
