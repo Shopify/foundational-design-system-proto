@@ -1,4 +1,4 @@
-import {Token, TokenFormat, TokenMeta, Tokens} from './types';
+import {Token, TokenPlatform, TokenMeta, Tokens} from './types';
 
 const BASE_SPACING_UNIT_REM = 0.25;
 
@@ -96,11 +96,11 @@ const hslToHex = (
   return `#${_f(0)}${_f(8)}${_f(4)}`;
 };
 
-const convertTokenNameToFormat = (
-  format: 'figma' | 'css' | 'sass',
+const createPlatformTokenName = (
+  platform: TokenPlatform,
   tokenName: string,
 ) => {
-  switch (format) {
+  switch (platform) {
     case 'figma':
       return tokenName.replace(/-/g, '/');
     case 'sass':
@@ -118,15 +118,15 @@ const convertTokenNameToFormat = (
  */
 const createTokenMeta = (tokenName: string): TokenMeta => {
   return {
-    figmaName: convertTokenNameToFormat('figma', tokenName),
-    SassName: convertTokenNameToFormat('sass', tokenName),
-    CSSName: convertTokenNameToFormat('css', tokenName),
+    figmaName: createPlatformTokenName('figma', tokenName),
+    SassName: createPlatformTokenName('sass', tokenName),
+    CSSName: createPlatformTokenName('css', tokenName),
   };
 };
 
-type Converter = (tokens: Tokens) => string;
+type PlatformTokensCreator = (tokens: Tokens) => string;
 
-const convertTokensToCSS: Converter = (tokens) => {
+const createCSSTokens: PlatformTokensCreator = (tokens) => {
   const tab = `    `;
   const lines: string[] = [];
 
@@ -138,7 +138,7 @@ const convertTokensToCSS: Converter = (tokens) => {
     if (varName && token.value) {
       lines.push(`${tab}${varName}: ${token.value};`);
     } else if (token.aliasOf) {
-      const alias = convertTokenNameToFormat('css', token.aliasOf);
+      const alias = createPlatformTokenName('css', token.aliasOf);
 
       lines.push(`${tab}${varName}: var(${alias});`);
     }
@@ -149,7 +149,7 @@ const convertTokensToCSS: Converter = (tokens) => {
   return lines.join('\n');
 };
 
-const convertTokensToSass: Converter = (tokens) => {
+const createSASSTokens: PlatformTokensCreator = (tokens) => {
   const lines: string[] = [];
 
   Object.entries(tokens).forEach(([_, token]) => {
@@ -159,7 +159,7 @@ const convertTokensToSass: Converter = (tokens) => {
       if (token.value) {
         lines.push(`${varName}: ${token.value};`);
       } else if (token.aliasOf) {
-        const alias = convertTokenNameToFormat('sass', token.aliasOf);
+        const alias = createPlatformTokenName('sass', token.aliasOf);
 
         lines.push(`${varName}: ${alias};`);
       }
@@ -169,30 +169,37 @@ const convertTokensToSass: Converter = (tokens) => {
   return lines.join('\n');
 };
 
-type Converters = {[T in TokenFormat]: Converter};
+// NOTE: This type can be removed once we implement a platform tokens creator for Figma.
+// eslint-disable-next-line no-warning-comments
+// TODO: Add a platform tokens creator for Figma.
+type PlatformWithAvailableTokensCreator = Exclude<TokenPlatform, 'figma'>;
 
-const converters: Converters = {
-  css: convertTokensToCSS,
-  sass: convertTokensToSass,
+type PlatformTokenCreators = {
+  [T in PlatformWithAvailableTokensCreator]: PlatformTokensCreator;
 };
 
-interface ConvertTokensToFormatOptions {
+const platformTokenCreators: PlatformTokenCreators = {
+  css: createCSSTokens,
+  sass: createSASSTokens,
+};
+
+interface CreatePlatformTokenOptions {
   tokens: Tokens;
-  format: TokenFormat;
+  platform: PlatformWithAvailableTokensCreator;
 }
 
 /**
- * Transforms tokens into various formats like CSS and Sass.
+ * Transforms tokens into various formats of a given platform.
  *
- * @param tokens - A TokensList with the tokens that you want to transform
- * @param format - The file format
- * @returns - A string with the tokens in the right format
+ * @param platform - The target platform e.g. CSS, Sass, Figma.
+ * @param tokens - The tokens to transform to the target platform.
+ * @returns A string with the tokens transformed to the format of the target platform.
  */
-export const convertTokensToFormat = ({
-  format,
+export const createPlatformTokens = ({
+  platform,
   tokens,
-}: ConvertTokensToFormatOptions): string => {
-  return converters[format](tokens);
+}: CreatePlatformTokenOptions): string => {
+  return platformTokenCreators[platform](tokens);
 };
 
 /**

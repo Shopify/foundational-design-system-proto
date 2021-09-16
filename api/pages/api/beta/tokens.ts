@@ -1,24 +1,24 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import {
-  convertTokensToFormat,
+  createPlatformTokens,
   getAllTokens,
 } from '../../../../packages/functions';
 import {Tokens} from '../../../../packages/functions/types';
 
 // SUGGESTION: This (and types) would be helpful to expose from the @polaris/tokens
-export const FORMATS = ['json', 'css', 'sass'] as const;
+export const SUPPORTED_PLATFORMS = ['json', 'css', 'sass'] as const;
 
-export type Format = typeof FORMATS[number];
+export type Platform = typeof SUPPORTED_PLATFORMS[number];
 
-export const DEFAULT_FORMAT: Format = 'json';
+export const DEFAULT_PLATFORM: Platform = 'json';
 
-export function isValidFormat(format?: string): format is Format {
-  return !!format && FORMATS.includes(format as Format);
+export function isValidPlatform(platform?: string): platform is Platform {
+  return !!platform && SUPPORTED_PLATFORMS.includes(platform as Platform);
 }
 
 export interface Request extends NextApiRequest {
   query: {
-    format?: string;
+    platform?: string;
     multiple?: string;
   };
 }
@@ -33,9 +33,9 @@ interface APIResponse {
 }
 
 export default function handler(req: Request, res: NextApiResponse) {
-  const format = isValidFormat(req.query.format)
-    ? req.query.format
-    : DEFAULT_FORMAT;
+  const platform = isValidPlatform(req.query.platform)
+    ? req.query.platform
+    : DEFAULT_PLATFORM;
 
   // This would allow any "lever" to be customized through
   // GET parameters. This would enable folks to create unique
@@ -55,11 +55,11 @@ export default function handler(req: Request, res: NextApiResponse) {
     tokens,
   };
 
-  switch (format) {
+  switch (platform) {
     case 'sass':
       res.status(200).send(
-        convertTokensToFormat({
-          format: 'sass',
+        createPlatformTokens({
+          platform: 'sass',
           tokens: response.tokens,
         }),
       );
@@ -67,8 +67,8 @@ export default function handler(req: Request, res: NextApiResponse) {
 
     case 'css':
       res.status(200).send(
-        convertTokensToFormat({
-          format: 'css',
+        createPlatformTokens({
+          platform: 'css',
           tokens: response.tokens,
         }),
       );

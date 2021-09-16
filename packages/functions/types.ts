@@ -17,5 +17,5 @@ export interface Tokens {
   [key: string]: Token;
 }
 
-// QUESTION: Should this also include figma include figma?
-export type TokenFormat = 'css' | 'sass';
+// eslint-disable-next-line line-comment-position
+export type TokenPlatform = 'css' | 'sass' | 'figma'; // | 'ios' | 'android';
