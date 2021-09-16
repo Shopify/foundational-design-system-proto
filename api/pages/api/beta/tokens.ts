@@ -56,19 +56,11 @@ export default function handler(req: Request, res: NextApiResponse) {
   };
 
   switch (platform) {
+    case 'css':
     case 'sass':
       res.status(200).send(
         createPlatformTokens({
-          platform: 'sass',
-          tokens: response.tokens,
-        }),
-      );
-      break;
-
-    case 'css':
-      res.status(200).send(
-        createPlatformTokens({
-          platform: 'css',
+          platform,
           tokens: response.tokens,
         }),
       );
