@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-// import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {ButtonBase, ButtonBaseProps} from '../ButtonBase';
 

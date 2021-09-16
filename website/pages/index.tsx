@@ -7,6 +7,7 @@ import {
   Card,
   CardActionArea,
   Flex,
+  Grid,
   Inline,
   Link,
   Stack,
@@ -21,30 +22,69 @@ const IndexPage = () => {
   return (
     <Layout>
       <h2>Card</h2>
-      {/* cover with no inner actions, cover with inner actions */}
-      <Card
-        style={{
-          width: '300px',
-          backgroundColor: 'whitesmoke',
-          border: '1px solid silver',
-          borderRadius: '8px',
-        }}
-      >
-        {/* Should work */}
-        <CardActionArea onClick={() => alert('outer')}>hi</CardActionArea>
-        <CardActionArea cover onClick={() => alert('outer')} />
-        {/* Should error */}
-        <CardActionArea onClick={() => alert('outer')} />
+      <p>Explaination</p>
+      {/* Should work */}
+      {/* <CardActionArea onClick={() => alert('outer')}>hi</CardActionArea>
+        <CardActionArea cover onClick={() => alert('outer')} /> */}
+      {/* Should error */}
+      {/* <CardActionArea onClick={() => alert('outer')} />
         <CardActionArea cover onClick={() => alert('outer')}>
           hi
-        </CardActionArea>
-        <p style={{padding: '8px'}}>
-          Linked card&nbsp;
-          <Button onClick={() => alert('inner')} style={{zIndex: 1}}>
-            with a separate link
-          </Button>
-        </p>
-      </Card>
+        </CardActionArea> */}
+      <Flex gap="4">
+        <Card
+          style={{
+            backgroundColor: 'whitesmoke',
+            border: '1px solid silver',
+            borderRadius: '8px',
+          }}
+        >
+          <CardActionArea cover onClick={() => alert('entire card')} />
+          <h3>Cover No Inner Actions</h3>
+          <p>
+            CardActionArea is covering entire card and has no inner actions.
+          </p>
+        </Card>
+        <Card
+          style={{
+            backgroundColor: 'whitesmoke',
+            border: '1px solid silver',
+            borderRadius: '8px',
+          }}
+        >
+          <CardActionArea cover onClick={() => alert('entire card')} />
+          <h3>Cover Inner Actions</h3>
+          <p>
+            CardActionArea is covering entire card and has{' '}
+            <Link href="/about" style={{position: 'relative'}}>
+              inner actions
+            </Link>
+            .
+          </p>
+          <Button onClick={() => alert('outside action area')}>Hi</Button>
+        </Card>
+        <Card
+          style={{
+            // width: '1/4',
+            backgroundColor: 'whitesmoke',
+            border: '1px solid silver',
+            borderRadius: '8px',
+          }}
+        >
+          Empty
+        </Card>
+        <Card
+          style={{
+            // width: '1/4',
+            backgroundColor: 'whitesmoke',
+            border: '1px solid silver',
+            borderRadius: '8px',
+          }}
+        >
+          Empty
+        </Card>
+      </Flex>
+      {/* cover with no inner actions, cover with inner actions */}
       <Card
         style={{
           width: '300px',
