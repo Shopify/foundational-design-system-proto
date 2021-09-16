@@ -3,17 +3,20 @@ import {
   createPlatformTokens,
   getAllTokens,
 } from '../../../../packages/functions';
-import {Tokens} from '../../../../packages/functions/types';
+import {Tokens, TokenPlatform} from '../../../../packages/functions/types';
 
-// SUGGESTION: This (and types) would be helpful to expose from the @polaris/tokens
-export const SUPPORTED_PLATFORMS = ['json', 'css', 'sass'] as const;
+type SupportedPlatform = Exclude<TokenPlatform, 'figma'> | 'json';
 
-export type Platform = typeof SUPPORTED_PLATFORMS[number];
+export const SUPPORTED_PLATFORMS: SupportedPlatform[] = ['json', 'css', 'sass'];
 
-export const DEFAULT_PLATFORM: Platform = 'json';
+export const DEFAULT_PLATFORM: SupportedPlatform = 'json';
 
-export function isValidPlatform(platform?: string): platform is Platform {
-  return !!platform && SUPPORTED_PLATFORMS.includes(platform as Platform);
+export function isSupportedPlatform(
+  platform?: string,
+): platform is SupportedPlatform {
+  return (
+    !!platform && SUPPORTED_PLATFORMS.includes(platform as SupportedPlatform)
+  );
 }
 
 export interface Request extends NextApiRequest {
@@ -33,7 +36,7 @@ interface APIResponse {
 }
 
 export default function handler(req: Request, res: NextApiResponse) {
-  const platform = isValidPlatform(req.query.platform)
+  const platform = isSupportedPlatform(req.query.platform)
     ? req.query.platform
     : DEFAULT_PLATFORM;
 
