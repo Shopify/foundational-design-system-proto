@@ -38,7 +38,7 @@ export default function handler(req: Request, res: NextApiResponse) {
   // GET parameters. This would enable folks to create unique
   // link to their specific Polaris configuration.
   const levers = {
-    multiple: parseInt(req.query.multiple || '0', 10) || 1,
+    multiple: req.query.multiple ? Number(req.query.multiple) : 1,
   };
 
   // TODO: validate inputs
