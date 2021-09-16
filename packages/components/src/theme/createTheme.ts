@@ -33,6 +33,7 @@ type Theme = {
   };
   spacing: typeof tokens.spacing;
   fontFamily: string;
+  typography: typeof tokens.typography;
 };
 
 type ThemeOptions = DeepPartial<Theme>;
@@ -47,6 +48,7 @@ export const defaultTheme: Theme = {
   spacing: tokens.spacing,
   fontFamily:
     'ShopifySans,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif',
+  typography: tokens.typography,
 };
 
 interface NullableTokens {
