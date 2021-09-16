@@ -124,9 +124,9 @@ const createTokenMeta = (tokenName: string): TokenMeta => {
   };
 };
 
-type Formatter = (tokens: Tokens) => string;
+type Converter = (tokens: Tokens) => string;
 
-const CSSTokenFormatter: Formatter = (tokens) => {
+const convertTokensToCSS: Converter = (tokens) => {
   const tab = `    `;
   const lines: string[] = [];
 
@@ -149,7 +149,7 @@ const CSSTokenFormatter: Formatter = (tokens) => {
   return lines.join('\n');
 };
 
-const SASSTokenFormatter: Formatter = (tokens) => {
+const convertTokensToSass: Converter = (tokens) => {
   const lines: string[] = [];
 
   Object.entries(tokens).forEach(([_, token]) => {
@@ -169,14 +169,14 @@ const SASSTokenFormatter: Formatter = (tokens) => {
   return lines.join('\n');
 };
 
-type Formatters = {[T in TokenFormat]: Formatter};
+type Converters = {[T in TokenFormat]: Converter};
 
-const formatters: Formatters = {
-  css: CSSTokenFormatter,
-  sass: SASSTokenFormatter,
+const converters: Converters = {
+  css: convertTokensToCSS,
+  sass: convertTokensToSass,
 };
 
-interface FormatTokensOptions {
+interface ConvertTokensToFormatOptions {
   tokens: Tokens;
   format: TokenFormat;
 }
@@ -188,8 +188,11 @@ interface FormatTokensOptions {
  * @param format - The file format
  * @returns - A string with the tokens in the right format
  */
-export const formatTokens = ({format, tokens}: FormatTokensOptions): string => {
-  return formatters[format](tokens);
+export const convertTokensToFormat = ({
+  format,
+  tokens,
+}: ConvertTokensToFormatOptions): string => {
+  return converters[format](tokens);
 };
 
 /**

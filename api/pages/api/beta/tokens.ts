@@ -1,5 +1,8 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
-import {formatTokens, getAllTokens} from '../../../../packages/functions';
+import {
+  convertTokensToFormat,
+  getAllTokens,
+} from '../../../../packages/functions';
 import {Tokens} from '../../../../packages/functions/types';
 
 // SUGGESTION: This (and types) would be helpful to expose from the @polaris/tokens
@@ -55,7 +58,7 @@ export default function handler(req: Request, res: NextApiResponse) {
   switch (format) {
     case 'sass':
       res.status(200).send(
-        formatTokens({
+        convertTokensToFormat({
           format: 'sass',
           tokens: response.tokens,
         }),
@@ -64,7 +67,7 @@ export default function handler(req: Request, res: NextApiResponse) {
 
     case 'css':
       res.status(200).send(
-        formatTokens({
+        convertTokensToFormat({
           format: 'css',
           tokens: response.tokens,
         }),
