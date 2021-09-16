@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
-import {formatTokens, getAllTokens} from '../../../../packages/functions';
-import {Tokens} from '../../../../packages/functions/types';
+import {formatTokens, getAllTokens} from '@polaris/functions/src';
+import {Tokens} from '@polaris/functions/src/types';
 
 // SUGGESTION: This (and types) would be helpful to expose from the @polaris/tokens
 export const FORMATS = ['json', 'css', 'sass'] as const;
