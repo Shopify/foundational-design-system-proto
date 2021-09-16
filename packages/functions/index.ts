@@ -96,7 +96,7 @@ const hslToHex = (
   return `#${_f(0)}${_f(8)}${_f(4)}`;
 };
 
-const createFormatTokenName = (
+const convertTokenNameToFormat = (
   format: 'figma' | 'css' | 'sass',
   tokenName: string,
 ) => {
@@ -118,9 +118,9 @@ const createFormatTokenName = (
  */
 const createTokenMeta = (tokenName: string): TokenMeta => {
   return {
-    figmaName: createFormatTokenName('figma', tokenName),
-    SassName: createFormatTokenName('sass', tokenName),
-    CSSName: createFormatTokenName('css', tokenName),
+    figmaName: convertTokenNameToFormat('figma', tokenName),
+    SassName: convertTokenNameToFormat('sass', tokenName),
+    CSSName: convertTokenNameToFormat('css', tokenName),
   };
 };
 
@@ -138,7 +138,7 @@ const CSSTokenFormatter: Formatter = (tokens) => {
     if (varName && token.value) {
       lines.push(`${tab}${varName}: ${token.value};`);
     } else if (token.aliasOf) {
-      const alias = createFormatTokenName('css', token.aliasOf);
+      const alias = convertTokenNameToFormat('css', token.aliasOf);
 
       lines.push(`${tab}${varName}: var(${alias});`);
     }
@@ -159,7 +159,7 @@ const SASSTokenFormatter: Formatter = (tokens) => {
       if (token.value) {
         lines.push(`${varName}: ${token.value};`);
       } else if (token.aliasOf) {
-        const alias = createFormatTokenName('sass', token.aliasOf);
+        const alias = convertTokenNameToFormat('sass', token.aliasOf);
 
         lines.push(`${varName}: ${alias};`);
       }
