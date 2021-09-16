@@ -5,6 +5,7 @@ import {style, styleVariants} from '@vanilla-extract/css';
 export const root = style({
   width: '100%',
   position: 'relative',
+  overflow: 'hidden',
 });
 
 export const variant = styleVariants({

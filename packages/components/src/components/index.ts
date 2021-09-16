@@ -2,6 +2,7 @@
 export * from './Box';
 export * from './Card';
 export * from './CardActionArea';
+export * from './CardSection';
 export * from './Button';
 export * from './ButtonBase';
 export * from './Center';

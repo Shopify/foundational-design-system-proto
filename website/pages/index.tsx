@@ -12,18 +12,33 @@ import {
   Link,
   Stack,
 } from '@polaris/components';
-import {Link as RouterLink} from 'react-router-dom';
+import {Link as RouterLink, useHistory} from 'react-router-dom';
 
 import {devDocsThemeClass} from '../components/theme.css';
 import {Layout} from '../components/Layout';
 import {DevDocsButton} from '../components/DevDocsButton';
+import {Link as LocalLink} from '../components/Link';
 
 const IndexPage = () => {
+  const history = useHistory();
+
   return (
     <Layout>
       <h2>Card</h2>
       <p>Explanation</p>
       <Grid gap="4" columns={['350px', '350px', '350px']}>
+        <Card
+          style={{
+            backgroundColor: 'whitesmo}e',
+            border: '1px solid silver',
+            borderRadius: '8px',
+          }}
+        >
+          <h3>Static Card</h3>
+          <p>
+            CardActionArea is covering entire card and has no inner actions.
+          </p>
+        </Card>
         <Card
           style={{
             backgroundColor: 'whitesmo}e',
@@ -51,16 +66,19 @@ const IndexPage = () => {
             cover
             onClick={() => alert('You clicked the entire card')}
           />
-          <h3>✓ Cover - ✓ Inner Actn - ✓ Separate Actns</h3>
+          <h3>✓ Cover - ✓ Overlay Actn</h3>
           <p>
-            CardActionArea is covering entire card and has{' '}
-            <Link href="/about" style={{position: 'relative'}}>
-              an inner action that links you to a new page
-            </Link>
+            CardActionArea is covering the entire card and has{' '}
+            {/* Styling the link with position: 'realtive' allows the link to overlay the CardActionArea so it can be clicked */}
+            <LocalLink to="/about" style={{position: 'relative'}}>
+              an overlaying link that takes you to a new page
+            </LocalLink>
             .
           </p>
           <Button
-            onClick={() => alert('You clicked the button inside the card')}
+            onClick={() =>
+              alert('You clicked the button overlaying the action area')
+            }
           >
             Button
           </Button>
@@ -72,16 +90,14 @@ const IndexPage = () => {
             borderRadius: '8px',
           }}
         >
-          <CardActionArea
-            cover
-            onClick={() => (window.location.href = '/about')}
-          />
+          {/* <CardActionArea as={RouterLink} cover to="/about" /> */}
+          <CardActionArea cover onClick={() => history.push('/about')} />
           <h3>✓ Cover - ✓ Inner Actn - ✓ Same Actns</h3>
           <p>
             CardActionArea is covering entire card and has{' '}
-            <Link href="/about" style={{position: 'relative'}}>
+            <LocalLink to="/about" style={{position: 'relative'}}>
               an inner action that links you to a new page
-            </Link>
+            </LocalLink>
             .
           </p>
         </Card>
@@ -110,10 +126,11 @@ const IndexPage = () => {
           <CardActionArea onClick={() => alert('You clicked the entire card')}>
             <h3>✗ Cover - ✓ Inner Actn</h3>
             <p>
+              THIS PATTERN IS DISCOURAGED!!! Antipattern: Nesting Buttons <br />
               CardActionArea is NOT covering entire card and has{' '}
-              <Link href="/about" style={{position: 'relative'}}>
+              <LocalLink to="/about" style={{position: 'relative'}}>
                 an inner action that links you to a new page
-              </Link>
+              </LocalLink>
               .
             </p>
             <Button

@@ -5,12 +5,12 @@ import {style, styleVariants} from '@vanilla-extract/css';
 export const root = style({
   display: 'block',
   width: '100%',
+  textAlign: 'left',
   ':focus': {
     boxShadow: '0 1px 0 rgb(0 0 0 / 50%), 0 -1px 0 rgb(0 0 0 / 20%)',
   },
   ':hover': {
-    backgroundColor: 'rgba(255, 255, 255, .35)',
-    boxShadow: '0 1px 0 rgb(0 0 0 / 50%), 0 -1px 0 rgb(0 0 0 / 20%)',
+    backgroundColor: 'rgba(169, 228, 239, .3)',
   },
 });
 
