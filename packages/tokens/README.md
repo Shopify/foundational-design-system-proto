@@ -2,7 +2,7 @@
 
 [Principles](#principles) | [Token reference](#token-reference) | [Token API](#token-api)
 
-Design tokens are design decisions in the form of data. Tokens are an agnostic way to store variables such as typography, color, and spacing so that they can be shared across platforms like iOS, Android, and web.d
+Design tokens are design decisions in the form of data. Tokens are an agnostic way to store variables such as typography, color, and spacing so that they can be shared across platforms like iOS, Android, and web.
 
 ## Principles
 
