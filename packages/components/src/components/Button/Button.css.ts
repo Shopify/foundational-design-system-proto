@@ -4,15 +4,15 @@ import {defaultVars} from '../../theme/vars.css';
 
 export const root = style({
   backgroundColor: defaultVars.color.primary,
-  borderRadius: defaultVars.spacing[1],
-  paddingTop: defaultVars.spacing[2],
-  paddingBottom: defaultVars.spacing[2],
-  paddingLeft: defaultVars.spacing[4],
-  paddingRight: defaultVars.spacing[4],
+  borderRadius: defaultVars.spacing[100],
+  paddingTop: defaultVars.spacing[200],
+  paddingBottom: defaultVars.spacing[200],
+  paddingLeft: defaultVars.spacing[400],
+  paddingRight: defaultVars.spacing[400],
   color: '#ffffff',
   fontWeight: 400,
-  fontSize: defaultVars.spacing[3.5],
-  lineHeight: defaultVars.spacing[5],
+  fontSize: defaultVars.spacing[350],
+  lineHeight: defaultVars.spacing[500],
   fontFamily: defaultVars.fontFamily,
   ':hover': {
     backgroundColor: '#006e52',
