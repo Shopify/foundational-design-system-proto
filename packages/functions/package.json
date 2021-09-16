@@ -1,0 +1,22 @@
+{
+  "name": "@polaris/functions",
+  "version": "0.0.0",
+  "author": "Shopify",
+  "license": "MIT",
+  "main": "./dist/polaris-functions.cjs.js",
+  "module": "./dist/polaris-functions.es.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "yarn build:js && yarn build:types",
+    "build:js": "vite build",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "watch": "vite build --watch"
+  }
+}

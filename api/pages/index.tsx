@@ -7,9 +7,8 @@ import {
   getMotionTokens,
   getSpacingTokens,
   getTypographyTokens,
-} from '../../packages/functions';
-// 👆 👇 SUGGESTION: Can we import these modules/types from @polaris/functions?
-import {TokenValue} from '../../packages/functions/types';
+} from '@polaris/functions/src';
+import {TokenValue} from '@polaris/functions/src/types';
 import {FORMATS} from './api/beta/tokens';
 
 const Home: NextPage = () => {
