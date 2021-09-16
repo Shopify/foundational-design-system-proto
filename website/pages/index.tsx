@@ -12,7 +12,7 @@ import {
   Link,
   Stack,
 } from '@polaris/components';
-import {Link as RouterLink, useHistory} from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
 
 import {devDocsThemeClass} from '../components/theme.css';
 import {Layout} from '../components/Layout';
@@ -20,12 +20,9 @@ import {DevDocsButton} from '../components/DevDocsButton';
 import {Link as LocalLink} from '../components/Link';
 
 const IndexPage = () => {
-  const history = useHistory();
-
   return (
     <Layout>
       <h2>Card</h2>
-      <p>Explanation</p>
       <Grid gap="4" columns={['350px', '350px', '350px']}>
         <Card
           style={{
@@ -36,8 +33,9 @@ const IndexPage = () => {
         >
           <h3>Static Card</h3>
           <p>
-            CardActionArea is covering entire card and has no inner actions.
+            <i>--</i>
           </p>
+          <p>This card does not have a CardActionArea.</p>
         </Card>
         <Card
           style={{
@@ -50,9 +48,13 @@ const IndexPage = () => {
             cover
             onClick={() => alert('You clicked the entire card')}
           />
-          <h3>✓ Cover - ✗ Inner Actn</h3>
+          <h3>Clickable Card</h3>
           <p>
-            CardActionArea is covering entire card and has no inner actions.
+            <i>✓ Cover - ✗ Overlay Actn</i>
+          </p>
+          <p>
+            This card has an CardActionArea that is covering the entire card.
+            The CardActionArea has no actions.
           </p>
         </Card>
         <Card
@@ -66,21 +68,24 @@ const IndexPage = () => {
             cover
             onClick={() => alert('You clicked the entire card')}
           />
-          <h3>✓ Cover - ✓ Overlay Actn</h3>
+          <h3>Clickable Card (Entire) + Actions</h3>
           <p>
-            CardActionArea is covering the entire card and has{' '}
-            {/* Styling the link with position: 'realtive' allows the link to overlay the CardActionArea so it can be clicked */}
-            <LocalLink to="/about" style={{position: 'relative'}}>
-              an overlaying link that takes you to a new page
-            </LocalLink>
-            .
+            <i>✓ Cover - ✓ Overlay Actn</i>
           </p>
+          <p>
+            This card has an CardActionArea that is covering the entire card.
+            The CardActionArea has two actions overlaying it.
+          </p>
+          {/* Styling the link with position: 'realtive' allows the link to overlay the CardActionArea so it can be clicked */}
+          <LocalLink to="/about" style={{position: 'relative'}}>
+            An overlaying link that takes you to a new page
+          </LocalLink>
           <Button
             onClick={() =>
               alert('You clicked the button overlaying the action area')
             }
           >
-            Button
+            Overlaying Button
           </Button>
         </Card>
         <Card
@@ -90,29 +95,14 @@ const IndexPage = () => {
             borderRadius: '8px',
           }}
         >
-          {/* <CardActionArea as={RouterLink} cover to="/about" /> */}
-          <CardActionArea cover onClick={() => history.push('/about')} />
-          <h3>✓ Cover - ✓ Inner Actn - ✓ Same Actns</h3>
-          <p>
-            CardActionArea is covering entire card and has{' '}
-            <LocalLink to="/about" style={{position: 'relative'}}>
-              an inner action that links you to a new page
-            </LocalLink>
-            .
-          </p>
-        </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
           <CardActionArea onClick={() => alert('You clicked the entire card')}>
-            <h3>✗ Cover - ✗ Inner Actn</h3>
+            <h3>Partially Clickable Card</h3>
             <p>
-              CardActionArea is NOT covering entire card and has no inner
-              actions.
+              <i>✗ Cover - ✗ Nested Actn</i>
+            </p>
+            <p>
+              This card has an CardActionArea that is NOT covering the entire
+              card. The CardActionArea has no actions.
             </p>
           </CardActionArea>
         </Card>
@@ -124,37 +114,13 @@ const IndexPage = () => {
           }}
         >
           <CardActionArea onClick={() => alert('You clicked the entire card')}>
-            <h3>✗ Cover - ✓ Inner Actn</h3>
+            <h3>Partially Clickable Card</h3>
             <p>
-              THIS PATTERN IS DISCOURAGED!!! Antipattern: Nesting Buttons <br />
-              CardActionArea is NOT covering entire card and has{' '}
-              <LocalLink to="/about" style={{position: 'relative'}}>
-                an inner action that links you to a new page
-              </LocalLink>
-              .
+              <i>✗ Cover - ✗ Nested Actn</i>
             </p>
-            <Button
-              onClick={(event) => {
-                event.stopPropagation();
-                alert('You clicked the button inside the action area');
-              }}
-            >
-              Button
-            </Button>
-          </CardActionArea>
-        </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
-          <CardActionArea onClick={() => alert('You clicked the entire card')}>
-            <h3>✗ Cover - ✗ Inner Actn - ✓ Footer Actn</h3>
             <p>
-              CardActionArea is NOT convering the entire card and has no inner
-              actions.&nbsp;
+              This card has an CardActionArea that is NOT covering the entire
+              card. The CardActionArea has one action outside of it.
             </p>
           </CardActionArea>
           <section>
@@ -166,6 +132,38 @@ const IndexPage = () => {
               Button
             </Button>
           </section>
+        </Card>
+        <Card
+          style={{
+            backgroundColor: 'whitesmoke',
+            border: '1px solid silver',
+            borderRadius: '8px',
+          }}
+        >
+          <CardActionArea onClick={() => alert('You clicked the entire card')}>
+            <h3>Partially Clickable Card (Antipattern)</h3>
+            <p>
+              <i>✗ Cover - ✓ Nested Actn</i>
+            </p>
+            <p>
+              This card has an CardActionArea that is NOT covering the entire
+              card. The CardActionArea has two actions nested inside it.
+            </p>
+            <LocalLink to="/about" style={{position: 'relative'}}>
+              An nested link that takes you to a new page
+            </LocalLink>
+            <Button
+              onClick={(event) => {
+                event.stopPropagation();
+                alert('You clicked the button inside the action area');
+              }}
+            >
+              Nested Button
+            </Button>
+          </CardActionArea>
+          <p>
+            THIS PATTERN IS DISCOURAGED!!! <br /> Antipattern: Nesting Buttons
+          </p>
         </Card>
       </Grid>
       <Divider />
