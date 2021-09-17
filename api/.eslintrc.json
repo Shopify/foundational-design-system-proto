@@ -1,4 +1,13 @@
 {
-  // TODO: Add shopify-eslint-config
+  /**
+   * By default, ESLint will look for configuration files in all parent folders
+   * up to the root directory. This can be useful if you want all of your
+   * projects to follow a certain convention, but can sometimes lead to
+   * unexpected results. To limit ESLint to a specific project, set this to
+   * `true` in a configuration in the root of your project.
+  */
+  // Note: This is a temporary fix to address conflicts with monorepo's .eslintrc.json
+  // Error: Plugin "react" was conflicted between ".eslintrc.json » eslint-config-next/core-web-vitals » api/node_modules/eslint-config-next/index.js" and "../.eslintrc » plugin:@shopify/react".
+  "root": true,
   "extends": "next/core-web-vitals"
 }
