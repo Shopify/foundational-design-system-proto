@@ -38,7 +38,7 @@ Space tokens are anchored around a base value. Each token’s number represents 
 
 [Source code](/src/spacing.ts)
 
-base value = 4px | 1rem = 16px
+base value = 4px | 0.25rem
 
 | Atomic value | px value | rem value |
 | ------------ | -------- | --------- |
