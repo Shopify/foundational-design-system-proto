@@ -26,7 +26,7 @@ const IndexPage = () => {
       <Grid gap="4" columns={['350px', '350px', '350px']}>
         <Card
           style={{
-            backgroundColor: 'whitesmo}e',
+            backgroundColor: 'whitesmoke',
             border: '1px solid silver',
             borderRadius: '8px',
           }}
@@ -39,7 +39,7 @@ const IndexPage = () => {
         </Card>
         <Card
           style={{
-            backgroundColor: 'whitesmo}e',
+            backgroundColor: 'whitesmoke',
             border: '1px solid silver',
             borderRadius: '8px',
           }}
