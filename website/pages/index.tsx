@@ -48,7 +48,7 @@ const IndexPage = () => {
             cover
             onClick={() => alert('You clicked the entire card')}
           />
-          <h3>Clickable Card</h3>
+          <h3>Clickable Card (Entire)</h3>
           <p>
             <i>✓ Cover - ✗ Overlay Actn</i>
           </p>
