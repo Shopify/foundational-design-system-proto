@@ -20,11 +20,19 @@
     "import/no-extraneous-dependencies": 0,
     "@shopify/strict-component-boundaries": 0
   },
-  "ignorePatterns": ["node_modules", "dist", ".yarn/"],
-  "overrides": [{
-    "files": [ "cypress/**/*.spec.ts" ],
-    "rules": {
-      "jest/valid-expect": 0
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    ".yarn/",
+    // Note: This is a temporary fix to address conflicts between the `root` and `api` .eslint configs
+    "api"
+  ],
+  "overrides": [
+    {
+      "files": ["cypress/**/*.spec.ts"],
+      "rules": {
+        "jest/valid-expect": 0
+      }
     }
-  }]
+  ]
 }
