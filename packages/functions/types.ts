@@ -17,5 +17,4 @@ export interface Tokens {
   [key: string]: Token;
 }
 
-// eslint-disable-next-line line-comment-position
-export type TokenPlatform = 'css' | 'sass' | 'figma'; // | 'ios' | 'android';
+export type TokenFormat = 'css' | 'sass';

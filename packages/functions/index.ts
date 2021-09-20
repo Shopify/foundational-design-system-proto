@@ -1,4 +1,4 @@
-import {Token, TokenPlatform, TokenMeta, Tokens} from './types';
+import {Token, TokenFormat, TokenMeta, Tokens} from './types';
 
 const BASE_SPACING_UNIT_REM = 0.25;
 
@@ -96,11 +96,11 @@ const hslToHex = (
   return `#${_f(0)}${_f(8)}${_f(4)}`;
 };
 
-const createPlatformTokenName = (
-  platform: TokenPlatform,
+const createTokenNameForFormat = (
+  format: TokenFormat | 'figma',
   tokenName: string,
 ) => {
-  switch (platform) {
+  switch (format) {
     case 'figma':
       return tokenName.replace(/-/g, '/');
     case 'sass':
@@ -118,15 +118,13 @@ const createPlatformTokenName = (
  */
 const createTokenMeta = (tokenName: string): TokenMeta => {
   return {
-    figmaName: createPlatformTokenName('figma', tokenName),
-    SassName: createPlatformTokenName('sass', tokenName),
-    CSSName: createPlatformTokenName('css', tokenName),
+    figmaName: createTokenNameForFormat('figma', tokenName),
+    SassName: createTokenNameForFormat('sass', tokenName),
+    CSSName: createTokenNameForFormat('css', tokenName),
   };
 };
 
-type PlatformTokensCreator = (tokens: Tokens) => string;
-
-const createCSSTokens: PlatformTokensCreator = (tokens) => {
+const formatCSSTokens = (tokens: Tokens) => {
   const tab = `    `;
   const lines: string[] = [];
 
@@ -138,7 +136,7 @@ const createCSSTokens: PlatformTokensCreator = (tokens) => {
     if (varName && token.value) {
       lines.push(`${tab}${varName}: ${token.value};`);
     } else if (token.aliasOf) {
-      const alias = createPlatformTokenName('css', token.aliasOf);
+      const alias = createTokenNameForFormat('css', token.aliasOf);
 
       lines.push(`${tab}${varName}: var(${alias});`);
     }
@@ -149,7 +147,7 @@ const createCSSTokens: PlatformTokensCreator = (tokens) => {
   return lines.join('\n');
 };
 
-const createSASSTokens: PlatformTokensCreator = (tokens) => {
+const formatSassTokens = (tokens: Tokens) => {
   const lines: string[] = [];
 
   Object.entries(tokens).forEach(([_, token]) => {
@@ -159,7 +157,7 @@ const createSASSTokens: PlatformTokensCreator = (tokens) => {
       if (token.value) {
         lines.push(`${varName}: ${token.value};`);
       } else if (token.aliasOf) {
-        const alias = createPlatformTokenName('sass', token.aliasOf);
+        const alias = createTokenNameForFormat('sass', token.aliasOf);
 
         lines.push(`${varName}: ${alias};`);
       }
@@ -169,37 +167,29 @@ const createSASSTokens: PlatformTokensCreator = (tokens) => {
   return lines.join('\n');
 };
 
-// NOTE: This type can be removed once we implement a platform tokens creator for Figma.
-// eslint-disable-next-line no-warning-comments
-// TODO: Add a platform tokens creator for Figma.
-type PlatformWithAvailableTokensCreator = Exclude<TokenPlatform, 'figma'>;
+type Formats = {[T in TokenFormat]: (tokens: Tokens) => string};
 
-type PlatformTokenCreators = {
-  [T in PlatformWithAvailableTokensCreator]: PlatformTokensCreator;
+const formats: Formats = {
+  css: formatCSSTokens,
+  sass: formatSassTokens,
 };
 
-const platformTokenCreators: PlatformTokenCreators = {
-  css: createCSSTokens,
-  sass: createSASSTokens,
-};
-
-interface CreatePlatformTokenOptions {
+interface FormatTokensOptions {
   tokens: Tokens;
-  platform: PlatformWithAvailableTokensCreator;
+  format: TokenFormat;
 }
 
 /**
- * Transforms tokens into various formats of a given platform.
+ * Transforms tokens into various formats like CSS and Sass.
  *
- * @param platform - The target platform e.g. CSS, Sass, Figma.
- * @param tokens - The tokens to transform to the target platform.
- * @returns A string with the tokens transformed to the format of the target platform.
+ * @param tokens - The tokens to transform
+ * @param format - The output format
+ * @returns - A string with the tokens in the right format
  */
-export const createPlatformTokens = ({
-  platform,
-  tokens,
-}: CreatePlatformTokenOptions): string => {
-  return platformTokenCreators[platform](tokens);
+export const formatTokens = (options: FormatTokensOptions): string => {
+  const {format, tokens} = options;
+
+  return formats[format](tokens);
 };
 
 /**
