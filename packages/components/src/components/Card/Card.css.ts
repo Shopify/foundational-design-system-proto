@@ -1,18 +1,12 @@
-import {style, styleVariants} from '@vanilla-extract/css';
+import {style} from '@vanilla-extract/css';
 
-// import {defaultVars} from '../../theme/vars.css';
+import {defaultVars} from '../../theme/vars.css';
 
 export const root = style({
   width: '100%',
   position: 'relative',
   overflow: 'hidden',
-});
-
-export const variant = styleVariants({
-  //   default: {
-  //     textDecoration: 'underline',
-  //     ':hover': {
-  //       textDecoration: 'none',
-  //     },
-  //   },
+  borderRadius: defaultVars.spacing[2],
+  boxShadow:
+    'rgba(23,24,24,0.05) 0px 0px 5px 0px, rgba(0,0,0,0.15) 0px 1px 2px 0px',
 });

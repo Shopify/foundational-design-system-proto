@@ -24,26 +24,14 @@ const IndexPage = () => {
     <Layout>
       <h2>Card</h2>
       <Grid gap="4" columns={['350px', '350px', '350px']}>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
+        <Card>
           <h3>Static Card</h3>
           <p>
             <i>--</i>
           </p>
           <p>This card does not have a CardActionArea.</p>
         </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
+        <Card>
           <CardActionArea
             cover
             onClick={() => alert('You clicked the entire card')}
@@ -57,13 +45,7 @@ const IndexPage = () => {
             The CardActionArea has no actions.
           </p>
         </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
+        <Card>
           <CardActionArea
             cover
             onClick={() => alert('You clicked the entire card')}
@@ -88,13 +70,7 @@ const IndexPage = () => {
             Overlaying Button
           </Button>
         </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
+        <Card>
           <CardActionArea onClick={() => alert('You clicked the entire card')}>
             <h3>Partially Clickable Card</h3>
             <p>
@@ -106,13 +82,7 @@ const IndexPage = () => {
             </p>
           </CardActionArea>
         </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
+        <Card>
           <CardActionArea onClick={() => alert('You clicked the entire card')}>
             <h3>Partially Clickable Card</h3>
             <p>
@@ -133,13 +103,7 @@ const IndexPage = () => {
             </Button>
           </section>
         </Card>
-        <Card
-          style={{
-            backgroundColor: 'whitesmoke',
-            border: '1px solid silver',
-            borderRadius: '8px',
-          }}
-        >
+        <Card>
           <CardActionArea onClick={() => alert('You clicked the entire card')}>
             <h3>Partially Clickable Card (Antipattern)</h3>
             <p>
