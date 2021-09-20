@@ -22,7 +22,7 @@ interface WithoutCoverProps extends CommonProps {
   children: React.ReactNode;
 }
 
-type CardActionAreaProps = WithCoverProps | WithoutCoverProps;
+export type CardActionAreaProps = WithCoverProps | WithoutCoverProps;
 
 export const CardActionArea = (props: CardActionAreaProps) => {
   const {cover = false, className, ...restProps} = props;
