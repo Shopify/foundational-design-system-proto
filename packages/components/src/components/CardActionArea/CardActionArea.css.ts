@@ -1,6 +1,6 @@
-import {style, styleVariants} from '@vanilla-extract/css';
+import {style} from '@vanilla-extract/css';
 
-// import {defaultVars} from '../../theme/vars.css';
+import {defaultVars} from '../../theme/vars.css';
 
 export const root = style({
   display: 'block',
@@ -15,19 +15,10 @@ export const root = style({
 });
 
 export const cover = style({
-  inset: '0px',
+  inset: defaultVars.spacing[0],
   position: 'absolute',
   zIndex: 0,
   ':focus': {
     boxShadow: '0 1px 0 rgb(0 0 0 / 50%), 0 -1px 0 rgb(0 0 0 / 20%)',
   },
-});
-
-export const variants = styleVariants({
-  //   default: {
-  //     textDecoration: 'underline',
-  //     ':hover': {
-  //       textDecoration: 'none',
-  //     },
-  //   },
 });
