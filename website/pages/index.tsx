@@ -17,6 +17,7 @@ import {Link as RouterLink} from 'react-router-dom';
 import {devDocsThemeClass} from '../components/theme.css';
 import {Layout} from '../components/Layout';
 import {DevDocsButton} from '../components/DevDocsButton';
+import {DevDocsCard} from '../components/DevDocsCard';
 import {Link as LocalLink} from '../components/Link';
 
 const IndexPage = () => {
@@ -58,7 +59,7 @@ const IndexPage = () => {
             This card has an CardActionArea that is covering the entire card.
             The CardActionArea has two actions overlaying it.
           </p>
-          {/* Styling the link with position: 'realtive' allows the link to overlay the CardActionArea so it can be clicked */}
+          {/* Styling the link with position: 'relative' allows the link to overlay the CardActionArea so it can be clicked */}
           <LocalLink to="/about" style={{position: 'relative'}}>
             An overlaying link that takes you to a new page
           </LocalLink>
@@ -132,8 +133,23 @@ const IndexPage = () => {
             </small>
           </p>
         </Card>
+        <div className={devDocsThemeClass}>
+          <DevDocsCard>
+            <CardActionArea
+              cover
+              onClick={() => alert('You clicked the entire devdocs card')}
+            />
+            <h3>Clickable Card (Entire)</h3>
+            <p>
+              <i>✓ Cover - ✗ Overlay Actn</i>
+            </p>
+            <p>This is a card in the style of ones found on shopify.dev</p>
+          </DevDocsCard>
+        </div>
       </Grid>
+
       <Divider />
+
       <h2>Button</h2>
       <Flex gap="4" marginX="4">
         <ButtonBase onClick={() => console.log('Hi')}>Hi</ButtonBase>
@@ -175,7 +191,9 @@ const IndexPage = () => {
         Hyperlink - Aria Label
       </Link>
       <br />
+
       <Divider />
+
       <h2>Flex</h2>
       <Flex gap="4">
         <Box style={{backgroundColor: 'silver'}} height="16" width="1/3" />
