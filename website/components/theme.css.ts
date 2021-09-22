@@ -18,4 +18,19 @@ export const [devDocsThemeClass, devDocsVars] = createTheme({
   },
   fontFamily:
     "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+  typography: {
+    fontsize: {
+      'heading-1': '2.25rem',
+      'heading-2': '2rem',
+      'heading-3': '1.75rem',
+      'heading-4': '1.5rem',
+      'heading-5': '1.25rem',
+      'heading-6': '1rem',
+      'heading-7': '.75rem',
+      'body-large': '1.25rem',
+      body: '1rem',
+      'body-small': '.875rem',
+      caption: '.875rem',
+    },
+  },
 });

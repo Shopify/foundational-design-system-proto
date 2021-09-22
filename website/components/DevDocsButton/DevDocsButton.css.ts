@@ -10,7 +10,7 @@ export const root = style({
   paddingLeft: devDocsVars.spacing[300],
   paddingRight: devDocsVars.spacing[300],
   fontWeight: 400,
-  fontSize: devDocsVars.spacing[400],
+  fontSize: devDocsVars.typography.fontsize.body,
   lineHeight: devDocsVars.spacing[600],
   fontFamily: devDocsVars.fontFamily,
   border: `1px solid ${devDocsVars.color.grey10}`,

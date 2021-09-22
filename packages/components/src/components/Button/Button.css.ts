@@ -11,7 +11,7 @@ export const root = style({
   paddingRight: defaultVars.spacing[400],
   color: '#ffffff',
   fontWeight: 400,
-  fontSize: defaultVars.spacing[350],
+  fontSize: defaultVars.typography.fontsize.body,
   lineHeight: defaultVars.spacing[500],
   fontFamily: defaultVars.fontFamily,
   ':hover': {
