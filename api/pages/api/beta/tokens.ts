@@ -1,61 +1,42 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import {formatTokens, getAllTokens} from '../../../../packages/functions';
-import {TokenList} from '../../../../packages/functions/types';
+import {Tokens, TokenFormat} from '../../../../packages/functions/types';
 
-export const ALLOWED_FORMATS = ['json', 'css', 'sass'];
-export const DEFAULT_FORMAT = 'json';
+type SupportedFormat = TokenFormat | 'json';
 
-interface Request extends NextApiRequest {
-  query: {
-    format?: string;
-    multiple: string;
-  };
+export const SUPPORTED_FORMATS: SupportedFormat[] = ['json', 'css', 'sass'];
+
+export const DEFAULT_FORMAT: SupportedFormat = 'json';
+
+export function isSupportedFormat(format?: string): format is SupportedFormat {
+  return !!format && SUPPORTED_FORMATS.includes(format as SupportedFormat);
 }
 
-interface APIResponse {
-  meta: {
-    levers: {
-      [key: string]: any;
-    };
+export interface Request extends NextApiRequest {
+  query: {
+    format?: string;
   };
-  tokens: TokenList;
 }
 
 export default function handler(req: Request, res: NextApiResponse) {
-  let format = DEFAULT_FORMAT;
-  const requestedFormat = req.query.format;
-  if (requestedFormat && ALLOWED_FORMATS.includes(requestedFormat)) {
-    format = requestedFormat;
-  }
+  const format = isSupportedFormat(req.query.format)
+    ? req.query.format
+    : DEFAULT_FORMAT;
 
-  // This would allow any "lever" to be customized through
-  // GET parameters. This would enable folks to create unique
-  // link to their specific Polaris configuration.
-  const levers = {
-    multiple: req.query.multiple ? Number(req.query.multiple) : 1,
-  };
-
-  // TODO: validate inputs
-
-  const tokens: TokenList = getAllTokens();
-
-  const response: APIResponse = {
-    meta: {
-      levers,
-    },
-    tokens,
-  };
+  const tokens: Tokens = getAllTokens();
 
   switch (format) {
-    case 'sass':
-      res.status(200).send(formatTokens(response.tokens, 'sass'));
-      break;
-
     case 'css':
-      res.status(200).send(formatTokens(response.tokens, 'css'));
+    case 'sass':
+      res.status(200).send(
+        formatTokens({
+          format,
+          tokens,
+        }),
+      );
       break;
 
     default:
-      res.status(200).json(response);
+      res.status(200).json(tokens);
   }
 }

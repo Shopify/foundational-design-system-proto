@@ -1,6 +1,6 @@
 export type TokenValue = string | number;
 
-interface Token {
+export interface Token {
   value?: TokenValue;
   aliasOf?: string;
   description: string;
@@ -13,7 +13,7 @@ export interface TokenMeta {
   CSSName: string | null;
 }
 
-export interface TokenList {
+export interface Tokens {
   [key: string]: Token;
 }
 
