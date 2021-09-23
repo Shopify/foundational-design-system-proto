@@ -28,10 +28,12 @@ type Theme = {
   breakpoints: typeof tokens.breakpoints;
   color: {
     scheme: 'light' | 'dark';
-    placeholder1: string;
+    primary: string;
     placeholder2: string;
   };
   spacing: typeof tokens.spacing;
+  fontFamily: string;
+  typography: typeof tokens.typography;
 };
 
 type ThemeOptions = DeepPartial<Theme>;
@@ -40,10 +42,13 @@ export const defaultTheme: Theme = {
   breakpoints: tokens.breakpoints,
   color: {
     scheme: 'light',
-    placeholder1: '#B4CDED',
+    primary: '#008060',
     placeholder2: '#BFCC94',
   },
   spacing: tokens.spacing,
+  fontFamily:
+    'ShopifySans,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif',
+  typography: tokens.typography,
 };
 
 interface NullableTokens {
