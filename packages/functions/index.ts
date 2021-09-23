@@ -67,11 +67,7 @@ const defaultColors: DefaultColors = {
 };
 
 // Copy pasta from https://stackoverflow.com/a/44134328/6488971
-const hslToHex = (
-  hue: number,
-  saturation: number,
-  lightness: number,
-): string => {
+function hslToHex(hue: number, saturation: number, lightness: number): string {
   const decimalLightness = lightness / 100;
 
   const someMagicalValue =
@@ -94,7 +90,7 @@ const hslToHex = (
   };
 
   return `#${_f(0)}${_f(8)}${_f(4)}`;
-};
+}
 
 const createTokenNameForFormat = (
   format: TokenFormat | 'figma',
@@ -193,9 +189,9 @@ export const formatTokens = (options: FormatTokensOptions): string => {
 };
 
 /**
- * Generates a TokenList containing all the available tokens
+ * Generates a Tokens containing all the available tokens
  *
- * @returns A TokenList
+ * @returns A Tokens object
  */
 export const getAllTokens = (): Tokens => {
   return {
@@ -237,8 +233,6 @@ export const getColorTokens = (): Tokens => {
   });
 
   tokens.negative = {
-    // QUESTION: Hard coded?
-    // QUESTION: Should aliases be generated here?
     aliasOf: 'magenta-500',
     description: 'Used for errors etc',
     meta: createTokenMeta('negative'),
@@ -258,7 +252,6 @@ const getSpaceTokenName = (index: number) => `space-${index * 100}`;
 /**
  * Generates spacing tokens
  *
- * // THOUGHT: Should we add a param (i.e. baseFontSize) to influence the compute rem values?
  * @param {Object} levers - Configuration for the spacing
  * @returns A Tokens
  */
@@ -307,9 +300,7 @@ export const getSpacingTokens = (): Tokens => {
 /**
  * Generates typography tokens
  *
- * // NOTE: This param isn't implemented.
- * @param levers - Configuration for the typography
- * @returns A Tokens
+ * @returns A typography Tokens object
  */
 export const getTypographyTokens = (): Tokens => {
   const typeRatio = 1.2;

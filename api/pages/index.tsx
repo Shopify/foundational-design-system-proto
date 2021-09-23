@@ -8,7 +8,6 @@ import {
   getSpacingTokens,
   getTypographyTokens,
 } from '../../packages/functions';
-// 👆 👇 SUGGESTION: Can we import these modules/types from @polaris/functions?
 import {TokenValue} from '../../packages/functions/types';
 import {SUPPORTED_FORMATS} from './api/beta/tokens';
 
