@@ -4,14 +4,15 @@ import clsx from 'clsx';
 
 import * as styles from './ButtonBase.css';
 
-interface Props {
-  children?: React.ReactNode;
-  href?: string;
-  type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
-}
-
-type PolymorphicButtonBase = Polymorphic.ForwardRefComponent<'button', Props>;
+type PolymorphicButtonBase = Polymorphic.ForwardRefComponent<
+  'button',
+  {
+    children?: React.ReactNode;
+    href?: string;
+    type?: 'button' | 'submit' | 'reset';
+    disabled?: boolean;
+  }
+>;
 
 export type ButtonBaseProps = Polymorphic.OwnProps<PolymorphicButtonBase>;
 
